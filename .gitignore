@@ -1,4 +1,5 @@
 /.idea/
 web.iml
 test
+src/node_modules
 
