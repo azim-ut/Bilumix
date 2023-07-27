@@ -25,7 +25,7 @@ export default defineComponent({
   props: {
     height: null,
     bgMode: "cover",
-    frames: [] as Array<String>
+    frames: [] as Array<URL>
   },
   data() {
     return {

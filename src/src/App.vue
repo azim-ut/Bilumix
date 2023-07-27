@@ -3,22 +3,22 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <div id="loading" v-if="!loaded">
-    <div id="loading-center">
-      <div id="loading-center-absolute">
-        <div class="object" id="object_one"></div>
-        <div class="object" id="object_two"></div>
-        <div class="object" id="object_three"></div>
-        <div class="object" id="object_four"></div>
-        <div class="object" id="object_five"></div>
-        <div class="object" id="object_six"></div>
-        <div class="object" id="object_seven"></div>
-        <div class="object" id="object_eight"></div>
-        <div class="object" id="object_nine"></div>
+    <header>
+      <div class="menu-toggle" @click="showMobileMenu = !showMobileMenu">
+        <font-awesome-icon icon="fa-solid fa-bars" />
       </div>
-    </div>
-
-  </div>
+      <div class="logo">
+        <img src="@/assets/logo.svg">
+      </div>
+      <nav :class="{'active': showMobileMenu}">
+        <ul>
+          <li v-for="row in menu"
+              :class="{'active':row.active, 'mobileButtons': row.mobileButton}">
+            <a :href="row.link">{{ row.title }}</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
   <RouterView />
 </template>
 
@@ -31,12 +31,21 @@ export default defineComponent({
   components: {Theater},
   data() {
     return {
+      showMobileMenu: false,
+      menu: [
+        {title: "Shop", active: false, link:'/', mobileButton: false},
+        {title: "Offers", active: true, link:'/', mobileButton: false},
+        {title: "Manual", active: false, link:'/', mobileButton: false},
+        {title: "Support", active: false, link:'/', mobileButton: false},
+        {title: "Free trial", active: false, link:'/', mobileButton: true},
+        {title: "Build package", active: false, link:'/', mobileButton: true}
+      ],
       loaded: false
     }
   },
   methods: {
     loadedEvent(){
-      this.loaded = true;
+      this.loaded = true
       console.log("loaded")
     }
   },

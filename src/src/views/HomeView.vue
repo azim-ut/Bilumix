@@ -1,17 +1,19 @@
 <template>
-  <div class="contentBlock" style="position: relative;">
-    <Theater :bg-mode="contain" :frames="this.productTheater.frames" :height="2000"></Theater>
-  </div>
-  <div class="contentBlock" style="position: relative; background: black">
-    <Theater :bg-mode="cover" :frames="this.video1Theater.frames" :height="2000"></Theater>
-  </div>
-  <div class="contentBlock" style="position: relative; background: black;">
-    <Theater :bg-mode="cover" :frames="this.video2Theater.frames" :height="2000"></Theater>
-  </div>
-  <div class="loaderBase">
-<!--    <img v-for="img in this.video2Theater.frames" :src="img">-->
-<!--    <img v-for="img in this.video1Theater.frames" :src="img">-->
-<!--    <img v-for="img in this.productTheater.frames" :src="img">-->
+  <div>
+    <div class="contentBlock" style="position: relative;" v-if="this.productTheater.frames.length>0">
+      <Theater :bg-mode="'contain'" :frames="this.productTheater.frames" :height="2000"></Theater>
+    </div>
+    <div class="contentBlock" style="position: relative; background: black" v-if="this.video1Theater.frames.length>0">
+      <Theater :bg-mode="'cover'" :frames="this.video1Theater.frames" :height="2000"></Theater>
+    </div>
+    <div class="contentBlock" style="position: relative; background: black;" v-if="this.video2Theater.frames.length>0">
+      <Theater :bg-mode="'cover'" :frames="this.video2Theater.frames" :height="2000"></Theater>
+    </div>
+    <div class="loaderBase">
+      <!--    <img v-for="img in this.video2Theater.frames" :src="img">-->
+      <!--    <img v-for="img in this.video1Theater.frames" :src="img">-->
+      <!--    <img v-for="img in this.productTheater.frames" :src="img">-->
+    </div>
   </div>
 </template>
 
