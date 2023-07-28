@@ -1,5 +1,5 @@
 header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     padding: 0 100px;
@@ -30,11 +30,14 @@ header nav ul {
     list-style: none;
 }
 
+header nav ul li{
+    cursor: pointer;
+}
 header nav ul li a{
     height: 50px;
     line-height: 50px;
     padding: 0 20px;
-    color: #fff;
+    color: #b4b4b4;
     text-decoration: none;
     display: block;
 }
@@ -42,7 +45,7 @@ header nav ul li a{
 header nav ul li.active a,
 header nav ul li:hover a{
     color: #fff;
-    background: #21966f;
+    background: transparent;
 }
 
 .menu-toggle{
@@ -69,7 +72,7 @@ header nav ul li:hover a{
         position: absolute;
         width: 100%;
         height: calc(100vh - 50px);
-        background: #333;
+        background: #262626;
         top: 80px;
         transition: .5s;
     }
@@ -85,7 +88,7 @@ header nav ul li:hover a{
     }
 
     header nav ul a{
-        border-bottom: 1px solid rgba(0,0,0, .2);
+        font-size: large;
     }
 }
 
