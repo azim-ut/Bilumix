@@ -1,17 +1,22 @@
 <template>
-  <div class="theaterDiv" ref="theaterDiv" v-if="loaded">
+  <div :class="{'theaterDiv':true, 'hidden': hidden}" ref="theaterDiv" v-if="loaded">
     <div class="projector" ref="projector">
-      <div v-for="(img, $index) in $props.frames"
-           :key="$index"
-           :class="{'bgModeCover': $props.bgMode === 'cover', 'bgModeContain': $props.bgMode === 'contain'}"
-           v-show="$index === theaterDivIndex"
-           :style="{'background-image': 'url(' + img + ')'}"></div>
+      <div class="front" ref="front">
+        <slot></slot>
+      </div>
+      <div class="bg">
+        <div v-for="(img, $index) in $props.frames"
+             :key="$index"
+             :class="{'bgModeCover': $props.bgMode === 'cover', 'bgModeContain': $props.bgMode === 'contain'}"
+             v-show="$index === theaterDivIndex"
+             :style="{'background-image': 'url(' + img + ')'}"></div>
+      </div>
     </div>
     <div class="framesBar" ref="framesBar">
       <div v-for="(img, $index) in $props.frames"
            :key="$index"
            :class="{'bgDisabled': !framesWithBackground.includes($index)}"
-           :style="{'height': ($props.height/$props.frames.length) + 'px', 'background-image': 'url(' + img + ')'}"></div>
+           :style="{'height': ($props.height) + 'px', 'background-image': 'url(' + img + ')'}"></div>
     </div>
   </div>
 </template>
@@ -23,17 +28,21 @@ import {defineComponent} from "vue"
 export default defineComponent({
   components: { },
   props: {
-    height: null,
+    name: "" as String,
+    test: false,
+    effects: [] as Array<String>,
+    height: 10,
     bgMode: "cover",
     frames: [] as Array<URL>
   },
   data() {
     return {
       wh: 0,
-      theaterDivIndex: 0,
+      theaterDivIndex: 5,
       loaded: false,
       theaterDivHeight: 100,
       framesWithBackground: [],
+      hidden: true,
       scroll: {
         direction: 1,
         lastPos: 0,
@@ -52,14 +61,26 @@ export default defineComponent({
     getScrollSpeed(){
       if(!this.scroll.lastPos){
         this.clearScrollSpeed()
-        let projectorY = this.$refs.theaterDiv?.getBoundingClientRect().top;
-        if(projectorY<0){
-          this.scroll.newPos = Math.abs(projectorY)
+        let rect = this.$refs.theaterDiv?.getBoundingClientRect();
+        if(rect){
+          let projectorY = rect.top;
+          this.hidden = (projectorY + rect.height)<0
+          if(!this.hidden){
+            this.hidden = !(projectorY<0 && (projectorY + rect.height)>0)
+            // this.hidden = (projectorY + rect.top) > window.innerHeight
+          }
+          if(this.$props.test){
+            // console.log(this.$props.name, this.hidden, projectorY, rect.height, projectorY + rect.height, window.innerHeight)
+          }
 
-          this.scroll.delta = this.scroll.newPos - this.scroll.lastPos
-          this.scroll.lastPos = this.scroll.newPos
-          this.scroll.timer = setTimeout(this.clearScrollSpeed, this.scroll.delay)
-          return this.scroll.delta
+          if(!this.hidden && projectorY<0){
+            this.scroll.newPos = Math.abs(projectorY)
+
+            this.scroll.delta = this.scroll.newPos - this.scroll.lastPos
+            this.scroll.lastPos = this.scroll.newPos
+            this.scroll.timer = setTimeout(this.clearScrollSpeed, this.scroll.delay)
+            return this.scroll.delta
+          }
         }
       }
       return this.scroll.lastPos;
@@ -73,12 +94,7 @@ export default defineComponent({
       let step = (boardSize / frames)
       let pos = Math.floor((this.scroll.newPos) / step)
       let speed = this.getScrollSpeed()
-      if(speed>0){
-        this.scroll.direction = 1
-      }
-      if(speed<0){
-        this.scroll.direction = -1
-      }
+      this.useZoom(speed)
       if(this.$props.frames[pos] && this.framesWithBackground.includes(pos)){
         this.theaterDivIndex = pos
       }
@@ -87,7 +103,16 @@ export default defineComponent({
           this.framesWithBackground.push(i)
         }
       }
-      // window.scrollTo(0,10)
+    },
+    useZoom(speed){
+      if(this.$refs.front && !this.hidden){
+        let val = (1-speed/(this.$props.height * (2*this.$props.frames.length/3)))
+        if(val>0){
+          this.$refs.front.style.transform = 'scale(' + val + ')';
+        }else{
+          this.$refs.front.style.transform = 'scale(0)';
+        }
+      }
     },
     loadedEvent(){
       this.loaded = true;
@@ -112,9 +137,10 @@ export default defineComponent({
     this.theaterDivHeight = this.$props.frames.length
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('load', this.loadedEvent);
-    this.handleScroll(null)
-
     setTimeout(this.autoUploadFrames, 150)
+    setTimeout(() => {
+      window.scrollTo(0,10)
+    }, 250)
   }
 })
 </script>
@@ -122,30 +148,39 @@ export default defineComponent({
 <style scoped>
 .theaterDiv{
   position: relative;
+  overflow: hidden;
+}
+.theaterDiv.hidden{
+  visibility: hidden;
 }
 .projector{
-  display: block;
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top:0;
   width: 100%;
   min-height: 100vh;
 }
-.projector div{
+.projector .front{
+  position: fixed;
+  top:0;
+  width: 100%;
+  min-height: 100vh;
+}
+.projector .bg div{
   position: inherit;
   width: 100%;
   min-height: 100vh;
   animation: ease-in;
   background: transparent none no-repeat center center;
 }
-.projector div.bgModeCover{
+.projector .bg div.bgModeCover{
   background-size: cover !important;
 }
-.projector div.bgModeContain{
+.projector .bg div.bgModeContain{
   background-size: contain !important;
 }
 .framesBar{
   position: inherit;
-  left: 10px;
+  left: 0px;
   top: 0;
   width: 400px;
   overflow: hidden;
@@ -154,6 +189,7 @@ export default defineComponent({
   width: 20px;
   height: 10px;
   opacity: .0;
+  border: red 1px solid;
   background: transparent none no-repeat center center/contain;
 }
 .framesBar div.bgDisabled{

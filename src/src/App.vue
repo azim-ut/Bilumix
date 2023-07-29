@@ -21,7 +21,7 @@ import Footer from "@/components/Footer.vue";
         </ul>
       </nav>
     </header>
-    <div class="contentBlock">
+    <div class="contentBody">
       <RouterView />
     </div>
   <Footer />
