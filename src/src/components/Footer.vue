@@ -13,19 +13,19 @@
 
 
     <div>
-      <div style="padding: 1rem;">
+      <div>
         <h6>Pages</h6>
         <ul><li>
           <div><a href="/shop/">Shop</a></div>
         </li>
-          <li style="padding: 0px;">
+          <li>
             <div><a href="/offers/">Offers</a></div>
-          </li><li style="padding: 0px;">
+          </li><li>
             <div><a href="/manual/">Manual</a></div>
-          </li><li style="padding: 0px;">
+          </li><li>
             <div><a href="/support/">Support</a></div>
           </li></ul>
-        <div><div><h6><a href="/products/">Products</a></h6>
+        <div><div><a href="/products/">Products</a>
           <ul><li>
             <div><a href="/headlamp/">Headlamp</a></div></li>
             <li><div><a href="/loupes/">Loupes</a></div></li>
