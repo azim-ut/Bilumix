@@ -158,6 +158,7 @@ export default defineComponent({
   top:0;
   width: 100%;
   min-height: 100vh;
+  transition: .5s;
 }
 .projector .front{
   position: fixed;
@@ -184,6 +185,9 @@ export default defineComponent({
   top: 0;
   width: 400px;
   overflow: hidden;
+}
+.framesBar h1{
+  text-align: center;
 }
 .framesBar div{
   width: 20px;

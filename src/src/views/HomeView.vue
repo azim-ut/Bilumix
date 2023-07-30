@@ -1,5 +1,11 @@
 <template>
-  <div>
+  <div style="margin-top: 90px;">
+    <RoundedBlackBox
+        v-for="row in shortTextBlocks"
+        :title = "row.title"
+        :sub = "row.sub"
+        :text = "row.text"
+    ></RoundedBlackBox>
     <div class="contentBlock product" style="position: relative;" v-if="this.productTheater.frames.length>0">
       <Theater :name="'product'" :test="true" :bg-mode="'cover'" :frames="this.productTheater.frames" :height="20">
         <div class="mainBanner">
@@ -11,12 +17,6 @@
         </div>
       </Theater>
     </div>
-    <RoundedBlackBox
-        v-for="row in shortTextBlocks"
-        :title = "row.title"
-        :sub = "row.sub"
-        :text = "row.text"
-    ></RoundedBlackBox>
     <div class="contentBlock" style="position: relative; background: black;" v-if="this.video2Theater.frames.length>0">
       <Theater :name="'video2'" :bg-mode="'cover'" :test="false" :frames="this.video2Theater.frames" :height="20"></Theater>
     </div>
