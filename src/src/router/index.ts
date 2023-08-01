@@ -1,8 +1,9 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import Page from "@/views/Page.vue";
-import IntroFrame1 from "@/views/IntroFrame1.vue";
-import IntroVideo1 from "@/views/IntroVideo1.vue";
-import IntroVideo2 from "@/views/IntroVideo2.vue";
+import FrameIntroFrame1 from "@/views/FrameIntroFrame1.vue";
+import FrameIntroVideo1 from "@/views/FrameIntroVideo1.vue";
+import FrameIntroVideo2 from "@/views/FrameIntroVideo2.vue";
+import FramePage from "@/views/FramePage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,18 +15,18 @@ const router = createRouter({
     },
     {
       path: '/intro/frame1',
-      name: 'introFrame1',
-      component: IntroFrame1
+      name: 'FrameIntroFrame1',
+      component: FrameIntroFrame1
     },
     {
       path: '/intro/video1',
-      name: 'introVideo1',
-      component: IntroVideo1
+      name: 'FrameIntroVideo1',
+      component: FrameIntroVideo1
     },
     {
       path: '/intro/video2',
-      name: 'introVideo2',
-      component: IntroVideo2
+      name: 'FrameIntroVideo2',
+      component: FrameIntroVideo2
     },
     {
       path: '/shop',

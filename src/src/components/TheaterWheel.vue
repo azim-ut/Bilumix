@@ -1,5 +1,5 @@
 <template>
-  <div :class="{'theaterDiv':true}" ref="theaterDiv" v-if="loaded">
+  <div id="TheaterWheel" :class="{'theaterDiv':true}" ref="theaterDiv">
       <div class="projector" ref="projector">
         <div class="front" ref="front">
           <div style="color: black;" v-show="$props.test">
@@ -45,71 +45,48 @@ export default defineComponent({
       loaded: false,
       theaterDivHeight: 100,
       framesWithBackground: [0,5],
-      scroll: {
-        direction: 1,
-        lastPos: 0,
-        newPos: 0,
-        timer: 50,
-        delta: 0,
-        delay: 50
+      reel: {
+        min: 1,
+        max: 3,
+        step: 1,
+        current: 1
       }
     }
   },
   methods: {
-    clearScrollSpeed(){
-      this.scroll.lastPos = null
-      this.scroll.delta = 0
-    },
-    getScrollSpeed(){
-      if(!this.scroll.lastPos){
-        this.clearScrollSpeed()
-        let rect = this.$refs.theaterDiv?.getBoundingClientRect();
-        if(rect){
-          let projectorY = rect.top;
-          if(this.$props.test){
-            console.log(this.$props.name, this.theaterDivIndex, projectorY, rect.height, projectorY + rect.height, window.innerHeight)
-          }
-
-          if(projectorY<0){
-            this.scroll.newPos = Math.abs(projectorY)
-
-            this.scroll.delta = this.scroll.newPos - this.scroll.lastPos
-            this.scroll.lastPos = this.scroll.newPos
-            this.scroll.timer = setTimeout(this.clearScrollSpeed, this.scroll.delay)
-            return this.scroll.delta
-          }
-        }
+    updateReelPosition(direction): number {
+      let newZoom = Math.floor(this.reel.current + direction * this.reel.step);
+      if (newZoom < this.reel.min) {
+        newZoom = this.reel.min
       }
-      return this.scroll.lastPos;
+      if(newZoom > this.reel.max) {
+        newZoom = this.reel.max
+      }
+      this.reel.current = newZoom;
     },
     handleWheel(event: Event){
-      if(event){
+      let direction = event.deltaY > 0 ? 1 : -1;
+      let rect = this.$refs.theaterDiv?.getBoundingClientRect();
+      if(!rect){
+        return;
+      }
+      if(event && rect.top <= 5){
         // event.preventDefault()
       }
-      let frames = this.$props.frames.length
-      let boardSize = this.$refs.framesBar?.clientHeight
-      let step = (boardSize / frames)
-      let pos = Math.floor((this.scroll.newPos) / step)
-      let speed = this.getScrollSpeed()
-      if(this.$props.effects?.includes('zoomOut')){
-        this.useZoomOut(speed)
-      }
-      if(this.$props.frames[pos] && this.framesWithBackground.includes(pos)){
-        this.theaterDivIndex = pos
-      }
-      for(let i = pos-2; i<pos+2; i++){
-        if(i>=0 && i<this.$props.frames.length && !this.framesWithBackground.includes(i)){
-          this.framesWithBackground.push(i)
+      this.updateReelPosition(direction)
+      // console.log(this.reel.current , direction , this.reel.step)
+
+      if(
+          (direction > 0 && this.reel.current<this.reel.max) ||
+          (direction < 0 && (this.reel.current>1 || !this.reel.current))
+      ){
+        if(this.$props.frames[this.reel.current] && this.framesWithBackground.includes(this.reel.current)){
+          this.theaterDivIndex = this.reel.current
         }
       }
-    },
-    useZoomOut(speed){
-      if(this.$refs.front){
-        let val = (1-speed/(this.$props.height * (2*this.$props.frames.length/3)))
-        if(val>0){
-          this.$refs.front.style.transform = 'scale(' + val + ')';
-        }else{
-          this.$refs.front.style.transform = 'scale(0)';
+      for(let i = this.reel.current-2; i<this.reel.current+2; i++){
+        if(i>=0 && i<this.$props.frames.length && !this.framesWithBackground.includes(i)){
+          this.framesWithBackground.push(i)
         }
       }
     },
@@ -129,13 +106,16 @@ export default defineComponent({
     }
   },
   unmounted () {
-    window.removeEventListener('scroll', this.handleWheel);
-    window.removeEventListener('load', this.loadedEvent);
+    let container = document.getElementById('TheaterWheel');
+    container?.removeEventListener('wheel', this.handleWheel);
+    container?.removeEventListener('load', this.loadedEvent);
   },
   mounted(){
-    this.theaterDivHeight = this.$props.frames.length
-    window.addEventListener('scroll', this.handleWheel);
-    window.addEventListener('load', this.loadedEvent);
+    this.reel.max = this.$props.frames.length
+
+    let container = document.getElementById('TheaterWheel');
+    container?.addEventListener('wheel', this.handleWheel);
+    container?.addEventListener('load', this.loadedEvent);
     setTimeout(this.autoUploadFrames, 150)
     setTimeout(() => {
       window.scrollTo(0,10)
@@ -148,7 +128,7 @@ export default defineComponent({
 .theaterDiv{
   position: relative;
   min-height: 100vh;
-  overflow: scroll;
+  overflow: hidden;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
@@ -179,7 +159,7 @@ export default defineComponent({
   min-height: 100vh;
 }
 .projector .bg{
-  position: fixed;
+  position: absolute;
   width: 100%;
   top: 0;
   min-height: 100vh;

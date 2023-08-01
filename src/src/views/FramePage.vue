@@ -18,16 +18,34 @@
     </nav>
   </header>
   <div class="contentBody">
-    <IntroFrame1 />
-    <TheaterWheel :name="'product'" :effects="['zoomOut']" :test="true" :bg-mode="'cover'" :frames="this.productTheater.frames" :height="20">
-      <div class="mainBanner">
-        <div class="content">
-          <h1>BiLumix</h1>
-          <h2>GENERATION 2.0</h2>
-          <h3>Shadowless Headlamp</h3>
-        </div>
+    <div style="margin-top: 80px;">
+      <div class="contentBlock product" style="position: relative;">
+        <iframe class="theaterFrame" src="/intro/frame1"></iframe>
       </div>
-    </TheaterWheel>
+      <RoundedBlackBox
+          v-for="row in shortTextBlocks"
+          :title = "row.title"
+          :sub = "row.sub"
+          :text = "row.text"
+      ></RoundedBlackBox>
+      <div class="contentBlock product" style="position: relative;">
+        <iframe class="theaterFrame" src="/intro/video1"></iframe>
+      </div>
+      <RoundedBlackBox
+          v-for="row in shortTextBlocks"
+          :title = "row.title"
+          :sub = "row.sub"
+          :text = "row.text"
+      ></RoundedBlackBox>
+      <div class="contentBlock product" style="position: relative;">
+        <iframe class="theaterFrame" src="/intro/video2"></iframe>
+      </div>
+      <div class="loaderBase">
+        <!--    <img v-for="img in this.video2Theater.frames" :src="img">-->
+        <!--    <img v-for="img in this.video1Theater.frames" :src="img">-->
+        <!--    <img v-for="img in this.productTheater.frames" :src="img">-->
+      </div>
+    </div>
   </div>
   <Footer />
 </template>
@@ -35,18 +53,15 @@
 <script lang="ts">
 
 import {defineComponent} from "vue"
+import Theater from "@/components/Theater.vue";
 import RoundedBlackBox from "@/components/RoundedBlackBox.vue";
 import IntroSection1 from "@/components/IntroSection1.vue";
 import ScrollDownIndicator from "@/components/ScrollDownIndicator.vue";
 import Footer from "@/components/Footer.vue";
 import {RouterView} from "vue-router";
-import IntroFrame1 from "@/views/IntroFrame1.vue";
-import TheaterWheel from "@/components/TheaterWheel.vue";
 
 export default defineComponent({
-  components: {
-    TheaterWheel,
-    IntroFrame1, RouterView, Footer, ScrollDownIndicator, IntroSection1, RoundedBlackBox},
+  components: {RouterView, Footer, ScrollDownIndicator, IntroSection1, RoundedBlackBox, Theater},
   data() {
     return {
       showMobileMenu: false,
@@ -98,6 +113,7 @@ export default defineComponent({
   },
   methods: {
     toggleMenu(menu: any){
+      console.log(menu)
       this.$router.push({name: menu.name})
       this.menu.forEach(row => {
         row.active = false
@@ -124,6 +140,32 @@ export default defineComponent({
         // let path = require(src)
         this.productTheater.frames.unshift(new URL(src, import.meta.url))
       }
+    },
+    fillVideo1TheaterFrames(){
+      this.video1Theater.frames = []
+      let cnt = 224;
+      while(cnt-->0){
+        let path = "/images/min/video1/video1-sq-" + cnt + "-min.jpg"
+        if(cnt>=10 && cnt<100){
+          path = "/images/min/video1/video1-sq-0" + cnt + "-min.jpg"
+        }else if(cnt<10){
+          path = "/images/min/video1/video1-sq-00" + cnt + "-min.jpg"
+        }
+        this.video1Theater.frames.unshift(path)
+      }
+    },
+    fillVideo2TheaterFrames(){
+      this.video2Theater.frames = []
+      let cnt = 235;
+      while(cnt-->0){
+        let path = "/images/min/video2/video2-sq-" + cnt + "-min.jpg"
+        if(cnt>=10 && cnt<100){
+          path = "/images/min/video2/video2-sq-0" + cnt + "-min.jpg"
+        }else if(cnt<10){
+          path = "/images/min/video2/video2-sq-00" + cnt + "-min.jpg"
+        }
+        this.video2Theater.frames.unshift(path)
+      }
     }
   },
   unmounted () {
@@ -132,7 +174,6 @@ export default defineComponent({
   mounted(){
     this.toggleMenu(this.$route.path)
     window.addEventListener('load', this.loadedEvent);
-    this.fillTheaterFrames()
   }
 })
 </script>
