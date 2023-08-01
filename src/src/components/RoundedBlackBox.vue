@@ -1,10 +1,11 @@
 <template>
-  <div class="block" style="position: relative;">
+  <div class="block" :style="{'background-image': 'url(' + $props.bg + ')'}">
   	<div class="inner">
-      <div :style="{'background-image': 'url(' + $props.bg + ')'}">
+      <div class="bg">
         <h1>{{$props.title}}</h1>
       	<h3>{{$props.sub}}</h3>
-        <p>{{$props.text}}</p>
+        <p>{{$props.text}}
+          <ScrollDownIndicator /></p>
       </div>
     </div>
   </div>
@@ -13,11 +14,13 @@
 <script lang="ts">
 
 import {defineComponent} from "vue"
+import IntroSection1 from "@/components/IntroSection1.vue";
+import ScrollDownIndicator from "@/components/ScrollDownIndicator.vue";
 
 export default defineComponent({
-  components: { },
+  components: {ScrollDownIndicator, IntroSection1},
   props: {
-    bg: undefined as String|undefined,
+    bg: "" as String,
     title: "" as String,
     sub: "" as String,
     text: "" as String
@@ -55,5 +58,10 @@ export default defineComponent({
   left: 0;
   right: 0;
   position: absolute;
+}
+.block{
+  position: relative;
+  background: transparent no-repeat center top/cover;
+  min-height: 500px;
 }
 </style>

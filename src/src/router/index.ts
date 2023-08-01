@@ -1,5 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import {createRouter, createWebHistory} from 'vue-router'
+import Page from "@/views/Page.vue";
+import IntroFrame1 from "@/views/IntroFrame1.vue";
+import IntroVideo1 from "@/views/IntroVideo1.vue";
+import IntroVideo2 from "@/views/IntroVideo2.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,37 +10,52 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: Page
+    },
+    {
+      path: '/intro/frame1',
+      name: 'introFrame1',
+      component: IntroFrame1
+    },
+    {
+      path: '/intro/video1',
+      name: 'introVideo1',
+      component: IntroVideo1
+    },
+    {
+      path: '/intro/video2',
+      name: 'introVideo2',
+      component: IntroVideo2
     },
     {
       path: '/shop',
       name: 'shop',
-      component: HomeView
+      component: Page
     },
     {
       path: '/offers',
       name: 'offers',
-      component: HomeView
+      component: Page
     },
     {
       path: '/manual',
       name: 'manual',
-      component: HomeView
+      component: Page
     },
     {
       path: '/support',
       name: 'support',
-      component: HomeView
+      component: Page
     },
     {
       path: '/trial',
       name: 'trial',
-      component: HomeView
+      component: Page
     },
     {
       path: '/package',
       name: 'package',
-      component: HomeView
+      component: Page
     }
   ]
 })

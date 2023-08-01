@@ -1,23 +1,26 @@
 <template>
-  <div :class="{'theaterDiv':true, 'hidden': hidden}" ref="theaterDiv" v-if="loaded">
-    <div class="projector" ref="projector">
-      <div class="front" ref="front">
-        <slot></slot>
+  <div :class="{'theaterDiv':true}" ref="theaterDiv" v-if="loaded">
+      <div class="projector" ref="projector">
+        <div class="front" ref="front">
+          <div style="color: black;" v-show="$props.test">
+            {{theaterDivIndex}}
+          </div>
+          <slot></slot>
+        </div>
+        <div class="bg">
+          <div v-for="(img, $index) in $props.frames"
+               :key="$index"
+               :class="{'bgModeCover': $props.bgMode === 'cover', 'bgModeContain': $props.bgMode === 'contain'}"
+               v-show="$index === theaterDivIndex"
+               :style="{'background-image': 'url(' + img + ')'}"></div>
+        </div>
       </div>
-      <div class="bg">
+      <div class="framesBar" ref="framesBar">
         <div v-for="(img, $index) in $props.frames"
              :key="$index"
-             :class="{'bgModeCover': $props.bgMode === 'cover', 'bgModeContain': $props.bgMode === 'contain'}"
-             v-show="$index === theaterDivIndex"
-             :style="{'background-image': 'url(' + img + ')'}"></div>
+             :class="{'bgDisabled': !framesWithBackground.includes($index)}"
+             :style="{'height': ($props.height) + 'px', 'background-image': 'url(' + img + ')'}"></div>
       </div>
-    </div>
-    <div class="framesBar" ref="framesBar">
-      <div v-for="(img, $index) in $props.frames"
-           :key="$index"
-           :class="{'bgDisabled': !framesWithBackground.includes($index)}"
-           :style="{'height': ($props.height) + 'px', 'background-image': 'url(' + img + ')'}"></div>
-    </div>
   </div>
 </template>
 
@@ -41,8 +44,7 @@ export default defineComponent({
       theaterDivIndex: 5,
       loaded: false,
       theaterDivHeight: 100,
-      framesWithBackground: [],
-      hidden: true,
+      framesWithBackground: [0,5],
       scroll: {
         direction: 1,
         lastPos: 0,
@@ -64,16 +66,11 @@ export default defineComponent({
         let rect = this.$refs.theaterDiv?.getBoundingClientRect();
         if(rect){
           let projectorY = rect.top;
-          this.hidden = (projectorY + rect.height)<0
-          if(!this.hidden){
-            this.hidden = !(projectorY<0 && (projectorY + rect.height)>0)
-            // this.hidden = (projectorY + rect.top) > window.innerHeight
-          }
           if(this.$props.test){
-            // console.log(this.$props.name, this.hidden, projectorY, rect.height, projectorY + rect.height, window.innerHeight)
+            console.log(this.$props.name, this.theaterDivIndex, projectorY, rect.height, projectorY + rect.height, window.innerHeight)
           }
 
-          if(!this.hidden && projectorY<0){
+          if(projectorY<0){
             this.scroll.newPos = Math.abs(projectorY)
 
             this.scroll.delta = this.scroll.newPos - this.scroll.lastPos
@@ -94,7 +91,9 @@ export default defineComponent({
       let step = (boardSize / frames)
       let pos = Math.floor((this.scroll.newPos) / step)
       let speed = this.getScrollSpeed()
-      this.useZoom(speed)
+      if(this.$props.effects?.includes('zoomOut')){
+        this.useZoomOut(speed)
+      }
       if(this.$props.frames[pos] && this.framesWithBackground.includes(pos)){
         this.theaterDivIndex = pos
       }
@@ -104,8 +103,8 @@ export default defineComponent({
         }
       }
     },
-    useZoom(speed){
-      if(this.$refs.front && !this.hidden){
+    useZoomOut(speed){
+      if(this.$refs.front){
         let val = (1-speed/(this.$props.height * (2*this.$props.frames.length/3)))
         if(val>0){
           this.$refs.front.style.transform = 'scale(' + val + ')';
@@ -148,26 +147,45 @@ export default defineComponent({
 <style scoped>
 .theaterDiv{
   position: relative;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow: scroll;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
-.theaterDiv.hidden{
-  visibility: hidden;
+.projectorWrapper{
+  position: absolute;
+  min-height: 100vh;
+  transition: .5s;
+  height: 100%;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 .projector{
-  position: fixed;
+  position: absolute;
   top:0;
+  bottom:0;
+  right: 0;
+  left: 0;
   width: 100%;
   min-height: 100vh;
   transition: .5s;
+  background: white;
 }
 .projector .front{
-  position: fixed;
+  position: relative;
   top:0;
   width: 100%;
   min-height: 100vh;
 }
+.projector .bg{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  min-height: 100vh;
+}
 .projector .bg div{
-  position: inherit;
+  position: relative;
   width: 100%;
   min-height: 100vh;
   animation: ease-in;
