@@ -1,5 +1,5 @@
 <template>
-  <div id="TheaterWheel" :class="{'theaterDiv':true}" ref="theaterDiv">
+  <div :id="'TheaterWheel' + $props.name" :class="{'theaterDiv':true}" :style="{'height': $props.height +'px'}" ref="theaterDiv">
       <div class="projector" ref="projector">
         <div class="front" ref="front">
           <div style="color: black;" v-show="$props.test">
@@ -19,7 +19,7 @@
         <div v-for="(img, $index) in $props.frames"
              :key="$index"
              :class="{'bgDisabled': !framesWithBackground.includes($index)}"
-             :style="{'height': ($props.height) + 'px', 'background-image': 'url(' + img + ')'}"></div>
+             :style="{'height': ($props.height/$props.frames.length) + 'px', 'background-image': 'url(' + img + ')'}"></div>
       </div>
   </div>
 </template>
@@ -34,7 +34,7 @@ export default defineComponent({
     name: "" as String,
     test: false,
     effects: [] as Array<String>,
-    height: 10,
+    height: 500,
     bgMode: "cover",
     frames: [] as Array<URL>
   },
@@ -63,15 +63,13 @@ export default defineComponent({
         newZoom = this.reel.max
       }
       this.reel.current = newZoom;
+      // console.log(this.reel.current , direction , this.reel.step)
     },
     handleWheel(event: Event){
       let direction = event.deltaY > 0 ? 1 : -1;
       let rect = this.$refs.theaterDiv?.getBoundingClientRect();
       if(!rect){
         return;
-      }
-      if(event && rect.top <= 5){
-        // event.preventDefault()
       }
       this.updateReelPosition(direction)
       // console.log(this.reel.current , direction , this.reel.step)
@@ -84,6 +82,7 @@ export default defineComponent({
           this.theaterDivIndex = this.reel.current
         }
       }
+
       for(let i = this.reel.current-2; i<this.reel.current+2; i++){
         if(i>=0 && i<this.$props.frames.length && !this.framesWithBackground.includes(i)){
           this.framesWithBackground.push(i)
@@ -106,14 +105,14 @@ export default defineComponent({
     }
   },
   unmounted () {
-    let container = document.getElementById('TheaterWheel');
+    let container = document.getElementById('TheaterWheel' + this.$props.name);
     container?.removeEventListener('wheel', this.handleWheel);
     container?.removeEventListener('load', this.loadedEvent);
   },
   mounted(){
     this.reel.max = this.$props.frames.length
 
-    let container = document.getElementById('TheaterWheel');
+    let container = document.getElementById('TheaterWheel' + this.$props.name);
     container?.addEventListener('wheel', this.handleWheel);
     container?.addEventListener('load', this.loadedEvent);
     setTimeout(this.autoUploadFrames, 150)
@@ -132,15 +131,7 @@ export default defineComponent({
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
-.projectorWrapper{
-  position: absolute;
-  min-height: 100vh;
-  transition: .5s;
-  height: 100%;
-  bottom: 0;
-  right: 0;
-  left: 0;
-}
+
 .projector{
   position: absolute;
   top:0;
@@ -178,7 +169,6 @@ export default defineComponent({
   background-size: contain !important;
 }
 .framesBar{
-  position: inherit;
   left: 0px;
   top: 0;
   width: 400px;

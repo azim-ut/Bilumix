@@ -83,7 +83,7 @@ export default defineComponent({
           (direction > 0 && this.zoomImage.current<this.zoomImage.max) ||
           (direction < 0 && (this.zoomImage.current>1 || !this.zoomImage.current))
       ){
-        event.preventDefault()
+        // event.preventDefault()
         this.$refs.device.style.transform = 'scale(' + this.zoomImage.current + ')  rotate(15deg)'
         this.$refs.content.style.transform = 'scale(' + (this.zoomText.current) + ')'
       }
