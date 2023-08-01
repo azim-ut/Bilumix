@@ -59,11 +59,11 @@ export default defineComponent({
       if (newZoom < this.reel.min) {
         newZoom = this.reel.min
       }
-      if(newZoom > this.reel.max) {
-        newZoom = this.reel.max
+      if(newZoom > this.$props.frames.length) {
+        newZoom = this.$props.frames.length
       }
       this.reel.current = newZoom;
-      // console.log(this.reel.current , direction , this.reel.step)
+      // console.log(this.reel.current , direction , this.reel.step , this.reel.max, this.$props.frames.length)
     },
     handleWheel(event: Event){
       let direction = event.deltaY > 0 ? 1 : -1;
