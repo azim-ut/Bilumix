@@ -114,10 +114,11 @@ export default defineComponent({
     let container = document.getElementById('TheaterWheel' + this.$props.name);
     container?.addEventListener('wheel', this.handleWheel);
     container?.addEventListener('load', this.loadedEvent);
-    setTimeout(this.autoUploadFrames, 150)
-    setTimeout(() => {
-      window.scrollTo(0,10)
-    }, 250)
+    this.autoUploadFrames()
+    // setTimeout(this.autoUploadFrames, 150)
+    // setTimeout(() => {
+    //   window.scrollTo(0,10)
+    // }, 250)
   }
 })
 </script>
