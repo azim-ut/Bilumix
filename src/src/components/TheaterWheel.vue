@@ -44,7 +44,7 @@ export default defineComponent({
       theaterDivIndex: 5,
       loaded: false,
       theaterDivHeight: 100,
-      framesWithBackground: [0,5],
+      framesWithBackground: [],
       reel: {
         min: 1,
         max: 3,

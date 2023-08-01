@@ -19,7 +19,7 @@
   </header>
   <div class="contentBody">
     <IntroFrame1 />
-    <TheaterWheel :name="'product'" :effects="['zoomOut']" :test="true" :bg-mode="'cover'" :frames="this.productTheater.frames" :height="800">
+    <TheaterWheel :name="'product'" :effects="['zoomOut']" :test="true" :bg-mode="'cover'" :frames="this.productTheater.frames" :height="660">
       <div class="mainBanner">
         <div class="content">
           <h1>BiLumix</h1>
@@ -28,8 +28,16 @@
         </div>
       </div>
     </TheaterWheel>
-    <div><hr/></div>
-    <TheaterWheel :name="'video1'" :effects="['zoomOut']" :test="true" :bg-mode="'cover'" :frames="this.video1Theater.frames" :height="800">
+    <TheaterWheel :name="'video1'" :effects="['zoomOut']" :test="true" :bg-mode="'cover'" :frames="this.video1Theater.frames" :height="660">
+      <div class="mainBanner">
+        <div class="content">
+          <h1>BiLumix</h1>
+          <h2>GENERATION 2.0</h2>
+          <h3>Shadowless Headlamp</h3>
+        </div>
+      </div>
+    </TheaterWheel>
+    <TheaterWheel :name="'video2'" :effects="['zoomOut']" :test="true" :bg-mode="'cover'" :frames="this.video2Theater.frames" :height="660">
       <div class="mainBanner">
         <div class="content">
           <h1>BiLumix</h1>
@@ -147,6 +155,19 @@ export default defineComponent({
         }
         this.video1Theater.frames.unshift(path)
       }
+    },
+    fillVideo2TheaterFrames(){
+      this.video2Theater.frames = []
+      let cnt = 235;
+      while(cnt-->0){
+        let path = "/images/min/video2/video2-sq-" + cnt + "-min.jpg"
+        if(cnt>=10 && cnt<100){
+          path = "/images/min/video2/video2-sq-0" + cnt + "-min.jpg"
+        }else if(cnt<10){
+          path = "/images/min/video2/video2-sq-00" + cnt + "-min.jpg"
+        }
+        this.video2Theater.frames.unshift(path)
+      }
     }
   },
   unmounted () {
@@ -157,6 +178,7 @@ export default defineComponent({
     window.addEventListener('load', this.loadedEvent);
     this.fillTheaterFrames()
     this.fillVideoTheaterFrames()
+    this.fillVideo2TheaterFrames()
   }
 })
 </script>
