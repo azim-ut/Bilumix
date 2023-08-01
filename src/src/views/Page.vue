@@ -19,32 +19,24 @@
   </header>
   <div class="contentBody">
     <IntroFrame1 />
-    <TheaterWheel :name="'product'" :effects="['zoomOut']" :test="true" :bg-mode="'cover'" :frames="this.productTheater.frames" :height="660">
-      <div class="mainBanner">
-        <div class="content">
-          <h1>BiLumix</h1>
-          <h2>GENERATION 2.0</h2>
-          <h3>Shadowless Headlamp</h3>
-        </div>
-      </div>
+    <TheaterWheel :name="'product'" :effects="['zoomOut']" :test="true" :bg-mode="'cover'" :frames="this.productTheater.frames" :height="610">
+
     </TheaterWheel>
-    <TheaterWheel :name="'video1'" :effects="['zoomOut']" :test="true" :bg-mode="'cover'" :frames="this.video1Theater.frames" :height="660">
-      <div class="mainBanner">
-        <div class="content">
-          <h1>BiLumix</h1>
-          <h2>GENERATION 2.0</h2>
-          <h3>Shadowless Headlamp</h3>
-        </div>
-      </div>
+    <TheaterWheel :name="'video1'"
+                  :effects="['zoomOut']"
+                  :test="true"
+                  :bg-mode="'cover'"
+                  :style="{'background':'#000'}"
+                  :frames="this.video1Theater.frames"
+                  :height="610">
     </TheaterWheel>
-    <TheaterWheel :name="'video2'" :effects="['zoomOut']" :test="true" :bg-mode="'cover'" :frames="this.video2Theater.frames" :height="660">
-      <div class="mainBanner">
-        <div class="content">
-          <h1>BiLumix</h1>
-          <h2>GENERATION 2.0</h2>
-          <h3>Shadowless Headlamp</h3>
-        </div>
-      </div>
+    <TheaterWheel :bg-mode="'cover'"
+                  :effects="['zoomOut']"
+                  :frames="this.video2Theater.frames"
+                  :style="{'background':'#000'}"
+                  :height="610"
+                  :name="'video2'"
+                  :test="true">
     </TheaterWheel>
   </div>
   <Footer />
@@ -198,10 +190,7 @@ export default defineComponent({
 }
 
 .mainBanner{
-  min-height: 100vh;
-  display: flex;
-  vertical-align: bottom;
-  align-items: end;
+  margin: auto;
 }
 .mainBanner .content h1{
   line-height: 40px;

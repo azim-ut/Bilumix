@@ -2,10 +2,9 @@
   <div :id="'TheaterWheel' + $props.name" :class="{'theaterDiv':true}" :style="{'height': $props.height +'px'}" ref="theaterDiv">
       <div class="projector" ref="projector">
         <div class="front" ref="front">
-          <div style="color: black;" v-show="$props.test">
-            {{theaterDivIndex}}
+          <div class="contentWrap">
+            <slot></slot>
           </div>
-          <slot></slot>
         </div>
         <div class="bg">
           <div v-for="(img, $index) in $props.frames"
@@ -74,16 +73,16 @@ export default defineComponent({
       this.updateReelPosition(direction)
       // console.log(this.reel.current , direction , this.reel.step)
 
-      if(
-          (direction > 0 && this.reel.current<this.reel.max) ||
-          (direction < 0 && (this.reel.current>1 || !this.reel.current))
-      ){
+      // if(
+      //     (direction > 0 && this.reel.current<this.reel.max) ||
+      //     (direction < 0 && (this.reel.current>1 || !this.reel.current))
+      // ){
         if(this.$props.frames[this.reel.current] && this.framesWithBackground.includes(this.reel.current)){
           this.theaterDivIndex = this.reel.current
         }
-      }
+      // }
 
-      for(let i = this.reel.current-2; i<this.reel.current+2; i++){
+      for(let i = this.reel.current-5; i<this.reel.current+5; i++){
         if(i>=0 && i<this.$props.frames.length && !this.framesWithBackground.includes(i)){
           this.framesWithBackground.push(i)
         }
@@ -141,13 +140,24 @@ export default defineComponent({
   width: 100%;
   min-height: 100vh;
   transition: .5s;
-  background: white;
 }
 .projector .front{
   position: relative;
   top:0;
   width: 100%;
   min-height: 100vh;
+}
+.projector .front .contentWrap{
+  min-height: 100vh;
+  position: absolute;
+  display: flex;
+  vertical-align: bottom;
+  align-items: end;
+  z-index: 1000;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
 }
 .projector .bg{
   position: absolute;
