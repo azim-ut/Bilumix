@@ -1,43 +1,35 @@
 <template>
 
-  <header>
-    <div class="menu-toggle" @click="showMobileMenu = !showMobileMenu">
-      <font-awesome-icon icon="fa-solid fa-bars" />
-    </div>
-    <div class="logo">
-      <img src="@/assets/logo.svg">
-    </div>
-    <nav :class="{'active': showMobileMenu}">
-      <ul>
-        <li v-for="row in menu"
-            @click="toggleMenu(row)"
-            :class="{'active':row.active, 'mobileButtons': row.mobileButton}">
-          <a>{{ row.title }}</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+  <HeadMenu />
   <div class="contentBody">
     <IntroFrame1 />
-    <TheaterWheel :name="'product'" :effects="['zoomOut']" :test="true" :bg-mode="'cover'" :frames="this.productTheater.frames" :height="610">
+    <TheaterWheel :name="'product'"
+                  :test="true"
+                  :bg-mode="'cover'"
+                  :scroll-event="scroll.event"
+                  :frames="productTheater.frames"
+                  :height="610">
 
     </TheaterWheel>
     <TheaterWheel :name="'video1'"
-                  :effects="['zoomOut']"
                   :test="true"
                   :bg-mode="'cover'"
                   :style="{'background':'#000'}"
-                  :frames="this.video1Theater.frames"
+                  :scroll-event="scroll.event"
+                  :frames="video1Theater.frames"
                   :height="610">
     </TheaterWheel>
     <TheaterWheel :bg-mode="'cover'"
-                  :effects="['zoomOut']"
-                  :frames="this.video2Theater.frames"
+                  :frames="video2Theater.frames"
                   :style="{'background':'#000'}"
+                  :scroll-event="scroll.event"
                   :height="610"
                   :name="'video2'"
                   :test="true">
     </TheaterWheel>
+    <div class="contentBody">
+      <!-- PLACE CONTENT HERE -->
+    </div>
   </div>
   <Footer />
 </template>
@@ -52,22 +44,15 @@ import Footer from "@/components/Footer.vue";
 import {RouterView} from "vue-router";
 import IntroFrame1 from "@/views/IntroFrame1.vue";
 import TheaterWheel from "@/components/TheaterWheel.vue";
+import HeadMenu from "@/components/HeadMenu.vue";
 
 export default defineComponent({
   components: {
+    HeadMenu,
     TheaterWheel,
     IntroFrame1, RouterView, Footer, ScrollDownIndicator, IntroSection1, RoundedBlackBox},
   data() {
     return {
-      showMobileMenu: false,
-      menu: [
-        {title: "Shop", active: false, name: 'shop', link:'/shop', mobileButton: false},
-        {title: "Offers", active: true, name:'offers', link:'/offers', mobileButton: false},
-        {title: "Manual", active: false, name:'manual', link:'/manual', mobileButton: false},
-        {title: "Support", active: false, name:'support', link:'/support', mobileButton: false},
-        {title: "Free trial", active: false, name:'trial', link:'/trial', mobileButton: true},
-        {title: "Build package", active: false, name:'package', link:'/package', mobileButton: true}
-      ],
       loaded: false,
       shortTextBlocks: [
         {
@@ -95,28 +80,21 @@ export default defineComponent({
           text: "text 222."
         }
       ],
+      scroll: {
+        event: undefined
+      },
       productTheater: {
-        frames: []
+        frames: [] as any[]
       },
       video1Theater: {
-        frames: []
+        frames: [] as any[]
       },
       video2Theater: {
-        frames: []
+        frames: [] as any[]
       }
     }
   },
   methods: {
-    toggleMenu(menu: any){
-      this.$router.push({name: menu.name})
-      this.menu.forEach(row => {
-        row.active = false
-        if(row.link.startsWith(menu.link)){
-          row.active = true
-        }
-      })
-      this.showMobileMenu = false
-    },
     loadedEvent(){
       this.loaded = true
       console.log("loaded")
@@ -160,13 +138,17 @@ export default defineComponent({
         }
         this.video2Theater.frames.unshift(path)
       }
+    },
+    handleScroll(event){
+      this.scroll.event = event
     }
   },
   unmounted () {
+    window.removeEventListener('scroll', this.handleScroll);
     window.removeEventListener('load', this.loadedEvent);
   },
   mounted(){
-    this.toggleMenu(this.$route.path)
+    window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('load', this.loadedEvent);
     this.fillTheaterFrames()
     this.fillVideoTheaterFrames()
@@ -176,22 +158,11 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.contentBlock{
-  width: 100%;
-  overflow: hidden;
-}
-.loaderBase{ width: 1px; height: 1px; overflow: hidden;}
 .loaderBase img{
   width: 10px; height: 10px;
   opacity: .01;
 }
-.contentBlock.product{
-  min-height: 100vh;
-}
 
-.mainBanner{
-  margin: auto;
-}
 .mainBanner .content h1{
   line-height: 40px;
   font-size: 50px;
@@ -215,17 +186,5 @@ export default defineComponent({
   text-align: center;
   margin: .8rem;
   letter-spacing: 2px;
-}
-.mainBanner .content{
-  padding: 10px;
-  text-align: center;
-  width: 100%;
-}
-.theaterFrame{
-  width: 100%;
-  min-height: 100vh;
-  border: none;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
 }
 </style>
