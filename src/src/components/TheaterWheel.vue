@@ -32,10 +32,10 @@ export default defineComponent({
   props: {
     name: "" as String,
     test: false,
-    effects: [] as Array<String>,
     height: 500,
     bgMode: "cover",
-    frames: [] as Array<URL>
+    frames: [] as any[],
+    scrollEvent: undefined
   },
   data() {
     return {
@@ -48,7 +48,8 @@ export default defineComponent({
         min: 1,
         max: 3,
         step: 1,
-        current: 1
+        current: 1,
+        lastPos: undefined,
       }
     }
   },
@@ -65,13 +66,26 @@ export default defineComponent({
       // console.log(this.reel.current , direction , this.reel.step , this.reel.max, this.$props.frames.length)
     },
     handleWheel(event: Event){
-      let direction = event.deltaY > 0 ? 1 : -1;
-      let rect = this.$refs.theaterDiv?.getBoundingClientRect();
-      if(!rect){
+      if(!this.loaded){
         return;
       }
+      let rect = this.$refs.theaterDiv?.getBoundingClientRect();
+      if(
+          !rect ||
+          (rect.top + rect.height)<0 ||
+          (rect.top-rect.height)>window.innerHeight
+      ){
+        console.log(this.$props.name, !rect, (rect.top + rect.height)<0, ((rect.top)>window.innerHeight), (rect.top-rect.height), window.innerHeight)
+        return;
+      }
+
+      if(this.reel.lastPos === undefined){
+        this.reel.lastPos = rect.top
+      }
+      // let direction = event.deltaY > 0 ? 1 : -1;
+      let direction = (rect.top - this.reel.lastPos) > 0 ? 1 : -1;
       this.updateReelPosition(direction)
-      // console.log(this.reel.current , direction , this.reel.step)
+      console.log(this.reel.current , direction , this.reel.step)
 
       // if(
       //     (direction > 0 && this.reel.current<this.reel.max) ||
@@ -82,7 +96,7 @@ export default defineComponent({
         }
       // }
 
-      for(let i = this.reel.current-5; i<this.reel.current+5; i++){
+      for(let i = this.reel.current-2; i<this.reel.current+2; i++){
         if(i>=0 && i<this.$props.frames.length && !this.framesWithBackground.includes(i)){
           this.framesWithBackground.push(i)
         }
@@ -103,19 +117,28 @@ export default defineComponent({
       }
     }
   },
+  watch: {
+    scrollEvent: function(newVal, oldVal) {
+      this.handleWheel(newVal)
+    }
+  },
   unmounted () {
     let container = document.getElementById('TheaterWheel' + this.$props.name);
-    container?.removeEventListener('wheel', this.handleWheel);
-    container?.removeEventListener('load', this.loadedEvent);
+    // window.removeEventListener('scroll', this.handleWheel);
+    window.removeEventListener('load', this.loadedEvent);
   },
   mounted(){
     this.reel.max = this.$props.frames.length
 
     let container = document.getElementById('TheaterWheel' + this.$props.name);
-    container?.addEventListener('wheel', this.handleWheel);
-    container?.addEventListener('load', this.loadedEvent);
-    this.autoUploadFrames()
-    // setTimeout(this.autoUploadFrames, 150)
+    // window.addEventListener('scroll', this.handleWheel);
+    window.addEventListener('load', this.loadedEvent);
+    // this.autoUploadFrames()
+    setTimeout(this.autoUploadFrames, 150)
+
+    // container?.addEventListener('scroll', (event) => {
+    //   container?.onwheel(event);
+    // })
     // setTimeout(() => {
     //   window.scrollTo(0,10)
     // }, 250)

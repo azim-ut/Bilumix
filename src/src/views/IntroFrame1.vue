@@ -101,6 +101,7 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   vertical-align: middle;
+  overflow: hidden;
 }
 .front-image{
   background: transparent url(/images/static/bilumix-side.png) no-repeat center top/contain;
