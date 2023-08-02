@@ -1,11 +1,10 @@
 <template>
-  <div :class="{'theaterDiv':true}" ref="theaterDiv" v-if="loaded">
+  <div :id="'TheaterWheel' + $props.name" :class="{'theaterDiv':true}" :style="{'height': $props.height +'px'}" ref="theaterDiv">
       <div class="projector" ref="projector">
         <div class="front" ref="front">
-          <div style="color: black;" v-show="$props.test">
-            {{theaterDivIndex}}
+          <div class="contentWrap">
+            <slot></slot>
           </div>
-          <slot></slot>
         </div>
         <div class="bg">
           <div v-for="(img, $index) in $props.frames"
@@ -19,7 +18,7 @@
         <div v-for="(img, $index) in $props.frames"
              :key="$index"
              :class="{'bgDisabled': !framesWithBackground.includes($index)}"
-             :style="{'height': ($props.height) + 'px', 'background-image': 'url(' + img + ')'}"></div>
+             :style="{'height': ($props.height/$props.frames.length) + 'px', 'background-image': 'url(' + img + ')'}"></div>
       </div>
   </div>
 </template>
@@ -34,7 +33,7 @@ export default defineComponent({
     name: "" as String,
     test: false,
     effects: [] as Array<String>,
-    height: 10,
+    height: 500,
     bgMode: "cover",
     frames: [] as Array<URL>
   },
@@ -44,72 +43,48 @@ export default defineComponent({
       theaterDivIndex: 5,
       loaded: false,
       theaterDivHeight: 100,
-      framesWithBackground: [0,5],
-      scroll: {
-        direction: 1,
-        lastPos: 0,
-        newPos: 0,
-        timer: 50,
-        delta: 0,
-        delay: 50
+      framesWithBackground: [],
+      reel: {
+        min: 1,
+        max: 3,
+        step: 1,
+        current: 1
       }
     }
   },
   methods: {
-    clearScrollSpeed(){
-      this.scroll.lastPos = null
-      this.scroll.delta = 0
-    },
-    getScrollSpeed(){
-      if(!this.scroll.lastPos){
-        this.clearScrollSpeed()
-        let rect = this.$refs.theaterDiv?.getBoundingClientRect();
-        if(rect){
-          let projectorY = rect.top;
-          if(this.$props.test){
-            console.log(this.$props.name, this.theaterDivIndex, projectorY, rect.height, projectorY + rect.height, window.innerHeight)
-          }
-
-          if(projectorY<0){
-            this.scroll.newPos = Math.abs(projectorY)
-
-            this.scroll.delta = this.scroll.newPos - this.scroll.lastPos
-            this.scroll.lastPos = this.scroll.newPos
-            this.scroll.timer = setTimeout(this.clearScrollSpeed, this.scroll.delay)
-            return this.scroll.delta
-          }
-        }
+    updateReelPosition(direction): number {
+      let newZoom = Math.floor(this.reel.current + direction * this.reel.step);
+      if (newZoom < this.reel.min) {
+        newZoom = this.reel.min
       }
-      return this.scroll.lastPos;
+      if(newZoom > this.$props.frames.length) {
+        newZoom = this.$props.frames.length
+      }
+      this.reel.current = newZoom;
+      // console.log(this.reel.current , direction , this.reel.step , this.reel.max, this.$props.frames.length)
     },
     handleWheel(event: Event){
-      if(event){
-        // event.preventDefault()
+      let direction = event.deltaY > 0 ? 1 : -1;
+      let rect = this.$refs.theaterDiv?.getBoundingClientRect();
+      if(!rect){
+        return;
       }
-      let frames = this.$props.frames.length
-      let boardSize = this.$refs.framesBar?.clientHeight
-      let step = (boardSize / frames)
-      let pos = Math.floor((this.scroll.newPos) / step)
-      let speed = this.getScrollSpeed()
-      if(this.$props.effects?.includes('zoomOut')){
-        this.useZoomOut(speed)
-      }
-      if(this.$props.frames[pos] && this.framesWithBackground.includes(pos)){
-        this.theaterDivIndex = pos
-      }
-      for(let i = pos-2; i<pos+2; i++){
+      this.updateReelPosition(direction)
+      // console.log(this.reel.current , direction , this.reel.step)
+
+      // if(
+      //     (direction > 0 && this.reel.current<this.reel.max) ||
+      //     (direction < 0 && (this.reel.current>1 || !this.reel.current))
+      // ){
+        if(this.$props.frames[this.reel.current] && this.framesWithBackground.includes(this.reel.current)){
+          this.theaterDivIndex = this.reel.current
+        }
+      // }
+
+      for(let i = this.reel.current-5; i<this.reel.current+5; i++){
         if(i>=0 && i<this.$props.frames.length && !this.framesWithBackground.includes(i)){
           this.framesWithBackground.push(i)
-        }
-      }
-    },
-    useZoomOut(speed){
-      if(this.$refs.front){
-        let val = (1-speed/(this.$props.height * (2*this.$props.frames.length/3)))
-        if(val>0){
-          this.$refs.front.style.transform = 'scale(' + val + ')';
-        }else{
-          this.$refs.front.style.transform = 'scale(0)';
         }
       }
     },
@@ -129,17 +104,21 @@ export default defineComponent({
     }
   },
   unmounted () {
-    window.removeEventListener('scroll', this.handleWheel);
-    window.removeEventListener('load', this.loadedEvent);
+    let container = document.getElementById('TheaterWheel' + this.$props.name);
+    container?.removeEventListener('wheel', this.handleWheel);
+    container?.removeEventListener('load', this.loadedEvent);
   },
   mounted(){
-    this.theaterDivHeight = this.$props.frames.length
-    window.addEventListener('scroll', this.handleWheel);
-    window.addEventListener('load', this.loadedEvent);
-    setTimeout(this.autoUploadFrames, 150)
-    setTimeout(() => {
-      window.scrollTo(0,10)
-    }, 250)
+    this.reel.max = this.$props.frames.length
+
+    let container = document.getElementById('TheaterWheel' + this.$props.name);
+    container?.addEventListener('wheel', this.handleWheel);
+    container?.addEventListener('load', this.loadedEvent);
+    this.autoUploadFrames()
+    // setTimeout(this.autoUploadFrames, 150)
+    // setTimeout(() => {
+    //   window.scrollTo(0,10)
+    // }, 250)
   }
 })
 </script>
@@ -148,19 +127,11 @@ export default defineComponent({
 .theaterDiv{
   position: relative;
   min-height: 100vh;
-  overflow: scroll;
+  overflow: hidden;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
-.projectorWrapper{
-  position: absolute;
-  min-height: 100vh;
-  transition: .5s;
-  height: 100%;
-  bottom: 0;
-  right: 0;
-  left: 0;
-}
+
 .projector{
   position: absolute;
   top:0;
@@ -170,7 +141,6 @@ export default defineComponent({
   width: 100%;
   min-height: 100vh;
   transition: .5s;
-  background: white;
 }
 .projector .front{
   position: relative;
@@ -178,8 +148,20 @@ export default defineComponent({
   width: 100%;
   min-height: 100vh;
 }
+.projector .front .contentWrap{
+  min-height: 100vh;
+  position: absolute;
+  display: flex;
+  vertical-align: bottom;
+  align-items: end;
+  z-index: 1000;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
 .projector .bg{
-  position: fixed;
+  position: absolute;
   width: 100%;
   top: 0;
   min-height: 100vh;
@@ -198,7 +180,6 @@ export default defineComponent({
   background-size: contain !important;
 }
 .framesBar{
-  position: inherit;
   left: 0px;
   top: 0;
   width: 400px;
