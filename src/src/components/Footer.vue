@@ -36,7 +36,7 @@
           <ul><li><div><a href="refund-policy/">Refund Policy</a></div></li>
             <li><div><a href="/data-privacy/">Data Privacy</a></div></li>
             <li><div><a href="/terms-of-service/">Terms of Service</a></div></li></ul></div></div>
-        <div>Copyright © 2021 BiLumix.com Designed and built by Omiologic LLC</div>
+        <div>Copyright © 2023 BiLumix.ru Designed and built by SK</div>
       </div>
 
     </div>
