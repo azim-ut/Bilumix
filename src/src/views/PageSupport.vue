@@ -1,10 +1,158 @@
 <template xmlns="http://www.w3.org/1999/html">
 
-  <HeadMenu />
-  <div class="contentBody">
+  <HeadMenu :key="$router.path"/>
+  <div class="">
 
-    <div style="padding: 104px 0px 2rem; min-height: 80vh;"><section><div class="MuiContainer-root MuiContainer-maxWidthMd css-1oapf7a"><div class="MuiGrid-root MuiGrid-container css-1d3bbye"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-12 MuiGrid-grid-xl-3 css-vir33h"><div class="support_sectionHeader__2DZ3H"><h4 class="MuiTypography-root MuiTypography-h4 css-1byq460">We are here for you</h4></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-12 MuiGrid-grid-xl-9 css-9z7tx6"><ul class="MuiList-root MuiList-padding css-1ontqvh"><li class="MuiListItem-root MuiListItem-gutters css-h8b75l"><div class="MuiTypography-root MuiTypography-subtitle1 css-1lz6236" style="flex-direction: column; width: 100%;">I want to ask a question!<div class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-aelcxg" tabindex="0" role="button"><div class="MuiListItemIcon-root css-1f8bwsm"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="ContactSupportIcon"><path d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19h.5v3c4.86-2.34 8-7 8-11.5C20 5.81 16.19 2 11.5 2zm1 14.5h-2v-2h2v2zm0-3.5h-2c0-3.25 3-3 3-5 0-1.1-.9-2-2-2s-2 .9-2 2h-2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 2.5-3 2.75-3 5z"></path></svg></div><div class="MuiListItemText-root css-1tsvksn"><span class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-1ox1c9e">Submit a question</span></div><span class="MuiTouchRipple-root css-w0pj6f"></span></div></div></li></ul></div></div></div></section><section id="repair-service-shop-section" class="support_container__tq7yk"><div class="MuiContainer-root MuiContainer-maxWidthLg css-2jualf"><div class="MuiGrid-root MuiGrid-container css-1d3bbye"><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-12 MuiGrid-grid-xl-3 css-vir33h"><div class="support_sectionHeader__2DZ3H"><h4 class="MuiTypography-root MuiTypography-h4 css-1byq460">We also provide repair services</h4></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-4 MuiGrid-grid-xl-3 css-ml0wxk"><div><div class="Perspective_root__6aXqa  " style="perspective: 500px;"><div class="Perspective_cube__7gTG0" style="width: 340px; height: 420px; transform: none;"><div style="position: absolute; background: transparent; width: 100%; height: 100%; opacity: 1; transform: translateZ(-80px);"><div class="ProductCard_imageRoot__2UFKL"><img src="https://cdn.shopify.com/s/files/1/0032/5402/6313/products/bi-prod-repair-light-source.jpg?v=1633107390" width="400px" height="auto" style="width: 100%;"></div></div><div style="position: absolute; transform: translate3d(0px, -165px, 40px); font-weight: 550; letter-spacing: 2px;">Light source issue(s)</div><div style="position: absolute; transform: translate3d(0px, 120px, 80px);"><span class="Price_root__y2K5E  "><span data-testid="amount" class="Price_amount__31nM- ">$100.00</span><span data-testid="hide-currency-code" class="Price_currencyCode__3vu_v ProductCard_currencyCode__3MQee"></span></span></div><div style="position: absolute; transform: translate3d(0px, 95px, 60px);"><button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium emphasized-button emphasized-button-dense css-twfmgm" tabindex="0" type="button"><a href="/shop/bilumix-headlamp-repair-service-pack/?variant=Light%20source%20issue(s)">Detail</a><span class="MuiTouchRipple-root css-w0pj6f"></span></button><button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium emphasized-button emphasized-button-dense css-twfmgm" tabindex="0" type="button">Add to cart<span class="MuiTouchRipple-root css-w0pj6f"></span></button></div></div></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-4 MuiGrid-grid-xl-3 css-ml0wxk"><div><div class="Perspective_root__6aXqa  " style="perspective: 500px;"><div class="Perspective_cube__7gTG0" style="width: 340px; height: 420px; transform: none;"><div style="position: absolute; background: transparent; width: 100%; height: 100%; opacity: 1; transform: translateZ(-80px);"><div class="ProductCard_imageRoot__2UFKL"><img src="https://cdn.shopify.com/s/files/1/0032/5402/6313/products/bi-prod-repair-front-body.jpg?v=1633107416" width="400px" height="auto" style="width: 100%;"></div></div><div style="position: absolute; transform: translate3d(0px, -165px, 40px); font-weight: 550; letter-spacing: 2px;">Front body issue(s)</div><div style="position: absolute; transform: translate3d(0px, 120px, 80px);"><span class="Price_root__y2K5E  "><span data-testid="amount" class="Price_amount__31nM- ">$100.00</span><span data-testid="hide-currency-code" class="Price_currencyCode__3vu_v ProductCard_currencyCode__3MQee"></span></span></div><div style="position: absolute; transform: translate3d(0px, 95px, 60px);"><button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium emphasized-button emphasized-button-dense css-twfmgm" tabindex="0" type="button"><a href="/shop/bilumix-headlamp-repair-service-pack/?variant=Front%20body%20issue(s)">Detail</a><span class="MuiTouchRipple-root css-w0pj6f"></span></button><button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium emphasized-button emphasized-button-dense css-twfmgm" tabindex="0" type="button">Add to cart<span class="MuiTouchRipple-root css-w0pj6f"></span></button></div></div></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-4 MuiGrid-grid-xl-3 css-ml0wxk"><div><div class="Perspective_root__6aXqa  " style="perspective: 500px;"><div class="Perspective_cube__7gTG0" style="width: 340px; height: 420px; transform: none;"><div style="position: absolute; background: transparent; width: 100%; height: 100%; opacity: 1; transform: translateZ(-80px);"><div class="ProductCard_imageRoot__2UFKL"><img src="https://cdn.shopify.com/s/files/1/0032/5402/6313/products/bi-prod-repair-rear-body.jpg?v=1633107435" width="400px" height="auto" style="width: 100%;"></div></div><div style="position: absolute; transform: translate3d(0px, -165px, 40px); font-weight: 550; letter-spacing: 2px;">Rear body issue(s)</div><div style="position: absolute; transform: translate3d(0px, 120px, 80px);"><span class="Price_root__y2K5E  "><span data-testid="amount" class="Price_amount__31nM- ">$100.00</span><span data-testid="hide-currency-code" class="Price_currencyCode__3vu_v ProductCard_currencyCode__3MQee"></span></span></div><div style="position: absolute; transform: translate3d(0px, 95px, 60px);"><button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium emphasized-button emphasized-button-dense css-twfmgm" tabindex="0" type="button"><a href="/shop/bilumix-headlamp-repair-service-pack/?variant=Rear%20body%20issue(s)">Detail</a><span class="MuiTouchRipple-root css-w0pj6f"></span></button><button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium emphasized-button emphasized-button-dense css-twfmgm" tabindex="0" type="button">Add to cart<span class="MuiTouchRipple-root css-w0pj6f"></span></button></div></div></div></div></div><div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-4 MuiGrid-grid-xl-3 css-ml0wxk"><div><div class="Perspective_root__6aXqa  " style="perspective: 500px;"><div class="Perspective_cube__7gTG0" style="width: 340px; height: 420px; transform: none;"><div style="position: absolute; background: transparent; width: 100%; height: 100%; opacity: 1; transform: translateZ(-80px);"><div class="ProductCard_imageRoot__2UFKL"><img src="https://cdn.shopify.com/s/files/1/0032/5402/6313/products/Headlamp-ReapiarService_afdc31e3-15b4-4356-bc6d-0c58b8f35991.png?v=1632809141" width="400px" height="auto" style="width: 100%;"></div></div><div style="position: absolute; transform: translate3d(0px, -165px, 40px); font-weight: 550; letter-spacing: 2px;">Gen1 Repair Service</div><div style="position: absolute; transform: translate3d(0px, 120px, 80px);"><span class="Price_root__y2K5E  "><span data-testid="amount" class="Price_amount__31nM- ">$250.00</span><span data-testid="hide-currency-code" class="Price_currencyCode__3vu_v ProductCard_currencyCode__3MQee"></span></span></div><div style="position: absolute; transform: translate3d(0px, 95px, 60px);"><button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium emphasized-button emphasized-button-dense css-twfmgm" tabindex="0" type="button"><a href="/shop/bilumix-headlamp-repair-service/">Detail</a><span class="MuiTouchRipple-root css-w0pj6f"></span></button><button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium emphasized-button emphasized-button-dense css-twfmgm" tabindex="0" type="button">Add to cart<span class="MuiTouchRipple-root css-w0pj6f"></span></button></div></div></div></div></div></div></div></section></div>
-
+    <div style="padding: 104px 0px 2rem; min-height: 80vh;">
+      <section>
+        <div class="">
+          <div class="">
+            <h4>We are here for you</h4>
+            <div class="">
+              <ul class="">
+                <li class="">
+                  <div class="" style="flex-direction: column; width: 100%;">I want to ask a question! <div class="" tabindex="0" role="button">
+                    <div class="">
+                      <svg class="" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="ContactSupportIcon">
+                        <path d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19h.5v3c4.86-2.34 8-7 8-11.5C20 5.81 16.19 2 11.5 2zm1 14.5h-2v-2h2v2zm0-3.5h-2c0-3.25 3-3 3-5 0-1.1-.9-2-2-2s-2 .9-2 2h-2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 2.5-3 2.75-3 5z"></path>
+                      </svg>
+                    </div>
+                    <div class="">
+                      <span class="">Submit a question</span>
+                    </div>
+                    <span class=""></span>
+                  </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="repair-service-shop-section" class="">
+        <div class="">
+          <div class="">
+            <div class="">
+              <div class="">
+                <h4 class="">We also provide repair services</h4>
+              </div>
+            </div>
+            <div class="">
+              <div>
+                <div class="" style="perspective: 500px;">
+                  <div class="" style="width: 340px; height: 420px; transform: none;">
+                    <div style="position: absolute; background: transparent; width: 100%; height: 100%; opacity: 1; transform: translateZ(-80px);">
+                      <div class="">
+                        <img src="https://cdn.shopify.com/s/files/1/0032/5402/6313/products/bi-prod-repair-light-source.jpg?v=1633107390" width="400px" height="auto" style="width: 100%;">
+                      </div>
+                    </div>
+                    <div style="position: absolute; transform: translate3d(0px, -165px, 40px); font-weight: 550; letter-spacing: 2px;">Light source issue(s)</div>
+                    <div style="position: absolute; transform: translate3d(0px, 120px, 80px);">
+                  <span class="">
+                    <span data-testid="amount" class="">$100.00</span>
+                    <span data-testid="hide-currency-code" class=""></span>
+                  </span>
+                    </div>
+                    <div style="position: absolute; transform: translate3d(0px, 95px, 60px);">
+                      <button class="" tabindex="0" type="button">
+                        <a href="/shop/bilumix-headlamp-repair-service-pack/?variant=Light%20source%20issue(s)">Detail</a>
+                        <span class=""></span>
+                      </button>
+                      <button class="" tabindex="0" type="button">Add to cart <span class=""></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="">
+              <div>
+                <div class="" style="perspective: 500px;">
+                  <div class="" style="width: 340px; height: 420px; transform: none;">
+                    <div style="position: absolute; background: transparent; width: 100%; height: 100%; opacity: 1; transform: translateZ(-80px);">
+                      <div class="">
+                        <img src="https://cdn.shopify.com/s/files/1/0032/5402/6313/products/bi-prod-repair-front-body.jpg?v=1633107416" width="400px" height="auto" style="width: 100%;">
+                      </div>
+                    </div>
+                    <div style="position: absolute; transform: translate3d(0px, -165px, 40px); font-weight: 550; letter-spacing: 2px;">Front body issue(s)</div>
+                    <div style="position: absolute; transform: translate3d(0px, 120px, 80px);">
+                  <span class="">
+                    <span data-testid="amount" class="">$100.00</span>
+                    <span data-testid="hide-currency-code" class=""></span>
+                  </span>
+                    </div>
+                    <div style="position: absolute; transform: translate3d(0px, 95px, 60px);">
+                      <button class="" tabindex="0" type="button">
+                        <a href="/shop/bilumix-headlamp-repair-service-pack/?variant=Front%20body%20issue(s)">Detail</a>
+                        <span class=""></span>
+                      </button>
+                      <button class="" tabindex="0" type="button">Add to cart <span class=""></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="">
+              <div>
+                <div class="" style="perspective: 500px;">
+                  <div class="" style="width: 340px; height: 420px; transform: none;">
+                    <div style="position: absolute; background: transparent; width: 100%; height: 100%; opacity: 1; transform: translateZ(-80px);">
+                      <div class="">
+                        <img src="https://cdn.shopify.com/s/files/1/0032/5402/6313/products/bi-prod-repair-rear-body.jpg?v=1633107435" width="400px" height="auto" style="width: 100%;">
+                      </div>
+                    </div>
+                    <div style="position: absolute; transform: translate3d(0px, -165px, 40px); font-weight: 550; letter-spacing: 2px;">Rear body issue(s)</div>
+                    <div style="position: absolute; transform: translate3d(0px, 120px, 80px);">
+                  <span class="">
+                    <span data-testid="amount" class="">$100.00</span>
+                    <span data-testid="hide-currency-code" class=""></span>
+                  </span>
+                    </div>
+                    <div style="position: absolute; transform: translate3d(0px, 95px, 60px);">
+                      <button class="" tabindex="0" type="button">
+                        <a href="/shop/bilumix-headlamp-repair-service-pack/?variant=Rear%20body%20issue(s)">Detail</a>
+                        <span class=""></span>
+                      </button>
+                      <button class="" tabindex="0" type="button">Add to cart <span class=""></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="">
+              <div>
+                <div class="" style="perspective: 500px;">
+                  <div class="" style="width: 340px; height: 420px; transform: none;">
+                    <div style="position: absolute; background: transparent; width: 100%; height: 100%; opacity: 1; transform: translateZ(-80px);">
+                      <div class="">
+                        <img src="https://cdn.shopify.com/s/files/1/0032/5402/6313/products/Headlamp-ReapiarService_afdc31e3-15b4-4356-bc6d-0c58b8f35991.png?v=1632809141" width="400px" height="auto" style="width: 100%;">
+                      </div>
+                    </div>
+                    <div style="position: absolute; transform: translate3d(0px, -165px, 40px); font-weight: 550; letter-spacing: 2px;">Gen1 Repair Service</div>
+                    <div style="position: absolute; transform: translate3d(0px, 120px, 80px);">
+                  <span class="">
+                    <span data-testid="amount" class="">$250.00</span>
+                    <span data-testid="hide-currency-code" class=""></span>
+                  </span>
+                    </div>
+                    <div style="position: absolute; transform: translate3d(0px, 95px, 60px);">
+                      <button class="" tabindex="0" type="button">
+                        <a href="/shop/bilumix-headlamp-repair-service/">Detail</a>
+                        <span class=""></span>
+                      </button>
+                      <button class="" tabindex="0" type="button">Add to cart <span class=""></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
 
   </div>
   <Footer />

@@ -1,6 +1,6 @@
 <template>
 
-  <HeadMenu />
+  <HeadMenu :key="$route.path" />
   <div class="contentBody">
     <!-- PLACE CONTENT HERE -->
   </div>

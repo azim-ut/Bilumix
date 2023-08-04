@@ -1,5 +1,5 @@
 <template>
-  <HeadMenu />
+  <HeadMenu :key="$route.path" />
   <div class="contentBody">
 
   <div class="shop_page__2IZ4R">

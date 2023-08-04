@@ -1,6 +1,6 @@
 <template>
 
-  <HeadMenu />
+  <HeadMenu :key="$route.path" />
   <div class="contentBody">
     <IntroFrame1 />
     <TheaterWheel :name="'product'"

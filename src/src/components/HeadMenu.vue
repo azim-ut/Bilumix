@@ -41,10 +41,13 @@ export default defineComponent({
   },
   methods: {
     toggleMenu(menu: any){
-      this.$router.push({name: menu.name})
+      this.$router?.push({name: menu.name})
+      this.updateMenu(menu)
+    },
+    updateMenu(menu: any){
       this.menu.forEach(row => {
         row.active = false
-        if(row.link.startsWith(menu.link)){
+        if(row.name === menu.name){
           row.active = true
         }
       })
@@ -54,7 +57,7 @@ export default defineComponent({
   unmounted () {
   },
   mounted(){
-    this.toggleMenu(this.$route.path)
+    this.updateMenu(this.$route)
   }
 })
 </script>
