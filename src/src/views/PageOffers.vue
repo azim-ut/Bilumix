@@ -12,7 +12,7 @@
             </div>
             <div>
               <div style="max-width: unset; width: 100%;">
-                <h3" style="max-width: unset; width: 100%;">We will resume the offers back soon.</h3>
+                <h3 style="max-width: unset; width: 100%;">We will resume the offers back soon.</h3>
               </div>
             </div>
           </div>
