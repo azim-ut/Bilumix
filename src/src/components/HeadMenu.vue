@@ -3,7 +3,7 @@
     <div class="menu-toggle" @click="showMobileMenu = !showMobileMenu">
       <font-awesome-icon icon="fa-solid fa-bars" />
     </div>
-    <div class="logo">
+    <div class="logo" @click="toHome()">
       <img src="@/assets/logo.svg">
     </div>
     <nav :class="{'active': showMobileMenu}">
@@ -53,6 +53,9 @@ export default defineComponent({
       })
       this.showMobileMenu = false
     },
+    toHome(){
+      location.href = "/"
+    }
   },
   unmounted () {
   },
@@ -81,6 +84,7 @@ header .logo{
   line-height: 50px;
   font-size: 24px;
   float: left;
+  cursor: pointer;
 }
 
 header nav{
