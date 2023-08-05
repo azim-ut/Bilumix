@@ -10,6 +10,7 @@ import PageManual from "@/views/PageManual.vue";
 import PageSupport from "@/views/PageSupport.vue";
 import PageTrial from "@/views/PageTrial.vue";
 import PagePackage from "@/views/PagePackage.vue";
+import PageManualItem from "@/views/PageManualItem.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -48,6 +49,11 @@ const router = createRouter({
       path: '/manual',
       name: 'manual',
       component: PageManual
+    },
+    {
+      path: '/manual/:link',
+      name: 'manualPage',
+      component: PageManualItem
     },
     {
       path: '/support',
