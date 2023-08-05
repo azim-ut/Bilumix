@@ -4,20 +4,14 @@
   <div class="contentBody">
 
     <div style="padding-top: 104px; background: rgb(21, 21, 21);">
-      <section>
-        <div>
-          <div>
-            <div>
+        <div class="bg_offers">
+          <div class="frstblk">
               <h2>Special Offers</h2>
-            </div>
-            <div>
-              <div style="max-width: unset; width: 100%;">
-                <h3 style="max-width: unset; width: 100%;">We will resume the offers back soon.</h3>
-              </div>
-            </div>
           </div>
+              <div class="scndblk">
+                <h3 class="textmlty">We will resume the offers back soon.</h3>
+              </div>
         </div>
-      </section>
     </div>
 
 
@@ -65,4 +59,46 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.bg_offers {
+  margin: 0px;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+.frstblk{
+    max-width: unset;
+    width: 100%;
+    color: white;
+    margin: 0px;
+    font-family: Rubik, sans-serif;
+    font-weight: 550;
+    font-size: 3.75rem;
+    line-height: 1.2;
+    letter-spacing: -0.00833em;
+  }
+.scndblk{
+    max-width: unset;
+    width: 100%;
+    background: linear-gradient(90deg,#2ee8dc 0,#05b4ff 50%,#2d66eb);
+    justify-content: center;
+    font-size: 36px;
+    font-weight: 400;
+    margin: 0;
+
+  }
+.textmlty{
+  mix-blend-mode: multiply;
+  text-shadow: none!important;
+  font-family: Rubik,sans-serif;
+  -webkit-background-clip: text;
+}
 </style>
