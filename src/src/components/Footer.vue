@@ -8,7 +8,7 @@
           </div>
           <address>
             <span>41 University Drive Suite 400,<br>Newtown, PA 18940<br>United States</span>
-            <span>Email:<a href="mailto:sales@bilumix.ru" aria-label="Mail to sales@bilumix.ru" style="margin-left: 1rem; color: white;">sales@bilumix.ru</a></span>
+            <span>Email:<a href="mailto:sales@bilumix.ru" aria-label="Mail to sales@bilumix.ru">sales@bilumix.ru</a></span>
           </address></div></div></div>
 
 
@@ -66,14 +66,13 @@ export default defineComponent({
 <style scoped>
 div {
   display: block;
-  flex-direction: row;
+  flex-direction: column;
 }
 *, ::before, ::after {
   box-sizing: inherit;
 }
 footer {
   background-color: #151515;
-  color: hsla(0,0%,100%,.8);
   color: hsla(0,0%,100%,.8);
   font-family: Roboto, sans-serif;
   font-weight: 400;
@@ -86,7 +85,7 @@ footer {
   -webkit-flex-direction: column;
   -moz-box-orient: vertical;
   -moz-box-direction: normal;
-  flex-direction: column;
+  flex-direction: row;
   min-height: 50vh;
   -webkit-box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
   box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
