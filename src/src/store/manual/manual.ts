@@ -1,72 +1,26 @@
 import {defineStore} from "pinia";
 import type {ManualRecord, ManualState} from "./types"
+import manualList from "./data.json"
 
 
 export const manualStore = defineStore('manual', {
     state: (): ManualState => ({
-        list: [
-            {
-                link: "adjusting-size",
-                title: "Adjusting the size",
-                image: "/images/static/manual-adjusting-size.jpg",
-                video: "/images/video/1-adjusting-size.mp4",
-                text: "This video instruction describes how to properly adjust the size of your BiLumix to fit your head."
-            },
-            {
-                link: "adjusting-size",
-                title: "Adjusting the size",
-                image: "/images/static/manual-adjusting-size.jpg",
-                video: "/images/video/1-adjusting-size.mp4",
-                text: "This video instruction describes how to properly adjust the size of your BiLumix to fit your head."
-            },
-            {
-                link: "adjusting-size",
-                title: "Adjusting the size",
-                image: "/images/static/manual-adjusting-size.jpg",
-                video: "/images/video/1-adjusting-size.mp4",
-                text: "This video instruction describes how to properly adjust the size of your BiLumix to fit your head."
-            },
-            {
-                link: "adjusting-size",
-                title: "Adjusting the size",
-                image: "/images/static/manual-adjusting-size.jpg",
-                video: "/images/video/1-adjusting-size.mp4",
-                text: "This video instruction describes how to properly adjust the size of your BiLumix to fit your head."
-            },
-            {
-                link: "adjusting-size",
-                title: "Adjusting the size",
-                image: "/images/static/manual-adjusting-size.jpg",
-                video: "/images/video/1-adjusting-size.mp4",
-                text: "This video instruction describes how to properly adjust the size of your BiLumix to fit your head."
-            },
-            {
-                link: "adjusting-size",
-                title: "Adjusting the size",
-                image: "/images/static/manual-adjusting-size.jpg",
-                video: "/images/video/1-adjusting-size.mp4",
-                text: "This video instruction describes how to properly adjust the size of your BiLumix to fit your head."
-            },
-            {
-                link: "adjusting-size",
-                title: "Adjusting the size",
-                image: "/images/static/manual-adjusting-size.jpg",
-                video: "/images/video/1-adjusting-size.mp4",
-                text: "This video instruction describes how to properly adjust the size of your BiLumix to fit your head."
-            },
-            {
-                link: "adjusting-size",
-                title: "Adjusting the size",
-                image: "/images/static/manual-adjusting-size.jpg",
-                video: "/images/video/1-adjusting-size.mp4",
-                text: "This video instruction describes how to properly adjust the size of your BiLumix to fit your head."
-            }
-        ]
+        list: manualList
     }),
     getters: {
-        getList: (state: ManualState): ManualRecord[] => state.list
+        getList: (state: ManualState): ManualRecord[] => state.list,
+        getItem: (state: ManualState) => (link: any): ManualRecord => {
+            let out = state.list.find(row => row.link === link)
+            if (!out) out = {
+                title: "-",
+                text: "",
+                image: "",
+                video: "",
+                link: link
+            }
+            return out
+        }
     },
     actions: {
-
     }
 })

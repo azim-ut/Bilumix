@@ -6,16 +6,18 @@ const manualStore = mStore()
 
   <HeadMenu :key="$route.path" />
   <div class="contentBody manualList">
-    <h1>Manuals</h1>
 		<div class="grid grid2">
-
+      <div class="grid">
+        <h1>Manuals</h1>
+      </div>
+      <div></div>
       <div class="block grid grid2 force"
            v-for="row in manualStore.getList">
         <div class="image" :style="{'background-image': 'url(' + row.image + ')'}"></div>
         <div class="right">
           <div class="title">{{row.title}}</div>
           <div class="links">
-            <a :href="row.link">Detail</a>
+            <a :href="'/manual/' + row.link">Detail</a>
             <a @click="showVideo(row.video)">Watch video</a>
           </div>
         </div>
@@ -62,18 +64,25 @@ export default defineComponent({
 
 <style scoped>
 h1{
+  margin: 10px 10px 0;
+  font-size: 50px;
+  padding: 20px 0 0 0;
+  text-align: left;
 }
 .manualList{
 
 }
 .manualList .block{
-  margin: 10px;
   overflow: hidden;
   border-radius: 7px;
+  margin: 24px 10px 10px;
   min-height: 160px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
 }
-
+.manualList .block:nth-child(3),
+.manualList .block:nth-child(4){
+  margin-top: 0;
+}
 .manualList .block .image{
   min-height: 160px;
   background: #000 no-repeat center center/cover;
@@ -102,10 +111,16 @@ h1{
   text-decoration: none;
   margin: 5px 10px;
   padding: 5px 10px;
+  cursor: pointer;
 }
 
 
 @media (max-width: 950px) {
+  h1{
+    margin: 10px auto;
+    min-width: 60%;
+    max-width: 70%;
+  }
   .manualList .block{
 
     margin: 10px auto;
@@ -115,6 +130,10 @@ h1{
     border-radius: 7px;
     min-height: 160px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+  }
+
+  .manualList .block:nth-child(4){
+    margin-top: 10px;
   }
 }
 
