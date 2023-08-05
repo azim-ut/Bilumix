@@ -62,8 +62,7 @@ export default defineComponent({
 .bg_offers {
   margin: 0px;
   color: rgba(0, 0, 0, 0.87);
-  font-family: Roboto, sans-serif;
-  font-weight: 400;
+   font-weight: 400;
   font-size: 18px;
   line-height: 1.5;
   letter-spacing: 0.00938em;
@@ -89,6 +88,8 @@ export default defineComponent({
     max-width: unset;
     width: 100%;
     background: linear-gradient(90deg,#2ee8dc 0,#05b4ff 50%,#2d66eb);
+  background: -webkit-gradient(linear,left top,right top,from(#2ee8dc),color-stop(50%,#05b4ff),to(#2d66eb));
+  -webkit-background-clip: text;
     justify-content: center;
     font-size: 36px;
     font-weight: 400;
@@ -96,9 +97,9 @@ export default defineComponent({
 
   }
 .textmlty{
-  mix-blend-mode: multiply;
   text-shadow: none!important;
   font-family: Rubik,sans-serif;
-  -webkit-background-clip: text;
+
+
 }
 </style>

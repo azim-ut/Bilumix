@@ -74,6 +74,7 @@ div {
 footer {
   background-color: #151515;
   color: hsla(0,0%,100%,.8);
+  color: hsla(0,0%,100%,.8);
   font-family: Roboto, sans-serif;
   font-weight: 400;
   font-size: 18px;
@@ -91,6 +92,10 @@ footer {
   box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
   padding: 4rem 0 1rem;
   position: relative;
+}
+
+a{
+  color: hsla(0,0%,100%,.8);
 }
 address {
   font-style: italic;
