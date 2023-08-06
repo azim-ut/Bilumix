@@ -102,4 +102,21 @@ export default defineComponent({
 
 
 }
+
+h3{
+  font-size: 35px;
+  font-weight: 600;
+  max-width: 600px;
+  background: #2ee8dc;
+  background: -moz-linear-gradient(to right,#2ee8dc 0,#05b4ff 50%,#2d66eb 100%);
+  background: -webkit-gradient(linear,left top,right top,from(#2ee8dc),color-stop(50%,#05b4ff),to(#2d66eb));
+  background: -moz-linear-gradient(left,#2ee8dc 0,#05b4ff 50%,#2d66eb 100%);
+  background: linear-gradient(90deg,#2ee8dc 0,#05b4ff 50%,#2d66eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin: .8rem;
+  letter-spacing: 2px;
+  margin: auto;
+}
 </style>
