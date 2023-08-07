@@ -1,11 +1,23 @@
 [
     {
-        "link": "rechargeable-battery-gen-2",
-        "title": "Rechargeable Battery",
-        "short": "Product 1.5",
-        "text": "Operation continuity: 3 - 8hours (depends on Intensity)<br />Charging time: About 2 hours<br />Battery output: 7.4Volts / 1700mAh<br />Charger Input: Battery Cradle",
+        "link": "bilumix-headlamp-repair-service-pack",
+        "title": "BiLumix GEN. 2 Repair Service",
+        "short": "Light source issue(s)",
+        "text": "<h4>\n<meta charset=\"utf-8\">Service Specifications<br>\n</h4>\n<h4></h4>\n<ul>\n<li>Front &amp; Rear Band Replacement</li>\n<li>Light Source Replacement</li>\n<li>Other Service (Surgical Loupes)</li>\n</ul>\n<p>* Please contact us before you place an order.</p>\n<ul></ul>",
         "links": [
-            { "title": "Manual", "url": "/manual/battery-connection/"}
+                    ],
+        "images": [
+            { "url": "/images/static/manual-adjusting-size.jpg"},
+            { "url": "/images/static/manual-adjusting-size.jpg"}
+        ],
+        "price": 100
+    },
+    {
+        "link": "bilumix-headlamp-repair-service-pack",
+        "title": "BiLumix GEN. 2 Repair Service",
+        "short": "Front body issue(s)",
+        "text": "<h4>\n<meta charset=\"utf-8\">Service Specifications<br>\n</h4>\n<h4></h4>\n<ul>\n<li>Front &amp; Rear Band Replacement</li>\n<li>Light Source Replacement</li>\n<li>Other Service (Surgical Loupes)</li>\n</ul>\n<p>* Please contact us before you place an order.</p>\n<ul></ul>",
+        "links": [
         ],
         "images": [
             { "url": "/images/static/manual-adjusting-size.jpg"},
@@ -14,12 +26,11 @@
         "price": 100
     },
     {
-        "link": "rechargeable-battery-gen-2",
-        "title": "Rechargeable Battery",
-        "short": "Product 1.5",
-        "text": "Operation continuity: 3 - 8hours (depends on Intensity)<br />Charging time: About 2 hours<br />Battery output: 7.4Volts / 1700mAh<br />Charger Input: Battery Cradle",
+        "link": "bilumix-headlamp-repair-service-pack",
+        "title": "BiLumix GEN. 2 Repair Service",
+        "short": "Rear body issue(s)",
+        "text": "<h4>\n<meta charset=\"utf-8\">Service Specifications<br>\n</h4>\n<h4></h4>\n<ul>\n<li>Front &amp; Rear Band Replacement</li>\n<li>Light Source Replacement</li>\n<li>Other Service (Surgical Loupes)</li>\n</ul>\n<p>* Please contact us before you place an order.</p>\n<ul></ul>",
         "links": [
-            { "title": "Manual", "url": "/manual/battery-connection/"}
         ],
         "images": [
             { "url": "/images/static/manual-adjusting-size.jpg"},

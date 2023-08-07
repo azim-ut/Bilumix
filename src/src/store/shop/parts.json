@@ -1,30 +1,58 @@
 [
     {
-        "link": "rechargeable-battery-gen-2",
-        "title": "Rechargeable Battery",
-        "short": "Product 1.5",
-        "text": "Operation continuity: 3 - 8hours (depends on Intensity)<br />Charging time: About 2 hours<br />Battery output: 7.4Volts / 1700mAh<br />Charger Input: Battery Cradle",
+        "link": "lamp-handle",
+        "title": "Light Source Handle",
+        "short": "Light Source Handle",
+        "text": "This handle provide convenient for user to lift the light source up and down.",
         "links": [
-            { "title": "Manual", "url": "/manual/battery-connection/"}
+            { "title": "Manual", "url": "/manual/replacing-handle/"}
         ],
         "images": [
             { "url": "/images/static/manual-adjusting-size.jpg"},
             { "url": "/images/static/manual-adjusting-size.jpg"}
         ],
-        "price": 100
+        "price": 7
     },
     {
-        "link": "rechargeable-battery-gen-2",
-        "title": "Rechargeable Battery",
-        "short": "Product 1.5",
-        "text": "Operation continuity: 3 - 8hours (depends on Intensity)<br />Charging time: About 2 hours<br />Battery output: 7.4Volts / 1700mAh<br />Charger Input: Battery Cradle",
+        "link": "head-support-leaf",
+        "title": "Rear Head Support Leaf",
+        "short": "Rear Head Support Leaf",
+        "text": "This piece supports the headlamp to firmly placed over your head.",
         "links": [
-            { "title": "Manual", "url": "/manual/battery-connection/"}
+            { "title": "Manual", "url": "/manual/head-support-replacement/"}
         ],
         "images": [
             { "url": "/images/static/manual-adjusting-size.jpg"},
             { "url": "/images/static/manual-adjusting-size.jpg"}
         ],
-        "price": 100
+        "price": 4.50
+    },
+    {
+        "link": "head-support-leaf",
+        "title": "Rear Head Support Leaf",
+        "short": "Forehead Plate",
+        "text": "<p>BiLumix headlamp forehead plate has Velcro inside which allow user to easily replace <a class=\"product-link\" href=\"/shop/bilumix-frontpad-cushion/\" target=\"_blank\">forehead pad/cushion</a> with new one.<br></p>\n<p>* FOR GEN 2 ONLY</p>",
+        "links": [
+            { "title": "Manual", "url": "/manual/adjusting-forehead-band/"}
+        ],
+        "images": [
+            { "url": "/images/static/manual-adjusting-size.jpg"},
+            { "url": "/images/static/manual-adjusting-size.jpg"}
+        ],
+        "price": 7.00
+    },
+    {
+        "link": "bilumix-frontpad-cushion",
+        "title": "Forehead Pad/Cushion",
+        "short": "Forehead Plate",
+        "text": "<p>Detachable&nbsp;pad for <a class=\"product-link\" href=\"/shop/forehead-plate/\" target=\"_blank\">forehead plate</a>. This&nbsp;pad can be attached to Velcro on the inner side of the <a class=\"product-link\" href=\"/shop/forehead-plate/\" target=\"_blank\">forehead plate</a>.&nbsp;<span class=\"s1\">This improved pad will give you maximum comfort.</span></p>\n",
+        "links": [
+            { "title": "Manual", "url": "/manual/replacing-cushion"}
+        ],
+        "images": [
+            { "url": "/images/static/manual-adjusting-size.jpg"},
+            { "url": "/images/static/manual-adjusting-size.jpg"}
+        ],
+        "price": 24.00
     }
 ]

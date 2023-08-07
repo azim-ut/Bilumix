@@ -1,0 +1,41 @@
+[
+    {
+        "link": "rechargeable-battery",
+        "title": "Rechargeable Battery",
+        "short": "Rechargeable Battery",
+        "text": "<h4>Products Specification</h4>\n<ul>\n<li>Operation continuity: 2.3-10hours</li>\n<li>Charging time: 2hours</li>\n<li>Battery output: 7.4Volts / 1150mAh</li>\n<li>Charger Input: AC 100-240V &nbsp; 50-60Hz</li>\n</ul>",
+        "links": [
+                    ],
+        "images": [
+            { "url": "/images/static/manual-adjusting-size.jpg"},
+            { "url": "/images/static/manual-adjusting-size.jpg"}
+        ],
+        "price": 90
+    },
+    {
+        "link": "rechargeable-battery-charger",
+        "title": "Rechargeable Battery Charger",
+        "short": "Rechargeable Battery Charger",
+        "text": "<h4>Products Specification</h4>\n<ul>\n<li>Charger&nbsp;output: 8.4Volts / 1,000mAh</li>\n<li>Charger Input: AC 110-240V &nbsp; 50-60Hz</li>\n</ul>\n<p><strong>* Only for&nbsp;BiLumix's&nbsp;Rechargeable Battery</strong></p>",
+        "links": [
+        ],
+        "images": [
+            { "url": "/images/static/manual-adjusting-size.jpg"},
+            { "url": "/images/static/manual-adjusting-size.jpg"}
+        ],
+        "price": 100
+    },
+    {
+        "link": "bilumix-headlamp-repair-service",
+        "title": "BiLumix GEN.1 Repair Service",
+        "short": "Gen1 Repair Service",
+        "text": "<h4>Service Specification</h4>\n<ul>\n<li>Front &amp; Rear Band Replacement</li>\n<li>Light Source Replacement</li>\n<li>Other Service (Surgical Loupes)</li>\n</ul>\n<p>* Flat Service Fee will be applied.</p>\n<p>* Please contact us (contact@bilumix.com) after you place your order.</p>\n<ul></ul>",
+        "links": [
+        ],
+        "images": [
+            { "url": "/images/static/manual-adjusting-size.jpg"},
+            { "url": "/images/static/manual-adjusting-size.jpg"}
+        ],
+        "price": 250
+    }
+]
