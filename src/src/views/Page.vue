@@ -1,7 +1,7 @@
 <template>
 
   <HeadMenu :key="$route.path" />
-  <div class="contentBody">
+  <div class="contentBody" style="margin-top: 80px;">
     <IntroFrame1 />
     <TheaterWheel :name="'product'"
                   :test="true"

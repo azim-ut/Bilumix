@@ -7,11 +7,17 @@
 }
 
 .contentBody{
-  margin-top: 80px;
+  margin-top: 100px;
 }
 
 h1{
-  padding: 30px 10px 10px 10px;
+  padding: 30px 10px 10px 0px;
+  margin: 0px;
+  font-family: Rubik, sans-serif;
+  font-weight: 550;
+  font-size: 3rem;
+  line-height: 1.167;
+  letter-spacing: 0em;
 }
 
 .btn {
@@ -63,5 +69,14 @@ h1{
 .close:focus {
   color: black;
   text-decoration: none;
+  cursor: pointer;
+}
+
+.emphasized-button{
+  background: #404040;
+  color: #fff;
+  padding: 1rem 2rem;
+  font-size: 20px;
+  border-radius: 50px;
   cursor: pointer;
 }

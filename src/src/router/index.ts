@@ -13,6 +13,7 @@ import PageManualItem from "@/views/PageManualItem.vue";
 import PageRefundPolicy from "@/views/PageRefundPolicy.vue";
 import PageDataPrivacy from "@/views/PageDataPrivacy.vue";
 import PageTermOfUse from "@/views/PageTermOfUse.vue";
+import PageShopItem from "@/views/PageShopItem.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,6 +42,11 @@ const router = createRouter({
       path: '/shop',
       name: 'shop',
       component: PageShop
+    },
+    {
+      path: '/shop/:link',
+      name: 'shopItem',
+      component: PageShopItem
     },
     {
       path: '/offers',
