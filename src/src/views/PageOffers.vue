@@ -3,7 +3,7 @@
   <HeadMenu :key="$route.path" />
   <div class="contentBody">
 
-    <div style="padding-top: 104px; background: rgb(21, 21, 21);">
+    <div style="background: rgb(21, 21, 21);">
         <div class="bg_offers">
           <div class="frstblk">
               <h2>Special Offers</h2>
@@ -59,6 +59,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.contentBody {
+  margin-top: 80px;
+}
 .bg_offers {
   margin: 0px;
   color: rgba(0, 0, 0, 0.87);
