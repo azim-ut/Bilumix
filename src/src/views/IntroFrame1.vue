@@ -1,5 +1,5 @@
 <template>
-  <section id="IntroProduct" class="contentBody">
+  <section id="IntroProduct">
     <div id="image-container">
       <div class="front-image" ref="device"></div>
     </div>
@@ -94,7 +94,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.contentBody{
+#IntroProduct{
   min-height: 100vh;
   background: #151515;
   display: flex;

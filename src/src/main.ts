@@ -7,6 +7,7 @@ import router from './router'
 import '@/assets/logo.svg'
 import './assets/header.css'
 import './assets/grid.css'
+import './assets/shop.css'
 const app = createApp(App)
 
 import { library } from '@fortawesome/fontawesome-svg-core'

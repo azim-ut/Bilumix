@@ -1,8 +1,3 @@
-import loupesList from "@/store/shop/loupes.json";
-import accessoriesList from "@/store/shop/accessories.json";
-import partsList from "@/store/shop/parts.json";
-import repairList from "@/store/shop/repair.json";
-
 export interface Product{
     link: string,
     title: string,

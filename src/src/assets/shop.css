@@ -1,0 +1,21 @@
+.counterBody{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  border-radius: 8px;
+  border: #ccc 1px solid;
+  padding: 10px;
+  position: relative;
+  height: 32px;
+  overflow: hidden;
+}
+.counterBody:hover{
+  border: #949090 1px solid;
+}
+.counterBody .ttl {display: flex; vertical-align: center; align-items: center; justify-content: center;}
+.counterBody .ttl .ttlTxt{}
+.counterBody input{ border: none; min-height: 30px;}
+
+.toCart{
+  text-align: right;
+}
+.toCartButton{}

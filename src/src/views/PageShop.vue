@@ -17,6 +17,9 @@ const shopStore = sStore()
           <div class="productBody">
             <div class="title">{{product.short}}</div>
             <div class="image" :style="{'background-image': 'url(' + product.images[0].url + ')'}"></div>
+            <div class="tools">
+              <button class="emphasized-button" @click="toDetails(product.link)">Details</button>
+            </div>
             <div class="price">${{product.price}}</div>
           </div>
         </div>
@@ -31,6 +34,9 @@ const shopStore = sStore()
           <div class="productBody">
             <div class="title">{{product.short}}</div>
             <div class="image" :style="{'background-image': 'url(' + product.images[0].url + ')'}"></div>
+            <div class="tools">
+              <button class="emphasized-button" @click="toDetails(product.link)">Details</button>
+            </div>
             <div class="price">${{product.price}}</div>
           </div>
         </div>
@@ -45,6 +51,9 @@ const shopStore = sStore()
           <div class="productBody">
             <div class="title">{{product.short}}</div>
             <div class="image" :style="{'background-image': 'url(' + product.images[0].url + ')'}"></div>
+            <div class="tools">
+              <button class="emphasized-button" @click="toDetails(product.link)">Details</button>
+            </div>
             <div class="price">${{product.price}}</div>
           </div>
         </div>
@@ -58,6 +67,9 @@ const shopStore = sStore()
           <div class="productBody">
             <div class="title">{{product.short}}</div>
             <div class="image" :style="{'background-image': 'url(' + product.images[0].url + ')'}"></div>
+            <div class="tools">
+              <button class="emphasized-button" @click="toDetails(product.link)">Details</button>
+            </div>
             <div class="price">${{product.price}}</div>
           </div>
         </div>
@@ -89,7 +101,9 @@ export default defineComponent({
     }
   },
   methods: {
-
+    toDetails(link: string){
+      this.$router.push({name: "shopItem", params: {link: link}})
+    }
   },
   unmounted () {
   },
@@ -125,6 +139,7 @@ export default defineComponent({
   font-size: large;
 }
 .shopList .product .productBody .price{
+  margin-top: 20px;
   text-align: center;
 }
 .shopList .product .productBody .image{
@@ -136,5 +151,16 @@ export default defineComponent({
 
 .productBody:hover {
   transform: translateZ(-80px);
+}
+.emphasized-button{
+  position: absolute;
+  margin-top: -100px;
+  border: none;
+  height: 30px;
+  font-size: 15px;
+  line-height: 0px;
+  width: 150px;
+  left: calc(50% - 75px);
+  bottom: 30px;
 }
 </style>
