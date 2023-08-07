@@ -1,0 +1,44 @@
+[
+    {
+        "link": "rechargeable-battery-gen-2",
+        "title": "Rechargeable Battery",
+        "short": "Product 1.5",
+        "text": "Operation continuity: 3 - 8hours (depends on Intensity)<br />Charging time: About 2 hours<br />Battery output: 7.4Volts / 1700mAh<br />Charger Input: Battery Cradle",
+        "links": [
+            { "title": "Manual", "url": "/manual/battery-connection/"}
+        ],
+        "images": [
+            { "url": "/images/static/manual-adjusting-size.jpg"},
+            { "url": "/images/static/manual-adjusting-size.jpg"}
+        ],
+        "price": 100
+    },
+    {
+        "link": "rechargeable-battery-gen-2",
+        "title": "Rechargeable Battery",
+        "short": "Product 1.5",
+        "text": "Operation continuity: 3 - 8hours (depends on Intensity)<br />Charging time: About 2 hours<br />Battery output: 7.4Volts / 1700mAh<br />Charger Input: Battery Cradle",
+        "links": [
+            { "title": "Manual", "url": "/manual/battery-connection/"}
+        ],
+        "images": [
+            { "url": "/images/static/manual-adjusting-size.jpg"},
+            { "url": "/images/static/manual-adjusting-size.jpg"}
+        ],
+        "price": 100
+    },
+    {
+        "link": "rechargeable-battery-gen-2",
+        "title": "Rechargeable Battery",
+        "short": "Product 1.5",
+        "text": "Operation continuity: 3 - 8hours (depends on Intensity)<br />Charging time: About 2 hours<br />Battery output: 7.4Volts / 1700mAh<br />Charger Input: Battery Cradle",
+        "links": [
+            { "title": "Manual", "url": "/manual/battery-connection/"}
+        ],
+        "images": [
+            { "url": "/images/static/manual-adjusting-size.jpg"},
+            { "url": "/images/static/manual-adjusting-size.jpg"}
+        ],
+        "price": 100
+    }
+]

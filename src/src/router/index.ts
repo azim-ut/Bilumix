@@ -3,7 +3,6 @@ import Page from "@/views/Page.vue";
 import FrameIntroFrame1 from "@/views/FrameIntroFrame1.vue";
 import FrameIntroVideo1 from "@/views/FrameIntroVideo1.vue";
 import FrameIntroVideo2 from "@/views/FrameIntroVideo2.vue";
-import FramePage from "@/views/FramePage.vue";
 import PageShop from "@/views/PageShop.vue";
 import PageOffers from "@/views/PageOffers.vue";
 import PageManual from "@/views/PageManual.vue";
@@ -11,6 +10,9 @@ import PageSupport from "@/views/PageSupport.vue";
 import PageTrial from "@/views/PageTrial.vue";
 import PagePackage from "@/views/PagePackage.vue";
 import PageManualItem from "@/views/PageManualItem.vue";
+import PageRefundPolicy from "@/views/PageRefundPolicy.vue";
+import PageDataPrivacy from "@/views/PageDataPrivacy.vue";
+import PageTermOfUse from "@/views/PageTermOfUse.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,6 +46,21 @@ const router = createRouter({
       path: '/offers',
       name: 'offers',
       component: PageOffers
+    },
+    {
+      path: '/refund-policy',
+      name: 'refund',
+      component: PageRefundPolicy
+    },
+    {
+      path: '/data-privacy',
+      name: 'dataPrivacy',
+      component: PageDataPrivacy
+    },
+    {
+      path: '/terms-of-service',
+      name: 'termOfUse',
+      component: PageTermOfUse
     },
     {
       path: '/manual',

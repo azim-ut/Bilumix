@@ -11,6 +11,7 @@
       </div>
       <div>
         <div class="text" v-html="manual.text"></div>
+        <div class="btn" @click="toManualsList">Back</div>
       </div>
     </div>
   </div>
@@ -55,11 +56,19 @@ export default defineComponent({
     showVideo(link: string){
       console.log(link)
     },
-    getLink():any {return this.$route.params.link}
+    getLink():any {return this.$route.params.link},
+    toManualsList() {
+      this.$router.push({name: 'manual'})
+    }
   },
   unmounted () {
   },
   mounted(){
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
     this.manual = this.manualStore.getItem(this.getLink())
   }
 })
@@ -73,6 +82,7 @@ video {
   border-radius: 17px;
 }
 .text {
+  font-size: 18px;
   margin: 0 20px 20px;
 }
 </style>

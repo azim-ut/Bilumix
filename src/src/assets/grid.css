@@ -8,9 +8,19 @@
   grid-template-columns: repeat(2, 1fr);
 }
 
+.grid3{
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid5{
+  grid-template-columns: repeat(5, 1fr);
+}
+
 
 @media (max-width: 950px) {
-  .grid2 {
+  .grid2,
+  .grid3,
+  .grid5 {
     grid-template-columns: repeat(1, 1fr);
   }
   .grid2.force {

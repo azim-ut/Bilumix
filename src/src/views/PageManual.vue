@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { manualStore as mStore} from '@/store/manual/manual'
+import Modal from "@/components/Modal.vue";
 const manualStore = mStore()
 </script>
 <template>
@@ -17,13 +18,18 @@ const manualStore = mStore()
         <div class="right">
           <div class="title">{{row.title}}</div>
           <div class="links">
-            <a :href="'/manual/' + row.link">Detail</a>
-            <a @click="showVideo(row.video)">Watch video</a>
+            <a class="btn" :href="'/manual/' + row.link">Detail</a>
+            <a class="btn" @click="showVideo(row)">Watch video</a>
           </div>
         </div>
       </div>
 
     </div>
+    <Modal :name="'videoModal'" :info="showModalVideo" :close-callback="() => {showModalVideo = null}">
+      <div class="video" v-if="showModalVideo && showModalVideo.video">
+        <video :src="showModalVideo.video" preload="auto" controls="true" style="width: 100%; height: 100%;"></video>
+      </div>
+    </Modal>
 
   </div>
   <Footer />
@@ -40,6 +46,7 @@ import {RouterView} from "vue-router";
 import IntroFrame1 from "@/views/IntroFrame1.vue";
 import TheaterWheel from "@/components/TheaterWheel.vue";
 import HeadMenu from "@/components/HeadMenu.vue";
+import type {ManualRecord} from "@/store/manual/types";
 
 export default defineComponent({
   components: {
@@ -48,11 +55,12 @@ export default defineComponent({
     IntroFrame1, RouterView, Footer, ScrollDownIndicator, IntroSection1, RoundedBlackBox},
   data() {
     return {
+      showModalVideo: null as any
     }
   },
   methods: {
-    showVideo(link: string){
-      console.log(link)
+    showVideo(link: ManualRecord){
+      this.showModalVideo = link
     }
   },
   unmounted () {
@@ -99,6 +107,7 @@ h1{
   align-items: center;
   vertical-align: middle;
   font-size: 22px;
+  margin: 10px 10px;
 }
 .manualList .block .right .links{
   display: flex;
@@ -107,11 +116,11 @@ h1{
   vertical-align: middle;
 }
 .manualList .block .right .links a{
-  color: rgb(25, 157, 220);
-  text-decoration: none;
-  margin: 5px 10px;
-  padding: 5px 10px;
-  cursor: pointer;
+  background: #fff;
+}
+.manualList .block .right .links a:hover{
+  background: #f1f9fd;
+  transition: .5s;
 }
 
 
@@ -124,8 +133,7 @@ h1{
   .manualList .block{
 
     margin: 10px auto;
-    min-width: 60%;
-    max-width: 70%;
+    width: 60%;
     overflow: hidden;
     border-radius: 7px;
     min-height: 160px;
