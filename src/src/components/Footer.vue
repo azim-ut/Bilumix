@@ -75,20 +75,32 @@
       Copyright © 2023 BiLumix.ru Designed and built by SK
     </div>
   </footer>
-
+  <Modal :name="'QuestionModal'"
+         :info="showQuestionModal"
+         @show-feedback-form="showQuestionModalPopup"
+         :close-callback="() => { showQuestionModal = null }">
+    <div class="feedback">
+			dsds
+    </div>
+  </Modal>
 </template>
 
 <script lang="ts">
 
 import {defineComponent} from "vue"
+import Modal from "@/components/Modal.vue";
 
 export default defineComponent({
-  components: { },
-  props: {
-  },
+  components: {Modal},
   data() {
+    return {
+      showQuestionModal: {} as any
+    }
   },
   methods: {
+    showQuestionModalPopup(event: any){
+      console.log(event)
+    }
   },
   unmounted () {
   },
@@ -170,4 +182,11 @@ footer button{
   left: 0;
   right: 0;
 }
+
+.feedback {
+  background: #ffffff;
+  padding: 40px 40px;
+  border-radius: 19px;
+}
+
 </style>
