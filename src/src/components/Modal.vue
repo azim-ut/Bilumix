@@ -1,6 +1,6 @@
 <template>
 
-  <div :id="$props.name" :style="{'display': ($props.info != undefined)?'block':'none'}" class="modal">
+  <div :id="$props.name" :style="{'display': ($props.show)?'block':'none'}" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
       <span class="close" @click="closeModal()">&times;</span>
@@ -26,6 +26,7 @@ export default defineComponent({
     ...mapStores(feedbackStore)
   },
   props: {
+    show: null,
     name: "",
     closeCallback: Function
   },
@@ -35,10 +36,10 @@ export default defineComponent({
   },
   methods: {
     closeModal(){
-      this.feedbackStore.setOpened(false)
+      this.feedbackStore.close()
     },
     modalKeyDown(event: Event){
-      if (event.target && event.target.id === this.$props.name) {
+      if (event.target && this.$props.show) {
         this.closeModal()
       }
     }

@@ -19,8 +19,14 @@ export const feedbackStore = defineStore('feedback', {
         getDraft(): FeedbackRecord {return this.draft}
     },
     actions: {
-        setOpened(val: boolean): void {
-            this.opened = val
+        toggle(): void {
+            this.opened = !this.opened
+		},
+        open(): void {
+            this.opened = true
+		},
+        close(): void {
+            this.opened = false
 		},
         setDraft(val: FeedbackRecord): void{
             this.draft = val
