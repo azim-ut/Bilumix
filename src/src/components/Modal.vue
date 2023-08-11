@@ -17,12 +17,16 @@
 <script lang="ts">
 
 import {defineComponent} from "vue"
+import {mapStores} from "pinia";
+import {feedbackStore} from "@/store/feedback/feedback";
 
 export default defineComponent({
   components: {},
+  computed: {
+    ...mapStores(feedbackStore)
+  },
   props: {
     name: "",
-    info: undefined,
     closeCallback: Function
   },
   data() {
@@ -31,7 +35,7 @@ export default defineComponent({
   },
   methods: {
     closeModal(){
-      this.$props.closeCallback()
+      this.feedbackStore.setOpened(false)
     },
     modalKeyDown(event: Event){
       if (event.target && event.target.id === this.$props.name) {

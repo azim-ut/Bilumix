@@ -77,7 +77,6 @@
   </footer>
   <Modal :name="'QuestionModal'"
          :info="showQuestionModal"
-         @show-feedback-form="showQuestionModalPopup"
          :close-callback="() => { showQuestionModal = null }">
     <div class="feedback">
 			dsds
@@ -89,22 +88,35 @@
 
 import {defineComponent} from "vue"
 import Modal from "@/components/Modal.vue";
+import {mapStores} from "pinia";
+import {feedbackStore} from "@/store/feedback/feedback";
 
 export default defineComponent({
+  computed: {
+    ...mapStores(feedbackStore)
+  },
   components: {Modal},
   data() {
     return {
-      showQuestionModal: {} as any
+      showQuestionModal: {}
     }
   },
+  emits: ['show-feedback-form'],
   methods: {
-    showQuestionModalPopup(event: any){
+    showFeedbackForm(event: any){
       console.log(event)
     }
   },
-  unmounted () {
+
+  setup (props, context) {
+    const showFeedbackForm = (event: any) => {
+      console.log(event)
+    }
   },
-  mounted(){
+  mounted () {
+    this.$emit("show-feedback-form", this.showFeedbackForm)
+  },
+  created(){
   }
 })
 </script>

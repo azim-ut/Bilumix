@@ -17,7 +17,7 @@
 
 
   </div>
-  <Footer />
+  <Footer/>
 </template>
 
 <script lang="ts">
@@ -32,8 +32,16 @@ import IntroFrame1 from "@/views/IntroFrame1.vue";
 import TheaterWheel from "@/components/TheaterWheel.vue";
 import HeadMenu from "@/components/HeadMenu.vue";
 import Modal from "@/components/Modal.vue";
+import {mapStores} from "pinia";
+import {feedbackStore} from "@/store/feedback/feedback";
 
 export default defineComponent({
+  computed: {
+    ...mapStores(feedbackStore)
+  },
+  emits: [
+      'show-feedback-form'
+  ],
   components: {
     Modal,
     HeadMenu,
@@ -46,8 +54,8 @@ export default defineComponent({
   },
   methods: {
     callFeedbackForm(){
-      console.log(this.$emit('show-feedback-form'))
-      this.$emit('show-feedback-form');
+      this.$emit('show-feedback-form', true);
+      console.log("frought!")
     }
   },
   unmounted () {
