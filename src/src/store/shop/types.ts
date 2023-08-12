@@ -16,6 +16,7 @@ export interface Image{
 }
 
 export interface ShopState {
+    cart: Cart,
     loupes: Product[],
     accessories: Product[],
     parts: Product[],

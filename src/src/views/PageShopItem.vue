@@ -19,17 +19,19 @@
           <h1>{{product.title}}</h1>
           <div class="price">${{product.price}}</div>
           <div class="tools">
-            <div class="grid grid2">
+            <div class="grid grid2 force">
               <div class="counter" @click="setFocus()">
                 <div class="counterBody">
                   <div class="ttl">
                     <div class="ttlTxt">Qty</div>
                   </div>
-                  <input type="number" ref="cnt" @modal="form.count"/>
+                  <input type="number" ref="cnt"
+                         @change="updateCnt(form.count)"
+                         v-model="form.count"/>
                 </div>
               </div>
               <div class="toCart" >
-                <button @click="addToCart()" class="emphasized-button">Add to cart</button>
+                <button @click="addToCart(product)" class="emphasized-button">Add to cart</button>
               </div>
             </div>
           </div>
@@ -82,8 +84,18 @@ export default defineComponent({
     setFocus(){
       this.$refs.cnt.focus()
     },
-    addToCart(){
-      console.log("Cart!")
+    addToCart(product: Product){
+      this.shopStore.toCart(product)
+    },
+    updateCnt(){
+      if(this.product){
+        this.shopStore.setCount(this.product.link, this.form.count)
+      }
+    },
+    cartState(){
+      if(this.product){
+        return this.shopStore.getCartItem(this.product.link)
+      }
     }
   },
   unmounted () {
@@ -91,6 +103,7 @@ export default defineComponent({
   mounted(){
     this.product = this.shopStore.getItem(this.$route.params.link)
     this.currentImage = this.product?.images[0];
+    this.form.count = this.cartState().cnt
   }
 })
 </script>

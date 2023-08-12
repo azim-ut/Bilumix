@@ -14,6 +14,7 @@ import PageRefundPolicy from "@/views/PageRefundPolicy.vue";
 import PageDataPrivacy from "@/views/PageDataPrivacy.vue";
 import PageTermOfUse from "@/views/PageTermOfUse.vue";
 import PageShopItem from "@/views/PageShopItem.vue";
+import Cart from "@/components/Cart.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

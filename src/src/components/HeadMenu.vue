@@ -15,15 +15,25 @@
         </li>
       </ul>
     </nav>
+    <cart>
+      <div @click="toCart">
+        {{ getTotalCount() }}
+      </div>
+    </cart>
   </header>
 </template>
 
 <script lang="ts">
 
 import {defineComponent} from "vue"
+import {mapStores} from "pinia";
+import {cartStore} from "@/store/cart/cart";
 
 export default defineComponent({
   components: { },
+  computed: {
+    ...mapStores(cartStore)
+  },
   props: {
   },
   data() {
@@ -40,6 +50,9 @@ export default defineComponent({
     }
   },
   methods: {
+    getTotalCount(): number {
+      return this.cartStore.countItems()
+    },
     toggleMenu(menu: any){
       this.$router?.push({name: menu.name})
       this.updateMenu(menu)
@@ -55,12 +68,16 @@ export default defineComponent({
     },
     toHome(){
       location.href = "/"
+    },
+    toCart(){
+      this.cartStore.show()
     }
   },
   unmounted () {
   },
   mounted(){
     this.updateMenu(this.$route)
+    this.cartStore.fetchCart()
   }
 })
 </script>
@@ -205,6 +222,14 @@ header .logo .toggle{
   z-index: 12;
 }
 
+cart{
+  color: #bbbbbb;
+  cursor: pointer;
+  font-size: large;
+}
+cart:hover{
+  color: #fff;
+}
 
 @media (max-width: 850px) {
 }

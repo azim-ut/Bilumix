@@ -5,7 +5,6 @@ import accessoriesList from "./accessories.json"
 import partsList from "./parts.json"
 import repairList from "./repair.json"
 
-
 export const shopStore = defineStore('shop', {
     state: (): ShopState => ({
         loupes: loupesList,
@@ -29,13 +28,16 @@ export const shopStore = defineStore('shop', {
             if(!out){
                 out = state.repair.find(row => row.link === link)
             }
-            if (!out) out = {
-                "link": "",
-                "title": "",
-                "text": "",
-                "links": [],
-                "images": [],
-                "price": 0,
+            if (!out) {
+                out = {
+                    link: "",
+                    short: "",
+                    title: "",
+                    text: "",
+                    links: [],
+                    images: [],
+                    price: 0,
+                }
             }
             return out
         }
