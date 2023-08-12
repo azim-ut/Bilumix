@@ -25,7 +25,7 @@ const manualStore = mStore()
       </div>
 
     </div>
-    <Modal :name="'videoModal'" :info="showModalVideo" :close-callback="() => {showModalVideo = null}">
+    <Modal :name="'videoModal'" :show="showModalVideo" :close-callback="() => {showModalVideo = null}">
       <div class="video" v-if="showModalVideo && showModalVideo.video">
         <video :src="showModalVideo.video" preload="auto" controls="true" style="width: 100%; height: 100%;"></video>
       </div>
@@ -61,7 +61,7 @@ export default defineComponent({
   methods: {
     showVideo(link: ManualRecord){
       this.showModalVideo = link
-    }
+    },
   },
   unmounted () {
   },

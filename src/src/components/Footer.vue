@@ -76,8 +76,8 @@
     </div>
   </footer>
   <Modal :name="'QuestionModal'"
-         :info="showQuestionModal"
-         :close-callback="() => { showQuestionModal = null }">
+         :show="feedbackStore.isOpened"
+         :close-callback="() => { feedbackStore.close }">
     <div class="feedback">
 			dsds
     </div>
@@ -103,20 +103,22 @@ export default defineComponent({
   },
   emits: ['show-feedback-form'],
   methods: {
-    showFeedbackForm(event: any){
-      console.log(event)
-    }
-  },
-
-  setup (props, context) {
-    const showFeedbackForm = (event: any) => {
-      console.log(event)
-    }
+    feedbackStore,
+    openedForm(): boolean{
+      return this.feedbackStore.isOpened
+    },
   },
   mounted () {
-    this.$emit("show-feedback-form", this.showFeedbackForm)
   },
-  created(){
+  created() {
+  },
+  watch:{
+    'feedbackStore.isOpened': {
+      handler(newVal,oldValue){
+        this.showQuestionModal = newVal
+        console.log(this.showQuestionModal)
+      }
+    }
   }
 })
 </script>
@@ -189,7 +191,6 @@ footer button{
   text-align: center;
   font-size: 13px;
   color: #8c8080;
-  //position: absolute;
   bottom: 10px;
   left: 0;
   right: 0;

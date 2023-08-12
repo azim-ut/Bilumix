@@ -9,7 +9,7 @@
         <div class="center" style="padding: 50px 0 100px;">
           <h2>We are here for you</h2>
           <p>I want to ask a question!</p>
-          <button class="emphasized-button" @click="callFeedbackForm()">Submit a question</button>
+          <button class="emphasized-button" @click="callForm()">Submit a question</button>
         </div>
         <div>&nbsp;</div>
       </div>
@@ -39,9 +39,6 @@ export default defineComponent({
   computed: {
     ...mapStores(feedbackStore)
   },
-  emits: [
-      'show-feedback-form'
-  ],
   components: {
     Modal,
     HeadMenu,
@@ -53,9 +50,8 @@ export default defineComponent({
     }
   },
   methods: {
-    callFeedbackForm(){
-      this.$emit('show-feedback-form', true);
-      console.log("frought!")
+    callForm(){
+      this.feedbackStore.toggle()
     }
   },
   unmounted () {

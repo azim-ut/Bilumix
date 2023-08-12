@@ -59,16 +59,18 @@ export default defineComponent({
     getLink():any {return this.$route.params.link},
     toManualsList() {
       this.$router.push({name: 'manual'})
-    }
+    },
+    closeModal(event: any){
+      if (event.target == this.modal) {
+        this.modal.style.display = "none";
+      }
+    },
   },
   unmounted () {
+    window.removeEventListener('click', this.closeModal)
   },
   mounted(){
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
+  	window.addEventListener('click', this.closeModal)
     this.manual = this.manualStore.getItem(this.getLink())
   }
 })
