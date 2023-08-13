@@ -13,6 +13,9 @@
 .center {
   text-align: center;
 }
+.right {
+  text-align: right;
+}
 
 h1{
   padding: 30px 10px 10px 0px;
@@ -34,6 +37,7 @@ h1{
   transition: .5s;
   display: initial;
   border-radius: 8px;
+  border: none;
 }
 .btn:hover {
   background: #f1f9fd;

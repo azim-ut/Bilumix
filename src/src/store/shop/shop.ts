@@ -17,6 +17,7 @@ export const shopStore = defineStore('shop', {
         getAccessories: (state: ShopState): Product[] => state.accessories,
         getParts: (state: ShopState): Product[] => state.parts,
         getRepair: (state: ShopState): Product[] => state.repair,
+        getAll: (state: ShopState): Product[] => state.loupes.concat(state.accessories, state.parts, state.repair),
         getItem: (state: ShopState) => (link: any): Product => {
             let out = state.loupes.find(row => row.link === link)
             if(!out){

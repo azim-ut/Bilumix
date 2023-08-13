@@ -36,7 +36,7 @@ export default defineComponent({
   },
   methods: {
     closeModal(){
-      this.feedbackStore.close()
+      this.$props.closeCallback()
     },
     modalKeyDown(event: Event){
       if (event.target && this.$props.show) {

@@ -1,0 +1,145 @@
+.cartContent{
+  background: #fff;
+  position: fixed;
+  margin-top: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+  left: 0;
+  overflow: scroll;
+}
+
+.cartContent .cartHead{
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 2px 4px -1px, rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  z-index: 1100;
+  top: 0;
+  left: auto;
+  right: 0;
+  background-color: rgb(25, 157, 220);
+  color: rgb(255, 255, 255);
+  position: relative;
+}
+
+
+.cartContent .cartHead .col1,
+.cartContent .cartHead .col2,
+.cartContent .cartHead .col3{
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cartHead .btn{
+  background: rgba(255,255,255, .0);
+  color: #fff;
+  font-size: large;
+}
+.cartHead .btn:hover{
+  background: rgba(255,255,255, .2);
+  color: #fff;
+}
+
+.cartList{
+  padding: 10px;
+}
+
+.cartContent .product{
+  position: relative;
+  overflow: hidden;
+}
+.cartContent .product .short{
+  position: relative;
+}
+.cartContent .product .short .cnt{
+  background: #199ddc !important;
+  border-radius: 40px;
+  position: absolute;
+  padding: 6px;
+  left: 0;
+  top: 0;
+  line-height: 15px;
+  min-width: 15px;
+  width: auto;
+  height: 15px;
+  text-align: center;
+  margin: auto;
+}
+.cartContent .product .short .img{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 150px;
+  height: 150px;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.25rem;
+  line-height: 1;
+  margin: 12px 10px 0;
+  border-radius: 15px;
+  overflow: hidden;
+  user-select: none;
+  background: #fff no-repeat center center/cover;
+}
+
+.cartList .title{
+  width: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartList .tool{
+  margin: auto;
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+}
+.cartList .tool .btn{
+  font-size: large;
+}
+.cartList .cntTool{
+}
+.cartList .cntTool input{
+  padding: 10px;
+  font-size: large;
+}
+
+.cartContent .textAreaWrap{
+  border-radius: 15px;
+  border: #404040 1px solid;
+  margin: 10px;
+  position: relative;
+}
+
+.cartContent .textAreaWrap .title{
+  background: #fff;
+  position: absolute;
+  left: 40px;
+  top: -10px;
+  font-size: small;
+  padding: 0 10px;
+}
+
+.cartContent .textAreaWrap textarea{
+  width: auto;
+  margin: 10px 5px 0;
+  border: none;
+  min-width: -webkit-fill-available;
+}
+
+.cartContent .bottomRow {text-align: end}
+.cartContent .bottomRow .btn{
+  font-size: large;
+}
+
+@media (max-width: 900px) {
+
+}

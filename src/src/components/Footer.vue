@@ -75,6 +75,9 @@
       Copyright © 2023 BiLumix.ru Designed and built by SK
     </div>
   </footer>
+
+  <Cart ></Cart>
+
   <Modal :name="'QuestionModal'"
          :show="feedbackStore.isOpened"
          :close-callback="() => { feedbackStore.close }">
@@ -90,12 +93,13 @@ import {defineComponent} from "vue"
 import Modal from "@/components/Modal.vue";
 import {mapStores} from "pinia";
 import {feedbackStore} from "@/store/feedback/feedback";
+import Cart from "@/components/Cart.vue";
 
 export default defineComponent({
   computed: {
     ...mapStores(feedbackStore)
   },
-  components: {Modal},
+  components: {Cart, Modal},
   data() {
     return {
       showQuestionModal: {}

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {shopStore, shopStore as sStore} from '@/store/shop/shop'
+import {cartStore} from "@/store/cart/cart";
 
 const shopStore = sStore()
 </script>
@@ -19,6 +20,7 @@ const shopStore = sStore()
             <div class="image" :style="{'background-image': 'url(' + product.images[0].url + ')'}"></div>
             <div class="tools">
               <button class="emphasized-button" @click="toDetails(product.link)">Details</button>
+              <button class="emphasized-button" @click="toCart(product.link)">Add to cart</button>
             </div>
             <div class="price">${{product.price}}</div>
           </div>
@@ -90,8 +92,13 @@ import {RouterView} from "vue-router";
 import IntroFrame1 from "@/views/IntroFrame1.vue";
 import TheaterWheel from "@/components/TheaterWheel.vue";
 import HeadMenu from "@/components/HeadMenu.vue";
+import {mapStores} from "pinia";
+import {cartStore} from "@/store/cart/cart";
 
 export default defineComponent({
+  computed:{
+    ...mapStores(cartStore)
+  },
   components: {
     HeadMenu,
     TheaterWheel,
@@ -101,6 +108,9 @@ export default defineComponent({
     }
   },
   methods: {
+    toCart(link:string){
+      this.cartStore.toCart(link, 1)
+    },
     toDetails(link: string){
       this.$router.push({name: "shopItem", params: {link: link}})
     }
@@ -153,14 +163,14 @@ export default defineComponent({
   transform: translateZ(-80px);
 }
 .emphasized-button{
-  position: absolute;
-  margin-top: -100px;
+  margin: 0px 10px 0;
   border: none;
   height: 30px;
+  position: relative;
   font-size: 15px;
   line-height: 0px;
   width: 150px;
-  left: calc(50% - 75px);
+  top: -20px;
   bottom: 30px;
 }
 </style>

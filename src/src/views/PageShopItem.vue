@@ -20,18 +20,22 @@
           <div class="price">${{product.price}}</div>
           <div class="tools">
             <div class="grid grid2 force">
-              <div class="counter" @click="setFocus()">
-                <div class="counterBody">
-                  <div class="ttl">
-                    <div class="ttlTxt">Qty</div>
+              <div>
+                <div class="counter" @click="setFocus()">
+                  <div class="counterBody">
+                    <div class="ttl">
+                      <div class="ttlTxt">Qty</div>
+                    </div>
+                    <input type="number" ref="cnt"
+                           v-model="form.count"/>
                   </div>
-                  <input type="number" ref="cnt"
-                         @change="updateCnt(form.count)"
-                         v-model="form.count"/>
+                </div>
+                <div v-if="form.cart>0">
+                  In cart: {{form.cart}}
                 </div>
               </div>
               <div class="toCart" >
-                <button @click="addToCart(product)" class="emphasized-button">Add to cart</button>
+                <button @click="addToCart(product, form.count)" class="emphasized-button">Add to cart</button>
               </div>
             </div>
           </div>
@@ -61,6 +65,7 @@ import HeadMenu from "@/components/HeadMenu.vue"
 import {mapStores} from "pinia"
 import {shopStore} from "@/store/shop/shop"
 import type {Image, Product} from "@/store/shop/types";
+import {cartStore} from "@/store/cart/cart";
 
 export default defineComponent({
   components: {
@@ -68,13 +73,14 @@ export default defineComponent({
     TheaterWheel,
     IntroFrame1, RouterView, Footer, ScrollDownIndicator, IntroSection1, RoundedBlackBox},
   computed: {
-    ...mapStores(shopStore)
+    ...mapStores(shopStore, cartStore)
   },
   data() {
     return {
       product: undefined as Product|undefined,
       currentImage: undefined as Image|undefined,
       form: {
+        cart: 0,
         count: 1,
         link: undefined as string|undefined
       }
@@ -85,16 +91,15 @@ export default defineComponent({
       this.$refs.cnt.focus()
     },
     addToCart(product: Product){
-      this.shopStore.toCart(product)
-    },
-    updateCnt(){
-      if(this.product){
-        this.shopStore.setCount(this.product.link, this.form.count)
+      if(this.form.count===0){
+        this.form.count = 1
       }
+      this.cartStore.toCart(product.link, this.form.count)
+      this.form.cart = this.cartState().cnt
     },
     cartState(){
       if(this.product){
-        return this.shopStore.getCartItem(this.product.link)
+        return this.cartStore.getCartItem(this.product.link)
       }
     }
   },
@@ -103,7 +108,7 @@ export default defineComponent({
   mounted(){
     this.product = this.shopStore.getItem(this.$route.params.link)
     this.currentImage = this.product?.images[0];
-    this.form.count = this.cartState().cnt
+    this.form.cart = this.cartState().cnt
   }
 })
 </script>
@@ -150,5 +155,14 @@ export default defineComponent({
   font-size: 20px;
   border-radius: 50px;
   border: none;
+}
+.contentBody{
+  margin-bottom: 10%;
+}
+
+@media (max-width: 950px) {
+  .contentBody{
+    margin: 120px 10% 10% 10%;
+  }
 }
 </style>

@@ -15,11 +15,12 @@
         </li>
       </ul>
     </nav>
-    <cart>
+    <div class="cartIcon">
       <div @click="toCart">
-        {{ getTotalCount() }}
+        <span v-if="getTotalCount()>0"><font-awesome-icon icon="fa-solid fa-shopping-bag" /> {{ getTotalCount() }}</span>
+        <span v-if="getTotalCount()<=0"><font-awesome-icon icon="fa-solid fa-shopping-bag" /></span>
       </div>
-    </cart>
+    </div>
   </header>
 </template>
 
@@ -28,9 +29,10 @@
 import {defineComponent} from "vue"
 import {mapStores} from "pinia";
 import {cartStore} from "@/store/cart/cart";
+import Cart from "@/components/Cart.vue";
 
 export default defineComponent({
-  components: { },
+  components: {Cart},
   computed: {
     ...mapStores(cartStore)
   },
@@ -70,7 +72,8 @@ export default defineComponent({
       location.href = "/"
     },
     toCart(){
-      this.cartStore.show()
+      console.log(this.cartStore.getCart)
+      this.cartStore.toggle()
     }
   },
   unmounted () {
@@ -146,7 +149,7 @@ header .menu-toggle{
   z-index: 12;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
   header {
     /*position: fixed;*/
     padding: 0 20px;
@@ -222,12 +225,12 @@ header .logo .toggle{
   z-index: 12;
 }
 
-cart{
+.cartIcon{
   color: #bbbbbb;
   cursor: pointer;
   font-size: large;
 }
-cart:hover{
+.cartIcon:hover{
   color: #fff;
 }
 
