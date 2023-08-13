@@ -1,13 +1,23 @@
 <template>
   <footer>
+    <div class="block mobileOnly">
+      <img src="/src/assets/logo.svg">
+      <address>
+        <span>41 University Drive Suite 400,<br />Newtown, PA 18940<br />United States</span>
+        <br/>
+        <span>Email: <a href="mailto:sales@bilumix.ru" aria-label="Mail to sales@bilumix.ru">sales@bilumix.ru</a></span>
+      </address>
+    </div>
     <div class="grid grid5">
       <div class="block">
-        <img src="/src/assets/logo.svg">
-        <address>
-          <span>41 University Drive Suite 400,<br />Newtown, PA 18940<br />United States</span>
-          <br/>
-          <span>Email: <a href="mailto:sales@bilumix.ru" aria-label="Mail to sales@bilumix.ru">sales@bilumix.ru</a></span>
-        </address>
+        <div class="notForMobile">
+          <img src="/src/assets/logo.svg">
+          <address>
+            <span>41 University Drive Suite 400,<br />Newtown, PA 18940<br />United States</span>
+            <br/>
+            <span>Email: <a href="mailto:sales@bilumix.ru" aria-label="Mail to sales@bilumix.ru">sales@bilumix.ru</a></span>
+          </address>
+        </div>
       </div>
       <div class="block">
         <h6>Pages</h6>

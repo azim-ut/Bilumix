@@ -1,11 +1,10 @@
 <template>
-  <div class="block" :style="{'background-image': 'url(' + $props.bg + ')'}">
+  <div class="block" :style="{'background-color': ($props.bgColor??'transparent'), 'background-image': 'url(' + $props.bg + ')'}">
   	<div class="inner">
       <div class="bg">
         <h1>{{$props.title}}</h1>
-      	<h3>{{$props.sub}}</h3>
-        <p>{{$props.text}}
-          <ScrollDownIndicator /></p>
+      	<h3 class="gradientTitle">{{$props.sub}}</h3>
+        <p>{{$props.text}}</p>
       </div>
     </div>
   </div>
@@ -20,10 +19,11 @@ import ScrollDownIndicator from "@/components/ScrollDownIndicator.vue";
 export default defineComponent({
   components: {ScrollDownIndicator, IntroSection1},
   props: {
-    bg: "" as String,
-    title: "" as String,
-    sub: "" as String,
-    text: "" as String
+    bg: "" as string|null,
+    bgColor: null as string|null,
+    title: "" as string,
+    sub: "" as string,
+    text: "" as string
   },
   data() {
   },
@@ -42,10 +42,11 @@ export default defineComponent({
   min-height: 50vh;
   background: #000;
   border-radius: 38px;
-  margin: 10px;
+  margin: 0 10px;
 }
 .block h1{
-  text-align: center;
+  text-align: left;
+  font-size: xxx-large;
 }
 .block h3{
   text-align: center;
@@ -63,5 +64,11 @@ export default defineComponent({
   position: relative;
   background: transparent no-repeat center top/cover;
   min-height: 500px;
+}
+
+@media (max-width: 850px) {
+  .block{
+    margin: 10px;
+  }
 }
 </style>

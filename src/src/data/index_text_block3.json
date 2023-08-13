@@ -1,20 +1,21 @@
 [
   {
-    "title": "#3 Weightless",
-    "bg": "/images/static/bl-overview-01.png",
-    "sub": "Light & Sturdy",
-    "text": "No pressure or added weight on the nose. Contoured to fit snugly on the head for a comfortable wear all day long."
+    "title": "One-touch\nOn-Off",
+    "bg": "/images/static/bl-system-feature-01.png",
+    "bgColor": "#252525",
+    "text": "Additional on and off switch on back to help you control your light more efficiently during your procedures."
   },
   {
-    "title": "#3 Wireless",
-    "bg": "/images/static/bl-overview-03.png",
-    "sub": "Two Rechargeable Batteries",
-    "text": "An enhanced power management system along with two rechargeable batteries allow you to work continuously for up to 12 hours."
+    "title": "Power Indicator",
+    "bg": "/images/static/bl-system-feature-02.png",
+    "bgColor": "#252525",
+    "text": "Easy way to check battery status."
   },
   {
-    "title": "#3 Wireless",
-    "bg": "/images/static/bl-overview-03.png",
-    "sub": "Two Rechargeable Batteries",
-    "text": "An enhanced power management system along with two rechargeable batteries allow you to work continuously for up to 12 hours."
+    "title": "Easy\nControl",
+    "bg": "/images/static/bl-system-feature-03.png",
+    "bgColor": "#252525",
+    "sub": null,
+    "text": "Easy way to check battery status."
   }
 ]

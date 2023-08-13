@@ -175,8 +175,9 @@ export default defineComponent({
   min-height: 100vh;
   position: absolute;
   display: flex;
-  vertical-align: bottom;
-  align-items: end;
+  vertical-align: center;
+  align-items: center;
+  justify-content: center;
   z-index: 1000;
   right: 0;
   left: 0;

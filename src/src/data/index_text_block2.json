@@ -1,14 +1,16 @@
 [
   {
-    "title": "#2 Weightless",
-    "bg": "/images/static/bl-overview-01.png",
-    "sub": "Light & Sturdy",
-    "text": "No pressure or added weight on the nose. Contoured to fit snugly on the head for a comfortable wear all day long."
+    "title": "Ergonomic\nDesign",
+    "bg": "/images/static/bl-user-feature-01.png",
+    "sub": null,
+    "bgColor": null,
+    "text": "Adjustable band and front pad allows BiLumix headlamp to fit just right for your head\n\n"
   },
   {
-    "title": "#2 Wireless",
-    "bg": "/images/static/bl-overview-03.png",
-    "sub": "Two Rechargeable Batteries",
-    "text": "An enhanced power management system along with two rechargeable batteries allow you to work continuously for up to 12 hours."
+    "title": "Optimized\nComfort",
+    "bg": "/images/static/bl-user-feature-02.png",
+    "bgColor": null,
+    "sub": null,
+    "text": "Newly designed padded front and back provides a more comfortable grip and snug fit.\n\n"
   }
 ]

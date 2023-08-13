@@ -9,10 +9,10 @@
                   :scroll-event="scroll.event"
                   :frames="productTheater.frames"
                   :height="610">
-      <div>
-        <h1>BRIGHT</h1>
-        <h1>CHOICE</h1>
-        <p>
+      <div class="center">
+        <h1 style="font-size: 500%;">BRIGHT</h1>
+        <h1 style="font-size: 500%;">CHOICE</h1>
+        <p style="margin: auto; width: 50%; font-size: x-large;">
           For any procedure to illuminate
           an area via a unique, dual light source
           that eliminates any shadow
@@ -20,16 +20,14 @@
         <button class="emphasized-button" @click="video1.show = true">Watch Video</button>
       </div>
 
-      For any procedure to illuminate
-      an area via a unique, dual light source
-      that eliminates any shadow
 
 
     </TheaterWheel>
 
-    <div>
+    <div class="textBlocksPanel textBlocksPanel1 grid grid3">
       <RoundedBlackBox v-for="row in shortTextBlocks1"
                        :bg="row.bg"
+                       :bgColor="row.bgColor"
                        :title="row.title"
                        :sub="row.sub"
                        :text="row.text"
@@ -44,9 +42,10 @@
                   :height="610">
     </TheaterWheel>
 
-    <div>
+    <div class="textBlocksPanel textBlocksPanel2 grid grid2">
       <RoundedBlackBox v-for="row in shortTextBlocks2"
                        :bg="row.bg"
+                       :bgColor="row.bgColor"
                        :title="row.title"
                        :sub="row.sub"
                        :text="row.text"
@@ -60,10 +59,11 @@
                   :name="'video2'"
                   :test="true">
     </TheaterWheel>
-
-    <div>
+    <br/>
+    <div class="textBlocksPanel textBlocksPanel3 grid grid3">
       <RoundedBlackBox v-for="row in shortTextBlocks3"
                        :bg="row.bg"
+                       :bgColor="row.bgColor"
                        :title="row.title"
                        :sub="row.sub"
                        :text="row.text"
@@ -71,6 +71,13 @@
     </div>
     <div class="contentBody">
       <!-- PLACE CONTENT HERE -->
+    </div>
+    <div class="stayUpdate">
+      <h1>Stay updated</h1>
+      <h3>For exclusive advance information on our new products and promotions.</h3>
+      <div class="emailInput">
+        <input type="email" /><button>Subscribe <font-awesome-icon icon="fa-solid fa-envelope" /></button>
+      </div>
     </div>
 
 
@@ -100,9 +107,11 @@ import Modal from "@/components/Modal.vue";
 import block1 from "@/data/index_text_block1.json"
 import block2 from "@/data/index_text_block2.json"
 import block3 from "@/data/index_text_block3.json"
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
 export default defineComponent({
   components: {
+    FontAwesomeIcon,
     Modal,
     HeadMenu,
     TheaterWheel,
@@ -223,5 +232,36 @@ export default defineComponent({
   text-align: center;
   margin: .8rem;
   letter-spacing: 2px;
+}
+
+.textBlocksPanel{
+  margin: 0px auto;
+}
+.textBlocksPanel2{
+  background-color: #151515;
+}
+
+.stayUpdate{
+  background: #199ddc;
+  padding: 100px 0;
+  text-align: center;
+}
+.stayUpdate h1{
+  color: #fff;
+}
+.stayUpdate .emailInput{
+
+}
+.stayUpdate .emailInput input{
+  background: #b6e8ff;
+  border: none;
+  padding: 10px;
+  border-radius: 20px 0 0 20px;
+}
+.stayUpdate .emailInput button{
+  background: #b6e8ff;
+  border: none;
+  padding: 10px;
+  border-radius: 0 20px 20px 0;
 }
 </style>
