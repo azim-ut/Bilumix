@@ -79,11 +79,9 @@
   <Cart ></Cart>
 
   <Modal :name="'QuestionModal'"
-         :show="feedbackStore.isOpened"
-         :close-callback="() => { feedbackStore.close }">
-    <div class="feedback">
-			dsds
-    </div>
+         :show="isFormOpened"
+         :close-callback="closeForm">
+    <FeedbackForm />
   </Modal>
 </template>
 
@@ -94,12 +92,13 @@ import Modal from "@/components/Modal.vue";
 import {mapStores} from "pinia";
 import {feedbackStore} from "@/store/feedback/feedback";
 import Cart from "@/components/Cart.vue";
+import FeedbackForm from "@/components/FeedbackForm.vue";
 
 export default defineComponent({
   computed: {
     ...mapStores(feedbackStore)
   },
-  components: {Cart, Modal},
+  components: {FeedbackForm, Cart, Modal},
   data() {
     return {
       showQuestionModal: {}
@@ -107,9 +106,14 @@ export default defineComponent({
   },
   emits: ['show-feedback-form'],
   methods: {
-    feedbackStore,
-    openedForm(): boolean{
+    openedForm(){
+      this.feedbackStore.open()
+    },
+    isFormOpened(): boolean {
       return this.feedbackStore.isOpened
+    },
+    closeForm(){
+      this.feedbackStore.close()
     },
   },
   mounted () {
@@ -119,9 +123,10 @@ export default defineComponent({
   watch:{
     'feedbackStore.isOpened': {
       handler(newVal,oldValue){
-        this.showQuestionModal = newVal
-        console.log(this.showQuestionModal)
-      }
+
+        // console.log(newVal, oldValue)
+      },
+      immediate: true
     }
   }
 })

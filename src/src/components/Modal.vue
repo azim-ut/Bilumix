@@ -1,6 +1,6 @@
 <template>
 
-  <div :id="$props.name" :style="{'display': ($props.show)?'block':'none'}" class="modal">
+  <div :id="$props.name" :style="{'display': ($props.show())?'block':'none'}" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
       <span class="close" @click="closeModal()">&times;</span>
@@ -39,7 +39,7 @@ export default defineComponent({
       this.$props.closeCallback()
     },
     modalKeyDown(event: Event){
-      if (event.target && this.$props.show) {
+      if (event.target && event.target.getAttribute("id") === this.$props.name) {
         this.closeModal()
       }
     }
