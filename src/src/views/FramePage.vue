@@ -74,7 +74,7 @@ export default defineComponent({
         {title: "Build package", active: false, name:'package', link:'/package', mobileButton: true}
       ],
       loaded: false,
-      shortTextBlocks: [
+      shortTextBlocks1: [
         {
           title: "Weightless",
           bg: "/images/static/bl-overview-01.png",

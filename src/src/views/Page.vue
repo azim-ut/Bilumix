@@ -9,8 +9,32 @@
                   :scroll-event="scroll.event"
                   :frames="productTheater.frames"
                   :height="610">
+      <div>
+        <h1>BRIGHT</h1>
+        <h1>CHOICE</h1>
+        <p>
+          For any procedure to illuminate
+          an area via a unique, dual light source
+          that eliminates any shadow
+        </p>
+        <button class="emphasized-button" @click="video1.show = true">Watch Video</button>
+      </div>
+
+      For any procedure to illuminate
+      an area via a unique, dual light source
+      that eliminates any shadow
+
 
     </TheaterWheel>
+
+    <div>
+      <RoundedBlackBox v-for="row in shortTextBlocks1"
+                       :bg="row.bg"
+                       :title="row.title"
+                       :sub="row.sub"
+                       :text="row.text"
+      ></RoundedBlackBox>
+    </div>
     <TheaterWheel :name="'video1'"
                   :test="true"
                   :bg-mode="'cover'"
@@ -19,6 +43,15 @@
                   :frames="video1Theater.frames"
                   :height="610">
     </TheaterWheel>
+
+    <div>
+      <RoundedBlackBox v-for="row in shortTextBlocks2"
+                       :bg="row.bg"
+                       :title="row.title"
+                       :sub="row.sub"
+                       :text="row.text"
+      ></RoundedBlackBox>
+    </div>
     <TheaterWheel :bg-mode="'cover'"
                   :frames="video2Theater.frames"
                   :style="{'background':'#000'}"
@@ -27,9 +60,27 @@
                   :name="'video2'"
                   :test="true">
     </TheaterWheel>
+
+    <div>
+      <RoundedBlackBox v-for="row in shortTextBlocks3"
+                       :bg="row.bg"
+                       :title="row.title"
+                       :sub="row.sub"
+                       :text="row.text"
+      ></RoundedBlackBox>
+    </div>
     <div class="contentBody">
       <!-- PLACE CONTENT HERE -->
     </div>
+
+
+    <Modal :name="'video1'"
+           :show="() => video1.show"
+           :close-callback="() => {video1.show = false}">
+      <div class="video" v-if="video1.show">
+        <video :src="video1.src" preload="auto" controls="true" style="width: 100%; height: 100%;"></video>
+      </div>
+    </Modal>
   </div>
   <Footer />
 </template>
@@ -45,41 +96,27 @@ import {RouterView} from "vue-router";
 import IntroFrame1 from "@/views/IntroFrame1.vue";
 import TheaterWheel from "@/components/TheaterWheel.vue";
 import HeadMenu from "@/components/HeadMenu.vue";
+import Modal from "@/components/Modal.vue";
+import block1 from "@/data/index_text_block1.json"
+import block2 from "@/data/index_text_block2.json"
+import block3 from "@/data/index_text_block3.json"
 
 export default defineComponent({
   components: {
+    Modal,
     HeadMenu,
     TheaterWheel,
     IntroFrame1, RouterView, Footer, ScrollDownIndicator, IntroSection1, RoundedBlackBox},
   data() {
     return {
       loaded: false,
-      shortTextBlocks: [
-        {
-          title: "Weightless",
-          bg: "/images/static/bl-overview-01.png",
-          sub: "Light & Sturdy",
-          text: "No pressure or added weight on the nose. Contoured to fit snugly on the head for a comfortable wear all day long."
-        },
-        {
-          title: "Shadowless",
-          bg: "/images/static/bl-overview-02.png",
-          sub: "Dual Lights",
-          text: "Two LED light sources deliver a strong spotlight in angles that eliminate any shadow from a first person POV."
-        },
-        {
-          title: "Wireless",
-          bg: "/images/static/bl-overview-03.png",
-          sub: "Two Rechargeable Batteries",
-          text: "An enhanced power management system along with two rechargeable batteries allow you to work continuously for up to 12 hours."
-        },
-        {
-          title: "Weightless 2",
-          bg: "/images/static/bl-overview-01.png",
-          sub: "Light & Sturdy 2",
-          text: "text 222."
-        }
-      ],
+      video1: {
+        show: false,
+        src: '/video/intro.mp4'
+      },
+      shortTextBlocks1: block1,
+      shortTextBlocks2: block2,
+      shortTextBlocks3: block3,
       scroll: {
         event: undefined
       },

@@ -1,0 +1,20 @@
+[
+  {
+    "title": "#1 Weightless",
+    "bg": "/images/static/bl-overview-01.png",
+    "sub": "Light & Sturdy",
+    "text": "No pressure or added weight on the nose. Contoured to fit snugly on the head for a comfortable wear all day long."
+  },
+  {
+    "title": "#1 Shadowless",
+    "bg": "/images/static/bl-overview-02.png",
+    "sub": "Dual Lights",
+    "text": "Two LED light sources deliver a strong spotlight in angles that eliminate any shadow from a first person POV."
+  },
+  {
+    "title": "#1 Wireless",
+    "bg": "/images/static/bl-overview-03.png",
+    "sub": "Two Rechargeable Batteries",
+    "text": "An enhanced power management system along with two rechargeable batteries allow you to work continuously for up to 12 hours."
+  }
+]
