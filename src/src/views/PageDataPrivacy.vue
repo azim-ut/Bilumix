@@ -2,7 +2,7 @@
 
   <HeadMenu :key="$route.path" />
   <div class="contentBody">
-    <div class="data-privacy_pageHeader"><h2>Data Privacy</h2></div>
+    <div class="dataHeader"><h1>Data Privacy</h1></div>
     <div style="padding-top: 104px;">
       <p>We would like to thank you for the interest you have shown in our company. Data protection is of particularly great importance for the management of 3DDEX LLC. It is generally possible to use the website of 3DDEX LLC. without submitting any personal data. However, personal data might have to be processed when a data subject wishes to make use of special services offered by our company via the website. We will generally obtain the data subject’s consent if personal data need to be processed and there is no legal basis for such processing.</p>
       <p>The processing of personal data, for example a data subject’s name, address, e-mail address or telephone number, is always performed in accordance with the General Data Protection Regulation and in compliance with the country-specific data protection regulations applicable to 3DDEX LLC. Our company data privacy policy is intended to inform the public about the type, scope and purpose of the personal data that we collect, use and process. Moreover, the data privacy policy also advises data subjects of their legal rights.</p>
@@ -155,7 +155,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.data-privacy_pageHeader{
+.dataHeader{
   padding: 7rem 0;
   background-color: rgb(255, 255, 255);
   color: rgb(34, 34, 34);
