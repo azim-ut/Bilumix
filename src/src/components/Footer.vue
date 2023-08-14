@@ -38,12 +38,12 @@
       </div>
 
       <div class="block">
-        <h6><a href="/products/">Products</a></h6>
+        <h6><a href="/shop">Products</a></h6>
         <ul>
-          <li><a href="/headlamp/">Headlamp</a></li>
-          <li><a href="/loupes/">Loupes</a></li>
-          <li><a href="/accessories/">Accessories</a></li>
-          <li><a href="/replaceable/">Replaceable</a></li>
+          <li><a href="/shop">Headlamp</a></li>
+          <li><a href="/shop#loupes">Loupes</a></li>
+          <li><a href="/shop#accessories">Accessories</a></li>
+          <li><a href="/shop#parts">Replaceable</a></li>
         </ul>
       </div>
 
@@ -86,7 +86,7 @@
     </div>
   </footer>
 
-  <Cart ></Cart>
+  <Cart />
 
   <Modal :name="'QuestionModal'"
          :show="isFormOpened"

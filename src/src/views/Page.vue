@@ -23,15 +23,17 @@
 
 
     </TheaterWheel>
-
-    <div class="textBlocksPanel textBlocksPanel1 grid grid3">
-      <RoundedBlackBox v-for="row in shortTextBlocks1"
-                       :bg="row.bg"
-                       :bgColor="row.bgColor"
-                       :title="row.title"
-                       :sub="row.sub"
-                       :text="row.text"
-      ></RoundedBlackBox>
+    <div style="margin: 10px 50px; min-height: 100vh;">
+      <div class="textBlocksPanel textBlocksPanel1 grid grid3" style="min-height: 100vh;">
+        <RoundedBlackBox v-for="row in shortTextBlocks1"
+                         :bg="row.bg"
+                         :margin="'10px'"
+                         :bgColor="row.bgColor"
+                         :title="row.title"
+                         :sub="row.sub"
+                         :text="row.text"
+        ></RoundedBlackBox>
+      </div>
     </div>
     <TheaterWheel :name="'video1'"
                   :test="true"
@@ -40,16 +42,20 @@
                   :scroll-event="scroll.event"
                   :frames="video1Theater.frames"
                   :height="610">
+      <button class="emphasized-button" @click="video2.show = true">Watch Video</button>
     </TheaterWheel>
 
-    <div class="textBlocksPanel textBlocksPanel2 grid grid2">
-      <RoundedBlackBox v-for="row in shortTextBlocks2"
-                       :bg="row.bg"
-                       :bgColor="row.bgColor"
-                       :title="row.title"
-                       :sub="row.sub"
-                       :text="row.text"
-      ></RoundedBlackBox>
+    <div style="padding: 0px 50px; min-height: 100vh;background-color: #151515;">
+      <div class="textBlocksPanel textBlocksPanel2 grid grid2" style="min-height: 100vh;">
+        <RoundedBlackBox v-for="row in shortTextBlocks2"
+                         :bg="row.bg"
+                         :margin="'10px'"
+                         :bgColor="row.bgColor"
+                         :title="row.title"
+                         :sub="row.sub"
+                         :text="row.text"
+        ></RoundedBlackBox>
+      </div>
     </div>
     <TheaterWheel :bg-mode="'cover'"
                   :frames="video2Theater.frames"
@@ -60,14 +66,32 @@
                   :test="true">
     </TheaterWheel>
     <br/>
-    <div class="textBlocksPanel textBlocksPanel3 grid grid3">
-      <RoundedBlackBox v-for="row in shortTextBlocks3"
-                       :bg="row.bg"
-                       :bgColor="row.bgColor"
-                       :title="row.title"
-                       :sub="row.sub"
-                       :text="row.text"
-      ></RoundedBlackBox>
+    <div class="notForMobile">
+      <h1 class="center">{{shortTextBlocks3[0].title}}</h1>
+      <div class="textBlocksPanel textBlocksPanel3 grid grid3">
+        <RoundedBlackBox3 v-for="row in shortTextBlocks3.slice(1)"
+                          :bg="row.bg"
+                          :margin="'10px'"
+                          :color="(row.color??'#fff')"
+                          :bgColor="row.bgColor"
+                          :title="row.title"
+                          :sub="row.sub"
+                          :text="row.text"
+        ></RoundedBlackBox3>
+      </div>
+    </div>
+    <div class="mobileOnly">
+      <div class="textBlocksPanel textBlocksPanel3 grid grid2 force">
+        <RoundedBlackBox3 v-for="row in shortTextBlocks3"
+                          :bg="row.bg"
+                          :margin="'10px'"
+                          :color="(row.color??'#fff')"
+                          :bgColor="row.bgColor"
+                          :title="row.title"
+                          :sub="row.sub"
+                          :text="row.text"
+        ></RoundedBlackBox3>
+      </div>
     </div>
     <div class="contentBody">
       <!-- PLACE CONTENT HERE -->
@@ -86,6 +110,14 @@
            :close-callback="() => {video1.show = false}">
       <div class="video" v-if="video1.show">
         <video :src="video1.src" preload="auto" controls="true" style="width: 100%; height: 100%;"></video>
+      </div>
+    </Modal>
+
+    <Modal :name="'video2'"
+           :show="() => video2.show"
+           :close-callback="() => {video2.show = false}">
+      <div class="video" v-if="video2.show">
+        <video :src="video2.src" preload="auto" controls="true" style="width: 100%; height: 100%;"></video>
       </div>
     </Modal>
   </div>
@@ -108,9 +140,11 @@ import block1 from "@/data/index_text_block1.json"
 import block2 from "@/data/index_text_block2.json"
 import block3 from "@/data/index_text_block3.json"
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import RoundedBlackBox3 from "@/components/RoundedBlackBox3.vue";
 
 export default defineComponent({
   components: {
+    RoundedBlackBox3,
     FontAwesomeIcon,
     Modal,
     HeadMenu,
@@ -122,6 +156,10 @@ export default defineComponent({
       video1: {
         show: false,
         src: '/video/intro.mp4'
+      },
+      video2: {
+        show: false,
+        src: '/video/bilumix-gen2-cm-long-720.mp4'
       },
       shortTextBlocks1: block1,
       shortTextBlocks2: block2,

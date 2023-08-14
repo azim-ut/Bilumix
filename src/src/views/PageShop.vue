@@ -10,7 +10,7 @@ const shopStore = sStore()
   <div class="contentWrap">
     <div class="contentBody">
       <div class="textContent">
-        <h1>Loupes</h1>
+        <a id="loupes"><h1>Loupes</h1></a>
         <p>loupes can be easily mounted on BiLumix headlamp, Find the right working distance to maintain a correct posture.</p>
       </div>
       <div class="shopList grid grid3">
@@ -29,7 +29,7 @@ const shopStore = sStore()
 
 
       <div class="textContent">
-        <h1>Accessories</h1>
+        <a id="accessories"><h1>Accessories</h1></a>
       </div>
       <div class="contentBody shopList grid grid3">
         <div v-for="product in shopStore.accessories" class="product">
@@ -45,7 +45,7 @@ const shopStore = sStore()
       </div>
 
       <div class="textContent">
-        <h1>Replaceable Parts</h1>
+        <a id="parts"><h1>Replaceable Parts</h1></a>
         <p>When you need extra parts, we got them ready.</p>
       </div>
       <div class="contentBody shopList grid grid3">
@@ -62,7 +62,7 @@ const shopStore = sStore()
       </div>
 
       <div class="textContent">
-        <h1>Repair Service</h1>
+        <a id="repair"><h1>Repair Service</h1></a>
       </div>
       <div class="contentBody shopList grid grid3">
         <div v-for="product in shopStore.repair" class="product">
