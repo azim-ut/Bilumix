@@ -71,6 +71,7 @@ import {cartStore} from "@/store/cart/cart"
 import Modal from "@/components/Modal.vue";
 import type {Cart, CartItem} from "@/store/cart/types";
 import type {Product} from "@/store/shop/types";
+import axios from "axios";
 
 export default defineComponent({
   computed: {
@@ -102,7 +103,16 @@ export default defineComponent({
       })
       this.list = out
     },
-    checkout(){},
+    checkout(){
+      axios.post("/test.php", {
+        summary: "Checkout",
+        text: "checkout text"
+      }).then(response => {
+        console.log(response)
+        // this.close()
+      })
+
+    },
     async clear(){
       await this.cartStore.clearCart()
       this.updateItemsList()
