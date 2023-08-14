@@ -22,5 +22,7 @@ if(isset($data->text) && !empty($data->text)){
 }
 
 // send email
-mail($targetEmail, $summary, implode("\r\n", $content));
+$out = mail($targetEmail, $summary, implode("\r\n", $content));
+var_dump($out);
+var_dump($data);
 ?>

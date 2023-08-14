@@ -1,20 +1,28 @@
 <?php
 $targetEmail = "9420183@gmail.com";
-$text = $_REQUEST["text"]?'no_text';
-$name = $_REQUEST["name"]?'no_email';
-$summary = $_REQUEST["summary"]?'no_email';
+$json = file_get_contents('php://input');
 
-// use wordwrap() if lines are longer than 70 characters
-$summary = wordwrap($summary,150);
+// Converts it into a PHP object
+$data = json_decode($json);
+
+
+$summary = "No title";
 $content = [];
-if(isset($_REQUEST["email"]) && !empty($_REQUEST["email"])){
-    $content[] = "From email: ".$_REQUEST["email"];
+if(isset($data->summary) && !empty($data->summary)){
+    $summary = wordwrap($data->summary,150);
 }
-$content[] = "Name: ".$name;
-if(isset($_REQUEST["text"]) && !empty($_REQUEST["text"])){
-    $content[] = $text;
+if(isset($data->email) && !empty($data->email)){
+    $content[] = "From email: ".$data->email;
+}
+if(isset($data->name) && !empty($data->name)){
+    $content[] = "Name: ".$data->name;
+}
+if(isset($data->text) && !empty($data->text)){
+    $content[] = $data->text;
 }
 
 // send email
-mail($targetEmail, $summary, implode("\r\n", $content));
+$out = mail($targetEmail, $summary, implode("\r\n", $content));
+var_dump($out);
+var_dump($data);
 ?>
