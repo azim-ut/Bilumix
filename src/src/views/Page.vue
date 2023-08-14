@@ -3,27 +3,27 @@
   <HeadMenu :key="$route.path" />
   <div class="contentBody" style="margin-top: 80px;">
     <IntroFrame1 />
-    <TheaterWheel :name="'product'"
+    <TheaterMainWheel :name="'product'"
                   :test="true"
                   :bg-mode="'cover'"
                   :scroll-event="scroll.event"
                   :frames="productTheater.frames"
                   :height="610">
       <div class="center">
-        <h1 style="font-size: 500%;">BRIGHT</h1>
-        <h1 style="font-size: 500%;">CHOICE</h1>
-        <p style="margin: auto; width: 50%; font-size: x-large;">
+        <h1 style="font-size: revert;">BRIGHT</h1>
+        <h1 style="font-size: revert;">CHOICE</h1>
+        <p style="margin: auto; width: 50%; font-size: large;">
           For any procedure to illuminate
           an area via a unique, dual light source
           that eliminates any shadow
         </p>
-        <button class="emphasized-button" @click="video1.show = true">Watch Video</button>
+        <button class="emphasized-button" @click="video1.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> Watch Video</button>
       </div>
 
 
 
-    </TheaterWheel>
-    <div style="margin: 10px 50px; min-height: 100vh;">
+    </TheaterMainWheel>
+    <div class="textBlocksPanelWrap">
       <div class="textBlocksPanel textBlocksPanel1 grid grid3" style="min-height: 100vh;">
         <RoundedBlackBox v-for="row in shortTextBlocks1"
                          :bg="row.bg"
@@ -42,10 +42,10 @@
                   :scroll-event="scroll.event"
                   :frames="video1Theater.frames"
                   :height="610">
-      <button class="emphasized-button" @click="video2.show = true">Watch Video</button>
+      <button class="emphasized-button" @click="video2.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> Watch Video</button>
     </TheaterWheel>
 
-    <div style="padding: 0px 50px; min-height: 100vh;background-color: #151515;">
+    <div class="textBlocksPanelWrap" style="margin: 0 !important; padding: 0 !important; background-color: #151515;">
       <div class="textBlocksPanel textBlocksPanel2 grid grid2" style="min-height: 100vh;">
         <RoundedBlackBox v-for="row in shortTextBlocks2"
                          :bg="row.bg"
@@ -141,9 +141,11 @@ import block2 from "@/data/index_text_block2.json"
 import block3 from "@/data/index_text_block3.json"
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import RoundedBlackBox3 from "@/components/RoundedBlackBox3.vue";
+import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
 
 export default defineComponent({
   components: {
+    TheaterMainWheel,
     RoundedBlackBox3,
     FontAwesomeIcon,
     Modal,
@@ -288,18 +290,29 @@ export default defineComponent({
   color: #fff;
 }
 .stayUpdate .emailInput{
-
+  font-size: larger;
 }
 .stayUpdate .emailInput input{
-  background: #b6e8ff;
   border: none;
+  background: #fff;
+  font-size: medium;
   padding: 10px;
   border-radius: 20px 0 0 20px;
 }
 .stayUpdate .emailInput button{
-  background: #b6e8ff;
   border: none;
+  border-left: #b6e8ff 1px solid;
+  font-size: medium;
+  background: #fff;
   padding: 10px;
   border-radius: 0 20px 20px 0;
+}
+.textBlocksPanelWrap{
+  margin: 10px 50px; min-height: 100vh;
+}
+@media (max-width: 850px) {
+  .textBlocksPanelWrap{
+    margin: 10px 0px;
+  }
 }
 </style>

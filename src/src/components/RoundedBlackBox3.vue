@@ -47,7 +47,7 @@ export default defineComponent({
 }
 .block h1{
   text-align: left;
-  font-size: xxx-large;
+  font-size: revert;
 }
 .block h3{
   text-align: center;

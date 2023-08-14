@@ -13,10 +13,10 @@ const app = createApp(App)
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faBars , faTrash, faShoppingBag ,faEnvelope} from '@fortawesome/free-solid-svg-icons'
+import { faBars , faTrash, faShoppingBag ,faEnvelope, faCirclePlay} from '@fortawesome/free-solid-svg-icons'
 import {createPinia} from "pinia";
 
-library.add(faBars,faTrash, faShoppingBag, faEnvelope)
+library.add(faBars,faTrash, faShoppingBag, faEnvelope, faCirclePlay)
 
 app
     .use(router)

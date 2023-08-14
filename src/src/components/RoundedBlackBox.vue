@@ -46,7 +46,7 @@ export default defineComponent({
   border-radius: 38px;
 }
 .block h1{
-  font-size: xxx-large;
+  font-size: revert;
 }
 .block h3{
   text-align: center;

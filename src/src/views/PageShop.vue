@@ -163,12 +163,12 @@ export default defineComponent({
   transform: translateZ(-80px);
 }
 .emphasized-button{
-  margin: 0px 10px 0;
+  margin: 0 10px 0;
   border: none;
   height: 30px;
   position: relative;
   font-size: 15px;
-  line-height: 0px;
+  line-height: 0;
   width: 150px;
   top: -20px;
   bottom: 30px;
