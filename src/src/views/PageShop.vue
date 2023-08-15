@@ -14,10 +14,15 @@ const shopStore = sStore()
         <p>loupes can be easily mounted on BiLumix headlamp, Find the right working distance to maintain a correct posture.</p>
       </div>
       <div class="shopList grid grid3">
-        <div v-for="product in shopStore.loupes" class="product">
+        <div v-for="product in shopStore.loupes"
+             class="product"
+             :id="product.link+'ID'"
+        >
           <div class="productBody">
             <div class="title">{{product.short}}</div>
-            <div class="image" :style="{'background-image': 'url(' + product.images[0].url + ')'}"></div>
+            <div class="image" :style="{'background-image': 'url(' + product.images[0].url + ')'}"
+                 @mousemove="transforms($event, product.link+'ID')"
+            ></div>
             <div class="tools">
               <button class="emphasized-button" @click="toDetails(product.link)">Details</button>
               <button class="emphasized-button" @click="toCart(product.link)">Add to cart</button>
@@ -105,11 +110,62 @@ export default defineComponent({
     IntroFrame1, RouterView, Footer, ScrollDownIndicator, IntroSection1, RoundedBlackBox},
   data() {
     return {
+      constraint: 200
     }
   },
   methods: {
     toCart(link:string){
       this.cartStore.toCart(link, 1)
+    },
+    transforms(event: any, id:string): string {
+      let target = document.getElementById(id)
+      let rotateX = this.calcRotateX(target, event.clientX);
+      let rotateY = this.calcRotateY(target, event.clientY);
+
+      if(target){
+        let ttl = target.getElementsByClassName("title")[0]
+        let img = target.getElementsByClassName("image")[0]
+        let tools = target.getElementsByClassName("tools")[0]
+        let price = target.getElementsByClassName("price")[0]
+        if(ttl){
+          let ttlRotateX = rotateX/2
+          let ttlRotateY = rotateY/2
+          ttl.style.transform = "perspective(10px) "
+              + "rotateX("+ ttlRotateX +"deg) "
+              + "rotateY("+ -ttlRotateY +"deg) ";
+        }
+        if(img){
+          let imgRotateX = rotateX/2
+          let imgRotateY = rotateY/2
+          img.style.transform = "perspective(10px) "
+              + "rotateX("+ imgRotateX +"deg) "
+              + "rotateY("+ imgRotateY +"deg) ";
+        }
+        if(tools){
+          let toolsRotateX = rotateX
+          let toolsRotateY = rotateY/2
+          console.log("toolsX: ", toolsRotateX)
+          tools.style.transform = "perspective(10px) "
+              + "rotateX("+ toolsRotateX +"deg) "
+              + "rotateY("+ -toolsRotateY +"deg) ";
+        }
+        if(price){
+          let priceRotateX = rotateX/2
+          let priceRotateY = rotateY/2
+          price.style.transform = "perspective(10px) "
+              + "rotateX("+ priceRotateX +"deg) "
+              + "rotateY("+ priceRotateY +"deg) ";
+        }
+      }
+    },
+    calcRotateX(target: any, x: number){
+      let rect = target.getBoundingClientRect()
+      // console.log(x, rect.x, (rect.width / 2), (x - rect.x - (rect.width / 2)))
+      return (x - rect.x - (rect.width / 2)) / this.constraint
+    },
+    calcRotateY(target: any, y: number){
+      let rect = target.getBoundingClientRect()
+      return (y - rect.y - (rect.height / 2)) / this.constraint
     },
     toDetails(link: string){
       this.$router.push({name: "shopItem", params: {link: link}})
@@ -133,12 +189,13 @@ export default defineComponent({
 .shopList .product{
   display: flex;
   vertical-align: middle;
+  transition: .2s;
 }
 .shopList .product .productBody{
   margin: 30px auto 0;
   position: relative;
   background: transparent;
-  transition: .5s;
+  transition: .2s;
 }
 .shopList .product .productBody .title{
   text-align: center;
@@ -147,16 +204,20 @@ export default defineComponent({
   right: 0;
   top: -14px;
   font-size: large;
+  transition: .2s;
+  z-index: 100;
 }
 .shopList .product .productBody .price{
   margin-top: 20px;
   text-align: center;
+  transition: .2s;
 }
 .shopList .product .productBody .image{
   width: 340px;
   height: 340px;
   background: transparent no-repeat center center/cover;
   border-radius: 40px;
+  transition: .2s;
 }
 
 .productBody:hover {
@@ -169,7 +230,7 @@ export default defineComponent({
   position: relative;
   font-size: 15px;
   line-height: 0;
-  width: 150px;
+  width: auto;
   top: -20px;
   bottom: 30px;
 }
