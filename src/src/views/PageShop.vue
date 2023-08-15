@@ -37,10 +37,14 @@ const shopStore = sStore()
         <a id="accessories"><h1>Accessories</h1></a>
       </div>
       <div class="contentBody shopList grid grid3">
-        <div v-for="product in shopStore.accessories" class="product">
+        <div v-for="product in shopStore.accessories"
+             :id="product.link+'ID'"
+             class="product">
           <div class="productBody">
             <div class="title">{{product.short}}</div>
-            <div class="image" :style="{'background-image': 'url(' + product.images[0].url + ')'}"></div>
+            <div class="image" :style="{'background-image': 'url(' + product.images[0].url + ')'}"
+                 @mousemove="transforms($event, product.link+'ID')"
+            ></div>
             <div class="tools">
               <button class="emphasized-button" @click="toDetails(product.link)">Details</button>
             </div>
@@ -54,10 +58,14 @@ const shopStore = sStore()
         <p>When you need extra parts, we got them ready.</p>
       </div>
       <div class="contentBody shopList grid grid3">
-        <div v-for="product in shopStore.parts" class="product">
+        <div v-for="product in shopStore.parts"
+             :id="product.link+'ID'"
+             class="product">
           <div class="productBody">
             <div class="title">{{product.short}}</div>
-            <div class="image" :style="{'background-image': 'url(' + product.images[0].url + ')'}"></div>
+            <div class="image" :style="{'background-image': 'url(' + product.images[0].url + ')'}"
+                 @mousemove="transforms($event, product.link+'ID')"
+            ></div>
             <div class="tools">
               <button class="emphasized-button" @click="toDetails(product.link)">Details</button>
             </div>
@@ -70,10 +78,14 @@ const shopStore = sStore()
         <a id="repair"><h1>Repair Service</h1></a>
       </div>
       <div class="contentBody shopList grid grid3">
-        <div v-for="product in shopStore.repair" class="product">
+        <div v-for="product in shopStore.repair"
+             :id="product.link+'ID'"
+             class="product">
           <div class="productBody">
             <div class="title">{{product.short}}</div>
-            <div class="image" :style="{'background-image': 'url(' + product.images[0].url + ')'}"></div>
+            <div class="image" :style="{'background-image': 'url(' + product.images[0].url + ')'}"
+                 @mousemove="transforms($event, product.link+'ID')"
+            ></div>
             <div class="tools">
               <button class="emphasized-button" @click="toDetails(product.link)">Details</button>
             </div>
@@ -144,7 +156,7 @@ export default defineComponent({
         if(tools){
           let toolsRotateX = rotateX
           let toolsRotateY = rotateY/2
-          console.log("toolsX: ", toolsRotateX)
+          // console.log("toolsX: ", toolsRotateX)
           tools.style.transform = "perspective(10px) "
               + "rotateX("+ toolsRotateX +"deg) "
               + "rotateY("+ -toolsRotateY +"deg) ";
