@@ -1,8 +1,8 @@
 <template>
-  <div class="block" :style="{'background-color': ($props.bgColor??'transparent'), 'background-image': 'url(' + $props.bg + ')'}">
+  <div class="block" :style="{'margin': margin, 'background-color': ($props.bgColor??'transparent'), 'background-image': 'url(' + $props.bg + ')'}">
   	<div class="inner">
       <div class="bg">
-        <h1>{{$props.title}}</h1>
+        <h1 class="center" :style="{'color': color}">{{$props.title}}</h1>
       	<h3 class="gradientTitle">{{$props.sub}}</h3>
         <p>{{$props.text}}</p>
       </div>
@@ -20,6 +20,8 @@ export default defineComponent({
   components: {ScrollDownIndicator, IntroSection1},
   props: {
     bg: "" as string|null,
+    margin: "" as string|null,
+    color: null as string|null,
     bgColor: null as string|null,
     title: "" as string,
     sub: "" as string,
@@ -42,11 +44,9 @@ export default defineComponent({
   min-height: 50vh;
   background: #000;
   border-radius: 38px;
-  margin: 0 10px;
 }
 .block h1{
-  text-align: left;
-  font-size: xxx-large;
+  font-size: revert;
 }
 .block h3{
   text-align: center;
@@ -68,7 +68,6 @@ export default defineComponent({
 
 @media (max-width: 850px) {
   .block{
-    margin: 10px;
   }
 }
 </style>

@@ -7,8 +7,8 @@
             <div>Cart</div>
           </div>
           <div class="col2">
-            <div>
-              Checkout sum: ${{checkoutSum}}
+            <div v-if="checkoutSum">
+              Checkout sum: $ {{checkoutSum}}
             </div>
           </div>
           <div class="col3">
@@ -20,14 +20,15 @@
       <div class="grid grid2">
         <div>
           <div class="cartList" v-if="hasItems()">
-            <div class="product grid grid121" v-for="row in getItemsList()">
-              <div class="short">
+            <div class="product grid grid121" v-for="row in list">
+
+              <div class="short" v-if="row.target.images">
                 <div class="img" :style="{'background-image' : 'url('+row.target.images[0].url+')'}"></div>
                 <div class="cnt">
                   <span>{{row.cnt}}</span>
                 </div>
               </div>
-              <div class="title">
+              <div class="title" v-if="row.target.title">
                 <div>
                   <div>{{row.target.title}}</div>
                   <div class="cntTool">
@@ -36,7 +37,7 @@
                   <div><small>{{row.cnt}} x ${{row.target.price}} = ${{row.cnt * row.target.price}}</small></div>
                 </div>
               </div>
-              <div class="tool">
+              <div class="tool" v-if="row.url">
                 <div>
                   <button class="btn" @click="removeItem(row.url)">
                     <font-awesome-icon icon="fa-solid fa-trash" />
@@ -69,6 +70,8 @@ import {shopStore} from "@/store/shop/shop"
 import {cartStore} from "@/store/cart/cart"
 import Modal from "@/components/Modal.vue";
 import type {Cart, CartItem} from "@/store/cart/types";
+import type {Product} from "@/store/shop/types";
+import axios from "axios";
 
 export default defineComponent({
   computed: {
@@ -77,55 +80,67 @@ export default defineComponent({
   components: {Modal},
   data() {
     return {
-      checkoutSum: 0
+      checkoutSum: 0,
+      list: [] as any[]
     }
   },
   methods: {
-    getCart(): Cart {
-      return this.cartStore.getCart
-    },
-    getItemsList(): CartItem[]{
-      let out = []
+    updateItemsList(): CartItem[]{
+      let out: any[] = []
+      let catalog = this.shopStore.getAll
       this.checkoutSum = 0
-      this.cartStore.getCartItems()?.forEach((row:any) => {
-        row.target = this.shopStore.getItem(row.url)
-        this.checkoutSum += row.cnt * row.target.price
+      this.cartStore.getCart.list.forEach((row:any) => {
+        // row.target = {}
+        if(!row.target){
+          catalog.forEach((cat: Product) => {
+            if(cat.link === row.url){
+              row.target = cat
+            }
+          })
+          this.checkoutSum += row.cnt * row.target.price
+        }
         out.push(row)
       })
-      return out
+      this.list = out
     },
-    checkout(){},
-    clear(){
-      this.cartStore.clearCart()
+    checkout(){
+      axios.post("/test.php", {
+        summary: "Checkout",
+        text: "checkout text"
+      }).then(response => {
+        console.log(response)
+        // this.close()
+      })
+
+    },
+    async clear(){
+      await this.cartStore.clearCart()
+      this.updateItemsList()
       this.close()
     },
     close(){
       return this.cartStore.close()
     },
     hasItems():boolean{
-      return this.cartStore.countItems()>0
+      return this.cartStore.getCart.list.length>0
     },
     removeItem(link: string):void{
       this.cartStore.setCount(link, 0)
+      this.updateItemsList()
     },
     setItemCount(link: string, cnt: number):void{
       this.cartStore.setCount(link, cnt)
+      this.updateItemsList()
     },
     isShow(): boolean {
       return this.cartStore.isShow
     }
   },
-  mounted() {
-    this.cartStore.fetchCart()
+  async mounted() {
+    await this.cartStore.fetchCart()
+    this.updateItemsList()
   },
   unmounted() {
-  },
-  watch: {
-    'cartStore.isShow': {
-      handler(newVal, oldValue) {
-        // console.log(oldValue, '->', newVal, this.showQuestionModal)
-      }
-    }
   }
 })
 </script>

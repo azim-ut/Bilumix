@@ -73,7 +73,7 @@ export default defineComponent({
     },
     toCart(){
       console.log(this.cartStore.getCart)
-      this.cartStore.toggle()
+      this.cartStore.open()
     }
   },
   unmounted () {

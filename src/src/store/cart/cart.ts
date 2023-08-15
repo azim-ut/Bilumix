@@ -23,16 +23,13 @@ export const cartStore = defineStore('cart', {
                 }
             }
             return out
-        },
-        getCartItems: (state: CartState) => (): CartItem[] => {
-        	return state.cart.list
         }
     },
     actions: {
         toggle(): void {
             this.$state.cart.show = !this.$state.cart.show
         },
-        show(): void {
+        open(): void {
             this.$state.cart.show = true
         },
         close(): void {
