@@ -67,7 +67,6 @@ export default defineComponent({
         if(rect){
           let projectorY = rect.top;
           if(this.$props.test){
-            console.log(this.$props.name, this.theaterDivIndex, projectorY, rect.height, projectorY + rect.height, window.innerHeight)
           }
 
           if(projectorY<0){

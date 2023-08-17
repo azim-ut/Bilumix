@@ -71,7 +71,6 @@ export const cartStore = defineStore('cart', {
         },
 
         toCart(link: string, count: number) {
-            console.log(this.$state.cart.list)
             let record = this.$state.cart.list.find(row => row.url === link);
             if(!record){
                 record = {
@@ -85,7 +84,6 @@ export const cartStore = defineStore('cart', {
         },
 
         clearCart() {
-            console.log(111)
             this.$state.cart.list = []
             this.saveCart()
         }

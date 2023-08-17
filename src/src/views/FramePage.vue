@@ -55,13 +55,12 @@
 import {defineComponent} from "vue"
 import Theater from "@/components/Theater.vue";
 import RoundedBlackBox from "@/components/RoundedBlackBox.vue";
-import IntroSection1 from "@/components/IntroSection1.vue";
 import ScrollDownIndicator from "@/components/ScrollDownIndicator.vue";
 import Footer from "@/components/Footer.vue";
 import {RouterView} from "vue-router";
 
 export default defineComponent({
-  components: {RouterView, Footer, ScrollDownIndicator, IntroSection1, RoundedBlackBox, Theater},
+  components: {RouterView, Footer, ScrollDownIndicator, RoundedBlackBox, Theater},
   data() {
     return {
       showMobileMenu: false,
@@ -113,7 +112,6 @@ export default defineComponent({
   },
   methods: {
     toggleMenu(menu: any){
-      console.log(menu)
       this.$router.push({name: menu.name})
       this.menu.forEach(row => {
         row.active = false
@@ -125,7 +123,6 @@ export default defineComponent({
     },
     loadedEvent(){
       this.loaded = true
-      console.log("loaded")
     },
     fillTheaterFrames(){
       this.productTheater.frames = []

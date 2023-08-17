@@ -13,11 +13,10 @@
 <script lang="ts">
 
 import {defineComponent} from "vue"
-import IntroSection1 from "@/components/IntroSection1.vue";
 import ScrollDownIndicator from "@/components/ScrollDownIndicator.vue";
 
 export default defineComponent({
-  components: {ScrollDownIndicator, IntroSection1},
+  components: {ScrollDownIndicator},
   props: {
     bg: "" as string|null,
     margin: "" as string|null,
