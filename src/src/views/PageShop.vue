@@ -22,6 +22,7 @@ const shopStore = sStore()
             <div class="title">{{product.short}}</div>
             <div class="image" :style="{'background-image': 'url(' + product.images[0].url + ')'}"
                  @mousemove="transforms($event, product.link+'ID')"
+                 @mouseout="clearTransform($event, product.link+'ID')"
             ></div>
             <div class="tools">
               <button class="emphasized-button" @click="toDetails(product.link)">Details</button>
@@ -44,6 +45,7 @@ const shopStore = sStore()
             <div class="title">{{product.short}}</div>
             <div class="image" :style="{'background-image': 'url(' + product.images[0].url + ')'}"
                  @mousemove="transforms($event, product.link+'ID')"
+                 @mouseout="clearTransform($event, product.link+'ID')"
             ></div>
             <div class="tools">
               <button class="emphasized-button" @click="toDetails(product.link)">Details</button>
@@ -65,6 +67,7 @@ const shopStore = sStore()
             <div class="title">{{product.short}}</div>
             <div class="image" :style="{'background-image': 'url(' + product.images[0].url + ')'}"
                  @mousemove="transforms($event, product.link+'ID')"
+                 @mouseout="clearTransform($event, product.link+'ID')"
             ></div>
             <div class="tools">
               <button class="emphasized-button" @click="toDetails(product.link)">Details</button>
@@ -84,7 +87,6 @@ const shopStore = sStore()
           <div class="productBody">
             <div class="title">{{product.short}}</div>
             <div class="image" :style="{'background-image': 'url(' + product.images[0].url + ')'}"
-                 @mousemove="transforms($event, product.link+'ID')"
             ></div>
             <div class="tools">
               <button class="emphasized-button" @click="toDetails(product.link)">Details</button>
@@ -102,11 +104,10 @@ const shopStore = sStore()
 
 import {defineComponent} from "vue"
 import RoundedBlackBox from "@/components/RoundedBlackBox.vue";
-import IntroSection1 from "@/components/IntroSection1.vue";
 import ScrollDownIndicator from "@/components/ScrollDownIndicator.vue";
 import Footer from "@/components/Footer.vue";
 import {RouterView} from "vue-router";
-import IntroFrame1 from "@/views/IntroFrame1.vue";
+import IntroFrame1 from "@/components/IntroFrame1.vue";
 import TheaterWheel from "@/components/TheaterWheel.vue";
 import HeadMenu from "@/components/HeadMenu.vue";
 import {mapStores} from "pinia";
@@ -119,10 +120,10 @@ export default defineComponent({
   components: {
     HeadMenu,
     TheaterWheel,
-    IntroFrame1, RouterView, Footer, ScrollDownIndicator, IntroSection1, RoundedBlackBox},
+    IntroFrame1, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox},
   data() {
     return {
-      constraint: 200
+      constraint: 100
     }
   },
   methods: {
@@ -156,7 +157,6 @@ export default defineComponent({
         if(tools){
           let toolsRotateX = rotateX
           let toolsRotateY = rotateY/2
-          // console.log("toolsX: ", toolsRotateX)
           tools.style.transform = "perspective(10px) "
               + "rotateX("+ toolsRotateX +"deg) "
               + "rotateY("+ -toolsRotateY +"deg) ";
@@ -170,9 +170,29 @@ export default defineComponent({
         }
       }
     },
+    clearTransform(event: any, id:string): string {
+      let target = document.getElementById(id)
+      if(target){
+        let ttl = target.getElementsByClassName("title")[0]
+        let img = target.getElementsByClassName("image")[0]
+        let tools = target.getElementsByClassName("tools")[0]
+        let price = target.getElementsByClassName("price")[0]
+        if(ttl){
+          ttl.style.transform = "perspective(10px) rotateX(0deg) rotateY(0deg)";
+        }
+        if(img){
+          img.style.transform = "perspective(10px) rotateX(0deg) rotateY(0deg)";
+        }
+        if(tools){
+          tools.style.transform = "perspective(10px) rotateX(0deg) rotateY(0deg)";
+        }
+        if(price){
+          proce.style.transform = "perspective(10px) rotateX(0deg) rotateY(0deg)";
+        }
+      }
+    },
     calcRotateX(target: any, x: number){
       let rect = target.getBoundingClientRect()
-      // console.log(x, rect.x, (rect.width / 2), (x - rect.x - (rect.width / 2)))
       return (x - rect.x - (rect.width / 2)) / this.constraint
     },
     calcRotateY(target: any, y: number){

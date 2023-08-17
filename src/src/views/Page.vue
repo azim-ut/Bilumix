@@ -3,26 +3,6 @@
   <HeadMenu :key="$route.path" />
   <div class="contentBody" style="margin-top: 80px;">
     <IntroFrame1 />
-    <TheaterMainWheel :name="'product'"
-                  :test="true"
-                  :bg-mode="'cover'"
-                  :scroll-event="scroll.event"
-                  :frames="productTheater.frames"
-                  :height="610">
-      <div class="center">
-        <h1 style="font-size: revert;">BRIGHT</h1>
-        <h1 style="font-size: revert;">CHOICE</h1>
-        <p style="margin: auto; width: 50%; font-size: large;">
-          For any procedure to illuminate
-          an area via a unique, dual light source
-          that eliminates any shadow
-        </p>
-        <button class="emphasized-button" @click="video1.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> Watch Video</button>
-      </div>
-
-
-
-    </TheaterMainWheel>
     <div class="textBlocksPanelWrap">
       <div class="textBlocksPanel textBlocksPanel1 grid grid3" style="min-height: 100vh;">
         <RoundedBlackBox v-for="row in shortTextBlocks1"
@@ -35,15 +15,7 @@
         ></RoundedBlackBox>
       </div>
     </div>
-    <TheaterWheel :name="'video1'"
-                  :test="true"
-                  :bg-mode="'cover'"
-                  :style="{'background':'#000'}"
-                  :scroll-event="scroll.event"
-                  :frames="video1Theater.frames"
-                  :height="610">
-      <button class="emphasized-button" @click="video2.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> Watch Video</button>
-    </TheaterWheel>
+
 
     <div class="textBlocksPanelWrap" style="margin: 0 !important; padding: 0 !important; background-color: #151515;">
       <div class="textBlocksPanel textBlocksPanel2 grid grid2" style="min-height: 100vh;">
@@ -57,15 +29,7 @@
         ></RoundedBlackBox>
       </div>
     </div>
-    <TheaterWheel :bg-mode="'cover'"
-                  :frames="video2Theater.frames"
-                  :style="{'background':'#000'}"
-                  :scroll-event="scroll.event"
-                  :height="610"
-                  :name="'video2'"
-                  :test="true">
-    </TheaterWheel>
-    <br/>
+
     <div class="notForMobile">
       <h1 class="center">{{shortTextBlocks3[0].title}}</h1>
       <div class="textBlocksPanel textBlocksPanel3 grid grid3">
@@ -93,8 +57,32 @@
         ></RoundedBlackBox3>
       </div>
     </div>
+
+    <TheaterWheel :name="'video1'"
+                  :test="false"
+                  :bg-mode="'cover'"
+                  :style="{'background':'#000'}"
+                  :scroll-event="scroll.event"
+                  :frames="video1Theater.frames"
+                  :height="610">
+      <button class="emphasized-button" @click="video2.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> Watch Video</button>
+    </TheaterWheel>
+    <TheaterWheel :bg-mode="'cover'"
+                  :frames="video2Theater.frames"
+                  :style="{'background':'#000'}"
+                  :scroll-event="scroll.event"
+                  :height="610"
+                  :name="'video2'"
+                  :test="false">
+    </TheaterWheel>
+    <br/>
+
     <div class="contentBody">
       <!-- PLACE CONTENT HERE -->
+    </div>
+    <div class="specialOffers">
+      <h1>Special Offers</h1>
+      <h3 class="gradientTitle">We will resume the offers back soon.</h3>
     </div>
     <div class="stayUpdate">
       <h1>Stay updated</h1>
@@ -104,14 +92,6 @@
       </div>
     </div>
 
-
-    <Modal :name="'video1'"
-           :show="() => video1.show"
-           :close-callback="() => {video1.show = false}">
-      <div class="video" v-if="video1.show">
-        <video :src="video1.src" preload="auto" controls="true" style="width: 100%; height: 100%;"></video>
-      </div>
-    </Modal>
 
     <Modal :name="'video2'"
            :show="() => video2.show"
@@ -128,11 +108,11 @@
 
 import {defineComponent} from "vue"
 import RoundedBlackBox from "@/components/RoundedBlackBox.vue";
-import IntroSection1 from "@/components/IntroSection1.vue";
+import IntroSection1 from "@/components/IntroFrame1.vue";
 import ScrollDownIndicator from "@/components/ScrollDownIndicator.vue";
 import Footer from "@/components/Footer.vue";
 import {RouterView} from "vue-router";
-import IntroFrame1 from "@/views/IntroFrame1.vue";
+import IntroFrame1 from "@/components/IntroFrame1.vue";
 import TheaterWheel from "@/components/TheaterWheel.vue";
 import HeadMenu from "@/components/HeadMenu.vue";
 import Modal from "@/components/Modal.vue";
@@ -155,10 +135,6 @@ export default defineComponent({
   data() {
     return {
       loaded: false,
-      video1: {
-        show: false,
-        src: '/video/intro.mp4'
-      },
       video2: {
         show: false,
         src: '/video/bilumix-gen2-cm-long-720.mp4'
@@ -183,7 +159,6 @@ export default defineComponent({
   methods: {
     loadedEvent(){
       this.loaded = true
-      console.log("loaded")
     },
     fillTheaterFrames(){
       this.productTheater.frames = []
@@ -236,9 +211,9 @@ export default defineComponent({
   mounted(){
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('load', this.loadedEvent);
-    this.fillTheaterFrames()
-    this.fillVideoTheaterFrames()
-    this.fillVideo2TheaterFrames()
+    // this.fillTheaterFrames()
+    // this.fillVideoTheaterFrames()
+    // this.fillVideo2TheaterFrames()
   }
 })
 </script>
@@ -309,6 +284,21 @@ export default defineComponent({
 }
 .textBlocksPanelWrap{
   margin: 10px 50px; min-height: 100vh;
+}
+
+.specialOffers{
+  padding: 5%;
+  text-align: center;
+  background: black;
+  color: white;
+}
+.specialOffers h1{
+  margin: auto;
+  font-size: xxx-large;
+}
+.specialOffers h3{
+  margin: auto;
+  font-size: x-large;
 }
 @media (max-width: 850px) {
   .textBlocksPanelWrap{

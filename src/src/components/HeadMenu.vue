@@ -72,7 +72,6 @@ export default defineComponent({
       location.href = "/"
     },
     toCart(){
-      console.log(this.cartStore.getCart)
       this.cartStore.open()
     }
   },
@@ -123,6 +122,7 @@ header nav ul li{
   cursor: pointer;
 }
 header nav ul li a{
+  font-size: 18px;
   height: 50px;
   line-height: 50px;
   padding: 0 20px;

@@ -22,11 +22,10 @@
 
 import {defineComponent} from "vue"
 import RoundedBlackBox from "@/components/RoundedBlackBox.vue";
-import IntroSection1 from "@/components/IntroSection1.vue";
 import ScrollDownIndicator from "@/components/ScrollDownIndicator.vue";
 import Footer from "@/components/Footer.vue";
 import {RouterView} from "vue-router";
-import IntroFrame1 from "@/views/IntroFrame1.vue";
+import IntroFrame1 from "@/components/IntroFrame1.vue";
 import TheaterWheel from "@/components/TheaterWheel.vue";
 import HeadMenu from "@/components/HeadMenu.vue";
 import {manualStore} from "@/store/manual/manual";
@@ -40,7 +39,7 @@ export default defineComponent({
   components: {
     HeadMenu,
     TheaterWheel,
-    IntroFrame1, RouterView, Footer, ScrollDownIndicator, IntroSection1, RoundedBlackBox},
+    IntroFrame1, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox},
   data() {
     return {
       manual: {
@@ -54,7 +53,6 @@ export default defineComponent({
   },
   methods: {
     showVideo(link: string){
-      console.log(link)
     },
     getLink():any {return this.$route.params.link},
     toManualsList() {

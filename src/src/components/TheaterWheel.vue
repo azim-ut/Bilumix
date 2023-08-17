@@ -63,19 +63,20 @@ export default defineComponent({
         newZoom = this.$props.frames.length
       }
       this.reel.current = newZoom;
-      // console.log(this.reel.current , direction , this.reel.step , this.reel.max, this.$props.frames.length)
     },
     handleWheel(event: Event){
+
       if(!this.loaded){
         return;
       }
-      let rect = this.$refs.theaterDiv?.getBoundingClientRect();
+      let rect = this.$refs.theaterDiv?.getBoundingClientRect()
+      let root = document.getElementById("app").getBoundingClientRect()
+      // console.log(rect.top, root.top, rect.top + root.top)
       if(
           !rect ||
           (rect.top + rect.height)<0 ||
           (rect.top-rect.height)>window.innerHeight
       ){
-        console.log(this.$props.name, !rect, (rect.top + rect.height)<0, ((rect.top)>window.innerHeight), (rect.top-rect.height), window.innerHeight)
         return;
       }
 
@@ -85,7 +86,6 @@ export default defineComponent({
       // let direction = event.deltaY > 0 ? 1 : -1;
       let direction = (rect.top - this.reel.lastPos) > 0 ? 1 : -1;
       this.updateReelPosition(direction)
-      console.log(this.reel.current , direction , this.reel.step)
 
       // if(
       //     (direction > 0 && this.reel.current<this.reel.max) ||

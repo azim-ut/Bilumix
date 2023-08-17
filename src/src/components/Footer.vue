@@ -134,7 +134,6 @@ export default defineComponent({
     'feedbackStore.isOpened': {
       handler(newVal,oldValue){
 
-        // console.log(newVal, oldValue)
       },
       immediate: true
     }
