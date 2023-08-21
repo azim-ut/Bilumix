@@ -7,7 +7,7 @@
           </div>
         </div>
         <div class="bg">
-          <div v-for="(img, $index) in $props.frames"
+          <div v-for="(img, $index) in videoTheater.frames"
                :key="$index"
                :class="{'bgModeCover': $props.bgMode === 'cover', 'bgModeContain': $props.bgMode === 'contain'}"
                v-show="$index === theaterDivIndex"
@@ -15,10 +15,10 @@
         </div>
       </div>
       <div class="framesBar" ref="framesBar">
-        <div v-for="(img, $index) in $props.frames"
+        <div v-for="(img, $index) in videoTheater.frames"
              :key="$index"
              :class="{'bgDisabled': !framesWithBackground.includes($index)}"
-             :style="{'height': ($props.height/$props.frames.length) + 'px', 'background-image': 'url(' + img + ')'}"></div>
+             :style="{'height': ($props.height/videoTheater.length) + 'px', 'background-image': 'url(' + img + ')'}"></div>
       </div>
   </div>
 </template>
@@ -34,11 +34,13 @@ export default defineComponent({
     test: false,
     height: 500,
     bgMode: "cover",
-    frames: [] as URL[],
     scrollEvent: undefined
   },
   data() {
     return {
+      videoTheater: {
+        frames: [] as any[]
+      },
       wh: 0,
       theaterDivIndex: 5,
       loaded: false,
@@ -70,50 +72,57 @@ export default defineComponent({
         return;
       }
       let rect = this.$refs.theaterDiv?.getBoundingClientRect()
-      let root = document.getElementById("app").getBoundingClientRect()
-      // console.log((rect.top + rect.height)<0, (rect.top-rect.height)>window.innerHeight)
+      let frameTarget = (rect.top - rect.height)/this.$props.height * 100 * -1
       if(
           !rect ||
+          frameTarget < 0 ||
+          frameTarget > this.videoTheater.frames.length ||
           (rect.top + rect.height)<0 ||
           (rect.top-rect.height)>window.innerHeight
       ){
         return;
       }
-      let pos = -1
+      let delta = this.$props.height/this.videoTheater.frames.length
 
-      if(this.$props.test){
-        pos = rect.height/(rect.top + rect.height)
-        // console.log(pos)
+      this.reel.current = Math.round(frameTarget);
+      if(this.$props.test) {
+        // console.log(this.reel.current)
       }
+
+
       if(this.reel.lastPos === undefined){
         this.reel.lastPos = rect.top
       }
-      // let direction = event.deltaY > 0 ? 1 : -1;
-      let direction = (rect.top - this.reel.lastPos) > 0 ? 1 : -1;
-      this.updateReelPosition(direction)
+      if(this.videoTheater.frames[this.reel.current] && this.framesWithBackground.includes(this.reel.current)){
+        this.theaterDivIndex = this.reel.current
+      }
 
-      // if(
-      //     (direction > 0 && this.reel.current<this.reel.max) ||
-      //     (direction < 0 && (this.reel.current>1 || !this.reel.current))
-      // ){
-        if(this.$props.frames[this.reel.current] && this.framesWithBackground.includes(this.reel.current)){
-          this.theaterDivIndex = this.reel.current
-        }
-      // }
-
-      for(let i = this.reel.current-2; i<this.reel.current+2; i++){
-        if(i>=0 && i<this.$props.frames.length && !this.framesWithBackground.includes(i)){
+      for(let i = this.reel.current-5; i<this.reel.current+5; i++){
+        if(i>=0 && i<this.videoTheater.length && !this.framesWithBackground.includes(i)){
           this.framesWithBackground.push(i)
         }
+      }
+    },
+    fillVideoTheaterFrames(){
+      this.videoTheater.frames = []
+      let cnt = 235;
+      while(cnt-->20){
+        let path = "/images/min/video2/video2-sq-" + cnt + "-min.jpg"
+        if(cnt>=10 && cnt<100){
+          path = "/images/min/video2/video2-sq-0" + cnt + "-min.jpg"
+        }else if(cnt<10){
+          path = "/images/min/video2/video2-sq-00" + cnt + "-min.jpg"
+        }
+        this.videoTheater.frames.unshift(path)
       }
     },
     loadedEvent(){
       this.loaded = true;
     },
     autoUploadFrames(){
-      if(this.framesWithBackground.length !== this.$props.frames.length){
+      if(this.framesWithBackground.length !== this.videoTheater.frames.length){
         let max = 5
-        this.$props.frames.forEach((row, ind) => {
+        this.videoTheater.frames.forEach((row, ind) => {
           if(!this.framesWithBackground.includes(ind) && max-->0){
             this.framesWithBackground.push(ind)
           }
@@ -133,14 +142,14 @@ export default defineComponent({
     window.removeEventListener('load', this.loadedEvent);
   },
   mounted(){
-    this.reel.max = this.$props.frames.length
+    this.reel.max = this.videoTheater.frames.length
 
     let container = document.getElementById('TheaterWheel' + this.$props.name);
     // window.addEventListener('scroll', this.handleWheel);
     window.addEventListener('load', this.loadedEvent);
     // this.autoUploadFrames()
     setTimeout(this.autoUploadFrames, 150)
-
+		this.fillVideoTheaterFrames()
     // container?.addEventListener('scroll', (event) => {
     //   container?.onwheel(event);
     // })
@@ -179,7 +188,7 @@ export default defineComponent({
 .projector .front .contentWrap{
   position: absolute;
   display: flex;
-  vertical-align: center;
+  vertical-align: middle;
   align-items: center;
   justify-content: center;
   z-index: 1000;

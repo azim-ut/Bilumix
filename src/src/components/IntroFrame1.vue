@@ -1,38 +1,46 @@
 <template>
-  <section id="IntroProduct">
-    <div id="image-container">
-      <div class="front-image" ref="device"></div>
+  <section id="IntroProduct" ref="IntroProduct" >
+    <div class="scrollMarkerContent" ref="IntroProductMarker">
+      &nbsp;
     </div>
-    <div class="mainBannerContent mainBannerContent1" ref="content1">
-      <div class="content">
-        <h1>BiLumix</h1>
-        <h2>GENERATION 2.0</h2>
-        <h3>Shadowless Headlamp</h3>
+    <div ref="visibleContent"
+         id="visibleContent" class="visibleContent">
+      <div id="image-container">
+        <div class="front-image" ref="device"></div>
       </div>
-    </div>
-    <div class="mainBannerContent mainBannerContent2" ref="content2">
-      <div class="content" ref="content2content">
-        <div class="center">
-          <h1 style="font-size: revert;">BRIGHT</h1>
-          <h1 style="font-size: revert;">CHOICE</h1>
-          <p style="margin: auto; width: 50%; font-size: large;">
-            For any procedure to illuminate
-            an area via a unique, dual light source
-            that eliminates any shadow
-          </p>
-          <button class="emphasized-button" @click="video1.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> Watch Video</button>
+      <div class="mainBannerContent mainBannerContent1" ref="content1">
+        <div class="content">
+          <h1>BiLumix </h1>
+          <h2>GENERATION 2.0</h2>
+          <h3>Shadowless Headlamp</h3>
         </div>
       </div>
-    </div>
-    <ScrollDownIndicator/>
-
-    <Modal :name="'video1'"
-           :show="() => video1.show"
-           :close-callback="() => {video1.show = false}">
-      <div class="video" v-if="video1.show">
-        <video :src="video1.src" preload="auto" controls="true" style="width: 100%; height: 100%;"></video>
+      <div class="mainBannerContent mainBannerContent2" ref="content2">
+        <div class="content" ref="content2content">
+          <div class="center">
+            <h1 style="font-size: revert;">BRIGHT</h1>
+            <h1 style="font-size: revert;">CHOICE</h1>
+            <p style="margin: auto; width: 50%; font-size: large;">
+              For any procedure to illuminate
+              an area via a unique, dual light source
+              that eliminates any shadow
+            </p>
+            <button class="emphasized-button" @click="video1.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> Watch Video</button>
+          </div>
+        </div>
       </div>
-    </Modal>
+
+      <Modal :name="'video1'"
+             :show="() => video1.show"
+             :close-callback="() => {video1.show = false}">
+        <div class="video" v-if="video1.show">
+          <video :src="video1.src" preload="auto" controls="true" style="width: 100%; height: 100%;"></video>
+        </div>
+      </Modal>
+    </div>
+    <div class="scrollContent" ref="IntroProductScroll">
+      &nbsp;
+    </div>
   </section>
 </template>
 
@@ -51,6 +59,8 @@ export default defineComponent({
   data() {
     return {
       animation: {
+        lastY: 0,
+        temp: 0,
         min: 0,
         max: 100,
         step: .5,
@@ -79,58 +89,59 @@ export default defineComponent({
     loadedEvent(){
       this.loaded = true
     },
-    updateAnimationPosition(direction): number {
-      let newZoom = this.animation.current + direction * this.animation.step;
-      if (newZoom < this.animation.min) {
-        newZoom = this.animation.min
+    onWheel(event: any): void {
+      let rect = this.$refs.IntroProductMarker?.getBoundingClientRect()
+      let plane = this.$refs.IntroProductScroll?.getBoundingClientRect()
+      let content = this.$refs.visibleContent?.getBoundingClientRect()
+      let pos = rect.y;
+      pos *= -1
+      let progress = Math.floor(pos/plane.height * 100)
+      if(progress>this.animation.max){
+          progress = this.animation.max;
+          return;
       }
-      if(newZoom > this.animation.max) {
-        newZoom = this.animation.max
+      if(progress<this.animation.min){
+          progress = this.animation.min;
+        	return;
       }
-      this.animation.current = newZoom
-    },
-    updateReelPosition(direction): number {
-      let newZoom = this.zoomImage.current + direction * this.zoomImage.step;
-      if (newZoom < this.zoomImage.min) {
-        newZoom = this.zoomImage.min
-      }
-      if(newZoom > this.zoomImage.max) {
-        newZoom = this.zoomImage.max
-      }
-      this.zoomImage.current = newZoom
-    },
-    updateZoomText(direction): number {
-      let newZoom = this.zoomText.current + direction * this.zoomText.step;
-      if (newZoom < this.zoomText.min) {
-        newZoom = this.zoomText.min
-      }
-      if(newZoom > this.zoomText.max) {
-        newZoom = this.zoomText.max
-      }
-      this.zoomText.current = newZoom;
-    }
-  },
-  unmounted () {
-    window.removeEventListener('load', this.loadedEvent);
-  },
-  mounted(){
-    window.addEventListener('load', this.loadedEvent);
-    let container = document.getElementById('IntroProduct');
 
-    container.addEventListener('wheel', (event) => {
-      let direction = event.deltaY > 0 ? 1 : -1;
-      if(this.animation.current<(this.animation.max-.2) && direction>0){
-        event.preventDefault()
-      }
-      this.updateAnimationPosition(direction)
+      this.animation.current = progress
+      this.calcAnimationWheel();
 
+      // let direction = event.deltaY > 0 ? 1 : -1;
+      // if(this.animation.current<(this.animation.max-.2) && direction>0){
+      //   event.preventDefault()
+      // }
+      // this.calcAnimationWheel(event.deltaY, direction, null)
+		},
+    calcAnimationWheel(): void {
       let val = -1/this.animation.max * this.animation.current
+      console.log(this.animation.current, this.animation.max, val)
       this.$refs.device.style.setProperty('--delay', (val) + 's')
       this.$refs.content1.style.setProperty('--delay', (val) + 's')
       this.$refs.content2.style.setProperty('--delay', (val) + 's')
       this.$refs.content2content.style.setProperty('--delay', (val) + 's')
-
-    })
+		}
+  },
+  unmounted () {
+    window.removeEventListener('load', this.loadedEvent);
+    let container = document.getElementById('IntroProduct');
+    if(container){
+      window.removeEventListener('scroll', this.onWheel)
+      window.removeEventListener('wheel', this.onWheel)
+      window.removeEventListener('touchmove', this.onWheel)
+      window.removeEventListener('mousewheel', this.onWheel)
+    }
+  },
+  mounted(){
+    window.addEventListener('load', this.loadedEvent);
+    let container = document.getElementById('IntroProduct');
+    if(container) {
+      window.addEventListener('scroll', this.onWheel)
+      window.addEventListener('wheel', this.onWheel)
+      window.addEventListener('touchmove', this.onWheel)
+      window.addEventListener('mousewheel', this.onWheel)
+    }
   }
 })
 </script>
@@ -139,15 +150,38 @@ export default defineComponent({
 :root {
   --delay: 0;
 }
+section{
+  height: auto !important;
+}
 #IntroProduct{
+  position: relative;
+  overflow: scroll;
+}
+#IntroProduct .visibleContent{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
   min-height: 100vh;
   background: #151515;
   display: flex;
-  position: relative;
   align-items: center;
   justify-content: center;
   vertical-align: middle;
-  overflow: hidden;
+}
+#IntroProduct .scrollContent{
+  position: relative;
+  border: transparent 1px solid;
+  min-height: 200vh;
+}
+#IntroProduct .scrollMarkerContent{
+  border: transparent 5px solid;
+  width: 10px;
+  height: 10px;
+  z-index: 100000;
+  position: absolute;
 }
 .front-image{
   background: transparent url(/images/static/bilumix-side.png) no-repeat center top/contain;
@@ -262,8 +296,8 @@ img {
     transform: scale(.2);
     opacity: 1;
   }
-  55% {
-    opacity: 0;
+  65% {
+    opacity: 1;
   }
   100% {
     opacity: 0;
@@ -280,9 +314,12 @@ img {
   50% {
     opacity: 1;
   }
+  95% {
+    opacity: 1;
+  }
   100% {
     background-position: -350px center;
-    opacity: 1;
+    opacity: 0;
   }
 }
 @keyframes content2AnimationContent {
@@ -325,6 +362,7 @@ img {
   @keyframes content2Animation {
     0% {
       opacity: 0;
+      z-index: 100000;
     }
     40% {
       opacity: 0;
@@ -333,9 +371,12 @@ img {
     50% {
       opacity: 1;
     }
-    100% {
+    95% {
       background-position: -130px -50px !important;;
       opacity: 1;
+    }
+    100% {
+      opacity: 0;
     }
   }
 }

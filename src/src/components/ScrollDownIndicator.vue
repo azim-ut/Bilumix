@@ -29,8 +29,9 @@ export default defineComponent({
 
 <style scoped>
 .box {
-  position: absolute;
-  bottom: 20%;
+  position: fixed;
+  z-index: 3;
+  bottom: 10%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import {shopStore, shopStore as sStore} from '@/store/shop/shop'
-import {cartStore} from "@/store/cart/cart";
-
-const shopStore = sStore()
-</script>
 
 <template>
   <HeadMenu :key="$route.path" />
@@ -112,10 +106,11 @@ import TheaterWheel from "@/components/TheaterWheel.vue";
 import HeadMenu from "@/components/HeadMenu.vue";
 import {mapStores} from "pinia";
 import {cartStore} from "@/store/cart/cart";
+import {shopStore} from "@/store/shop/shop";
 
 export default defineComponent({
   computed:{
-    ...mapStores(cartStore)
+    ...mapStores(cartStore, shopStore)
   },
   components: {
     HeadMenu,
@@ -123,23 +118,23 @@ export default defineComponent({
     IntroFrame1, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox},
   data() {
     return {
-      constraint: 100
+      constraint: 150
     }
   },
   methods: {
     toCart(link:string){
       this.cartStore.toCart(link, 1)
     },
-    transforms(event: any, id:string): string {
+    transforms(event: any, id:string): void {
       let target = document.getElementById(id)
       let rotateX = this.calcRotateX(target, event.clientX);
       let rotateY = this.calcRotateY(target, event.clientY);
 
       if(target){
-        let ttl = target.getElementsByClassName("title")[0]
-        let img = target.getElementsByClassName("image")[0]
-        let tools = target.getElementsByClassName("tools")[0]
-        let price = target.getElementsByClassName("price")[0]
+        let ttl = <HTMLElement> target.getElementsByClassName("title")[0]
+        let img = <HTMLElement> target.getElementsByClassName("image")[0]
+        let tools = <HTMLElement> target.getElementsByClassName("tools")[0]
+        let price = <HTMLElement> target.getElementsByClassName("price")[0]
         if(ttl){
           let ttlRotateX = rotateX/2
           let ttlRotateY = rotateY/2
@@ -170,13 +165,13 @@ export default defineComponent({
         }
       }
     },
-    clearTransform(event: any, id:string): string {
+    clearTransform(event: any, id:string): void {
       let target = document.getElementById(id)
       if(target){
-        let ttl = target.getElementsByClassName("title")[0]
-        let img = target.getElementsByClassName("image")[0]
-        let tools = target.getElementsByClassName("tools")[0]
-        let price = target.getElementsByClassName("price")[0]
+        let ttl = <HTMLElement> target.getElementsByClassName("title")[0]
+        let img = <HTMLElement> target.getElementsByClassName("image")[0]
+        let tools = <HTMLElement> target.getElementsByClassName("tools")[0]
+        let price = <HTMLElement> target.getElementsByClassName("price")[0]
         if(ttl){
           ttl.style.transform = "perspective(10px) rotateX(0deg) rotateY(0deg)";
         }
@@ -187,7 +182,7 @@ export default defineComponent({
           tools.style.transform = "perspective(10px) rotateX(0deg) rotateY(0deg)";
         }
         if(price){
-          proce.style.transform = "perspective(10px) rotateX(0deg) rotateY(0deg)";
+          price.style.transform = "perspective(10px) rotateX(0deg) rotateY(0deg)";
         }
       }
     },
@@ -214,6 +209,7 @@ export default defineComponent({
 .contentBody{
 	margin: 90px auto 0;
   text-align: center;
+  padding: 0 10px;
 }
 .shopList{
 
@@ -245,8 +241,8 @@ export default defineComponent({
   transition: .2s;
 }
 .shopList .product .productBody .image{
-  width: 340px;
-  height: 340px;
+  width: 280px;
+  height: 280px;
   background: transparent no-repeat center center/cover;
   border-radius: 40px;
   transition: .2s;
