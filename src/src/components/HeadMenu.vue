@@ -37,6 +37,7 @@ export default defineComponent({
     ...mapStores(cartStore)
   },
   props: {
+    key: null
   },
   data() {
     return {

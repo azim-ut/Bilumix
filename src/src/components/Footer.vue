@@ -143,6 +143,7 @@ export default defineComponent({
 
 <style scoped>
 footer {
+  z-index: 3;
   position: relative;
   background-color: #151515;
   color: hsla(0,0%,100%,.8);
@@ -186,6 +187,29 @@ footer .block{
 footer .block ul li{
   font-size: 14px;
   line-height: 30px;
+  position: relative;
+}
+
+footer .block ul li:hover:after{
+  background: #2ed5ff;
+}
+footer .block ul li:after{
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 100%;
+  top: 0;
+  left: -10px;
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition: background-color .3s linear;
+  -moz-transition: background-color .3s linear;
+  transition: background-color .3s linear;
+  -webkit-transform-origin: center;
+  -moz-transform-origin: center;
+  transform-origin: center;
+  -webkit-transform: scaleY(.4);
+  -moz-transform: scaleY(.4);
+  transform: scaleY(.4);
 }
 
 footer button{
@@ -216,7 +240,7 @@ footer button{
 
 .feedback {
   background: #ffffff;
-  padding: 40px 40px;
+  padding: 20px 20px;
   border-radius: 19px;
 }
 

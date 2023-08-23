@@ -1,7 +1,8 @@
 <template>
 
   <HeadMenu :key="$route.path" />
-  <div class="contentBody" style="margin-top: 80px;">
+  <div class="contentBody" style="margin-top: 80px; position: relative;">
+    <ScrollDownIndicator />
     <IntroFrame1 />
     <div class="textBlocksPanelWrap">
       <div class="textBlocksPanel textBlocksPanel1 grid grid3" style="min-height: 100vh;">
@@ -44,8 +45,9 @@
         ></RoundedBlackBox3>
       </div>
     </div>
+
     <div class="mobileOnly">
-      <div class="textBlocksPanel textBlocksPanel3 grid grid2 force">
+      <div class="textBlocksPanel textBlocksPanel3 grid grid2">
         <RoundedBlackBox3 v-for="row in shortTextBlocks3"
                           :bg="row.bg"
                           :margin="'10px'"
@@ -58,37 +60,40 @@
       </div>
     </div>
 
-    <TheaterWheel :name="'video1'"
-                  :test="false"
-                  :bg-mode="'cover'"
-                  :style="{'background':'#000'}"
-                  :scroll-event="scroll.event"
-                  :frames="video1Theater.frames"
-                  :height="610">
-      <button class="emphasized-button" @click="video2.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> Watch Video</button>
-    </TheaterWheel>
-    <TheaterWheel :bg-mode="'cover'"
-                  :frames="video2Theater.frames"
-                  :style="{'background':'#000'}"
-                  :scroll-event="scroll.event"
-                  :height="610"
-                  :name="'video2'"
-                  :test="false">
-    </TheaterWheel>
-    <br/>
+    <div class="videoBlock grid grid2">
+      <TheaterWheelVideo1
+          					class="video1"
+          					:name="'video1'"
+                    :test="true"
+                    :bg-mode="'cover'"
+                    :style="{'background':'#000'}"
+                    :scroll-event="scroll.event"
+                    :height="500">
+      </TheaterWheelVideo1>
 
-    <div class="contentBody">
-      <!-- PLACE CONTENT HERE -->
+      <TheaterWheelVideo2
+                    class="video2"
+                    :bg-mode="'cover'"
+                    :style="{'background':'#000'}"
+                    :scroll-event="scroll.event"
+                    :height="500"
+                    :name="'video2'"
+                    :test="false">
+      </TheaterWheelVideo2>
+
+      <button class="emphasized-button" @click="video2.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> Watch Video</button>
     </div>
-    <div class="specialOffers">
-      <h1>Special Offers</h1>
-      <h3 class="gradientTitle">We will resume the offers back soon.</h3>
-    </div>
-    <div class="stayUpdate">
-      <h1>Stay updated</h1>
-      <h3>For exclusive advance information on our new products and promotions.</h3>
-      <div class="emailInput">
-        <input type="email" /><button>Subscribe <font-awesome-icon icon="fa-solid fa-envelope" /></button>
+    <div class="preFooterBlock" >
+      <div class="specialOffers">
+        <h1>Special Offers</h1>
+        <h3 class="gradientTitle">We will resume the offers back soon.</h3>
+      </div>
+      <div class="stayUpdate">
+        <h1>Stay updated</h1>
+        <h3>For exclusive advance information on our new products and promotions.</h3>
+        <div class="emailInput">
+          <input type="email" /><button>Subscribe <font-awesome-icon icon="fa-solid fa-envelope" /></button>
+        </div>
       </div>
     </div>
 
@@ -122,9 +127,13 @@ import block3 from "@/data/index_text_block3.json"
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import RoundedBlackBox3 from "@/components/RoundedBlackBox3.vue";
 import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
+import TheaterWheelVideo1 from "@/components/TheaterWheelVideo1.vue";
+import TheaterWheelVideo2 from "@/components/TheaterWheelVideo2.vue";
 
 export default defineComponent({
   components: {
+    TheaterWheelVideo2,
+    TheaterWheelVideo1,
     TheaterMainWheel,
     RoundedBlackBox3,
     FontAwesomeIcon,
@@ -174,42 +183,18 @@ export default defineComponent({
         this.productTheater.frames.unshift(new URL(src, import.meta.url))
       }
     },
-    fillVideoTheaterFrames(){
-      this.video1Theater.frames = []
-      let cnt = 224;
-      while(cnt-->0){
-        let path = "/images/min/video1/video1-sq-" + cnt + "-min.jpg"
-        if(cnt>=10 && cnt<100){
-          path = "/images/min/video1/video1-sq-0" + cnt + "-min.jpg"
-        }else if(cnt<10){
-          path = "/images/min/video1/video1-sq-00" + cnt + "-min.jpg"
-        }
-        this.video1Theater.frames.unshift(path)
-      }
-    },
-    fillVideo2TheaterFrames(){
-      this.video2Theater.frames = []
-      let cnt = 235;
-      while(cnt-->0){
-        let path = "/images/min/video2/video2-sq-" + cnt + "-min.jpg"
-        if(cnt>=10 && cnt<100){
-          path = "/images/min/video2/video2-sq-0" + cnt + "-min.jpg"
-        }else if(cnt<10){
-          path = "/images/min/video2/video2-sq-00" + cnt + "-min.jpg"
-        }
-        this.video2Theater.frames.unshift(path)
-      }
-    },
-    handleScroll(event){
+    handleScroll(event: any){
       this.scroll.event = event
     }
   },
   unmounted () {
     window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('mousewheel', this.handleScroll);
     window.removeEventListener('load', this.loadedEvent);
   },
   mounted(){
     window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('mousewheel', this.handleScroll);
     window.addEventListener('load', this.loadedEvent);
     // this.fillTheaterFrames()
     // this.fillVideoTheaterFrames()
@@ -250,6 +235,7 @@ export default defineComponent({
 }
 
 .textBlocksPanel{
+  background: white;
   margin: 0px auto;
 }
 .textBlocksPanel2{
@@ -266,9 +252,14 @@ export default defineComponent({
 }
 .stayUpdate .emailInput{
   font-size: larger;
+  margin: auto;
+  padding: 0 10%;
+  max-width: 300px;
+  white-space: nowrap;
 }
 .stayUpdate .emailInput input{
   border: none;
+  width: 60%;
   background: #fff;
   font-size: medium;
   padding: 10px;
@@ -283,7 +274,10 @@ export default defineComponent({
   border-radius: 0 20px 20px 0;
 }
 .textBlocksPanelWrap{
-  margin: 10px 50px; min-height: 100vh;
+  min-height: 100vh;
+  background: white;
+  position: relative;
+  z-index: 2;
 }
 
 .specialOffers{
@@ -300,9 +294,43 @@ export default defineComponent({
   margin: auto;
   font-size: x-large;
 }
+.videoBlock{
+  position: relative;
+  background: #fff;
+  z-index: 2;
+}
+.preFooterBlock{
+  position: relative;
+  background: #fff;
+  z-index: 2;
+}
+.videoBlock .emphasized-button{
+  position: absolute;
+  cursor: pointer;
+  top: calc(50% - 30px);
+  z-index: 1000;
+  left: calc(50% - 100px);
+}
+.notForMobile{
+  display: block;
+  z-index: 2;
+  position: relative;
+  overflow: hidden;
+  background: white;
+}
+.mobileOnly{
+  display: block;
+  z-index: 2;
+  position: relative;
+  overflow: hidden;
+  background: white;
+}
 @media (max-width: 850px) {
   .textBlocksPanelWrap{
     margin: 10px 0px;
+  }
+  .textBlocksPanel3 div:first-child{
+    min-height: 160px;
   }
 }
 </style>

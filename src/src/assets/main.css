@@ -113,3 +113,10 @@ h1{
   margin: .8rem;
   letter-spacing: 2px;
 }
+
+
+@media (max-width: 850px) {
+  .modal-content {
+    width: 80%;
+  }
+}

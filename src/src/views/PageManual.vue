@@ -84,8 +84,8 @@ h1{
 .manualList .block{
   overflow: hidden;
   border-radius: 7px;
-  margin: 24px 10px 10px;
-  min-height: 160px;
+  margin: 24px 10% 10px;
+  min-height: 360px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
 }
 .manualList .block:nth-child(3),
@@ -123,7 +123,13 @@ h1{
   background: #f1f9fd;
   transition: .5s;
 }
+@media (max-width: 800px) {
+  .manualList .block{
+    width: 80%;
+  }
 
+
+}
 
 @media (max-width: 950px) {
   h1{
@@ -137,7 +143,6 @@ h1{
     width: 60%;
     overflow: hidden;
     border-radius: 7px;
-    min-height: 160px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
   }
 
@@ -147,6 +152,10 @@ h1{
 }
 
 @media (max-width: 600px) {
+  .manualList .block{
+
+    width: 80%;
+  }
   .grid2.force {
     grid-template-columns: repeat(1, 1fr);
   }
