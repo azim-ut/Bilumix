@@ -4,8 +4,8 @@
   <div class="contentBody" style="margin-top: 80px; position: relative;">
     <ScrollDownIndicator />
     <IntroFrame1 />
-    <div class="textBlocksPanelWrap">
-      <div class="textBlocksPanel textBlocksPanel1 grid grid3" style="min-height: 100vh;">
+    <div class="textBlocksPanelWrap" style="min-height: 100vh;">
+      <div class="textBlocksPanel textBlocksPanel1 grid grid3">
         <RoundedBlackBox v-for="row in shortTextBlocks1"
                          :bg="row.bg"
                          :margin="'10px'"
@@ -31,34 +31,24 @@
       </div>
     </div>
 
-    <div class="notForMobile">
-      <h1 class="center">{{shortTextBlocks3[0].title}}</h1>
-      <div class="textBlocksPanel textBlocksPanel3 grid grid3">
-        <RoundedBlackBox3 v-for="row in shortTextBlocks3.slice(1)"
-                          :bg="row.bg"
-                          :margin="'10px'"
-                          :color="(row.color??'#fff')"
-                          :bgColor="row.bgColor"
-                          :title="row.title"
-                          :sub="row.sub"
-                          :text="row.text"
-        ></RoundedBlackBox3>
+    <div class="textBlocksPanelWrap" style="min-height: 100vh;">
+      <div class="notForMobile textBlocksPanel textBlocksPanel3">
+        <h1 class="center blockH1" v-html="shortTextBlocks3[0].title"></h1>
+        <div class=" grid grid3">
+          <RoundedBlackBox3 v-for="row in shortTextBlocks3.slice(1)"
+                            :bg="row.bg"
+                            :margin="'10px'"
+                            :color="(row.color??'#fff')"
+                            :bgColor="row.bgColor"
+                            :title="row.title"
+                            :sub="row.sub"
+                            :text="row.text"
+          ></RoundedBlackBox3>
+        </div>
       </div>
     </div>
 
-    <div class="mobileOnly">
-      <div class="textBlocksPanel textBlocksPanel3 grid grid2">
-        <RoundedBlackBox3 v-for="row in shortTextBlocks3"
-                          :bg="row.bg"
-                          :margin="'10px'"
-                          :color="(row.color??'#fff')"
-                          :bgColor="row.bgColor"
-                          :title="row.title"
-                          :sub="row.sub"
-                          :text="row.text"
-        ></RoundedBlackBox3>
-      </div>
-    </div>
+
 
     <div class="videoBlock grid grid2">
       <TheaterWheelVideo1
@@ -120,7 +110,7 @@ import {RouterView} from "vue-router";
 import IntroFrame1 from "@/components/IntroFrame1.vue";
 import TheaterWheel from "@/components/TheaterWheel.vue";
 import HeadMenu from "@/components/HeadMenu.vue";
-import Modal from "@/components/Modal.vue";
+import Modal from "@/components/Modal.vue"
 import block1 from "@/data/index_text_block1.json"
 import block2 from "@/data/index_text_block2.json"
 import block3 from "@/data/index_text_block3.json"
@@ -204,6 +194,11 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
+.blockH1{
+  font-size: revert;
+  letter-spacing: normal;
+}
 .loaderBase img{
   width: 10px; height: 10px;
   opacity: .01;
@@ -236,7 +231,6 @@ export default defineComponent({
 
 .textBlocksPanel{
   background: white;
-  margin: 0px auto;
 }
 .textBlocksPanel2{
   background-color: #151515;
@@ -278,6 +272,10 @@ export default defineComponent({
   background: white;
   position: relative;
   z-index: 2;
+  display: flex;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
 }
 
 .specialOffers{
@@ -298,6 +296,7 @@ export default defineComponent({
   position: relative;
   background: #fff;
   z-index: 2;
+  min-height: 100vh;
 }
 .preFooterBlock{
   position: relative;
@@ -311,15 +310,12 @@ export default defineComponent({
   z-index: 1000;
   left: calc(50% - 100px);
 }
-.notForMobile{
+.textBlocksPanel3{
   display: block;
-  z-index: 2;
-  position: relative;
-  overflow: hidden;
   background: white;
 }
 .mobileOnly{
-  display: block;
+  display: none;
   z-index: 2;
   position: relative;
   overflow: hidden;
@@ -327,10 +323,7 @@ export default defineComponent({
 }
 @media (max-width: 850px) {
   .textBlocksPanelWrap{
-    margin: 10px 0px;
-  }
-  .textBlocksPanel3 div:first-child{
-    min-height: 160px;
+    margin: 0;
   }
 }
 </style>

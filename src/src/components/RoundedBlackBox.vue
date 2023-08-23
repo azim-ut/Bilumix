@@ -40,29 +40,40 @@ export default defineComponent({
 <style scoped>
 .block {
   position: relative;
-  min-height: 50vh;
   background: #000;
   border-radius: 38px;
+  margin: 10px;
+  min-width: 300px;
+  min-height: 460px;
 }
 .block h1{
   font-size: revert;
+  padding: 0;
+  letter-spacing: normal;
+  text-shadow: 1px 1px 13px rgba(0,0,0,.5);
 }
 .block h3{
   text-align: center;
+  margin: 10px 0;
 }
 .block .inner{
   margin: 10px;
-  padding: 20px;
+  padding: 10px;
   color: #fff;
+  top: 45%;
   bottom: 0;
   left: 0;
   right: 0;
   position: absolute;
 }
+.block .inner p{
+  height: 100px;
+  font-size: inherit;
+  margin: 0;
+}
 .block{
   position: relative;
   background: transparent no-repeat center top/cover;
-  min-height: 500px;
 }
 
 @media (max-width: 850px) {

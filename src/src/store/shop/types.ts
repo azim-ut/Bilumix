@@ -5,7 +5,9 @@ export interface Product{
     text: string,
     links: Link[],
     images: Image[],
-    price: number
+    price: number,
+
+    expandText: boolean
 }
 export interface Link{
     title: string,

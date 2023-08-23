@@ -2,7 +2,7 @@
   <div class="block" :style="{'margin': margin, 'background-color': ($props.bgColor??'transparent'), 'background-image': 'url(' + $props.bg + ')'}">
   	<div class="inner">
       <div class="bg">
-        <h1 :style="{'color': color}">{{$props.title}}</h1>
+        <h1 :style="{'color': color}" v-html="$props.title"></h1>
       	<h3 class="gradientTitle">{{$props.sub}}</h3>
         <p>{{$props.text}}</p>
       </div>
@@ -47,9 +47,15 @@ export default defineComponent({
 .block h1{
   text-align: left;
   font-size: revert;
+  letter-spacing: normal;
+  margin: 0;
+  padding: 0;
 }
 .block h3{
   text-align: center;
+}
+.block p{
+  margin: 0;
 }
 .block .inner{
   margin: 10px;
@@ -63,7 +69,8 @@ export default defineComponent({
 .block{
   position: relative;
   background: transparent no-repeat center center/cover;
-  min-height: 500px;
+  min-width: 300px;
+  min-height: 460px;
 }
 
 @media (max-width: 850px) {

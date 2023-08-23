@@ -290,11 +290,13 @@ img {
 @keyframes content1Animation {
   0% {
     transform: scale(1);
+  }
+  10% {
     opacity: 1;
   }
-  50% {
-    transform: scale(.2);
-    opacity: 1;
+  40% {
+    transform: scale(.5);
+    opacity: 0;
   }
   65% {
     opacity: 1;
@@ -324,15 +326,15 @@ img {
 }
 @keyframes content2AnimationContent {
   0% {
-    left: 100% !important;
+    border: red 3px solid;
   }
   50% {
-    left: 100% !important;
+    right: calc(50% - 150px);
   }
   75% {
   }
   100% {
-    margin-left: calc(80% - 100px) !important;
+    right: 1%;
   }
 }
 

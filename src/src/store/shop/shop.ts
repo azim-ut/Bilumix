@@ -1,10 +1,10 @@
 import {defineStore} from "pinia";
 import type {Product, ShopState} from "./types"
-import mainList from "./main.json"
-import loupesList from "./loupes.json"
-import accessoriesList from "./accessories.json"
-import partsList from "./parts.json"
-import repairList from "./repair.json"
+import mainList from "@/data/goods/main.json"
+import loupesList from "@/data/goods/loupes.json"
+import accessoriesList from "@/data/goods/accessories.json"
+import partsList from "@/data/goods/parts.json"
+import repairList from "@/data/goods/repair.json"
 
 export const shopStore = defineStore('shop', {
     state: (): ShopState => ({

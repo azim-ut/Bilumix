@@ -1,7 +1,7 @@
 
 <template>
   <HeadMenu :key="$route.path" />
-  <div class="contentWrap">
+  <div class="contentWrap" style="padding-bottom: 150px;">
     <div class="contentBody">
       <div class="textContent">
         <a id="loupes"><h1>Loupes</h1></a>

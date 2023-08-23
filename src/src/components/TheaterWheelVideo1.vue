@@ -166,6 +166,7 @@ export default defineComponent({
   overflow: hidden;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  min-height: 100vh;
 }
 
 .projector{

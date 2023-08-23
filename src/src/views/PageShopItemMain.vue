@@ -2,47 +2,30 @@
 <template>
   <HeadMenu :key="$route.path" />
   <div class="contentWrap">
-    <div class="contentBody" v-if="product">
-      <div class="grid grid2">
-        <div class="images" v-if="currentImage">
-          <div class="imagesContent">
-            <div class="current" :style="{'background-image': 'url(' + currentImage.url + ')'}"></div>
-            <div class="preList">
-              <div class="pre"
-                   v-for="image in product.images"
-                   :style="{'background-image': 'url(' + image.url + ')'}">
-              </div>
-            </div>
+    <div class="contentBody">
+      <div class="grid grid2" v-for="product in products()">
+        <div>
+          &nbsp;
+        </div>
+        <div>
+          <h1>{{product.title}}</h1>
+          <div class="price">From {{pricePrint(product.price)}}</div>
+          <div>
+            <span class="pointer" @click="product.expandText = !product.expandText">
+              Details
+              <font-awesome-icon v-if="!product.expandText" :icon="['fas', 'arrow-right']" />
+              <font-awesome-icon v-if="product.expandText" :icon="['fas', 'arrow-down']" />
+            </span>
+            <div v-if="product.expandText" v-html="product.text"></div>
           </div>
         </div>
-        <div class="text" style="padding-right: 40px;">
-          <h1>{{product.title}}</h1>
-          <div class="price">${{product.price}}</div>
-          <div class="tools">
-            <div class="grid grid2 force">
-              <div>
-                <div class="counter" @click="setFocus()">
-                  <div class="counterBody">
-                    <div class="ttl">
-                      <div class="ttlTxt">Qty</div>
-                    </div>
-                    <input type="number" ref="cnt"
-                           v-model="form.count"/>
-                  </div>
-                </div>
-                <div v-if="form.cart>0">
-                  In cart: {{form.cart}}
-                </div>
-              </div>
-              <div class="toCart" >
-                <button @click="addToCart(product, form.count)" class="emphasized-button">Add to cart</button>
-              </div>
-            </div>
-          </div>
-          <hr />
-          <div class="text" v-html="product.text"></div>
-          <div class="links">
-              <a v-for="link in product.links" :href="link.url">{{link.title}}</a>
+        <h1>LOUPES:</h1>
+        <div>
+          <div v-for="row in loops()"
+               @click="row.on = !row.on"
+               :class="{'grid grid2 force pointer additional': true, 'active': row.on}">
+            <div>{{row.short}}</div>
+            <div class="right">+{{pricePrint(row.price)}}</div>
           </div>
         </div>
       </div>
@@ -76,7 +59,6 @@ export default defineComponent({
   },
   data() {
     return {
-      product: undefined as Product|undefined,
       currentImage: undefined as Image|undefined,
       form: {
         cart: 0,
@@ -86,20 +68,23 @@ export default defineComponent({
     }
   },
   methods: {
-    setFocus(){
-      this.$refs.cnt.focus()
+    products(): Product[] {
+      return this.shopStore.getMain
+    },
+    loops(): Product[] {
+      return this.shopStore.getLoupes
+    },
+    pricePrint(val: number): string{
+      return Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+      }).format(val)
     },
     addToCart(product: Product){
-      if(this.form.count===0){
+      if(this.form.count === 0){
         this.form.count = 1
       }
       this.cartStore.toCart(product.link, this.form.count)
-      this.form.cart = this.cartState().cnt
-    },
-    cartState(){
-      if(this.product){
-        return this.cartStore.getCartItem(this.product.link)
-      }
     }
   },
   unmounted () {
@@ -107,39 +92,19 @@ export default defineComponent({
   mounted(){
     this.product = this.shopStore.getItem(this.$route.params.link)
     this.currentImage = this.product?.images[0];
-    this.form.cart = this.cartState().cnt
+    this.form.cart = cartStore.cnt
   }
 })
 </script>
 
+<style>
+#app{
+  background: #fff !important;
+}
+</style>
 <style scoped>
-.images{
-  display: flex;
-  position: relative;
-}
-.images .imagesContent{
-  width: 80%;
-  margin: auto;
-}
-.images .current{
-  width: 100%;
-  height: 340px;
-  background: transparent no-repeat center center/cover;
-  border-radius: 23px;
-}
-.images .preList{
-  display: flex;
-}
-.images .preList .pre{
-  background: transparent no-repeat center center/contain;
-  width: 90px; height: 100px;
-  margin: 10px;
-}
-.links{
-  margin-top: 20px;
-}
 .price{
-  margin: 0px;
+  margin: 0;
   font-family: Rubik, sans-serif;
   font-weight: 700;
   font-size: 1.5rem;
@@ -157,6 +122,34 @@ export default defineComponent({
 }
 .contentBody{
   margin-bottom: 10%;
+}
+
+.additional{
+  border-radius: 20px;
+  border: #8c8080 1px solid;
+  margin-bottom: 10px;
+}
+.additional:hover{
+  background: #f5f5f5;
+}
+
+.additional.active{
+  background: #ededed;
+}
+
+.additional div{
+  display: flex;
+  text-align: right;
+  justify-content: left;
+  vertical-align: center;
+  align-items: center;
+  padding: 20px;
+}
+.additional div:last-child{
+  display: flex;
+  justify-content: right;
+  vertical-align: middle;
+  text-align: right;
 }
 
 @media (max-width: 950px) {

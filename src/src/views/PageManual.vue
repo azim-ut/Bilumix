@@ -79,13 +79,14 @@ h1{
   text-align: left;
 }
 .manualList{
-
+  margin-top: 80px;
+  background: #f5f5f7;
 }
 .manualList .block{
   overflow: hidden;
   border-radius: 7px;
   margin: 24px 10% 10px;
-  min-height: 360px;
+  background: #fff;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
 }
 .manualList .block:nth-child(3),
@@ -102,7 +103,6 @@ h1{
 .manualList .block .right .title{
   font-weight: bolder;
   text-align: center;
-  height: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -154,7 +154,7 @@ h1{
 @media (max-width: 600px) {
   .manualList .block{
 
-    width: 80%;
+    width: 90%;
   }
   .grid2.force {
     grid-template-columns: repeat(1, 1fr);
