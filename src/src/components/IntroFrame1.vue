@@ -316,11 +316,12 @@ img {
   50% {
     opacity: 1;
   }
-  95% {
+  85% {
+    background-size: contain;
+    background-position: -250px center;
     opacity: 1;
   }
   100% {
-    background-position: -350px center;
     opacity: 0;
   }
 }
@@ -328,10 +329,11 @@ img {
   0% {
     border: red 3px solid;
   }
-  50% {
+  30% {
     right: calc(50% - 150px);
   }
-  75% {
+  65% {
+    right: 1%;
   }
   100% {
     right: 1%;
@@ -373,7 +375,7 @@ img {
     50% {
       opacity: 1;
     }
-    95% {
+    65% {
       background-position: -130px -50px !important;;
       opacity: 1;
     }
