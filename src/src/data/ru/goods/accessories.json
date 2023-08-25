@@ -1,0 +1,92 @@
+[
+    {
+        "link": "light-filter",
+        "title": "Light Filters/Caps (Pair)",
+        "short": "Light Filters/Caps (Pair)",
+        "text": "Light filters which can be placed over the headlamp LED light source.<br>\n\nAmber light caps (slow cure and no cure) can be placed over the headlamp LED light source to prevent materials such as resin from getting cured by the high intensity light.",
+        "links": [
+            { "title": "Manual", "url": "/manual/light-cap-replacement/"}
+        ],
+        "images": [
+            { "url": "/images/static/light-filter-clear.webp"},
+            { "url": "/images/static/amber0.webp"},
+            { "url": "/images/static/Amber1.webp"},
+            { "url": "/images/static/Amber2.webp"}
+        ],
+        "price": 12,
+        "on": false
+    },
+    {
+        "link": "rechargeable-battery-gen-2",
+        "title": "Rechargeable Battery",
+        "short": "Rechargeable Battery",
+        "text": "<h4>Products Specification</h4>\n<ul>\n<li class=\"li1\">\n<span class=\"s1\"></span><span class=\"s2\">Operation continuity: 3 - 8hours (depends on Intensity)</span>\n</li>\n<li>Charging time: About 2 hours</li>\n<li>Battery output: 7.4Volts / 1700mAh</li>\n<li>Charger Input: <a href=\"/shop/battery-cradle\">Battery Cradle</a>\n</li>\n</ul>",
+        "links": [
+            { "title": "Manual", "url": "/manual/battery-connection/"}
+        ],
+        "images": [
+            { "url": "/images/static/gen2-battery.webp"}
+        ],
+        "price": 100,
+        "on": false
+    },
+    {
+        "link": "battery-cradle",
+        "title": "Battery Cradle",
+        "short": "Rechargeable Battery",
+        "text": "<p>The cradle for the BiLumix Gen 2.0&nbsp;<a href=\"/shop/rechargeable-battery-gen-2\" title=\"View rechargeable battery detail\">rechargeable battery</a>&nbsp;uses&nbsp;<strong><em>USB type-c</em></strong>&nbsp; as the charge input. This greatly improves portability and charging speed.</p>\n<ul>\n<li>Charger&nbsp;output: 7.4Volts / 1,700mAh</li>\n<li>Charger Input:&nbsp;<em><strong>USB type-c</strong></em> (included)</li>\n</ul>\n<p><strong>* Only for&nbsp;BiLumix's&nbsp;Rechargeable Battery for Generation 2.0</strong></p>",
+        "images": [
+            { "url": "/images/static/gen2-battery-craddle.webp"}
+        ],
+        "price": 75,
+        "on": false
+    },
+    {
+        "link": "dr-kim-shadowless-headlamp-travel-bag",
+        "title": "BiLumix Headlamp Travel bag",
+        "short": "Travel bag",
+        "text": "<h4>Travel Bag for BiLumix Headlamp</h4>",
+        "images": [
+            { "url": "/images/static/Bag1.webp"},
+            { "url": "/images/static/TravelBag-2_c0e37618-f203-485d-b864-4a7252a60cac.webp"},
+            { "url": "/images/static/Bag2.webp"}
+        ],
+        "price": 150,
+        "on": false
+    },
+    {
+        "link": "bilumix-face-shield-x2-package",
+        "title": "BiLumix Face Shield X2 Package",
+        "short": "Face Shield X2",
+        "text": "<h4>Products Specification</h4>\n<ul>\n<li class=\"li1\">\n<span class=\"s1\"></span><span class=\"s2\">Operation continuity: 3 - 8hours (depends on Intensity)</span>\n</li>\n<li>Charging time: About 2 hours</li>\n<li>Battery output: 7.4Volts / 1700mAh</li>\n<li>Charger Input: <a href=\"/shop/battery-cradle\">Battery Cradle</a>\n</li>\n</ul>",
+        "links": [
+            { "title": "Manual", "url": "https://shop.jkdentalgroup.com/blogs/bilumix-manual-videos/bilumix-face-shield-x2-manual-videos"},
+            { "title": "<p><strong><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/DWrKGa9p3lw\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen=\"\"></iframe></strong></p>", "url": "https://www.youtube.com/watch?v=DWrKGa9p3lw"}
+        ],
+        "images": [
+            { "url": "/images/static/bi-prod-fs-x2.webp"},
+            { "url": "/images/static/Shield_1_4e246768-aa03-4411-a75a-f5dfd949b579.webp"},
+            { "url": "/images/static/FS_1.webp"},
+            { "url": "/images/static/FS_2.webp"},
+            { "url": "/images/static/ShieldBox_modified_85322ccf-3077-41ee-a231-cf53bff1dea3.webp"}
+        ],
+        "price": 38,
+        "on": false
+    },
+    {
+        "link": "bilumix-cam",
+        "title": "BiLumix Cam [PREORDER]",
+        "short": "BiLumix Cam",
+        "text": "<p class=\"p1\" data-mce-fragment=\"1\"><span class=\"s1\" data-mce-fragment=\"1\">High quality video camera optimized for medical operation. Preorder now to receive our BiLumixCam on its first arrival!</span></p>\n<ul>\n<li class=\"li1\">\n<meta charset=\"utf-8\">Enables user to perform the operation on the area without looking directly</li>\n<li class=\"li1\">Enables to share the operation with cooperators and large audience.</li>\n<li class=\"li1\">Enables to review the operation and make decisions and adjustment to improve your operation based on analysis.</li>\n</ul>\n<h4>Feature</h4>\n<ul>\n<li class=\"li1\">Stream &amp; record video with desired point of view</li>\n<li class=\"li1\">Mountable to BiLumix Headlamp &amp; any surface</li>\n<li class=\"li1\">View the operational area in close up view with zoom</li>\n</ul>\n<h4 data-mce-fragment=\"1\">Specification</h4>\n<ul>\n<li>Camera:&nbsp;64 Mega Pixel</li>\n<li>Magnification: BL-2(4-9x)</li>\n<li>Display Resolution 1920 x 1080 (FHD)<br>\n</li>\n<li>Focus type: Single triggering auto focus &amp; fine tuning</li>\n<li>Wireless Connection: Wi-Fi 802.11n/ac, 5GHz. 2x2 MIMO</li>\n<li>Battery: 5000mAH Li-ion battery integrated<br>USB-C current bank(external) supported (10,000mAH x 2)<br>\n</li>\n<li>Status LED indication: Power on/off, battery status<br>\n</li>\n<li>Remote Controller: Bluetooth 4.0, 2.4GHz</li>\n<li>Video Encoding H.264</li>\n<li>Camera Viewing Angle: Tilt function supported (+45°, -55°)<br>\n</li>\n<li>Software Requirement:<br>- O/S: Windows 10, 64bit<br>- CPU: Dual Core, 2.3GHz<br>- Memory: SSH 256GB<br>- Graphic Card: Intel HD Graphic card integrated<br>- WiFi: Wireless LAN IEEE 802.11 n/ac 867Mbps on 5GHz&nbsp;</li>\n</ul>\n<p class=\"p1\" data-mce-fragment=\"1\"><span class=\"s1\" data-mce-fragment=\"1\"><meta charset=\"utf-8\"> <em>Fast wireless data transmitter included</em></span></p>",
+        "images": [
+            { "url": "/images/static/cam-1.webp"},
+            { "url": "/images/static/cam-2.webp"},
+            { "url": "/images/static/photographic-bilumix-cam.webp"},
+            { "url": "/images/static/photographic-bilumix-cam-2.webp"},
+            { "url": "/images/static/cam-4.webp"},
+            { "url": "/images/static/bilumix-cam-in-use.webp"}
+        ],
+        "price": 4500,
+        "on": false
+    }
+]

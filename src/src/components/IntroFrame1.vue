@@ -290,11 +290,13 @@ img {
 @keyframes content1Animation {
   0% {
     transform: scale(1);
+  }
+  10% {
     opacity: 1;
   }
-  50% {
-    transform: scale(.2);
-    opacity: 1;
+  40% {
+    transform: scale(.5);
+    opacity: 0;
   }
   65% {
     opacity: 1;
@@ -314,25 +316,27 @@ img {
   50% {
     opacity: 1;
   }
-  95% {
+  85% {
+    background-size: contain;
+    background-position: -250px center;
     opacity: 1;
   }
   100% {
-    background-position: -350px center;
     opacity: 0;
   }
 }
 @keyframes content2AnimationContent {
   0% {
-    left: 100% !important;
+    border: red 3px solid;
   }
-  50% {
-    left: 100% !important;
+  30% {
+    right: calc(50% - 150px);
   }
-  75% {
+  65% {
+    right: 1%;
   }
   100% {
-    margin-left: calc(80% - 100px) !important;
+    right: 1%;
   }
 }
 
@@ -371,7 +375,7 @@ img {
     50% {
       opacity: 1;
     }
-    95% {
+    65% {
       background-position: -130px -50px !important;;
       opacity: 1;
     }

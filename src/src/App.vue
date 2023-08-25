@@ -9,10 +9,9 @@ import { RouterLink, RouterView } from 'vue-router'
 <script lang="ts">
 
 import {defineComponent} from "vue"
-import Theater from "@/components/Theater.vue";
 
 export default defineComponent({
-  components: {Theater},
+  components: {},
   data() {
     return {
     }

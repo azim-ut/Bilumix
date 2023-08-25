@@ -3,6 +3,7 @@
     <span></span>
     <span></span>
     <span></span>
+    <span></span>
   </div>
 </template>
 
@@ -12,8 +13,6 @@ import {defineComponent} from "vue"
 
 export default defineComponent({
   components: { },
-  props: {
-  },
   data() {
     return {
     }
@@ -31,35 +30,50 @@ export default defineComponent({
 .box {
   position: fixed;
   z-index: 3;
-  bottom: 10%;
+  bottom: 60px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  //transform: translate(-50%, -50%);
 }
 .box span {
   display: block;
-  width: 20px;
-  height: 20px;
-  border-bottom: 1px solid #ffffff;
-  border-right: 1px solid #ffffff;
+  width: 50px;
+  height: 50px;
+  border-bottom: 1px solid #2994d1;
+  border-right: 1px solid #2994d1;
   transform: rotate(45deg);
-  margin: -10px;
-  animation: animate 2s infinite;
+  margin: -30px;
+  opacity: 0;
 }
 .box span:nth-child(1){
-	animation-delay: -0.2s;
+  animation: animate1 3s infinite;
 }
 .box span:nth-child(2){
-  animation-delay: -0.2s;
+  animation: animate2 3s infinite;
 }
-@keyframes animate {
-  0% {
-    opacity: 0;
-    transform: rotate(45deg) translate(-20px, -20px);
-  }
-  50% {opacity: 1;}
-  100% {
-		opacity: 0;
-    transform: rotate(45deg) translate(20px, 20px);
-  }
+.box span:nth-child(3){
+  animation: animate3 3s infinite;
+}
+.box span:nth-child(4){
+  animation: animate4 3s infinite;
+}
+@keyframes animate1 {
+  10% {opacity: 0;}
+  25% {opacity: 1;}
+  50% {opacity: 0;}
+}
+@keyframes animate2 {
+  20% {opacity: 0;}
+  40% {opacity: 1;}
+  60% {opacity: 0;}
+}
+@keyframes animate3{
+  30% {opacity: 0;}
+  55% {opacity: 1;}
+  70% {opacity: 0;}
+}
+@keyframes animate4{
+  40% {opacity: 0;}
+  60% {opacity: 1;}
+  90% {opacity: 0;}
 }
 </style>

@@ -13,13 +13,26 @@ const app = createApp(App)
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faBars , faTrash, faShoppingBag ,faEnvelope, faCirclePlay} from '@fortawesome/free-solid-svg-icons'
+import {faBars, faTrash, faShoppingBag, faEnvelope, faCirclePlay, faArrowRight, faArrowDown} from '@fortawesome/free-solid-svg-icons'
 import {createPinia} from "pinia";
+import localeMessages from "@intlify/unplugin-vue-i18n/messages"
+import pluralization from "./i18n/rules/pluralization"
+import {createI18n} from "vue-i18n";
 
-library.add(faBars,faTrash, faShoppingBag, faEnvelope, faCirclePlay)
+export const i18n = createI18n({
+    locale: import.meta.env.VITE_DEFAULT_LOCALE,
+    fallbackLocale: import.meta.env.VITE_FALLBACK_LOCALE,
+    legacy: false,
+    globalInjection: true,
+    messages: localeMessages,
+    pluralRules: pluralization
+})
+
+library.add(faBars,faTrash, faShoppingBag, faEnvelope, faCirclePlay, faArrowRight, faArrowDown)
 
 app
     .use(router)
     .use(createPinia())
+    .use(i18n)
     .component('font-awesome-icon', FontAwesomeIcon)
     .mount('#app')

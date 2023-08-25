@@ -5,7 +5,13 @@ export interface Product{
     text: string,
     links: Link[],
     images: Image[],
-    price: number
+    price: number,
+
+    on: boolean,
+    expandText: boolean
+}
+
+export interface MainProduct extends Product{
 }
 export interface Link{
     title: string,
@@ -16,7 +22,7 @@ export interface Image{
 }
 
 export interface ShopState {
-    main: Product[],
+    main: MainProduct[],
     loupes: Product[],
     accessories: Product[],
     parts: Product[],
