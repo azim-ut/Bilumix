@@ -3,3 +3,4 @@ web.iml
 test
 src/node_modules
 
+/app/bilumix/*

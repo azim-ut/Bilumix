@@ -24,7 +24,7 @@ export default defineConfig(({ command, mode }) => {
     build: {
       chunkSizeWarningLimit: 1600,
       outDir: "../app/bilumix/" + env.VITE_DEFAULT_LOCALE + "/",
-      emptyOutDir: true,
+      emptyOutDir: true
     }
   }
 })
