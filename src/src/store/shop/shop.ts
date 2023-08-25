@@ -1,7 +1,7 @@
 import {defineStore} from "pinia";
 
 
-import type {Product, ShopState} from "./types"
+import type {MainProduct, Product, ShopState} from "./types"
 import mainList from '@local/goods/main.json'
 import loupesList from '@local/goods/loupes.json'
 import accessoriesList from "@local/goods/accessories.json"
@@ -16,7 +16,7 @@ export const shopStore = defineStore('shop', {
         repair: repairList
     }),
     getters: {
-        getMain: (state: ShopState): Product[] => state.main,
+        getMain: (state: ShopState): MainProduct[] => state.main,
         getLoupes: (state: ShopState): Product[] => state.loupes,
         getAccessories: (state: ShopState): Product[] => state.accessories,
         getParts: (state: ShopState): Product[] => state.parts,
@@ -45,6 +45,7 @@ export const shopStore = defineStore('shop', {
                     links: [],
                     images: [],
                     price: 0,
+                    expandText: false,
                     on: false
                 }
             }

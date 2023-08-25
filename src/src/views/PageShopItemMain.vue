@@ -10,7 +10,7 @@
               :name="'main'"
               :test="true"
               :bg-mode="'cover'"
-              :style="{'background':'#000'}"
+              :style="{}"
               :scroll-event="scroll.event"
               :height="500">
           </TheaterMainWheel>
@@ -18,7 +18,7 @@
         </div>
         <div>
           <div>
-            <h1>{{product.title}} {{ t("title") }}</h1>
+            <h1>{{product.title}}</h1>
             <div class="price">From {{pricePrint(product.price)}}</div>
             <div>
             <span class="pointer" @click="product.expandText = !product.expandText">
@@ -61,14 +61,8 @@ import type {Image, Product} from "@/store/shop/types";
 import {cartStore} from "@/store/cart/cart";
 import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
 import TheaterWheelVideo1 from "@/components/TheaterWheelVideo1.vue";
-import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
-  setup() {
-    const { t } = useI18n()
-
-    return { t }
-  },
   components: {
     TheaterWheelVideo1,
     TheaterMainWheel,
@@ -83,6 +77,7 @@ export default defineComponent({
       scroll: {
         event: undefined
       },
+      product: null,
       currentImage: undefined as Image|undefined,
       form: {
         cart: 0,
@@ -122,9 +117,8 @@ export default defineComponent({
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('mousewheel', this.handleScroll);
     this.product = this.shopStore.getItem(this.$route.params.link)
-    console.log(product)
     this.currentImage = this.product.images[0];
-    this.form.cart = cartStore.cnt
+    this.form.cart = this.cartStore.getCart
   }
 })
 </script>

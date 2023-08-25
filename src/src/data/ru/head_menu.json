@@ -1,0 +1,8 @@
+[
+  {"title": "Магазин", "active": false, "name": "shop", "link":"/shop", "mobileButton": false},
+  {"title": "Предложения", "active": true, "name":"offers", "link":"/offers", "mobileButton": false},
+  {"title": "Помощь", "active": false, "name":"manual", "link":"/manual", "mobileButton": false},
+  {"title": "Поддержка", "active": false, "name":"support", "link":"/support", "mobileButton": false},
+  {"title": "Демо", "active": false, "name":"trial", "link":"/trial", "mobileButton": true},
+  {"title": "Составить заказ", "active": false, "name":"package", "link":"/package", "mobileButton": true}
+]
