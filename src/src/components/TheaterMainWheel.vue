@@ -17,7 +17,7 @@
       <div class="framesBar" ref="framesBar">
         <div v-for="(img, $index) in $props.frames"
              :key="$index"
-             :class="{'bgDisabled': !framesWithBackground.includes($index)}"
+             :class="{'bgDisabled': !video.loaded.includes($index)}"
              :style="{'height': ($props.height/$props.frames.length) + 'px', 'background-image': 'url(' + img + ')'}"></div>
       </div>
   </div>
@@ -29,7 +29,7 @@ import {defineComponent} from "vue"
 
 export default defineComponent({
   components: { },
-  props: {
+  props: <any>{
     name: "" as String,
     test: false,
     height: 500,
@@ -39,22 +39,25 @@ export default defineComponent({
   },
   data() {
     return {
+      video: {
+        frames: [] as any[],
+        loaded: [] as number[]
+      },
       wh: 0,
       theaterDivIndex: 5,
       loaded: false,
       theaterDivHeight: 100,
-      framesWithBackground: [],
       reel: {
         min: 1,
         max: 3,
         step: 1,
         current: 1,
-        lastPos: undefined,
+        lastPos: -1,
       }
     }
   },
   methods: {
-    updateReelPosition(direction): number {
+    updateReelPosition(direction: number): void {
       let newZoom = Math.floor(this.reel.current + direction * this.reel.step);
       if (newZoom < this.reel.min) {
         newZoom = this.reel.min
@@ -65,7 +68,7 @@ export default defineComponent({
       this.reel.current = newZoom;
     },
     handleWheel(event: Event){
-      if(!this.loaded){
+      if(!this.loaded || !this.$refs.theaterDiv){
         return;
       }
       let rect = this.$refs.theaterDiv?.getBoundingClientRect();
@@ -77,7 +80,7 @@ export default defineComponent({
         return;
       }
 
-      if(this.reel.lastPos === undefined){
+      if(this.reel.lastPos == undefined){
         this.reel.lastPos = rect.top
       }
       // let direction = event.deltaY > 0 ? 1 : -1;
@@ -88,26 +91,39 @@ export default defineComponent({
       //     (direction > 0 && this.reel.current<this.reel.max) ||
       //     (direction < 0 && (this.reel.current>1 || !this.reel.current))
       // ){
-        if(this.$props.frames[this.reel.current] && this.framesWithBackground.includes(this.reel.current)){
+        if(this.$props.frames[this.reel.current] && this.video.loaded.includes(this.reel.current)){
           this.theaterDivIndex = this.reel.current
         }
       // }
 
       for(let i = this.reel.current-2; i<this.reel.current+2; i++){
-        if(i>=0 && i<this.$props.frames.length && !this.framesWithBackground.includes(i)){
-          this.framesWithBackground.push(i)
+        if(i>=0 && i<this.$props.frames.length && !this.video.loaded.includes(i)){
+          this.video.loaded.push(i)
         }
       }
     },
     loadedEvent(){
       this.loaded = true;
     },
+    fillVideoTheaterFrames(){
+      this.video.frames = []
+      let cnt = 224;
+      while(cnt-->0){
+        let path = "/images/min/video1/video1-sq-" + cnt + "-min.jpg"
+        if(cnt>=10 && cnt<100){
+          path = "/images/min/video1/video1-sq-0" + cnt + "-min.jpg"
+        }else if(cnt<10){
+          path = "/images/min/video1/video1-sq-00" + cnt + "-min.jpg"
+        }
+        this.video.frames.unshift(path)
+      }
+    },
     autoUploadFrames(){
-      if(this.framesWithBackground.length !== this.$props.frames.length){
+      if(this.video.loaded.length !== this.video.frames.length){
         let max = 5
-        this.$props.frames.forEach((row, ind) => {
-          if(!this.framesWithBackground.includes(ind) && max-->0){
-            this.framesWithBackground.push(ind)
+        this.$props.frames.forEach((row: any, ind: number) => {
+          if(!this.video.loaded.includes(ind) && max-->0){
+            this.video.loaded.push(ind)
           }
         })
         setTimeout(this.autoUploadFrames, 150)
@@ -125,7 +141,7 @@ export default defineComponent({
     window.removeEventListener('load', this.loadedEvent);
   },
   mounted(){
-    this.reel.max = this.$props.frames.length
+    this.reel.max = this.video.frames.length
 
     let container = document.getElementById('TheaterWheel' + this.$props.name);
     // window.addEventListener('scroll', this.handleWheel);

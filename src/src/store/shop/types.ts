@@ -6,7 +6,7 @@ export interface Product{
     links: Link[],
     images: Image[],
     price: number,
-
+    on: boolean,
     expandText: boolean
 }
 export interface Link{

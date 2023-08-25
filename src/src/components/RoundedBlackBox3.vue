@@ -17,7 +17,7 @@ import ScrollDownIndicator from "@/components/ScrollDownIndicator.vue";
 
 export default defineComponent({
   components: {ScrollDownIndicator},
-  props: {
+  props: <any>{
     bg: "" as string|null,
     margin: "" as string|null,
     color: null as string|null,

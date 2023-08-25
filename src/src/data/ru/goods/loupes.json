@@ -1,0 +1,56 @@
+[
+    {
+        "link": "headlamp-loupe",
+        "title": "BiLumix Headlamp 1.5x Loupe",
+        "short": "1.5x Loupe",
+        "text": "We need to know your IPD (Interpupillary Distance). You can check your IPD by yourself. <p><strong>Headlamp Loupe&nbsp;Specification</strong><br></p>\n<ul>\n<li>Magnification:&nbsp;1.5x</li>\n<li>Working distance: 5~100cm&nbsp;</li>\n<li>Working field size: 45cm</li>\n<li>Weight: 13g</li>\n</ul>\n<h4>Compatibility</h4>\n<ul>\n<li>Generation 1.0</li>\n<li>Generation 2.0</li>\n</ul>\n<p>",
+        "links": [
+            { "title": "Manual", "url": "/manual/1_5xloupe-setup/"}
+        ],
+        "images": [
+            { "url": "/images/static/1.5_2.webp"},
+            { "url": "/images/static/1.5_1.webp"},
+            { "url": "/images/static/1.5_3.webp"},
+            { "url": "/images/static/1.5_4.webp"},
+            { "url": "/images/static/1.5_5.webp"}
+        ],
+        "price": 100,
+        "on": false
+    },
+    {
+        "link": "copy-of-headlamp-loupe",
+        "title": "Surgical Loupe 2.5x",
+        "short": "2.5x Loupe",
+        "text": "We need to know your IPD (Interpupillary Distance). You can check your IPD by yourself.<br><h4>&nbsp;Headlamp Loupe&nbsp;Specification</h4>\n<ul>\n<li>Magnification: 2.5x</li>\n<li>Working distance: 20 ~ 100cm (Adjustable)&nbsp;</li>\n<li>Weight: 19g</li>\n</ul>\n<h4>Compatibility</h4>\n<ul>\n<li>Generation 1.0</li>\n<li>Generation 2.0</li>\n</ul>\n ",
+        "links": [
+            { "title": "Manual Video", "url": "https://www.youtube.com/watch?v=OXtJXZkP4Qw"}
+        ],
+        "images": [
+            { "url": "/images/static/2_941f1d27-2ec9-4fde-84aa-930551e1d077.webp"},
+            { "url": "/images/static/1_8eaf8e04-10e8-4163-b215-23ba94f48c97.webp"},
+            { "url": "/images/static/3_d7879e98-bcdb-422f-b8bb-529f343868f7.webp"},
+            { "url": "/images/static/4_5998b5d8-8eeb-44b0-bdb4-de7db377b49d.webp"},
+            { "url": "/images/static/5_b13301d8-a335-4095-a8bb-25cdb4b35edb.webp"}
+        ],
+        "price": 650,
+        "on": false
+    },
+    {
+        "link": "bilumix-3-5x-loupe",
+        "title": "BiLumix 3.5x Loupe",
+        "short": "3.5x Loupe",
+        "text": "While 3.5x loupe can be calibrated by user, we will setup the initial calibration according to your IPD (Interpupillary Distance). You can check your IPD by yourself.<br>\n<h4>Loupe Specification</h4>\n<ul>\n<li>Magnification: 3.5x</li>\n<li>Working Distance: Adjustable (20 ~ 60cm)</li>\n<li>Weight: 69g</li>\n</ul>\n<h4>Features</h4>\n<ul>\n<li>Adjustable Working Distance</li>\n<li>Adjustable Pupil Distance (User Friendly)</li>\n</ul>\n<p></p>",
+        "links": [
+            { "title": "Setup manual", "url": "/manual/b3_5xloupe-setup/"},
+            { "title": "How to calibrate", "url": "/manual/calibrating-your-loupe/"}
+        ],
+        "images": [
+            { "url": "/images/static/bi-prod-loupe3-1.webp"},
+            { "url": "/images/static/bi-prod-loupe3-3.webp"},
+            { "url": "/images/static/3.5x_2_72d588f4-a360-493f-892a-94cad47fa3de.webp"},
+            { "url": "/images/static/3.5x_3_a603b7c1-35c4-4386-9efc-80946ddccf8f.webp"}
+        ],
+        "price": 1000,
+        "on": false
+    }
+]

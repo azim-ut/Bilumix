@@ -1,11 +1,12 @@
 import {defineStore} from "pinia";
-import type {Product, ShopState} from "./types"
-import mainList from "@/data/goods/main.json"
-import loupesList from "@/data/goods/loupes.json"
-import accessoriesList from "@/data/goods/accessories.json"
-import partsList from "@/data/goods/parts.json"
-import repairList from "@/data/goods/repair.json"
 
+
+import type {Product, ShopState} from "./types"
+import mainList from '@local/goods/main.json'
+import loupesList from '@local/goods/loupes.json'
+import accessoriesList from "@local/goods/accessories.json"
+import partsList from "@local/goods/parts.json"
+import repairList from "@local/goods/repair.json"
 export const shopStore = defineStore('shop', {
     state: (): ShopState => ({
         main: mainList,
@@ -44,6 +45,7 @@ export const shopStore = defineStore('shop', {
                     links: [],
                     images: [],
                     price: 0,
+                    on: false
                 }
             }
             return out

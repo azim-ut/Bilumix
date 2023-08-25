@@ -2,33 +2,44 @@
 <template>
   <HeadMenu :key="$route.path" />
   <div class="contentWrap">
-    <div class="contentBody">
+    <div class="contentBody mainProduct">
       <div class="grid grid2" v-for="product in products()">
         <div>
+          <TheaterMainWheel
+              class="video1"
+              :name="'main'"
+              :test="true"
+              :bg-mode="'cover'"
+              :style="{'background':'#000'}"
+              :scroll-event="scroll.event"
+              :height="500">
+          </TheaterMainWheel>
           &nbsp;
         </div>
         <div>
-          <h1>{{product.title}}</h1>
-          <div class="price">From {{pricePrint(product.price)}}</div>
           <div>
+            <h1>{{product.title}} {{ t("title") }}</h1>
+            <div class="price">From {{pricePrint(product.price)}}</div>
+            <div>
             <span class="pointer" @click="product.expandText = !product.expandText">
               Details
               <font-awesome-icon v-if="!product.expandText" :icon="['fas', 'arrow-right']" />
               <font-awesome-icon v-if="product.expandText" :icon="['fas', 'arrow-down']" />
             </span>
-            <div v-if="product.expandText" v-html="product.text"></div>
+              <div v-if="product.expandText" v-html="product.text"></div>
+            </div>
+          </div>
+          <h2>LOUPES:</h2>
+          <div>
+            <div v-for="row in loops()"
+                 @click="row.on = !row.on"
+                 :class="{'grid grid2 force pointer additional': true, 'active': row.on}">
+              <div>{{row.short}}</div>
+              <div class="right">+{{pricePrint(row.price)}}</div>
+            </div>
           </div>
         </div>
-        <h1>LOUPES:</h1>
-        <div>
-          <div v-for="row in loops()"
-               @click="row.on = !row.on"
-               :class="{'grid grid2 force pointer additional': true, 'active': row.on}">
-            <div>{{row.short}}</div>
-            <div class="right">+{{pricePrint(row.price)}}</div>
-          </div>
         </div>
-      </div>
     </div>
   </div>
   <Footer />
@@ -48,9 +59,19 @@ import {mapStores} from "pinia"
 import {shopStore} from "@/store/shop/shop"
 import type {Image, Product} from "@/store/shop/types";
 import {cartStore} from "@/store/cart/cart";
+import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
+import TheaterWheelVideo1 from "@/components/TheaterWheelVideo1.vue";
+import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
+  setup() {
+    const { t } = useI18n()
+
+    return { t }
+  },
   components: {
+    TheaterWheelVideo1,
+    TheaterMainWheel,
     HeadMenu,
     TheaterWheel,
     IntroFrame1, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox},
@@ -59,6 +80,9 @@ export default defineComponent({
   },
   data() {
     return {
+      scroll: {
+        event: undefined
+      },
       currentImage: undefined as Image|undefined,
       form: {
         cart: 0,
@@ -85,13 +109,21 @@ export default defineComponent({
         this.form.count = 1
       }
       this.cartStore.toCart(product.link, this.form.count)
+    },
+    handleScroll(event: any){
+      this.scroll.event = event
     }
   },
   unmounted () {
+    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('mousewheel', this.handleScroll);
   },
   mounted(){
+    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('mousewheel', this.handleScroll);
     this.product = this.shopStore.getItem(this.$route.params.link)
-    this.currentImage = this.product?.images[0];
+    console.log(product)
+    this.currentImage = this.product.images[0];
     this.form.cart = cartStore.cnt
   }
 })
@@ -103,6 +135,10 @@ export default defineComponent({
 }
 </style>
 <style scoped>
+.mainProduct h1{
+  letter-spacing: normal;
+  font-size: xxx-large;
+}
 .price{
   margin: 0;
   font-family: Rubik, sans-serif;

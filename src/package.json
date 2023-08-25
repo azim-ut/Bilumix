@@ -6,7 +6,8 @@
     "dev": "vite --port 3005",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
-    "build-only": "vite build --mode production",
+    "build-only-ru": "vite build --mode production_ru",
+    "build-only-en": "vite build --mode production_en",
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false"
   },
   "dependencies": {
@@ -16,7 +17,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/vue-fontawesome": "^3.0.3",
-    "@intlify/unplugin-vue-i18n": "^0.12.2",
+    "@intlify/unplugin-vue-i18n": "^0.12.3",
     "@panzoom/panzoom": "^4.5.1",
     "axios": "^1.4.0",
     "pinia": "^2.1.6",

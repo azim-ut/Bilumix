@@ -1,0 +1,41 @@
+[
+    {
+        "link": "rechargeable-battery",
+        "title": "Rechargeable Battery",
+        "short": "Rechargeable Battery",
+        "text": "<h4>Products Specification</h4>\n<ul>\n<li>Operation continuity: 2.3-10hours</li>\n<li>Charging time: 2hours</li>\n<li>Battery output: 7.4Volts / 1150mAh</li>\n<li>Charger Input: AC 100-240V &nbsp; 50-60Hz</li>\n</ul>",
+        "links": [
+                    ],
+        "images": [
+            { "url": "/images/static/mBattery-1_31a244b2-4cff-4748-8b8d-c6187e553c0a.webp"},
+            { "url": "/images/static/Battery-2_d85482bf-b3a8-461c-9503-73e37cc15001.webp"},
+            { "url": "/images/static/Battery-3_f1a4b970-576e-4d8e-b039-4f67a745c458.webp"}
+        ],
+        "price": 90
+    },
+    {
+        "link": "rechargeable-battery-charger",
+        "title": "Rechargeable Battery Charger",
+        "short": "Rechargeable Battery Charger",
+        "text": "<h4>Products Specification</h4>\n<ul>\n<li>Charger&nbsp;output: 8.4Volts / 1,000mAh</li>\n<li>Charger Input: AC 110-240V &nbsp; 50-60Hz</li>\n</ul>\n<p><strong>* Only for&nbsp;BiLumix's&nbsp;Rechargeable Battery</strong></p>",
+        "links": [
+        ],
+        "images": [
+            { "url": "/images/static/Charger-1_194ef1a4-1c12-408c-9535-7423a0faf953.webp"},
+            { "url": "/images/static/Charger-2_0af909ff-0372-4a81-8a84-66bd427418ff.webp"}
+        ],
+        "price": 100
+    },
+    {
+        "link": "bilumix-headlamp-repair-service",
+        "title": "BiLumix GEN.1 Repair Service",
+        "short": "Gen1 Repair Service",
+        "text": "<h4>Service Specification</h4>\n<ul>\n<li>Front &amp; Rear Band Replacement</li>\n<li>Light Source Replacement</li>\n<li>Other Service (Surgical Loupes)</li>\n</ul>\n<p>* Flat Service Fee will be applied.</p>\n<p>* Please contact us (contact@bilumix.com) after you place your order.</p>\n<ul></ul>",
+        "links": [
+        ],
+        "images": [
+            { "url": "/images/static/Headlamp-ReapiarService_afdc31e3-15b4-4356-bc6d-0c58b8f35991.webp"}
+        ],
+        "price": 250
+    }
+]

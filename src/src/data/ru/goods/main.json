@@ -1,0 +1,18 @@
+[
+    {
+        "link": "bilumix",
+        "title": "BiLumix Headlamp",
+        "short": "Headlamp",
+        "text": "<div><h4>\n<meta charset=\"utf-8\">New Feature</h4>\n<ul>\n<li class=\"li1\">Improved design (forehead &amp; rear head pads) will give you a more snug and secure fit for better comfortability</li>\n<li>One-touch on-off button</li>\n<li>User-friendly power indicator</li>\n</ul>\n<h4 data-mce-fragment=\"1\">Specification</h4>\n<ul>\n<li>Weight: 140g</li>\n<li>\n<meta charset=\"utf-8\"> <span>Brightness: Max 100,000 lux</span>\n</li>\n<li>Battery Life:</li>\n<ul>\n<li>Max Intensity: About 3 hours (Continuously)</li>\n<li>Mid to Low Intensity: 5 to 8 hours(Continuously)</li>\n</ul>\n</ul>\n<h4 data-mce-fragment=\"1\">Included&nbsp;Accessories</h4>\n<blockquote>BiLumix&nbsp;Headlamp comes with<br>\n</blockquote>\n<blockquote>2&nbsp;Rechargeable Batteries,1&nbsp;Battery Cradle, 1 Attachable Light Source&nbsp;Filters&nbsp;(Clear) and 1 Travel Bag</blockquote>\n<blockquote></blockquote>\n<p data-mce-fragment=\"1\">Click <a class=\"manual-link\" href=\"/manual/\" target=\"_blank\">here</a> for the list of manual video instructions.</p></div>",
+        "links": [
+            { "title": "Manual", "url": "/manual"}
+        ],
+        "images": [
+            { "url": "/images/static/light-filter-clear.webp"},
+            { "url": "/images/static/amber0.webp"},
+            { "url": "/images/static/Amber1.webp"},
+            { "url": "/images/static/Amber2.webp"}
+        ],
+        "price": 1250
+    }
+]

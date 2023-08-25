@@ -80,7 +80,7 @@
       </div>
       <div class="stayUpdate">
         <h1>Stay updated</h1>
-        <h3>For exclusive advance information on our new products and promotions.</h3>
+        <p>For exclusive advance information on our new products and promotions.</p>
         <div class="emailInput">
           <input type="email" /><button>Subscribe <font-awesome-icon icon="fa-solid fa-envelope" /></button>
         </div>
@@ -111,9 +111,9 @@ import IntroFrame1 from "@/components/IntroFrame1.vue";
 import TheaterWheel from "@/components/TheaterWheel.vue";
 import HeadMenu from "@/components/HeadMenu.vue";
 import Modal from "@/components/Modal.vue"
-import block1 from "@/data/index_text_block1.json"
-import block2 from "@/data/index_text_block2.json"
-import block3 from "@/data/index_text_block3.json"
+import block1 from "@local/index_text_block1.json"
+import block2 from "@local/index_text_block2.json"
+import block3 from "@local/index_text_block3.json"
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import RoundedBlackBox3 from "@/components/RoundedBlackBox3.vue";
 import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
@@ -284,9 +284,14 @@ export default defineComponent({
   background: black;
   color: white;
 }
-.specialOffers h1{
+.specialOffers h1,
+.stayUpdate h1{
   margin: auto;
+  letter-spacing: normal;
   font-size: xxx-large;
+}
+.stayUpdate h1{
+  letter-spacing: normal;
 }
 .specialOffers h3{
   margin: auto;
