@@ -76,7 +76,7 @@ export default defineComponent({
 
 <style scoped>
 .contentBody {
-  margin: 80px 20px 10px;
+  margin: 57px 20px 10px;
 }
 video {
   border-radius: 17px;
