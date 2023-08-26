@@ -118,8 +118,8 @@ header nav ul li{
 }
 header nav ul li a{
   font-size: 18px;
-  height: 50px;
-  line-height: 50px;
+  height: 57px;
+  line-height: 57px;
   padding: 0 20px;
   color: #b4b4b4;
   text-decoration: none;

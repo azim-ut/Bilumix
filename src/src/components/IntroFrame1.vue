@@ -342,7 +342,7 @@ img {
 
 @keyframes animate {
   0% {
-    transform: rotate(5deg) scale(1);
+    transform: rotate(15deg) scale(1);
     opacity: 1;
   }
   25% {
