@@ -207,7 +207,7 @@ export default defineComponent({
 
 <style scoped>
 .contentBody{
-	margin: 90px auto 0;
+	margin: 57px auto 0;
   text-align: center;
   padding: 0 10px;
 }

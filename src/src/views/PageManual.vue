@@ -79,7 +79,7 @@ h1{
   text-align: left;
 }
 .manualList{
-  margin-top: 80px;
+  margin-top: 57px;
   background: #f5f5f7;
 }
 .manualList .block{
