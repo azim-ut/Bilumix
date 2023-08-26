@@ -89,6 +89,7 @@ header {
   box-sizing: border-box;
   z-index: 100;
   display: flex;
+  height: 57px;
   align-items: center;
 }
 
@@ -117,7 +118,7 @@ header nav ul li{
   cursor: pointer;
 }
 header nav ul li a{
-  font-size: 18px;
+  font-size: 16px;
   height: 57px;
   line-height: 57px;
   padding: 0 20px;
