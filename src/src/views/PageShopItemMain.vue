@@ -38,6 +38,9 @@
               <div class="right">+{{pricePrint(row.price)}}</div>
             </div>
           </div>
+          <div style="border: red 1px solid;">
+            <Slider v-model="form.ipd"></Slider>
+          </div>
         </div>
         </div>
     </div>
@@ -61,9 +64,11 @@ import type {Image, Product} from "@/store/shop/types";
 import {cartStore} from "@/store/cart/cart";
 import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
 import TheaterWheelVideo1 from "@/components/TheaterWheelVideo1.vue";
+import Slider from '@vueform/slider'
 
 export default defineComponent({
   components: {
+    Slider,
     TheaterWheelVideo1,
     TheaterMainWheel,
     HeadMenu,
@@ -79,7 +84,12 @@ export default defineComponent({
       },
       product: null,
       currentImage: undefined as Image|undefined,
+      ipd:{
+        min: 55,
+        max: 72
+      },
       form: {
+        ipd: 63,
         cart: 0,
         count: 1,
         link: undefined as string|undefined
