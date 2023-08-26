@@ -81,11 +81,11 @@ export default defineComponent({
 
 <style scoped>
 header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   padding: 0 100px;
-  background: #262626;
+  background: #151515;
   box-sizing: border-box;
   z-index: 100;
   display: flex;

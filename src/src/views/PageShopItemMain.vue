@@ -38,7 +38,15 @@
               <div class="right">+{{pricePrint(row.price)}}</div>
             </div>
           </div>
-          <div style="border: red 1px solid;">
+          <div>
+            <h3>{{bundles.IPD}}</h3>
+            <Slider v-model="form.ipd"></Slider>
+          </div>
+          <div>
+            <h3>{{bundles.WARE_PROGRESSIVE_GLASS}}</h3>
+            <div>
+              <h4>How many year(s) have you wear progressive glass?</h4>
+            </div>
             <Slider v-model="form.ipd"></Slider>
           </div>
         </div>
@@ -64,6 +72,7 @@ import type {Image, Product} from "@/store/shop/types";
 import {cartStore} from "@/store/cart/cart";
 import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
 import TheaterWheelVideo1 from "@/components/TheaterWheelVideo1.vue";
+import shopTextBundles from "@local/shop_text.json";
 import Slider from '@vueform/slider'
 
 export default defineComponent({
@@ -82,6 +91,7 @@ export default defineComponent({
       scroll: {
         event: undefined
       },
+      bundles: shopTextBundles,
       product: null,
       currentImage: undefined as Image|undefined,
       ipd:{
@@ -92,6 +102,10 @@ export default defineComponent({
         ipd: 63,
         cart: 0,
         count: 1,
+        progressive_glass: {
+          yes: false,
+          years: 5
+        },
         link: undefined as string|undefined
       }
     }
@@ -133,6 +147,7 @@ export default defineComponent({
 })
 </script>
 
+<style src="@vueform/slider/themes/default.css"></style>
 <style>
 #app{
   background: #fff !important;
