@@ -81,14 +81,15 @@ export default defineComponent({
 
 <style scoped>
 header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   padding: 0 100px;
-  background: #262626;
+  background: #151515;
   box-sizing: border-box;
   z-index: 100;
   display: flex;
+  height: 57px;
   align-items: center;
 }
 
@@ -117,9 +118,9 @@ header nav ul li{
   cursor: pointer;
 }
 header nav ul li a{
-  font-size: 18px;
-  height: 50px;
-  line-height: 50px;
+  font-size: 16px;
+  height: 57px;
+  line-height: 57px;
   padding: 0 20px;
   color: #b4b4b4;
   text-decoration: none;
