@@ -1,4 +1,11 @@
 {
   "WARE_PROGRESSIVE_GLASS": "Носите прогрессивные очки?",
-  "IPD": "IPD (Interpupillary Distance)"
+  "WARE_PROGRESSIVE_GLASS_YEARS": "Как долго носите очки?",
+  "IPD": "IPD (Interpupillary Distance)",
+  "LIGHT_FILTERS": "Световые фильтры",
+  "WARRANTY": "Гарантия",
+  "WARRANTY_1YEAR": "1 год гарантии",
+  "INCLUDED": "Включено",
+  "QUANTITY": "Количество",
+  "SUMMARY": "Итого"
 }

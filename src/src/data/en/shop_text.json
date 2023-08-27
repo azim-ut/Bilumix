@@ -1,4 +1,11 @@
 {
   "WARE_PROGRESSIVE_GLASS": "Do you wear a progressive glass?",
-  "IPD": "IPD (Interpupillary Distance)"
+  "WARE_PROGRESSIVE_GLASS_YEARS": "How many year(s) have you wear progressive glass?",
+  "IPD": "IPD (Interpupillary Distance)",
+  "LIGHT_FILTERS": "Light filters",
+  "WARRANTY": "Warranty",
+  "WARRANTY_1YEAR": "1 year warranty",
+  "INCLUDED": "Included",
+  "QUANTITY": "Quantity",
+  "SUMMARY": "Summary"
 }

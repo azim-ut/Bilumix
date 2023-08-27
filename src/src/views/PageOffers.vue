@@ -101,8 +101,6 @@ export default defineComponent({
 .textmlty{
   text-shadow: none!important;
   font-family: Rubik,sans-serif;
-
-
 }
 
 h3{

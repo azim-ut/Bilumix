@@ -12,6 +12,20 @@ export interface Product{
 }
 
 export interface MainProduct extends Product{
+    products: string[],
+    warranty: number,
+    filters: AdditionalProduct[],
+    battery: AdditionalProduct[]
+}
+
+export interface AdditionalProduct {
+    title: string,
+    included: boolean,
+    edit: boolean,
+    price: number,
+
+    on: boolean,
+    expandText: boolean
 }
 export interface Link{
     title: string,
@@ -26,5 +40,6 @@ export interface ShopState {
     loupes: Product[],
     accessories: Product[],
     parts: Product[],
-    repair: Product[]
+    repair: Product[],
+    generation: Product[]
 }
