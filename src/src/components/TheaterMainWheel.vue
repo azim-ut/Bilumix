@@ -10,7 +10,7 @@
           <div v-for="(img, $index) in video.frames"
                :key="$index"
                :class="{'bgModeCover': $props.bgMode === 'cover', 'bgModeContain': $props.bgMode === 'contain'}"
-               v-show="$index === theaterDivIndex"
+               v-show="$index === video.current"
                :style="{'background-image': 'url(' + img + ')'}"></div>
         </div>
       </div>
@@ -39,59 +39,29 @@ export default defineComponent({
   },
   data() {
     return {
+      timer: undefined as undefined|number,
       video: {
         frames: [] as any[],
-        loaded: [] as number[]
+        loaded: [] as number[],
+        current: 0,
+        index: 1
       },
-      wh: 0,
-      theaterDivIndex: 5,
       loaded: false,
-      theaterDivHeight: 100,
-      reel: {
-        min: 1,
-        max: 3,
-        step: 1,
-        current: 1,
-        lastPos: -1,
-      }
     }
   },
   methods: {
-    handleWheel(event: any): void{
-      if(!this.$refs.theaterDiv){
-        return;
-      }
-      let rect = this.$refs.theaterDiv?.getBoundingClientRect()
-      let frameTarget = (rect.top - rect.height)/this.$props.height * 100 * -1
-      if(
-          !rect ||
-          frameTarget < 0 ||
-          frameTarget > this.video.frames.length ||
-          (rect.top + rect.height)<0 ||
-          (rect.top-rect.height)>window.innerHeight
-      ){
-        return;
-      }
-      this.reel.current = Math.round(frameTarget)
-      if(this.reel.lastPos === undefined){
-        this.reel.lastPos = rect.top
-      }
-      if(this.video.frames[this.reel.current] && this.video.loaded.includes(this.reel.current)){
-        this.theaterDivIndex = this.reel.current
-      }
-
-      for(let i = this.reel.current-5; i<this.reel.current+5; i++){
-        if(i>=0 && i<this.video.frames.length && !this.video.loaded.includes(i)){
-          this.video.loaded.push(i)
+    playVideo(event: any): void{
+      if(this.video.loaded.length === this.video.frames.length){
+        this.video.current += 1 * this.video.index
+        if(this.video.current>=this.video.frames.length-1 || this.video.current<=0){
+          this.video.index *= -1
         }
       }
-    },
-    loadedEvent(){
-      this.loaded = true;
+      this.timer = setTimeout(this.playVideo, 20)
     },
     fillVideoFrames(){
       this.video.frames = []
-      let cnt = 224;
+      let cnt = 279;
       while(cnt-->0){
         let path = "/images/min/device_image/bilumix-sequence" + cnt + "-min.png"
         if(cnt>=10 && cnt<100){
@@ -116,20 +86,16 @@ export default defineComponent({
   },
   watch: {
     scrollEvent: function(newVal, oldVal) {
-      this.handleWheel(newVal)
+      // this.handleWheel(newVal)
     }
   },
   unmounted () {
-    let container = document.getElementById('TheaterWheel' + this.$props.name);
-    // window.removeEventListener('scroll', this.handleWheel);
-    window.removeEventListener('load', this.loadedEvent);
+    clearTimeout(this.timer)
   },
-  mounted(){
-    this.reel.max = this.video.frames.length
-    let container = document.getElementById('TheaterWheel' + this.$props.name);
-    window.addEventListener('load', this.loadedEvent);
-    setTimeout(this.autoUploadFrames, 150)
-    this.fillVideoFrames()
+  async mounted(){
+    setTimeout(this.autoUploadFrames, 50)
+    await this.fillVideoFrames()
+    this.timer = setTimeout(this.playVideo, 50)
   }
 })
 </script>

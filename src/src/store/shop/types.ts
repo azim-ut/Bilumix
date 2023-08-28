@@ -20,6 +20,7 @@ export interface MainProduct extends Product{
 
 export interface AdditionalProduct {
     title: string,
+    short: string,
     included: boolean,
     edit: boolean,
     price: number,

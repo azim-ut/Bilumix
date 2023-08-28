@@ -18,7 +18,7 @@ const manualStore = mStore()
         <div class="right">
           <div class="title">{{row.title}}</div>
           <div class="links">
-            <a class="btn" :href="'/manual/' + row.link">Detail</a>
+            <a class="btn" @click="toManualPage(row.link)">Detail</a>
             <a class="btn" @click="showVideo(row)">Watch video</a>
           </div>
         </div>
@@ -62,6 +62,9 @@ export default defineComponent({
   methods: {
     showVideo(link: ManualRecord){
       this.showModalVideo = link
+    },
+    toManualPage(link: string){
+      this.$router.push({name: "manualPage", params: {link: link}})
     },
   },
   unmounted () {

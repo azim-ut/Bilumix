@@ -15,6 +15,8 @@ import PageDataPrivacy from "@/views/PageDataPrivacy.vue";
 import PageTermOfUse from "@/views/PageTermOfUse.vue";
 import PageShopItem from "@/views/PageShopItem.vue";
 
+const locale = import.meta.env.VITE_DEFAULT_LOCALE
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -74,14 +76,14 @@ const router = createRouter({
       component: PageTermOfUse
     },
     {
-      path: '/manual',
-      name: 'manual',
-      component: PageManual
-    },
-    {
       path: '/manual/:link',
       name: 'manualPage',
       component: PageManualItem
+    },
+    {
+      path: '/manual',
+      name: 'manual',
+      component: PageManual
     },
     {
       path: '/support',
@@ -94,7 +96,7 @@ const router = createRouter({
       component: PageTrial
     },
     {
-      path: '/package',
+      path: '/package/:link',
       name: 'package',
       component: PagePackage
     }

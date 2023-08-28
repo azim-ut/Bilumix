@@ -17,12 +17,24 @@
         "price": 1250,
         "warranty": 1,
         "filters": [
-            {"title":  "Light filters/caps (pair) - clear", "included": true, "edit": false, "price": 0},
-            {"title":  "Light filters/caps (pair) - amber(flip)", "included": false, "edit": true, "price": 14}
+            {
+                "title":  "Light filters/caps (pair) - clear",
+                "short": "Clear",
+                "included": true,
+                "edit": false,
+                "price": 0
+            },
+            {
+                "title":  "Light filters/caps (pair) - amber(flip)",
+                "short": "Amber(flip)",
+                "included": false,
+                "edit": true,
+                "price": 14
+            }
         ],
         "battery": [
-            { "title": "2 x Batteries", "included": true, "edit": false, "price": 0 },
-            { "title": "Battery dock", "included": true, "edit": false, "price": 0 }
+            { "title": "2 x Batteries", "short": "2 x Battery", "included": true, "edit": false, "price": 0 },
+            { "title": "Battery dock", "short": "Battery dock", "included": true, "edit": false, "price": 0 }
         ]
     }
 ]

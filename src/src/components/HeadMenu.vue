@@ -15,10 +15,15 @@
         </li>
       </ul>
     </nav>
-    <div class="cartIcon">
-      <div @click="toCart">
-        <span v-if="getTotalCount()>0"><font-awesome-icon icon="fa-solid fa-shopping-bag" /> {{ getTotalCount() }}</span>
-        <span v-if="getTotalCount()<=0"><font-awesome-icon icon="fa-solid fa-shopping-bag" /></span>
+    <div class="rightBlock">
+      <div class="cartIcon">
+        <div @click="toCart">
+          <span v-if="getTotalCount()>0"><font-awesome-icon icon="fa-solid fa-shopping-bag" /> {{ getTotalCount() }}</span>
+          <span v-if="getTotalCount()<=0"><font-awesome-icon icon="fa-solid fa-shopping-bag" /></span>
+        </div>
+      </div>
+      <div class="langIcon">
+        <div @click="toggleNext()">{{nextLang().title}}</div>
       </div>
     </div>
   </header>
@@ -44,6 +49,10 @@ export default defineComponent({
     return {
       showMobileMenu: false,
       menu: headMenuJson,
+      langs: [
+          {title: 'EN', link: '/en'},
+          {title: 'RU', link: '/'},
+      ]
     }
   },
   methods: {
@@ -54,8 +63,30 @@ export default defineComponent({
       this.$router?.push({name: menu.name})
       this.updateMenu(menu)
     },
+    toggleNext(){
+      let target = this.nextLang()
+      location.href = target.link
+    },
+    activeLang(): any {
+      let out = this.langs[0]
+      this.langs.forEach((lang: any, ind: number) => {
+        if(lang.link === import.meta.env.BASE_URL){
+          out = lang
+        }
+      })
+      return out
+    },
+    nextLang(): any {
+      let active = this.activeLang()
+      let index = this.langs.indexOf(active)
+      index++
+      if(index === this.langs.length){
+        index = 0
+      }
+      return this.langs[index]
+    },
     updateMenu(menu: any){
-      this.menu.forEach(row => {
+      this.menu.forEach((row:any) => {
         row.active = false
         if(row.name === menu.name){
           row.active = true
@@ -75,6 +106,7 @@ export default defineComponent({
   mounted(){
     this.updateMenu(this.$route)
     this.cartStore.fetchCart()
+    this.activeLang()
   }
 })
 </script>
@@ -143,6 +175,13 @@ header .menu-toggle{
   display: none;
   padding: 0 10px;
   z-index: 12;
+}
+
+header .rightBlock {
+  display: flex;
+  float: right;
+  position: absolute;
+  right: 10px;
 }
 
 @media (max-width: 900px) {
@@ -227,6 +266,18 @@ header .logo .toggle{
   font-size: large;
 }
 .cartIcon:hover{
+  color: #fff;
+}
+
+.langIcon{
+  color: #bbbbbb;
+  cursor: pointer;
+  font-size: large;
+  float: right;
+  width: 100px;
+  text-align: right;
+}
+.langIcon:hover{
   color: #fff;
 }
 

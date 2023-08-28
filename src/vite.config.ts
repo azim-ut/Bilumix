@@ -7,8 +7,15 @@ import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 
 export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  console.log(env.VITE_DEFAULT_LOCALE)
+  const base = env.VITE_BASE
+  let langTemp = env.VITE_DEFAULT_LOCALE
+  if(base.length>1){
+    langTemp = base.split("\/")[1]
+  }
+  const lang = langTemp
+  console.log(lang, base)
   return {
+    base: base,
     plugins: [
       vue(),
       VueI18nPlugin({
@@ -18,12 +25,12 @@ export default defineConfig(({ command, mode }) => {
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
-        '@local': fileURLToPath(new URL('./src/data/' + env.VITE_DEFAULT_LOCALE, import.meta.url)),
+        '@local': fileURLToPath(new URL('./src/data/' + lang, import.meta.url)),
       }
     },
     build: {
       chunkSizeWarningLimit: 1600,
-      outDir: "../app/bilumix/" + env.VITE_DEFAULT_LOCALE + "/",
+      outDir: "../app/bilumix/" + lang + "/",
       emptyOutDir: true
     }
   }

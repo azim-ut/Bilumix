@@ -17,13 +17,13 @@
           </TheaterMainWheel>
           &nbsp;
         </div>
-        <div v-if="product && product.price && getSummarySum()>1">
+        <div v-if="product && product.price && summary.amount > 1">
           <div>
             <h1>{{product.title}}</h1>
             <div class="price">From {{pricePrint(product.price)}}</div>
             <div>
             <span class="pointer" @click="product.expandText = !product.expandText">
-              Details
+              {{bundles.DETAILS}}
               <font-awesome-icon v-if="!product.expandText" :icon="['fas', 'arrow-right']" />
               <font-awesome-icon v-if="product.expandText" :icon="['fas', 'arrow-down']" />
             </span>
@@ -100,7 +100,7 @@
           <div class="formBlock">
             <h3>{{bundles.QUANTITY}}</h3>
             <div>
-              <input v-model="form.quantity">
+              <input class="packageQuantity" v-model="form.quantity">
             </div>
           </div>
 
@@ -108,8 +108,11 @@
 
           <div class="formBlock">
             <h3>{{bundles.SUMMARY}}</h3>
-            <div>
-              $ {{getSummarySum()}}
+            <div class="summaryData">
+              <div>BiLumix Package</div>
+            </div>
+            <div class="grid grid2 force summaryData">
+              <div>{{ summary.loopsTitle }}</div> <div class="right bold">$ {{getSummarySum()}}</div>
             </div>
           </div>
         </div>
@@ -158,6 +161,10 @@ export default defineComponent({
       bundles: shopTextBundles,
       product: null as MainProduct | null,
       currentImage: undefined as Image|undefined,
+      summary: {
+        loopsTitle: "",
+        amount: 0
+      },
       form: {
         quantity: 1,
         hasLoops: false,
@@ -169,6 +176,7 @@ export default defineComponent({
         cart: 0,
         count: 1,
         filters: [],
+        additional: [] as AdditionalProduct[],
         progressive_glass: {
           min: 1,
           max: 25,
@@ -180,6 +188,10 @@ export default defineComponent({
     }
   },
   methods: {
+    updateSummary(): void {
+      this.summary.loopsTitle = this.getSummaryWithLopes()
+      this.summary.amount = this.getSummarySum()
+    },
     getSummarySum(): number {
       let res = 0;
       if(this.product && this.product.price){
@@ -203,6 +215,23 @@ export default defineComponent({
       }
       return res;
     },
+    getSummaryWithLopes(): string {
+      let res = this.bundles.WITHOUT_LOOPS;
+      if(this.product && this.product.products && this.product.products.length > 0){
+        let parts = [] as string[]
+        this.product.products.forEach(link => {
+          let loop = this.shopStore.getItem(link)
+          parts.push(loop.short)
+        })
+        if(parts.length === 1){
+          res = this.bundles.WITH + " " + parts.join(" + ") + " " + this.bundles.LOUPE;
+        }
+        if(parts.length > 1){
+          res = this.bundles.WITH + " " + parts.join(" + ") + " " + this.bundles.LOUPES;
+        }
+      }
+      return res;
+    },
     toggleLoops(row: Product): void {
       if(this.product){
         let ind = this.product.products.indexOf(row.link)
@@ -214,6 +243,7 @@ export default defineComponent({
         row.on = this.product?.products.includes(row.link)
         this.form.hasLoops = this.product?.products.length>0
       }
+      this.updateSummary()
     },
     products(): MainProduct[] {
       return this.shopStore.getMain
@@ -224,7 +254,11 @@ export default defineComponent({
     toggleAdditionalProduct(row: AdditionalProduct): void{
       if(row.edit){
         row.included = !row.included
+        if(row.included && row.on && row.price > 0){
+          this.form.additional.push(row)
+        }
       }
+      this.updateSummary()
     },
     pricePrint(val: number): string{
       return Intl.NumberFormat('en-US', {
@@ -237,6 +271,7 @@ export default defineComponent({
         this.form.count = 1
       }
       this.cartStore.toCart(product.link, this.form.count)
+      this.updateSummary()
     },
     handleScroll(event: any){
       this.scroll.event = event
@@ -247,10 +282,12 @@ export default defineComponent({
     window.removeEventListener('mousewheel', this.handleScroll);
   },
   mounted(){
+    console.log(this.$route.params.link)
     this.product = this.shopStore.getMainByLink(this.$route.params.link)
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('mousewheel', this.handleScroll);
     this.currentImage = this.product.images[0];
+    this.updateSummary()
   }
 })
 </script>
@@ -308,16 +345,19 @@ hr{
 
 .additional{
   border-radius: 20px;
-  border: #8c8080 1px solid;
+  border: #d4d4d4 1px solid;
   margin-bottom: 10px;
   text-transform: uppercase;
+  transition: .25s;
 }
 .additional:hover{
   background: #f5f5f5;
+  border-color: #d4d4d4;
 }
 
 .additional.active{
   background: #ededed;
+  border-color: #8e8e8e;
 }
 
 .additional div{
@@ -334,7 +374,16 @@ hr{
   vertical-align: middle;
   text-align: right;
 }
-
+.packageQuantity{
+  padding: 10px 20px;
+  border: #ccc 1px solid;
+  border-radius: 7px;
+  font-size: x-large;
+  width: -webkit-fill-available;
+}
+.summaryData{
+  font-size: large;
+}
 @media (max-width: 950px) {
   .contentBody{
     margin: 120px 10% 10% 10%;

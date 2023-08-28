@@ -32,7 +32,6 @@ export default defineComponent({
   z-index: 3;
   bottom: 60px;
   left: 50%;
-  //transform: translate(-50%, -50%);
 }
 .box span {
   display: block;
