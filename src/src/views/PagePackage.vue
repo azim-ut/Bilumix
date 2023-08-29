@@ -34,11 +34,11 @@
           <hr/>
 
           <div class="formBlock">
-            <h2>LOUPES:</h2>
+            <h2>{{bundles.LOUPES}}:</h2>
             <div>
-              <div v-for="row in loops()"
-                   @click="toggleLoops(row)"
-                   :class="{'grid grid2 force pointer additional': true, 'active': row.on}">
+              <div v-for="row in lopes()"
+                   @click="toggleProduct(row)"
+                   :class="{'grid grid2 force pointer additional': true, 'active': hasProduct(row)}">
                 <div>{{row.short}}</div>
                 <div class="right">+{{pricePrint(row.price)}}</div>
               </div>
@@ -47,21 +47,21 @@
 
           <hr/>
 
-          <div v-if="form.hasLoops">
+          <div v-if="summary.hasLoops">
             <div class="formBlock">
               <h3>{{bundles.IPD}}</h3>
-              <Slider :min="form.ipd.min" :max="form.ipd.max" v-model="form.ipd.val"></Slider>
+              <Slider :min="ipd.min" :max="ipd.max" v-model="product.ipd"></Slider>
             </div>
 
             <hr/>
 
             <div class="formBlock">
               <h3>
-                <label for="subscribeNews">{{bundles.WARE_PROGRESSIVE_GLASS}} <input type="checkbox" v-model="form.progressive_glass.yes" id="subscribeNews"/></label>
+                <label for="subscribeNews">{{bundles.WARE_PROGRESSIVE_GLASS}} <input type="checkbox" v-model="glass_wear.yes" id="subscribeNews"/></label>
               </h3>
-              <div v-if="form.progressive_glass.yes">
+              <div v-if="glass_wear.yes">
                 <p>{{bundles.WARE_PROGRESSIVE_GLASS_YEARS}}</p>
-                <Slider :min="form.progressive_glass.min" :max="form.progressive_glass.max" v-model="form.progressive_glass.val"></Slider>
+                <Slider :min="glass_wear.min" :max="glass_wear.max" v-model="product.glassYear"></Slider>
               </div>
             </div>
 
@@ -71,13 +71,13 @@
           <div class="formBlock">
             <h3>{{bundles.LIGHT_FILTERS}}</h3>
             <div>
-              <div v-for="row in product.filters"
-                   @click="toggleAdditionalProduct(row)"
-                   :class="{'grid grid21 force pointer additional': true, 'active': row.included}">
+              <div v-for="row in filters()"
+                   @click="toggleProduct(row)"
+                   :class="{'grid grid21 force pointer additional': true, 'active': hasProduct(row)}">
                 <div>{{row.title}}</div>
                 <div class="right">
-                  <span v-if="row.price">+{{pricePrint(row.price)}}</span>
-                  <span v-if="!row.price" class="included">{{bundles.INCLUDED}}</span>
+                  <span v-if="!product.free.includes(row.link)">+{{pricePrint(row.price)}}</span>
+                  <span v-if="product.free.includes(row.link)" class="included">{{bundles.INCLUDED}}</span>
                 </div>
               </div>
             </div>
@@ -100,7 +100,7 @@
           <div class="formBlock">
             <h3>{{bundles.QUANTITY}}</h3>
             <div>
-              <input class="packageQuantity" v-model="form.quantity">
+              <input class="packageQuantity" @change="updateSummary()" v-model="summary.quantity">
             </div>
           </div>
 
@@ -112,7 +112,10 @@
               <div>BiLumix Package</div>
             </div>
             <div class="grid grid2 force summaryData">
-              <div>{{ summary.loopsTitle }}</div> <div class="right bold">$ {{getSummarySum()}}</div>
+              <div>{{ summary.loopsTitle }}</div> <div class="right bold">$ {{summary.amount}}</div>
+            </div>
+            <div class="grid grid2 force summaryData" v-for="row in summary.filters">
+              <div>{{ row.title }}</div> <div class="right bold">$ {{row.price}}</div>
             </div>
           </div>
         </div>
@@ -135,12 +138,13 @@ import TheaterWheel from "@/components/TheaterWheel.vue"
 import HeadMenu from "@/components/HeadMenu.vue"
 import {mapStores} from "pinia"
 import {shopStore} from "@/store/shop/shop"
-import type {AdditionalProduct, Image, MainProduct, Product} from "@/store/shop/types";
+import type {AdditionalProduct, Image, MainProduct, NamePrice, Product} from "@/store/shop/types";
 import {cartStore} from "@/store/cart/cart";
 import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
 import TheaterWheelVideo1 from "@/components/TheaterWheelVideo1.vue";
 import shopTextBundles from "@local/shop_text.json";
 import Slider from '@vueform/slider'
+import numbers from "@/i18n/rules/numbers";
 
 export default defineComponent({
   components: {
@@ -161,28 +165,28 @@ export default defineComponent({
       bundles: shopTextBundles,
       product: null as MainProduct | null,
       currentImage: undefined as Image|undefined,
-      summary: {
-        loopsTitle: "",
-        amount: 0
+      ipd:{
+        min: 55,
+        max: 72,
+        def: 65
       },
-      form: {
+      glass_wear: {
+        min: 1,
+        max: 25,
+        def: 15
+      },
+      summary: {
+        amount: 0,
+        filtersAmount: [],
+        loopsTitle: "",
         quantity: 1,
         hasLoops: false,
-        ipd:{
-          min: 55,
-          max: 72,
-          val: 63
-        },
         cart: 0,
         count: 1,
-        filters: [],
+        filters: [] as NamePrice[],
         additional: [] as AdditionalProduct[],
-        progressive_glass: {
-          min: 1,
-          max: 25,
-          yes: false,
-          val: 5
-        },
+        ipd: 0,
+        glass_year: 0,
         link: undefined as string|undefined
       }
     }
@@ -190,26 +194,46 @@ export default defineComponent({
   methods: {
     updateSummary(): void {
       this.summary.loopsTitle = this.getSummaryWithLopes()
-      this.summary.amount = this.getSummarySum()
+      this.summary.amount = this.getSummarySum() * this.summary.quantity
+      this.summary.filtersAmount = this.getFiltersSum() * this.summary.quantity
+      this.summary.hasLoops = false
+      this.lopes().forEach((row: Product) => {
+        if(!this.summary.hasLoops && this.hasProduct(row)){
+          this.summary.hasLoops = true
+        }
+      })
+    },
+    hasProduct(row: Product): boolean {
+      if(this.product) {
+        return (this.product.products.includes(row.link) || this.product.free.includes(row.link))
+      }
+      return false
     },
     getSummarySum(): number {
       let res = 0;
+
       if(this.product && this.product.price){
-        res += this.product.price * this.form.quantity
-        this.product.battery.forEach(row => {
-          if(row.price && row.included){
-            res += row.price
-          }
-        })
-        this.product.filters.forEach(row => {
-          if(row.price && row.included){
-            res += row.price
-          }
-        })
-        this.product.products.forEach(link => {
+        res += this.product.price
+        this.product.products.forEach((link: string) => {
           let found = this.shopStore.getItem(link)
           if(found && found.price>0){
             res += found.price
+          }
+        })
+      }
+      return res;
+    },
+    getFiltersSum(): number {
+      let res = 0;
+      this.summary.filters = []
+      if(this.product && this.product.price){
+        this.filters().forEach((row: Product) => {
+          if(this.product?.products.includes(row.link)){
+            this.summary.filters.push({
+              title: row.short,
+              price: row.price
+            })
+            res += row.price
           }
         })
       }
@@ -219,9 +243,10 @@ export default defineComponent({
       let res = this.bundles.WITHOUT_LOOPS;
       if(this.product && this.product.products && this.product.products.length > 0){
         let parts = [] as string[]
-        this.product.products.forEach(link => {
-          let loop = this.shopStore.getItem(link)
-          parts.push(loop.short)
+        this.lopes().forEach((row:Product) => {
+          if(this.product && this.product.products.includes(row.link)){
+            parts.push(row.short)
+          }
         })
         if(parts.length === 1){
           res = this.bundles.WITH + " " + parts.join(" + ") + " " + this.bundles.LOUPE;
@@ -232,31 +257,24 @@ export default defineComponent({
       }
       return res;
     },
-    toggleLoops(row: Product): void {
-      if(this.product){
-        let ind = this.product.products.indexOf(row.link)
-        if(ind >= 0){
-          this.product.products.splice(ind, 1)
-        }else{
-          this.product.products.push(row.link)
-        }
-        row.on = this.product?.products.includes(row.link)
-        this.form.hasLoops = this.product?.products.length>0
-      }
-      this.updateSummary()
-    },
     products(): MainProduct[] {
       return this.shopStore.getMain
     },
-    loops(): Product[] {
+    lopes(): Product[] {
       return this.shopStore.getLoupes
     },
-    toggleAdditionalProduct(row: AdditionalProduct): void{
-      if(row.edit){
-        row.included = !row.included
-        if(row.included && row.on && row.price > 0){
-          this.form.additional.push(row)
-        }
+    filters(): Product[] {
+      return this.shopStore.getFilters
+    },
+    toggleProduct(row: Product): void{
+      if(this.product?.free.includes(row.link)){
+        return;
+      }
+      let ind = this.product?.products.indexOf(row.link)??-1
+      if (ind >= 0){
+        this.product?.products.splice(ind, 1)
+      }else{
+        this.product?.products.push(row.link)
       }
       this.updateSummary()
     },
@@ -267,10 +285,10 @@ export default defineComponent({
       }).format(val)
     },
     addToCart(product: Product){
-      if(this.form.count === 0){
-        this.form.count = 1
+      if(this.summary.count === 0){
+        this.summary.count = 1
       }
-      this.cartStore.toCart(product.link, this.form.count)
+      this.cartStore.toCart(product.link, this.summary.count)
       this.updateSummary()
     },
     handleScroll(event: any){

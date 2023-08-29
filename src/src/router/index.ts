@@ -15,8 +15,6 @@ import PageDataPrivacy from "@/views/PageDataPrivacy.vue";
 import PageTermOfUse from "@/views/PageTermOfUse.vue";
 import PageShopItem from "@/views/PageShopItem.vue";
 
-const locale = import.meta.env.VITE_DEFAULT_LOCALE
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [

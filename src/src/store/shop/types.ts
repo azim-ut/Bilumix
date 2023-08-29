@@ -6,6 +6,7 @@ export interface Product{
     links: Link[],
     images: Image[],
     price: number,
+    sale: number,
 
     on: boolean,
     expandText: boolean
@@ -14,8 +15,9 @@ export interface Product{
 export interface MainProduct extends Product{
     products: string[],
     warranty: number,
-    filters: AdditionalProduct[],
-    battery: AdditionalProduct[]
+    ipd: number,
+    free: string[],
+    glassYear: number
 }
 
 export interface AdditionalProduct {
@@ -27,6 +29,10 @@ export interface AdditionalProduct {
 
     on: boolean,
     expandText: boolean
+}
+export interface NamePrice {
+    title: string,
+    price: number
 }
 export interface Link{
     title: string,
@@ -41,6 +47,7 @@ export interface ShopState {
     loupes: Product[],
     accessories: Product[],
     parts: Product[],
+    filters: Product[],
     repair: Product[],
     generation: Product[]
 }

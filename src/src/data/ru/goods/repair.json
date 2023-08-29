@@ -1,6 +1,6 @@
 [
     {
-        "link": "bilumix-headlamp-repair-service-pack",
+        "link": "bilumix-headlamp-repair-light-source-issue",
         "title": "BiLumix GEN. 2 Repair Service",
         "short": "Light source issue(s)",
         "text": "<h4>\n<meta charset=\"utf-8\">Service Specifications<br>\n</h4>\n<h4></h4>\n<ul>\n<li>Front &amp; Rear Band Replacement</li>\n<li>Light Source Replacement</li>\n<li>Other Service (Surgical Loupes)</li>\n</ul>\n<p>* Please contact us before you place an order.</p>\n<ul></ul>",
@@ -16,7 +16,7 @@
         "on": false
     },
     {
-        "link": "bilumix-headlamp-repair-service-pack",
+        "link": "bilumix-headlamp-repair-front-body-issue",
         "title": "BiLumix GEN. 2 Repair Service",
         "short": "Front body issue(s)",
         "text": "<h4>\n<meta charset=\"utf-8\">Service Specifications<br>\n</h4>\n<h4></h4>\n<ul>\n<li>Front &amp; Rear Band Replacement</li>\n<li>Light Source Replacement</li>\n<li>Other Service (Surgical Loupes)</li>\n</ul>\n<p>* Please contact us before you place an order.</p>\n<ul></ul>",
@@ -32,7 +32,7 @@
         "on": false
     },
     {
-        "link": "bilumix-headlamp-repair-service-pack",
+        "link": "bilumix-headlamp-repair-rear-body-issue",
         "title": "BiLumix GEN. 2 Repair Service",
         "short": "Rear body issue(s)",
         "text": "<h4>\n<meta charset=\"utf-8\">Service Specifications<br>\n</h4>\n<h4></h4>\n<ul>\n<li>Front &amp; Rear Band Replacement</li>\n<li>Light Source Replacement</li>\n<li>Other Service (Surgical Loupes)</li>\n</ul>\n<p>* Please contact us before you place an order.</p>\n<ul></ul>",

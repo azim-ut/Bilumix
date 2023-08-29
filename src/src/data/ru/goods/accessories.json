@@ -1,22 +1,5 @@
 [
     {
-        "link": "light-filter",
-        "title": "Light Filters/Caps (Pair)",
-        "short": "Light Filters/Caps (Pair)",
-        "text": "Light filters which can be placed over the headlamp LED light source.<br>\n\nAmber light caps (slow cure and no cure) can be placed over the headlamp LED light source to prevent materials such as resin from getting cured by the high intensity light.",
-        "links": [
-            { "title": "Manual", "url": "/manual/light-cap-replacement/"}
-        ],
-        "images": [
-            { "url": "/images/static/light-filter-clear.webp"},
-            { "url": "/images/static/amber0.webp"},
-            { "url": "/images/static/Amber1.webp"},
-            { "url": "/images/static/Amber2.webp"}
-        ],
-        "price": 12,
-        "on": false
-    },
-    {
         "link": "rechargeable-battery-gen-2",
         "title": "Rechargeable Battery",
         "short": "Rechargeable Battery",

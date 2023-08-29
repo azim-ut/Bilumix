@@ -91,18 +91,19 @@ export default defineComponent({
     },
     onWheel(event: any): void {
       let rect = this.$refs.IntroProductMarker?.getBoundingClientRect()
+      if(!rect){
+        return
+      }
       let plane = this.$refs.IntroProductScroll?.getBoundingClientRect()
-      let content = this.$refs.visibleContent?.getBoundingClientRect()
-      let pos = rect.y;
-      pos *= -1
+      let pos = rect.y * -1
       let progress = Math.floor(pos/plane.height * 100)
       if(progress>this.animation.max){
-          progress = this.animation.max;
-          return;
+          progress = this.animation.max
+          return
       }
       if(progress<this.animation.min){
-          progress = this.animation.min;
-        	return;
+          progress = this.animation.min
+        	return
       }
 
       this.animation.current = progress
