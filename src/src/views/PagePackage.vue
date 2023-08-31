@@ -8,7 +8,7 @@
         <div>
           <div class="photoSlider">
             <div class="display">
-              <div class="slide" ref="slide3D">
+              <div class="slide active" v-show="product && product.images.findIndex(row => row.on) < 0">
                 <TheaterMainWheel
                     class="video1"
                     :name="'main'"
@@ -19,15 +19,18 @@
                     :height="500">
                 </TheaterMainWheel>
               </div>
-              <div class="slide" v-for="row in product.images"
+              <div :class="{'slide': true, 'active': row.on}"
+                   v-for="row in product.images"
                    :style="{'background-image': 'url(' + row.url + ')'}"
               ></div>
             </div>
             <div class="control grid grid4">
-              <div class="slidePoint pointer" @click="slideOn(0)"><div>3D</div></div>
-              <div class="slidePoint pointer"
+              <div class="slideBtn pointer active"
+                   :ref="'slideBtn3D'"
+                   @click="hideAllSlides()"><div>3D</div></div>
+              <div :class="{'slideBtn pointer':true, 'active': row.on}"
                    @click="slidesUpdate(row)"
-                   v-for="(row, ind) in product.images">
+                   v-for="(row) in product.images">
                 <div class="image"
                     :style="{'background-image': 'url(' + row.url + ')'}"></div>
               </div>
@@ -178,14 +181,14 @@ import TheaterWheel from "@/components/TheaterWheel.vue"
 import HeadMenu from "@/components/HeadMenu.vue"
 import {mapStores} from "pinia"
 import {shopStore} from "@/store/shop/shop"
-import type {AdditionalProduct, Image, MainProduct, NamePrice, Product} from "@/store/shop/types";
+import type {Image, MainProduct, NamePrice, Product} from "@/store/shop/types";
 import {cartStore} from "@/store/cart/cart";
 import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
 import TheaterWheelVideo1 from "@/components/TheaterWheelVideo1.vue";
 import shopTextBundles from "@local/shop_text.json";
 import Slider from '@vueform/slider'
-import numbers from "@/i18n/rules/numbers";
 import {getPriceAndCurrency, getPriceTarget} from "@/service/PriceService";
+
 const LOCAL_STORE_SUMMARY_NAME = "summary"
 export default defineComponent({
   components: {
@@ -222,32 +225,24 @@ export default defineComponent({
         loopsTitle: "",
         quantity: 1 as number,
         hasLoops: false,
-        cart: 0,
-        count: 1,
         filters: [] as NamePrice[],
         products: [] as string[],
-        additional: [] as AdditionalProduct[],
         ipd: 0,
         glass_year: 0,
-        wear_glass: false,
-        link: undefined as string|undefined
+        wear_glass: false
       }
     }
   },
   methods: {
-    slidesUpdate(image: Image){
-      this.$refs.slide3D.style = {'display': 'none'}
-      image.on = !image.on
-      let isAnyShow = false
-      this.product?.images.forEach(row => {
-        if(!isAnyShow){
-          isAnyShow = row.on
-        }
+    hideAllSlides(){
+      this.product?.images.forEach((row: Image) => {
+        row.on = false
       })
-      console.log(image, isAnyShow)
-      if(!isAnyShow){
-        this.$refs.slide3D.style = {'display': 'block'}
-      }
+    },
+    slidesUpdate(image: Image){
+      let before = image.on
+      this.hideAllSlides()
+      image.on = !before
     },
     updateKeyDown(event: any): void {
       if(this.summary.quantity && this.summary.quantity>0){
@@ -265,12 +260,11 @@ export default defineComponent({
         if(this.summary.wear_glass){
           this.product.glassYear = this.summary.glass_year
         }
-        console.log(this.product.link, this.summary.quantity, this.product)
         this.cartStore.toCart(this.product.link, this.summary.quantity, this.product)
       }
 
-      // localStorage.removeItem(LOCAL_STORE_SUMMARY_NAME)
-      // location.reload()
+      localStorage.removeItem(LOCAL_STORE_SUMMARY_NAME)
+      location.reload()
     },
     updateSummary(): void {
       this.summary.loopsTitle = this.getSummaryWithLopes()

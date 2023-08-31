@@ -165,7 +165,7 @@ export default defineComponent({
   vertical-align: middle;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 50;
   right: 0;
   left: 0;
   top: 0;

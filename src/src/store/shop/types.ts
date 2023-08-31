@@ -17,17 +17,6 @@ export interface MainProduct extends Product{
     free: string[],
     glassYear: number
 }
-
-export interface AdditionalProduct {
-    title: string,
-    short: string,
-    included: boolean,
-    edit: boolean,
-    price: number,
-
-    on: boolean,
-    expandText: boolean
-}
 export interface NamePrice {
     title: string,
     price: number,

@@ -8,7 +8,7 @@
           </div>
           <div class="col2">
             <div v-if="checkoutSum">
-              Checkout sum: $ {{checkoutSum}}
+              Checkout sum: {{sumAndCurrencyPrice(checkoutSum)}}
             </div>
           </div>
           <div class="col3">
@@ -20,7 +20,7 @@
       <div class="grid grid2">
         <div>
           <div class="cartList" v-if="hasItems()">
-            <div class="product grid grid121" v-for="row in list">
+            <div class="product grid grid121" v-for="row in cart().list">
 
               <div class="short" v-if="row.target.images">
                 <div class="img" :style="{'background-image' : 'url('+row.target.images[0].url+')'}"></div>
@@ -34,7 +34,7 @@
                   <div class="cntTool">
                     <input type="number" @change="setItemCount(row.url, row.cnt)" v-model="row.cnt" />
                   </div>
-                  <div><small>{{row.cnt}} x ${{row.target.price}} = ${{row.cnt * row.target.price}}</small></div>
+                  <div><small>{{row.cnt}} x {{targetPrice(row.target)}} = {{sumAndCurrencyPrice(row.cnt * row.target.price)}}</small></div>
                 </div>
               </div>
               <div class="tool" v-if="row.url">
@@ -69,9 +69,11 @@ import {mapStores} from "pinia"
 import {shopStore} from "@/store/shop/shop"
 import {cartStore} from "@/store/cart/cart"
 import Modal from "@/components/Modal.vue";
-import type {Cart, CartItem} from "@/store/cart/types";
 import type {Product} from "@/store/shop/types";
 import axios from "axios";
+import type {NamePrice} from "@/store/shop/types";
+import {getPriceAndCurrency, getPriceTarget} from "@/service/PriceService";
+import type {Cart} from "@/store/cart/types";
 
 export default defineComponent({
   computed: {
@@ -80,9 +82,11 @@ export default defineComponent({
   components: {Modal},
   data() {
     return {
+      showCart: false,
       checkoutSum: 0,
       list: [] as any[],
-      note: ""
+      note: "",
+      currency: "USD"
     }
   },
   methods: {
@@ -100,7 +104,6 @@ export default defineComponent({
           })
         }
         row.target = target
-        // console.log(target, target.price, "x", row.cnt)
         this.checkoutSum += row.cnt * target.price
         out.push(row)
       })
@@ -118,12 +121,16 @@ export default defineComponent({
       })
 
     },
+    cart(): Cart{
+      return this.cartStore.getCart
+    },
     async clear(){
       await this.cartStore.clearCart()
       this.updateItemsList()
       this.close()
     },
     close(){
+      this.updateItemsList()
       return this.cartStore.close()
     },
     hasItems():boolean{
@@ -141,15 +148,34 @@ export default defineComponent({
       this.cartStore.setCount(link, cnt)
       this.updateItemsList()
     },
+    targetPrice(target: NamePrice): string{
+      return getPriceTarget(target)
+    },
+    sumAndCurrencyPrice(price: number): string{
+      return getPriceAndCurrency(price, this.currency)
+    },
     isShow(): boolean {
       return this.cartStore.isShow
     }
   },
   async mounted() {
+    this.close()
+    this.currency = this.shopStore.getMain[0].currency
     await this.cartStore.fetchCart()
     this.updateItemsList()
   },
   unmounted() {
+  },
+  watch:{
+    'cartStore.isShow': {
+      handler(newVal,oldValue){
+        if(newVal != oldValue){
+          this.showCart = newVal
+          // this.updateItemsList()
+        }
+      },
+      immediate: true
+    }
   }
 })
 </script>

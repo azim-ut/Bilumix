@@ -1,5 +1,6 @@
 import {defineStore} from "pinia";
 import type {Cart, CartItem, CartState} from "@/store/cart/types";
+import type {NamePrice} from "@/store/shop/types";
 
 const CART_STORE_NAME = "CART_STORE"
 
@@ -44,6 +45,7 @@ export const cartStore = defineStore('cart', {
             const value = localStorage.getItem(CART_STORE_NAME)
             if(value && value != "undefined"){
                 let obj = JSON.parse(value)
+                obj.show = false
                 this.$state.cart = obj
             }
         },
@@ -51,7 +53,11 @@ export const cartStore = defineStore('cart', {
             localStorage.setItem(CART_STORE_NAME, JSON.stringify(this.$state.cart))
         },
         countItems(): number {
-            return this.$state.cart.list.length
+            let cnt = 0
+            this.$state.cart.list.forEach((row: CartItem) => {
+                cnt += row.cnt
+            })
+            return cnt
         },
         setCount(link: string, count: number): void {
             let record = this.$state.cart.list.find(row => row.url === link)

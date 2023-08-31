@@ -11,7 +11,7 @@
                :key="$index"
                :class="{'bgModeCover': $props.bgMode === 'cover', 'bgModeContain': $props.bgMode === 'contain'}"
                v-show="$index === video.current"
-               :style="{'background-image': 'url(' + img + ')'}"></div>
+               :style="{'background-image': 'url(' + img + ')', 'height': $props.height + 'px'}"></div>
         </div>
       </div>
       <div class="framesBar" ref="framesBar">
@@ -32,7 +32,7 @@ export default defineComponent({
   props: <any>{
     name: "" as String,
     test: false,
-    height: 500,
+    height: 400,
     bgMode: "cover",
     frames: [] as any[],
     scrollEvent: undefined
@@ -103,7 +103,7 @@ export default defineComponent({
 <style scoped>
 .theaterDiv{
   position: relative;
-  min-height: 100vh;
+  max-height: 100vh;
   overflow: hidden;
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -116,23 +116,20 @@ export default defineComponent({
   right: 0;
   left: 0;
   width: 100%;
-  min-height: 100vh;
   transition: .5s;
 }
 .projector .front{
   position: relative;
   top:0;
   width: 100%;
-  min-height: 100vh;
 }
 .projector .front .contentWrap{
-  min-height: 100vh;
   position: absolute;
   display: flex;
   vertical-align: center;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 50;
   right: 0;
   left: 30%;
   top: 0;
@@ -142,12 +139,10 @@ export default defineComponent({
   position: absolute;
   width: 100%;
   top: 0;
-  min-height: 100vh;
 }
 .projector .bg div{
   position: relative;
   width: 100%;
-  min-height: 100vh;
   animation: ease-in;
   background: transparent none no-repeat 50% center/contain;
 }
