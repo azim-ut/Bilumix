@@ -7,7 +7,8 @@ export interface CartItem {
 export interface Cart {
     show: boolean,
     list: CartItem[],
-    address: string
+    address: string,
+    note: string
 }
 
 export interface CartState {

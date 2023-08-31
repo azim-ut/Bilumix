@@ -161,7 +161,7 @@ export default defineComponent({
       this.$router.push({name: "package", params: {link: "headlamp"}})
     },
     toCart(link:string){
-      this.cartStore.toCart(link, 1)
+      this.cartStore.toCart(link, 1, null)
     },
     getGeneration():Product[]{
       return this.shopStore.getGeneration

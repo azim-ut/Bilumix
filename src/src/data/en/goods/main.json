@@ -12,12 +12,13 @@
         "ipd": 0,
         "glassYear": 0,
         "images": [
-            { "url": "/images/static/light-filter-clear.webp"},
-            { "url": "/images/static/amber0.webp"},
-            { "url": "/images/static/Amber1.webp"},
-            { "url": "/images/static/Amber2.webp"}
+            { "url": "/images/shop/bi-prod-headlamp-1.webp", "on": false},
+            { "url": "/images/shop/bi-prod-headlamp-2.webp", "on": false},
+            { "url": "/images/shop/bi-prod-headlamp-3.webp", "on": false},
+            { "url": "/images/shop/bi-prod-headlamp-4.webp", "on": false}
         ],
         "price": 1250,
+        "currency": "USD",
         "warranty": 1
     }
 ]

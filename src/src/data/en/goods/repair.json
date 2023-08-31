@@ -7,12 +7,13 @@
         "links": [
         ],
         "images": [
-            { "url": "/images/static/bi-prod-repair-service_84daaf89-a794-47bf-b35c-653c6fe3f946.webp"},
-            { "url": "/images/static/bi-prod-repair-light-source.webp"},
-            { "url": "/images/static/bi-prod-repair-front-body.webp"},
-            { "url": "/images/static/bi-prod-repair-rear-body.webp"}
+            { "url": "/images/static/bi-prod-repair-service_84daaf89-a794-47bf-b35c-653c6fe3f946.webp", "on": true},
+            { "url": "/images/static/bi-prod-repair-light-source.webp", "on": false},
+            { "url": "/images/static/bi-prod-repair-front-body.webp", "on": false},
+            { "url": "/images/static/bi-prod-repair-rear-body.webp", "on": false}
         ],
         "price": 100,
+        "currency": "USD",
         "on": false
     },
     {
@@ -23,12 +24,13 @@
         "links": [
         ],
         "images": [
-            { "url": "/images/static/bi-prod-repair-service_84daaf89-a794-47bf-b35c-653c6fe3f946.webp"},
-            { "url": "/images/static/bi-prod-repair-light-source.webp"},
-            { "url": "/images/static/bi-prod-repair-front-body.webp"},
-            { "url": "/images/static/bi-prod-repair-rear-body.webp"}
+            { "url": "/images/static/bi-prod-repair-service_84daaf89-a794-47bf-b35c-653c6fe3f946.webp", "on": true},
+            { "url": "/images/static/bi-prod-repair-light-source.webp", "on": false},
+            { "url": "/images/static/bi-prod-repair-front-body.webp", "on": false},
+            { "url": "/images/static/bi-prod-repair-rear-body.webp", "on": false}
         ],
         "price": 100,
+        "currency": "USD",
         "on": false
     },
     {
@@ -39,12 +41,13 @@
         "links": [
         ],
         "images": [
-            { "url": "/images/static/bi-prod-repair-service_84daaf89-a794-47bf-b35c-653c6fe3f946.webp"},
-            { "url": "/images/static/bi-prod-repair-light-source.webp"},
-            { "url": "/images/static/bi-prod-repair-front-body.webp"},
-            { "url": "/images/static/bi-prod-repair-rear-body.webp"}
+            { "url": "/images/static/bi-prod-repair-service_84daaf89-a794-47bf-b35c-653c6fe3f946.webp", "on": true},
+            { "url": "/images/static/bi-prod-repair-light-source.webp", "on": false},
+            { "url": "/images/static/bi-prod-repair-front-body.webp", "on": false},
+            { "url": "/images/static/bi-prod-repair-rear-body.webp", "on": false}
         ],
         "price": 100,
+        "currency": "USD",
         "on": false
     }
 ]

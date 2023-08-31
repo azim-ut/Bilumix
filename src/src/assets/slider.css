@@ -1,0 +1,23 @@
+.photoSlider {}
+.photoSlider .slide{}
+.photoSlider .control{
+    padding-top: 20px;
+}
+.photoSlider .control .slidePoint{
+    width: 120px;
+    height: 120px;
+    margin: 2px 5px 20px 0;
+    display: flex;
+}
+.photoSlider .control .slidePoint div{
+    border: #ccc 1px solid;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ccc;
+}
+.photoSlider .control .slidePoint .image {
+    background: transparent no-repeat center center/cover;
+}

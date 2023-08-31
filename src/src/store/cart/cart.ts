@@ -8,7 +8,8 @@ export const cartStore = defineStore('cart', {
         cart: {
             show: false,
             list: [],
-            address: ""
+            address: "",
+            note: ""
         }
     }),
     getters: {
@@ -36,23 +37,21 @@ export const cartStore = defineStore('cart', {
         close(): void {
             this.$state.cart.show = false
         },
+        note(str: string): void {
+            this.$state.cart.note = str
+        },
         fetchCart(){
             const value = localStorage.getItem(CART_STORE_NAME)
             if(value && value != "undefined"){
                 let obj = JSON.parse(value)
-                this.$state.cart.list = obj.list
-                this.$state.cart.address = obj.address
+                this.$state.cart = obj
             }
         },
         saveCart() {
             localStorage.setItem(CART_STORE_NAME, JSON.stringify(this.$state.cart))
         },
         countItems(): number {
-            let out = 0
-            this.$state.cart?.list?.forEach(row => {
-                out += row.cnt
-            })
-            return out
+            return this.$state.cart.list.length
         },
         setCount(link: string, count: number): void {
             let record = this.$state.cart.list.find(row => row.url === link)
@@ -60,7 +59,7 @@ export const cartStore = defineStore('cart', {
                 if(record){
                     record.cnt = count
                 }else{
-                    this.toCart(link, count)
+                    this.toCart(link, count, null)
                 }
             }else{
                 if(record){
@@ -71,16 +70,17 @@ export const cartStore = defineStore('cart', {
             this.saveCart()
         },
 
-        toCart(link: string, count: number) {
+        toCart(link: string, count: number, target: any) {
             let record = this.$state.cart.list.find(row => row.url === link);
             if(!record){
                 record = {
                     url: link,
-                    cnt: 0
+                    cnt: 0,
+                    target: target
                 } as CartItem
                 this.$state.cart.list.push(record)
             }
-            record.cnt += count
+            record.cnt += (<number>count) * 1
             this.saveCart()
         },
 

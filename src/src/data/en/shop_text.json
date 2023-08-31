@@ -11,6 +11,9 @@
   "WITHOUT_LOOPS": "Without any loops",
   "WITH": "With",
   "DETAILS": "Details",
+  "SUBTOTAL": "Subtotal",
+  "ADD_TO_CART": "Add to cart",
+  "TOTAL": "Total",
   "LOUPE": "Loupe",
   "LOUPES": "Loupes"
 }

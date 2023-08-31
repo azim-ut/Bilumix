@@ -107,7 +107,7 @@ export default defineComponent({
       }
 
       this.animation.current = progress
-      this.calcAnimationWheel();
+      this.calcAnimationWheel()
 
       // let direction = event.deltaY > 0 ? 1 : -1;
       // if(this.animation.current<(this.animation.max-.2) && direction>0){
@@ -117,7 +117,7 @@ export default defineComponent({
 		},
     calcAnimationWheel(): void {
       let val = -1/this.animation.max * this.animation.current
-      console.log(this.animation.current, this.animation.max, val)
+      // console.log(this.animation.current, this.animation.max, val)
       this.$refs.device.style.setProperty('--delay', (val) + 's')
       this.$refs.content1.style.setProperty('--delay', (val) + 's')
       this.$refs.content2.style.setProperty('--delay', (val) + 's')

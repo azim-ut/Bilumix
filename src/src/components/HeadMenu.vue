@@ -210,7 +210,7 @@ header .rightBlock {
 
   header nav.active {
     display: block;
-    top: 75px;
+    top: 55px;
   }
 
   header nav ul{

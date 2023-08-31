@@ -7,11 +7,12 @@
         "links": [
                     ],
         "images": [
-            { "url": "/images/static/mBattery-1_31a244b2-4cff-4748-8b8d-c6187e553c0a.webp"},
-            { "url": "/images/static/Battery-2_d85482bf-b3a8-461c-9503-73e37cc15001.webp"},
-            { "url": "/images/static/Battery-3_f1a4b970-576e-4d8e-b039-4f67a745c458.webp"}
+            { "url": "/images/static/mBattery-1_31a244b2-4cff-4748-8b8d-c6187e553c0a.webp", "on": true},
+            { "url": "/images/static/Battery-2_d85482bf-b3a8-461c-9503-73e37cc15001.webp", "on": false},
+            { "url": "/images/static/Battery-3_f1a4b970-576e-4d8e-b039-4f67a745c458.webp", "on": false}
         ],
-        "price": 90
+        "price": 90,
+        "currency": "RUB"
     },
     {
         "link": "rechargeable-battery-charger",
@@ -21,10 +22,11 @@
         "links": [
         ],
         "images": [
-            { "url": "/images/static/Charger-1_194ef1a4-1c12-408c-9535-7423a0faf953.webp"},
-            { "url": "/images/static/Charger-2_0af909ff-0372-4a81-8a84-66bd427418ff.webp"}
+            { "url": "/images/static/Charger-1_194ef1a4-1c12-408c-9535-7423a0faf953.webp", "on": true},
+            { "url": "/images/static/Charger-2_0af909ff-0372-4a81-8a84-66bd427418ff.webp", "on": false}
         ],
-        "price": 100
+        "price": 100,
+        "currency": "RUB"
     },
     {
         "link": "bilumix-headlamp-repair-service",
@@ -34,8 +36,9 @@
         "links": [
         ],
         "images": [
-            { "url": "/images/static/Headlamp-ReapiarService_afdc31e3-15b4-4356-bc6d-0c58b8f35991.webp"}
+            { "url": "/images/static/Headlamp-ReapiarService_afdc31e3-15b4-4356-bc6d-0c58b8f35991.webp", "on": false}
         ],
-        "price": 250
+        "price": 250,
+        "currency": "RUB"
     }
 ]

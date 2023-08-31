@@ -1,7 +1,7 @@
 import {defineStore} from "pinia";
 
 
-import type {MainProduct, Product, ShopState} from "./types"
+import type {MainProduct, NamePrice, Product, ShopState} from "./types"
 import mainList from '@local/goods/main.json'
 import loupesList from '@local/goods/loupes.json'
 import accessoriesList from "@local/goods/accessories.json"
@@ -27,7 +27,7 @@ export const shopStore = defineStore('shop', {
         getFilters: (state: ShopState): Product[] => state.filters,
         getGeneration: (state: ShopState): Product[] => state.generation,
         getRepair: (state: ShopState): Product[] => state.repair,
-        getAll: (state: ShopState): Product[] => state.loupes.concat(state.accessories, state.parts, state.repair, state.generation),
+        getAll: (state: ShopState): Product[] => state.loupes.concat(state.accessories, state.parts, state.repair, state.generation, state.filters),
         getMainByLink: (state: ShopState) => (link: any): MainProduct => {
             let out = state.main.find(row => row.link === link)
             if (!out) {
@@ -45,6 +45,7 @@ export const shopStore = defineStore('shop', {
                     glassYear: 0,
                     free: [],
                     price: 0,
+                    currency: "USD",
                     expandText: false,
                     on: false
                 }
@@ -80,6 +81,7 @@ export const shopStore = defineStore('shop', {
                     links: [],
                     images: [],
                     price: 0,
+                    currency: "USD",
                     sale: 0,
                     expandText: false,
                     on: false

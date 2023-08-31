@@ -8,9 +8,10 @@
             { "title": "Manual", "url": "/manual/replacing-handle/"}
         ],
         "images": [
-            { "url": "/images/static/lamp-handle.webp"}
+            { "url": "/images/static/lamp-handle.webp", "on": true}
         ],
         "price": 7,
+        "currency": "RUB",
         "on": false
     },
     {
@@ -22,9 +23,10 @@
             { "title": "Manual", "url": "/manual/head-support-replacement/"}
         ],
         "images": [
-            { "url": "/images/static/head-support-leaf.webp"}
+            { "url": "/images/static/head-support-leaf.webp", "on": true}
         ],
         "price": 4.50,
+        "currency": "RUB",
         "on": false
     },
     {
@@ -36,12 +38,13 @@
             { "title": "Manual", "url": "/manual/adjusting-forehead-band/"}
         ],
         "images": [
-            { "url": "/images/static/frontplate.webp"},
-            { "url": "/images/static/frontplate-02.webp"},
-            { "url": "/images/static/frontplate-03.webp"},
-            { "url": "/images/static/frontplate-04.webp"}
+            { "url": "/images/static/frontplate.webp", "on": true},
+            { "url": "/images/static/frontplate-02.webp", "on": false},
+            { "url": "/images/static/frontplate-03.webp", "on": false},
+            { "url": "/images/static/frontplate-04.webp", "on": false}
         ],
         "price": 7.00,
+        "currency": "RUB",
         "on": false
     },
     {
@@ -53,11 +56,12 @@
             { "title": "Manual", "url": "/manual/replacing-cushion"}
         ],
         "images": [
-            { "url": "/images/static/font-pad.webp"},
-            { "url": "/images/static/frontplate-02_a1baca66-c20e-4e71-919e-093ac5dcd788.webp"},
-            { "url": "/images/static/frontplate-03_a13db675-bfd5-4e70-9274-efe5dc9d1a34.webp"}
+            { "url": "/images/static/font-pad.webp", "on": true},
+            { "url": "/images/static/frontplate-02_a1baca66-c20e-4e71-919e-093ac5dcd788.webp", "on": false},
+            { "url": "/images/static/frontplate-03_a13db675-bfd5-4e70-9274-efe5dc9d1a34.webp", "on": false}
         ],
         "price": 24.00,
+        "currency": "RUB",
         "on": false
     }
 ]

@@ -8,13 +8,14 @@
             { "title": "Manual", "url": "/manual/1_5xloupe-setup/"}
         ],
         "images": [
-            { "url": "/images/static/1.5_2.webp"},
-            { "url": "/images/static/1.5_1.webp"},
-            { "url": "/images/static/1.5_3.webp"},
-            { "url": "/images/static/1.5_4.webp"},
-            { "url": "/images/static/1.5_5.webp"}
+            { "url": "/images/static/1.5_2.webp", "on": true},
+            { "url": "/images/static/1.5_1.webp", "on": false},
+            { "url": "/images/static/1.5_3.webp", "on": false},
+            { "url": "/images/static/1.5_4.webp", "on": false},
+            { "url": "/images/static/1.5_5.webp", "on": false}
         ],
         "price": 100,
+        "currency": "RUB",
         "on": false
     },
     {
@@ -26,13 +27,14 @@
             { "title": "Manual Video", "url": "https://www.youtube.com/watch?v=OXtJXZkP4Qw"}
         ],
         "images": [
-            { "url": "/images/static/2_941f1d27-2ec9-4fde-84aa-930551e1d077.webp"},
-            { "url": "/images/static/1_8eaf8e04-10e8-4163-b215-23ba94f48c97.webp"},
-            { "url": "/images/static/3_d7879e98-bcdb-422f-b8bb-529f343868f7.webp"},
-            { "url": "/images/static/4_5998b5d8-8eeb-44b0-bdb4-de7db377b49d.webp"},
-            { "url": "/images/static/5_b13301d8-a335-4095-a8bb-25cdb4b35edb.webp"}
+            { "url": "/images/static/2_941f1d27-2ec9-4fde-84aa-930551e1d077.webp", "on": true},
+            { "url": "/images/static/1_8eaf8e04-10e8-4163-b215-23ba94f48c97.webp", "on": false},
+            { "url": "/images/static/3_d7879e98-bcdb-422f-b8bb-529f343868f7.webp", "on": false},
+            { "url": "/images/static/4_5998b5d8-8eeb-44b0-bdb4-de7db377b49d.webp", "on": false},
+            { "url": "/images/static/5_b13301d8-a335-4095-a8bb-25cdb4b35edb.webp", "on": false}
         ],
         "price": 650,
+        "currency": "RUB",
         "on": false
     },
     {
@@ -45,12 +47,13 @@
             { "title": "How to calibrate", "url": "/manual/calibrating-your-loupe/"}
         ],
         "images": [
-            { "url": "/images/static/bi-prod-loupe3-1.webp"},
-            { "url": "/images/static/bi-prod-loupe3-3.webp"},
-            { "url": "/images/static/3.5x_2_72d588f4-a360-493f-892a-94cad47fa3de.webp"},
-            { "url": "/images/static/3.5x_3_a603b7c1-35c4-4386-9efc-80946ddccf8f.webp"}
+            { "url": "/images/static/bi-prod-loupe3-1.webp", "on": true},
+            { "url": "/images/static/bi-prod-loupe3-3.webp", "on": false},
+            { "url": "/images/static/3.5x_2_72d588f4-a360-493f-892a-94cad47fa3de.webp", "on": false},
+            { "url": "/images/static/3.5x_3_a603b7c1-35c4-4386-9efc-80946ddccf8f.webp", "on": false}
         ],
         "price": 1000,
+        "currency": "RUB",
         "on": false
     }
 ]

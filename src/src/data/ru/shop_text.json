@@ -7,10 +7,13 @@
   "WARRANTY_1YEAR": "1 год гарантии",
   "INCLUDED": "Включено",
   "QUANTITY": "Количество",
-  "SUMMARY": "Итого",
+  "SUMMARY": "Сводка",
   "WITHOUT_LOOPS": "Без линз",
   "WITH": "Плюс",
   "DETAILS": "Подробнее",
+  "SUBTOTAL": "Subtotal",
+  "ADD_TO_CART": "Добавить в корзину",
+  "TOTAL": "Итого",
   "LOUPE": "Линза",
   "LOUPES": "Линзы"
 }

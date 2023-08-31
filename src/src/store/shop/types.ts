@@ -1,11 +1,9 @@
-export interface Product{
+export interface Product extends NamePrice{
     link: string,
-    title: string,
     short: string,
     text: string,
     links: Link[],
     images: Image[],
-    price: number,
     sale: number,
 
     on: boolean,
@@ -32,14 +30,16 @@ export interface AdditionalProduct {
 }
 export interface NamePrice {
     title: string,
-    price: number
+    price: number,
+    currency: string
 }
 export interface Link{
     title: string,
     url: string
 }
 export interface Image{
-    url: string
+    url: string,
+    on: boolean
 }
 
 export interface ShopState {

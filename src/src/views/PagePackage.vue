@@ -6,21 +6,40 @@
       <div>&nbsp;</div>
       <div class="grid grid2" v-for="product in products()">
         <div>
-          <TheaterMainWheel
-              class="video1"
-              :name="'main'"
-              :test="true"
-              :bg-mode="'cover'"
-              :style="{}"
-              :scroll-event="scroll.event"
-              :height="500">
-          </TheaterMainWheel>
-          &nbsp;
+          <div class="photoSlider">
+            <div class="display">
+              <div class="slide" ref="slide3D">
+                <TheaterMainWheel
+                    class="video1"
+                    :name="'main'"
+                    :test="true"
+                    :bg-mode="'cover'"
+                    :style="{}"
+                    :scroll-event="scroll.event"
+                    :height="500">
+                </TheaterMainWheel>
+              </div>
+              <div class="slide" v-for="row in product.images"
+                   :style="{'background-image': 'url(' + row.url + ')'}"
+              ></div>
+            </div>
+            <div class="control grid grid4">
+              <div class="slidePoint pointer" @click="slideOn(0)"><div>3D</div></div>
+              <div class="slidePoint pointer"
+                   @click="slidesUpdate(row)"
+                   v-for="(row, ind) in product.images">
+                <div class="image"
+                    :style="{'background-image': 'url(' + row.url + ')'}"></div>
+              </div>
+            </div>
+          </div>
         </div>
+
+
         <div v-if="product && product.price && summary.amount > 1">
           <div>
             <h1>{{product.title}}</h1>
-            <div class="price">From {{pricePrint(product.price)}}</div>
+            <div class="price">From {{ targetPrice(product) }}</div>
             <div>
             <span class="pointer" @click="product.expandText = !product.expandText">
               {{bundles.DETAILS}}
@@ -40,7 +59,7 @@
                    @click="toggleProduct(row)"
                    :class="{'grid grid2 force pointer additional': true, 'active': hasProduct(row)}">
                 <div>{{row.short}}</div>
-                <div class="right">+{{pricePrint(row.price)}}</div>
+                <div class="right">+{{ targetPrice(row) }}</div>
               </div>
             </div>
           </div>
@@ -50,18 +69,25 @@
           <div v-if="summary.hasLoops">
             <div class="formBlock">
               <h3>{{bundles.IPD}}</h3>
-              <Slider :min="ipd.min" :max="ipd.max" v-model="product.ipd"></Slider>
+              <Slider :min="ipd.min"
+                      :max="ipd.max"
+                      @update="updateSummary"
+                      v-model="summary.ipd"></Slider>
             </div>
 
             <hr/>
 
             <div class="formBlock">
               <h3>
-                <label for="subscribeNews">{{bundles.WARE_PROGRESSIVE_GLASS}} <input type="checkbox" v-model="glass_wear.yes" id="subscribeNews"/></label>
+                <label for="subscribeNews">{{bundles.WARE_PROGRESSIVE_GLASS}}
+                  <input type="checkbox" @change="updateSummary" v-model="summary.wear_glass" id="subscribeNews"/></label>
               </h3>
-              <div v-if="glass_wear.yes">
+              <div v-if="summary.wear_glass">
                 <p>{{bundles.WARE_PROGRESSIVE_GLASS_YEARS}}</p>
-                <Slider :min="glass_wear.min" :max="glass_wear.max" v-model="product.glassYear"></Slider>
+                <Slider :min="glass_wear.min"
+                        :max="glass_wear.max"
+                        @update="updateSummary"
+                        v-model="summary.glass_year"></Slider>
               </div>
             </div>
 
@@ -76,7 +102,7 @@
                    :class="{'grid grid21 force pointer additional': true, 'active': hasProduct(row)}">
                 <div>{{row.title}}</div>
                 <div class="right">
-                  <span v-if="!product.free.includes(row.link)">+{{pricePrint(row.price)}}</span>
+                  <span v-if="!product.free.includes(row.link)">+{{ targetPrice(row) }}</span>
                   <span v-if="product.free.includes(row.link)" class="included">{{bundles.INCLUDED}}</span>
                 </div>
               </div>
@@ -100,7 +126,7 @@
           <div class="formBlock">
             <h3>{{bundles.QUANTITY}}</h3>
             <div>
-              <input class="packageQuantity" @change="updateSummary()" v-model="summary.quantity">
+              <input class="packageQuantity" @change="updateSummary()" @keyup="updateKeyDown($event)" v-model="summary.quantity">
             </div>
           </div>
 
@@ -112,11 +138,25 @@
               <div>BiLumix Package</div>
             </div>
             <div class="grid grid2 force summaryData">
-              <div>{{ summary.loopsTitle }}</div> <div class="right bold">$ {{summary.amount}}</div>
+              <div>{{ summary.loopsTitle }}</div> <div class="right bold">{{ sumAndCurrencyPrice(summary.amount, product.currency) }}</div>
             </div>
             <div class="grid grid2 force summaryData" v-for="row in summary.filters">
-              <div>{{ row.title }}</div> <div class="right bold">$ {{row.price}}</div>
+              <div>{{ row.title }}</div>
+              <div class="right bold" v-if="summary.quantity>1">{{ summary.quantity }} x
+                {{ targetPrice(row) }} =
+                {{ sumAndCurrencyPrice(row.price * summary.quantity, row.currency) }}</div>
+              <div class="right bold" v-if="summary.quantity<=1">{{ targetPrice(row) }}</div>
             </div>
+            <div class="grid grid2 force summaryData">
+              <div>{{ bundles.SUBTOTAL }}</div> <div class="right bold">{{ sumAndCurrencyPrice(summary.amount, product.currency) }}</div>
+            </div>
+            <div class="grid grid2 force summaryData">
+              <div>{{ bundles.TOTAL }}</div> <div class="right bold">{{ sumAndCurrencyPrice(summary.amount, product.currency) }}</div>
+            </div>
+          </div>
+
+          <div class="formBlock" @click="submitSummary()" style="margin: 2em 0;">
+            <button class="btn bigGray">{{bundles.ADD_TO_CART}}</button>
           </div>
         </div>
       </div>
@@ -145,7 +185,8 @@ import TheaterWheelVideo1 from "@/components/TheaterWheelVideo1.vue";
 import shopTextBundles from "@local/shop_text.json";
 import Slider from '@vueform/slider'
 import numbers from "@/i18n/rules/numbers";
-
+import {getPriceAndCurrency, getPriceTarget} from "@/service/PriceService";
+const LOCAL_STORE_SUMMARY_NAME = "summary"
 export default defineComponent({
   components: {
     Slider,
@@ -179,19 +220,58 @@ export default defineComponent({
         amount: 0,
         filtersAmount: [],
         loopsTitle: "",
-        quantity: 1,
+        quantity: 1 as number,
         hasLoops: false,
         cart: 0,
         count: 1,
         filters: [] as NamePrice[],
+        products: [] as string[],
         additional: [] as AdditionalProduct[],
         ipd: 0,
         glass_year: 0,
+        wear_glass: false,
         link: undefined as string|undefined
       }
     }
   },
   methods: {
+    slidesUpdate(image: Image){
+      this.$refs.slide3D.style = {'display': 'none'}
+      image.on = !image.on
+      let isAnyShow = false
+      this.product?.images.forEach(row => {
+        if(!isAnyShow){
+          isAnyShow = row.on
+        }
+      })
+      console.log(image, isAnyShow)
+      if(!isAnyShow){
+        this.$refs.slide3D.style = {'display': 'block'}
+      }
+    },
+    updateKeyDown(event: any): void {
+      if(this.summary.quantity && this.summary.quantity>0){
+        this.updateSummary()
+      }
+    },
+    submitSummary(): void {
+      if(this.product){
+        this.summary.products.forEach((link: string) => {
+          let product = this.shopStore.getItem(link)
+          this.cartStore.toCart(product.link, this.summary.quantity, null)
+        })
+        this.product.ipd = this.summary.ipd
+        this.product.glassYear = 0
+        if(this.summary.wear_glass){
+          this.product.glassYear = this.summary.glass_year
+        }
+        console.log(this.product.link, this.summary.quantity, this.product)
+        this.cartStore.toCart(this.product.link, this.summary.quantity, this.product)
+      }
+
+      // localStorage.removeItem(LOCAL_STORE_SUMMARY_NAME)
+      // location.reload()
+    },
     updateSummary(): void {
       this.summary.loopsTitle = this.getSummaryWithLopes()
       this.summary.amount = this.getSummarySum() * this.summary.quantity
@@ -202,10 +282,12 @@ export default defineComponent({
           this.summary.hasLoops = true
         }
       })
+      console.log(this.summary.ipd, this.summary.glass_year)
+      localStorage.setItem(LOCAL_STORE_SUMMARY_NAME, JSON.stringify(this.summary))
     },
     hasProduct(row: Product): boolean {
       if(this.product) {
-        return (this.product.products.includes(row.link) || this.product.free.includes(row.link))
+        return (this.summary.products.includes(row.link) || this.product.free.includes(row.link))
       }
       return false
     },
@@ -214,7 +296,7 @@ export default defineComponent({
 
       if(this.product && this.product.price){
         res += this.product.price
-        this.product.products.forEach((link: string) => {
+        this.summary.products.forEach((link: string) => {
           let found = this.shopStore.getItem(link)
           if(found && found.price>0){
             res += found.price
@@ -228,10 +310,11 @@ export default defineComponent({
       this.summary.filters = []
       if(this.product && this.product.price){
         this.filters().forEach((row: Product) => {
-          if(this.product?.products.includes(row.link)){
+          if(this.summary?.products.includes(row.link)){
             this.summary.filters.push({
               title: row.short,
-              price: row.price
+              price: row.price,
+              currency: row.currency
             })
             res += row.price
           }
@@ -241,10 +324,10 @@ export default defineComponent({
     },
     getSummaryWithLopes(): string {
       let res = this.bundles.WITHOUT_LOOPS;
-      if(this.product && this.product.products && this.product.products.length > 0){
+      if(this.product && this.summary.products && this.summary.products.length > 0){
         let parts = [] as string[]
         this.lopes().forEach((row:Product) => {
-          if(this.product && this.product.products.includes(row.link)){
+          if(this.summary.products.includes(row.link)){
             parts.push(row.short)
           }
         })
@@ -270,26 +353,19 @@ export default defineComponent({
       if(this.product?.free.includes(row.link)){
         return;
       }
-      let ind = this.product?.products.indexOf(row.link)??-1
+      let ind = this.summary?.products.indexOf(row.link)??-1
       if (ind >= 0){
-        this.product?.products.splice(ind, 1)
+        this.summary?.products.splice(ind, 1)
       }else{
-        this.product?.products.push(row.link)
+        this.summary?.products.push(row.link)
       }
       this.updateSummary()
     },
-    pricePrint(val: number): string{
-      return Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-      }).format(val)
+    targetPrice(target: NamePrice): string{
+      return getPriceTarget(target)
     },
-    addToCart(product: Product){
-      if(this.summary.count === 0){
-        this.summary.count = 1
-      }
-      this.cartStore.toCart(product.link, this.summary.count)
-      this.updateSummary()
+    sumAndCurrencyPrice(price: number, currency: string): string{
+      return getPriceAndCurrency(price, currency)
     },
     handleScroll(event: any){
       this.scroll.event = event
@@ -305,6 +381,14 @@ export default defineComponent({
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('mousewheel', this.handleScroll);
     this.currentImage = this.product.images[0];
+
+    let summaryJSON = localStorage.getItem(LOCAL_STORE_SUMMARY_NAME)
+    if(summaryJSON && summaryJSON.length > 10){
+      let temp = JSON.parse(summaryJSON)
+      if(temp.quantity){
+        this.summary = temp
+      }
+    }
     this.updateSummary()
   }
 })

@@ -9,6 +9,7 @@ import './assets/header.css'
 import './assets/grid.css'
 import './assets/shop.css'
 import './assets/cart.css'
+import './assets/slider.css'
 const app = createApp(App)
 
 import { library } from '@fortawesome/fontawesome-svg-core'

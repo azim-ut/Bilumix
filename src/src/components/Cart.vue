@@ -51,7 +51,7 @@
           <br/>
           <div class="textAreaWrap">
             <div class="title">Note</div>
-            <textarea rows="10"></textarea>
+            <textarea rows="10" @keydown="setNote" @change="setNote" v-model="note"></textarea>
           </div>
         </div>
       </div>
@@ -81,27 +81,32 @@ export default defineComponent({
   data() {
     return {
       checkoutSum: 0,
-      list: [] as any[]
+      list: [] as any[],
+      note: ""
     }
   },
   methods: {
-    updateItemsList(): CartItem[]{
+    updateItemsList(): void{
       let out: any[] = []
       let catalog = this.shopStore.getAll
       this.checkoutSum = 0
       this.cartStore.getCart.list.forEach((row:any) => {
-        // row.target = {}
-        if(!row.target){
+        let target = row.target
+        if(!target){
           catalog.forEach((cat: Product) => {
             if(cat.link === row.url){
-              row.target = cat
+              target = cat
             }
           })
-          this.checkoutSum += row.cnt * row.target.price
         }
+        row.target = target
+        // console.log(target, target.price, "x", row.cnt)
+        this.checkoutSum += row.cnt * target.price
         out.push(row)
       })
       this.list = out
+      this.note = this.cartStore.getCart.note
+      this.cartStore.saveCart()
     },
     checkout(){
       axios.post("/test.php", {
@@ -126,6 +131,10 @@ export default defineComponent({
     },
     removeItem(link: string):void{
       this.cartStore.setCount(link, 0)
+      this.updateItemsList()
+    },
+    setNote():void{
+      this.cartStore.note(this.note)
       this.updateItemsList()
     },
     setItemCount(link: string, cnt: number):void{
