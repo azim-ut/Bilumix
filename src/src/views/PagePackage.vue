@@ -458,11 +458,11 @@ hr{
 
 .additional div{
   display: flex;
-  text-align: right;
   justify-content: left;
-  vertical-align: center;
+  vertical-align: middle;
   align-items: center;
-  padding: 20px;
+  padding: 20px 10px;
+  text-align: left;
 }
 .additional div:last-child{
   display: flex;
