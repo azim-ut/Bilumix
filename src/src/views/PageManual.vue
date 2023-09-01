@@ -20,8 +20,8 @@ const manualStore = mStore()
         <div class="right">
           <div class="title">{{row.title}}</div>
           <div class="links">
-            <a class="btn" @click="toManualPage(row.link)">Detail</a>
-            <a class="btn" @click="showVideo(row)">Watch video</a>
+            <a class="btn" @click="toManualPage(row.link)">{{ bundles.DETAILS }}</a>
+            <a class="btn" @click="showVideo(row)">{{ bundles.VIDEO }}</a>
           </div>
         </div>
       </div>
@@ -51,6 +51,7 @@ import IntroFrame1 from "@/components/IntroFrame1.vue";
 import TheaterWheel from "@/components/TheaterWheel.vue";
 import HeadMenu from "@/components/HeadMenu.vue";
 import type {ManualRecord} from "@/store/manual/types";
+import manualTextBundles from "@local/manual_text.json";
 
 export default defineComponent({
   components: {
@@ -59,7 +60,8 @@ export default defineComponent({
     IntroFrame1, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox},
   data() {
     return {
-      showModalVideo: null as any
+      showModalVideo: null as any,
+      bundles: manualTextBundles
     }
   },
   methods: {
@@ -73,6 +75,7 @@ export default defineComponent({
   unmounted () {
   },
   mounted(){
+    window.scroll(0,0)
   }
 })
 </script>

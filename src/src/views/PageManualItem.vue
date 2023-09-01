@@ -2,16 +2,18 @@
 
   <HeadMenu :key="$route.path" />
   <div class="contentWrap">
-    <h1>{{manual.title}}</h1>
-    <div class="grid grid2">
-      <div>
-        <div class="video">
-          <video :src="manual.video" preload="auto" controls="" style="width: 100%; height: 100%;"></video>
+    <div style="padding: 0 20px;">
+      <h1>{{manual.title}}</h1>
+      <div class="grid grid2">
+        <div>
+          <div class="video">
+            <video :src="manual.video" preload="auto" controls="" style="width: 100%; height: 100%;"></video>
+          </div>
         </div>
-      </div>
-      <div>
-        <div class="text" v-html="manual.text"></div>
-        <div class="btn" @click="toManualsList">Back</div>
+        <div>
+          <div class="text" v-html="manual.text"></div>
+          <div class="btn" @click="toManualsList">Back</div>
+        </div>
       </div>
     </div>
   </div>
@@ -69,6 +71,7 @@ export default defineComponent({
   },
   mounted(){
   	window.addEventListener('click', this.closeModal)
+    window.scroll(0,0)
     this.manual = this.manualStore.getItem(this.getLink())
   }
 })

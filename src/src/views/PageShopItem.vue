@@ -2,7 +2,7 @@
 <template>
   <HeadMenu :key="$route.path" />
   <div class="contentWrap">
-    <div class="mainProduct grid grid161 force" v-if="product">
+    <div class="grid grid161 force" style="padding-top: 20px;" v-if="product">
       <div>&nbsp;</div>
       <div class="grid grid2">
         <div>
@@ -13,7 +13,7 @@
                    :style="{'background-image': 'url(' + row.url + ')'}"
               ></div>
             </div>
-            <div class="controlWrap">
+            <div class="controlWrap" v-if="product.images.length>1">
               <div class="control grid grid4">
                 <div :class="{'slideBtn pointer':true}"
                      v-for="(row) in product.images">
@@ -128,6 +128,7 @@ export default defineComponent({
   unmounted () {
   },
   mounted(){
+    window.scroll(0,0)
     this.product = this.shopStore.getItem(this.$route.params.link)
     this.currentImage = this.product?.images[0];
     this.form.cart = this.cartState().cnt

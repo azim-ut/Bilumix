@@ -1,4 +1,5 @@
 .photoSlider {
+    margin: 0 10px 0 0;
 }
 .photoSlider .display{
     display: flex;
