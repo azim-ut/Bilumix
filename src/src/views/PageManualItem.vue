@@ -1,7 +1,7 @@
 <template>
 
   <HeadMenu :key="$route.path" />
-  <div class="contentBody">
+  <div class="contentWrap">
     <h1>{{manual.title}}</h1>
     <div class="grid grid2">
       <div>
@@ -75,9 +75,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.contentBody {
-  margin: 57px 20px 10px;
-}
 video {
   border-radius: 17px;
 }

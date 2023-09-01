@@ -1,7 +1,7 @@
 <template>
 
   <HeadMenu :key="$route.path" />
-  <div class="contentBody" style="margin-top: 80px; position: relative;">
+  <div class="content" style="margin-top: 80px; position: relative;">
     <ScrollDownIndicator />
     <IntroFrame1 />
     <div class="textBlocksPanelWrap" style="min-height: 100vh;">

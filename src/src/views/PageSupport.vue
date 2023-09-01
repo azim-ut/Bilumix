@@ -3,7 +3,6 @@
   <HeadMenu :key="$router.path"/>
 
   <div class="contentWrap">
-    <div class="contentBody">
       <div class="grid grid3">
         <div>&nbsp;</div>
         <div class="center" style="padding: 50px 0 100px;">
@@ -13,9 +12,6 @@
         </div>
         <div>&nbsp;</div>
       </div>
-    </div>
-
-
   </div>
   <Footer/>
 </template>

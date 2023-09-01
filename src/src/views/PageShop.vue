@@ -2,24 +2,27 @@
 <template>
   <HeadMenu :key="$route.path" />
   <div class="contentWrap">
-
     <div class="promo">
       <div class="promoContent">
         <h1>Shop BiLumix</h1>
         <div>
-          <button class="emphasized-button" @click="toPackagePage()">Build your own package</button>
+          <button class="emphasized-button" @click="toPackagePage()">{{ bundles.BUILD_YOUR_PACKAGE }}</button>
         </div>
         <div class="scndblk">
-          <h3 class="textmlty">Order now</h3>
+          <h3 class="textmlty">{{ bundles.ORDER_NOW }}</h3>
         </div>
       </div>
     </div>
 
-    <div class="contentBody">
-      <div class="textContent">
-        <a id="loupes"><h2>Loupes</h2></a>
-        <p>loupes can be easily mounted on BiLumix headlamp, Find the right working distance to maintain a correct posture.</p>
-      </div>
+    <div class="">
+        <div class="grid grid141 center">
+          <div></div>
+          <div class="textContent">
+            <a id="loupes"><h2>{{bundles.LOUPES}}</h2></a>
+            <p>{{bundles.LOUPES_TEXT}}</p>
+          </div>
+          <div></div>
+        </div>
       <div class="shopList grid grid3">
         <div v-for="product in shopStore.loupes"
              class="product"
@@ -32,8 +35,8 @@
                  @mouseout="clearTransform($event, product.link+'ID')"
             ></div>
             <div class="tools">
-              <button class="emphasized-button" @click="toDetails(product.link)">Details</button>
-              <button class="emphasized-button" @click="toCart(product.link)">Add to cart</button>
+              <button class="emphasized-button" @click="toDetails(product.link)">{{ bundles.DETAILS }}</button>
+              <button class="emphasized-button" @click="toCart(product.link)">{{ bundles.ADD_TO_CART_SHORT }}</button>
             </div>
             <div class="price">${{product.price}}</div>
           </div>
@@ -41,10 +44,15 @@
       </div>
 
 
-      <div class="textContent">
-        <a id="accessories"><h2>Accessories</h2></a>
+      <div class="grid grid141 center">
+        <div></div>
+        <div class="textContent">
+          <a id="accessories"><h2>{{bundles.ACCESSORIES}}</h2></a>
+          <p>{{bundles.LOUPES_TEXT}}</p>
+        </div>
+        <div></div>
       </div>
-      <div class="contentBody shopList grid grid3">
+      <div class=" shopList grid grid3">
         <div v-for="product in shopStore.accessories"
              :id="product.link+'ID'"
              class="product">
@@ -55,18 +63,22 @@
                  @mouseout="clearTransform($event, product.link+'ID')"
             ></div>
             <div class="tools">
-              <button class="emphasized-button" @click="toDetails(product.link)">Details</button>
+              <button class="emphasized-button" @click="toDetails(product.link)">{{ bundles.DETAILS }}</button>
             </div>
             <div class="price">${{product.price}}</div>
           </div>
         </div>
       </div>
 
-      <div class="textContent">
-        <a id="parts"><h2>Replaceable Parts</h2></a>
-        <p>When you need extra parts, we got them ready.</p>
+      <div class="grid grid141 center">
+        <div></div>
+        <div class="textContent">
+          <a id="parts"><h2>{{bundles.REP_PARTS}}</h2></a>
+          <p>{{ bundles.REP_PARTS_TEXT }}</p>
+        </div>
+        <div></div>
       </div>
-      <div class="contentBody shopList grid grid3">
+      <div class=" shopList grid grid3">
         <div v-for="product in shopStore.parts"
              :id="product.link+'ID'"
              class="product">
@@ -77,17 +89,21 @@
                  @mouseout="clearTransform($event, product.link+'ID')"
             ></div>
             <div class="tools">
-              <button class="emphasized-button" @click="toDetails(product.link)">Details</button>
+              <button class="emphasized-button" @click="toDetails(product.link)">{{ bundles.DETAILS }}</button>
             </div>
             <div class="price">${{product.price}}</div>
           </div>
         </div>
       </div>
 
-      <div class="textContent">
-        <a id="repair"><h2>Repair Service</h2></a>
+      <div class="grid grid141 center">
+        <div></div>
+        <div class="textContent">
+          <a id="repair"><h2>{{ bundles.REPAIR_TITLE }}</h2></a>
+        </div>
+        <div></div>
       </div>
-      <div class="contentBody shopList grid grid3">
+      <div class="shopList grid grid3">
         <div v-for="product in shopStore.repair"
              :id="product.link+'ID'"
              class="product">
@@ -103,10 +119,14 @@
         </div>
     	</div>
 
-      <div class="textContent">
-        <a id="repair"><h2>Generation</h2></a>
+      <div class="grid grid141 center">
+        <div></div>
+        <div class="textContent">
+          <a id="repair"><h2>{{bundles.GENERATION_TITLE}}</h2></a>
+        </div>
+        <div></div>
       </div>
-      <div class="contentBody shopList grid grid3">
+      <div class="shopList grid grid3">
         <div v-for="product in getGeneration()"
              :id="product.link+'ID'"
              class="product">
@@ -117,7 +137,7 @@
               ></div>
             </div>
             <div class="tools">
-              <button class="emphasized-button" @click="toDetails(product.link)">Details</button>
+              <button class="emphasized-button" @click="toDetails(product.link)">{{bundles.DETAILS}}</button>
             </div>
             <div class="price">${{product.price}}</div>
           </div>
@@ -142,6 +162,7 @@ import {mapStores} from "pinia";
 import {cartStore} from "@/store/cart/cart";
 import {shopStore} from "@/store/shop/shop";
 import type {Product} from "@/store/shop/types";
+import shopTextBundles from "@local/shop_text.json";
 
 export default defineComponent({
   computed:{
@@ -153,6 +174,7 @@ export default defineComponent({
     IntroFrame1, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox},
   data() {
     return {
+      bundles: shopTextBundles,
       constraint: 150
     }
   },
@@ -261,6 +283,11 @@ export default defineComponent({
   background: #171717 no-repeat center center;
   position: relative;
 }
+
+.contentWrap .textContent{
+  margin-top: 20px;
+}
+
 .contentWrap .promo::after {
   content: "";
   position: absolute;
@@ -336,11 +363,6 @@ export default defineComponent({
   letter-spacing: 2px;
   margin: auto;
 }
-.contentBody{
-	margin: 57px auto 0;
-  text-align: center;
-  padding: 0 10px;
-}
 
 h2{
   letter-spacing:normal;
@@ -371,10 +393,16 @@ h2{
   text-align: center;
   transition: .2s;
 }
+.shopList .product .tools{
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  display: flex;
+}
 .shopList .product .productBody .image{
-  width: 280px;
+  width: 320px;
   height: 280px;
-  background: transparent no-repeat center center/cover;
+  background: #fff no-repeat center center/cover;
   border-radius: 40px;
   transition: .2s;
 }

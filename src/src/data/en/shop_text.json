@@ -13,7 +13,16 @@
   "DETAILS": "Details",
   "SUBTOTAL": "Subtotal",
   "ADD_TO_CART": "Add to cart",
+  "ADD_TO_CART_SHORT": "В корзину",
+  "ORDER_NOW": "Order now",
+  "BUILD_YOUR_PACKAGE": "Сделать заказ",
   "TOTAL": "Total",
   "LOUPE": "Loupe",
-  "LOUPES": "Loupes"
+  "LOUPES": "Loupes",
+  "ACCESSORIES": "Accessories",
+  "REP_PARTS": "Replaceable Parts",
+  "REP_PARTS_TEXT": "When you need extra parts, we got them ready.",
+  "REPAIR_TITLE": "Repair Service",
+  "GENERATION_TITLE": "Generation",
+  "LOUPES_TEXT": "loupes can be easily mounted on BiLumix headlamp, Find the right working distance to maintain a correct posture."
 }

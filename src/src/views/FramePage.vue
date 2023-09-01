@@ -17,7 +17,7 @@
       </ul>
     </nav>
   </header>
-  <div class="contentBody">
+  <div class="contentWrap">
     <div style="margin-top: 80px;">
       <div class="contentBlock product" style="position: relative;">
         <iframe class="theaterFrame" src="/intro/frame1"></iframe>

@@ -2,7 +2,7 @@
 <template>
   <HeadMenu :key="$route.path" />
   <div class="contentWrap">
-    <div class="contentBody mainProduct grid grid161 force" v-if="product">
+    <div class="mainProduct grid grid161 force" v-if="product">
       <div>&nbsp;</div>
       <div class="grid grid2">
         <div>
@@ -178,13 +178,7 @@ export default defineComponent({
   border-radius: 50px;
   border: none;
 }
-.contentBody{
-  margin-bottom: 10%;
-}
 
 @media (max-width: 950px) {
-  .contentBody{
-    margin: 120px 0 10%;
-  }
 }
 </style>

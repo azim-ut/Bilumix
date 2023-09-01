@@ -2,7 +2,7 @@
 <template>
   <HeadMenu :key="$route.path" />
   <div class="contentWrap">
-    <div class="contentBody mainProduct grid grid181">
+    <div class="mainProduct grid grid181">
       <div>&nbsp;</div>
       <div class="grid grid2" v-for="product in products()">
         <div>
@@ -164,7 +164,7 @@
         </div>
       </div>
       <div>&nbsp;</div>
-    </div>
+	  </div>
   </div>
   <Footer />
 </template>
@@ -435,9 +435,6 @@ hr{
   border-radius: 50px;
   border: none;
 }
-.contentBody{
-  margin-bottom: 10%;
-}
 
 .additional{
   border-radius: 20px;
@@ -481,8 +478,5 @@ hr{
   font-size: large;
 }
 @media (max-width: 950px) {
-  .contentBody{
-    margin: 57px 0 10%;
-  }
 }
 </style>
