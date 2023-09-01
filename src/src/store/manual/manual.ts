@@ -1,6 +1,6 @@
 import {defineStore} from "pinia";
 import type {ManualRecord, ManualState} from "./types"
-import manualList from "./data.json"
+import manualList from "@local/manual/data.json"
 
 
 export const manualStore = defineStore('manual', {
