@@ -27,6 +27,10 @@
       </div>
     </div>
   </header>
+  <div :class="{'newArrivals':true, 'active': !hideNewAdv }">
+    <span v-html="bundles.NEW_VERSION_ENABLE"></span>
+    <div class="closeBtn pointer" @click="hideNewAdvBar()">X</div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -36,6 +40,7 @@ import {mapStores} from "pinia";
 import {cartStore} from "@/store/cart/cart";
 import Cart from "@/components/Cart.vue";
 import headMenuJson from "@local/head_menu.json";
+import indexTextBundles from "@local/main_text.json";
 
 export default defineComponent({
   components: {Cart},
@@ -47,7 +52,9 @@ export default defineComponent({
   },
   data() {
     return {
+      bundles: indexTextBundles,
       showMobileMenu: false,
+      hideNewAdv: false,
       menu: headMenuJson,
       langs: [
           {title: 'EN', link: '/en'},
@@ -99,6 +106,10 @@ export default defineComponent({
     },
     toCart(){
       this.cartStore.open()
+    },
+    hideNewAdvBar(){
+      localStorage.setItem("new", "1")
+      this.hideNewAdv = true
     }
   },
   unmounted () {
@@ -107,11 +118,43 @@ export default defineComponent({
     this.updateMenu(this.$route)
     this.cartStore.fetchCart()
     this.activeLang()
+    let showNewBanner = <number> (localStorage.getItem("new")??0)
+    if(showNewBanner && showNewBanner > 0){
+      this.hideNewAdv = true
+    }
   }
 })
 </script>
 
 <style scoped>
+.newArrivals{
+  background: #ffffff;
+  text-align: center;
+  padding: 10px;
+  z-index: 99;
+  position: fixed;
+  top: -50px;
+  right: 0;
+  left: 0;
+  transition: .5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.newArrivals .closeBtn{
+  font-size: 80%;
+  line-height: 20px;
+  border-radius: 10px;
+  margin-left: 10px;
+  width: 20px;
+  text-align: center;
+}
+.newArrivals .closeBtn:hover{
+  background: #2ee8dc;
+}
+.newArrivals.active{
+  top: 50px;
+}
 header {
   position: fixed;
   top: 0;

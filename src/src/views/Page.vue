@@ -114,6 +114,7 @@ import Modal from "@/components/Modal.vue"
 import block1 from "@local/index_text_block1.json"
 import block2 from "@local/index_text_block2.json"
 import block3 from "@local/index_text_block3.json"
+import indexTextBundles from "@local/shop_text.json";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import RoundedBlackBox3 from "@/components/RoundedBlackBox3.vue";
 import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
@@ -138,6 +139,7 @@ export default defineComponent({
         show: false,
         src: '/video/bilumix-gen2-cm-long-720.mp4'
       },
+      bundles: indexTextBundles,
       shortTextBlocks1: block1,
       shortTextBlocks2: block2,
       shortTextBlocks3: block3,
@@ -194,7 +196,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
 .blockH1{
   font-size: revert;
   letter-spacing: normal;
