@@ -130,7 +130,7 @@ export default defineComponent({
 .newArrivals{
   background: #ffffff;
   text-align: center;
-  padding: 10px;
+  padding: 12px 0 5px;
   z-index: 99;
   position: fixed;
   top: -50px;

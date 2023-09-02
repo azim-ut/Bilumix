@@ -5,29 +5,27 @@
     </div>
     <div ref="visibleContent"
          id="visibleContent" class="visibleContent">
-      <div id="image-container">
+      <div class="mainBanner mainBanner1" ref="content1">
         <div class="front-image" ref="device"></div>
-      </div>
-      <div class="mainBannerContent mainBannerContent1" ref="content1">
         <div class="content">
           <h1>BiLumix </h1>
           <h2>GENERATION 2.0</h2>
-          <h3>Shadowless Headlamp</h3>
+          <h3 class="gradientTitle">Shadowless Headlamp</h3>
         </div>
       </div>
-      <div class="mainBannerContent mainBannerContent2" ref="content2">
-        <div class="content" ref="content2content">
-          <div class="center">
-            <h1 style="font-size: revert;">BRIGHT</h1>
-            <h1 style="font-size: revert;">CHOICE</h1>
-            <p style="margin: auto; width: 50%; font-size: large;">
-              For any procedure to illuminate
-              an area via a unique, dual light source
-              that eliminates any shadow
-            </p>
-            <button class="emphasized-button" @click="video1.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> Watch Video</button>
+      <div class="mainBanner mainBanner2" ref="content2">
+          <div class="content" ref="content2content">
+            <div class="center">
+              <h1 style="font-size: revert;">BRIGHT</h1>
+              <h1 style="font-size: revert;">CHOICE</h1>
+              <p style="margin: auto; width: 50%; font-size: large;">
+                For any procedure to illuminate
+                an area via a unique, dual light source
+                that eliminates any shadow
+              </p>
+              <button class="emphasized-button" @click="video1.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> Watch Video</button>
+            </div>
           </div>
-        </div>
       </div>
 
       <Modal :name="'video1'"
@@ -70,18 +68,6 @@ export default defineComponent({
         show: false,
         src: '/video/intro.mp4'
       },
-      zoomImage: {
-        min: 1,
-        max: 3,
-        step: 0.01,
-        current: 1
-      },
-      zoomText: {
-        min: 0,
-        max: 1,
-        step: 0.005,
-        current: 1
-      },
       loaded: false
     }
   },
@@ -108,16 +94,9 @@ export default defineComponent({
 
       this.animation.current = progress
       this.calcAnimationWheel()
-
-      // let direction = event.deltaY > 0 ? 1 : -1;
-      // if(this.animation.current<(this.animation.max-.2) && direction>0){
-      //   event.preventDefault()
-      // }
-      // this.calcAnimationWheel(event.deltaY, direction, null)
 		},
     calcAnimationWheel(): void {
       let val = -1/this.animation.max * this.animation.current
-      // console.log(this.animation.current, this.animation.max, val)
       this.$refs.device.style.setProperty('--delay', (val) + 's')
       this.$refs.content1.style.setProperty('--delay', (val) + 's')
       this.$refs.content2.style.setProperty('--delay', (val) + 's')
@@ -175,7 +154,7 @@ section{
 #IntroProduct .scrollContent{
   position: relative;
   border: transparent 1px solid;
-  min-height: 200vh;
+  min-height: 300vh;
 }
 #IntroProduct .scrollMarkerContent{
   border: transparent 5px solid;
@@ -188,25 +167,23 @@ section{
   background: transparent url(/images/static/bilumix-side.png) no-repeat center top/contain;
   width: 50%;
   height: 50%;
+  top: 10%;
+  position: absolute;
   transform: rotate(15deg);
   animation: animate 1.01s;
   animation-play-state: paused;
   animation-delay: var(--delay);
 }
-#image-container {
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: -webkit-fill-available;
+
+.mainBanner1{
+  animation: content1Animation 1.01s;
+  animation-play-state: paused;
+  animation-delay: var(--delay);
   display: contents;
+  top: 0; bottom: 0; right: 0; left: 0;
 }
-.mainBannerContent{
-  position: absolute;
-  bottom: 0;
-  text-align: center;
-  transition: .5s;
-}
-.mainBannerContent1 h1{
+
+.mainBanner1 h1{
   color: #fff;
   font-size: 50px;
   height: 40px;
@@ -218,7 +195,7 @@ section{
   text-shadow: 1px 1px 13px rgba(0,0,0,.5);
   text-align: center;
 }
-.mainBannerContent1 h2{
+.mainBanner1 h2{
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 10px;
@@ -228,56 +205,47 @@ section{
   text-transform: uppercase;
   text-align: center;
 }
-.mainBannerContent h3{
-  font-size: 35px;
-  font-weight: 600;
-  max-width: 600px;
-  background: #2ee8dc;
-  background: -moz-linear-gradient(to right,#2ee8dc 0,#05b4ff 50%,#2d66eb 100%);
-  background: -webkit-gradient(linear,left top,right top,from(#2ee8dc),color-stop(50%,#05b4ff),to(#2d66eb));
-  background: -moz-linear-gradient(left,#2ee8dc 0,#05b4ff 50%,#2d66eb 100%);
-  background: linear-gradient(90deg,#2ee8dc 0,#05b4ff 50%,#2d66eb);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.mainBanner1 .content{
+  z-index: 2;
   text-align: center;
-  margin: .8rem;
-  letter-spacing: 2px;
-}
-.mainBannerContent1{
-  animation: content1Animation 1.01s;
+  animation: content1AnimationContent 1.01s;
   animation-play-state: paused;
   animation-delay: var(--delay);
+  position: absolute;
   bottom: 20%;
 }
+.mainBanner1 .content h3{
+}
 
-.mainBannerContent2 .content{
+.mainBanner2 .content{
   position: absolute;
   width: 50%;
-
   animation: content2AnimationContent 1.01s;
   animation-play-state: paused;
   animation-delay: var(--delay);
 }
 
-.mainBannerContent2{
+.mainBanner2{
   background: #fff url(/images/normal/device_image/bilumix-sequence000.png) no-repeat left center/cover;
   display: flex;
-  width: 100%;
   align-items: center;
   vertical-align: middle;
   justify-content: center;
+  width: 100%;
   height: 100%;
+  clip-path: circle(10px at center);
+  position: absolute;
   opacity: 0;
   animation: content2Animation 1.01s;
   animation-play-state: paused;
   animation-delay: var(--delay);
-
+  overflow: hidden;
 }
-.mainBannerContent2 h1{
+.mainBanner2 h1{
   font-size: xxx-large !important;
   line-height: .5em;
 }
-.mainBannerContent2 p{
+.mainBanner2 p{
   padding: 20px;
 }
 img {
@@ -290,17 +258,16 @@ img {
 
 @keyframes content1Animation {
   0% {
-    transform: scale(1);
+    transform: scale(3);
+    opacity: 0;
   }
   10% {
     opacity: 1;
   }
-  40% {
-    transform: scale(.5);
+  20% {
+    transform: scale(.2);
     opacity: 0;
-  }
-  65% {
-    opacity: 1;
+    display: none;
   }
   100% {
     opacity: 0;
@@ -310,12 +277,16 @@ img {
   0% {
     opacity: 0;
   }
-  40% {
+  20% {
     background-position: left center;
     opacity: 0;
   }
-  50% {
+  25% {
+    clip-path: circle(2px at center);
     opacity: 1;
+  }
+  50% {
+    clip-path: circle(2000px at center);
   }
   85% {
     background-size: contain;
@@ -323,12 +294,24 @@ img {
     opacity: 1;
   }
   100% {
+    clip-path: circle(2000px at center);
     opacity: 0;
+  }
+}
+@keyframes content1AnimationContent {
+  0% {
+    transform: scale(1.4);
+  }
+  30% {
+    transform: scale(.1);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(.1);
   }
 }
 @keyframes content2AnimationContent {
   0% {
-    border: red 3px solid;
   }
   30% {
     right: calc(50% - 150px);
@@ -347,11 +330,8 @@ img {
     opacity: 1;
   }
   25% {
-    opacity: 1;
-  }
-  50% {
     transform: rotate(25deg) scale(3);
-    opacity: 0;
+    opacity: 1;
   }
   100% {
     opacity: 0;
@@ -360,25 +340,32 @@ img {
 
 @media (max-width: 500px) {
 
-  .mainBannerContent2 .content{
+  .mainBanner2 .content{
     width: 80%;
   }
 
   @keyframes content2Animation {
     0% {
       opacity: 0;
+      display: none;
       z-index: 100000;
     }
-    40% {
+    20% {
       opacity: 0;
+      display: none;
       background-position: -130px center !important;
     }
-    50% {
+    25% {
+      display: block;
       opacity: 1;
+      width: 2px;
+      height: 2px;
     }
     65% {
       background-position: -130px -50px !important;;
       opacity: 1;
+      width: 100%;
+      height: 100%;
     }
     100% {
       opacity: 0;
