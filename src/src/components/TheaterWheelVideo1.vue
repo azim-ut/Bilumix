@@ -56,7 +56,7 @@ export default defineComponent({
     }
   },
   methods: {
-    handleWheel(event: any): void{
+    handleWheel(event: Event): void{
       if(!this.$refs.theaterDiv){
         return;
       }
@@ -115,12 +115,15 @@ export default defineComponent({
   },
   watch: {
     scrollEvent: function(newVal, oldVal) {
-      this.handleWheel(newVal)
+      // this.handleWheel(newVal)
     }
   },
   unmounted () {
     let container = document.getElementById('TheaterWheel' + this.$props.name);
     // window.removeEventListener('scroll', this.handleWheel);
+    window.removeEventListener('load', this.loadedEvent);
+    window.removeEventListener('scroll', this.handleWheel);
+    window.removeEventListener('mousewheel', this.handleWheel);
     window.removeEventListener('load', this.loadedEvent);
   },
   mounted(){
@@ -129,6 +132,9 @@ export default defineComponent({
     window.addEventListener('load', this.loadedEvent);
     setTimeout(this.autoUploadFrames, 150)
 		this.fillVideoFrames()
+    window.addEventListener('scroll', this.handleWheel);
+    window.addEventListener('mousewheel', this.handleWheel);
+    window.addEventListener('load', this.loadedEvent);
   }
 })
 </script>

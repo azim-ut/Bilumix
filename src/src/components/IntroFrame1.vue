@@ -287,7 +287,7 @@ img {
     clip-path: circle(2px at center);
     opacity: 1;
   }
-  50% {
+  70% {
     clip-path: circle(2000px at center);
   }
   85% {
@@ -368,10 +368,12 @@ img {
       background-position: -350px center;
     }
     50% {
-      clip-path: circle(2000px at center);
     }
     65% {
       opacity: 1;
+    }
+    70% {
+      clip-path: circle(2000px at center);
     }
     100% {
       clip-path: circle(2000px at center);
