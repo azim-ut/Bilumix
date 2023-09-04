@@ -11,7 +11,7 @@
             { "url": "/images/static/light-filter-clear.webp", "on": true}
         ],
         "price": 12,
-        "currency": "RUB",
+        "currency": "руб.",
         "on": false
     },
     {
@@ -28,7 +28,7 @@
             { "url": "/images/static/Amber2.webp", "on": false}
         ],
         "price": 14,
-        "currency": "RUB",
+        "currency": "руб.",
         "on": false
     }
 ]

@@ -1,11 +1,11 @@
 [
     {
         "link": "headlamp-loupe",
-        "title": "BiLumix Headlamp 1.5x Loupe",
+        "title": "Налобный фонарь BiLumix с лупой 1.5х",
         "short": "1.5x",
-        "text": "Для заказа требуется значение ваших диоптрий. You can check your IPD by yourself. <p><strong>Headlamp Loupe&nbsp;Specification</strong><br></p>\n<ul>\n<li>Magnification:&nbsp;1.5x</li>\n<li>Working distance: 5~100cm&nbsp;</li>\n<li>Working field size: 45cm</li>\n<li>Weight: 13g</li>\n</ul>\n<h4>Compatibility</h4>\n<ul>\n<li>Generation 1.0</li>\n<li>Generation 2.0</li>\n</ul>\n<p>",
+        "text": "Для заказа требуется значение ваших диоптрий. Вы можете проверить значение своего диоптрия самостоятельно. <p><strong>Спецификация лупы для налобного фонаря</strong><br></p>\n<ul>\n<li>Увеличение:&nbsp;1,5x</li>\n<li>Рабочее расстояние: 5~100 см&nbsp;</li>\n<li>Размер рабочего поля: 45 см</li>\n<li>Вес: 13 г</li>\n</ul>\n<h4>Совместимость</h4>\n<ul>\n<li>Поколение 1.0</li>\n<li>Поколение 2.0</li>\n</ul>\n<p>",
         "links": [
-            { "title": "Manual", "url": "/manual/1_5xloupe-setup/"}
+            { "title": "Инструкция", "url": "/manual/1_5xloupe-setup/"}
         ],
         "images": [
             { "url": "/images/static/1.5_2.webp", "on": true},
@@ -15,7 +15,7 @@
             { "url": "/images/static/1.5_5.webp", "on": false}
         ],
         "price": 100,
-        "currency": "RUB",
+        "currency": "руб.",
         "on": false
     },
     {
@@ -34,7 +34,7 @@
             { "url": "/images/static/5_b13301d8-a335-4095-a8bb-25cdb4b35edb.webp", "on": false}
         ],
         "price": 650,
-        "currency": "RUB",
+        "currency": "руб.",
         "on": false
     },
     {
@@ -53,7 +53,7 @@
             { "url": "/images/static/3.5x_3_a603b7c1-35c4-4386-9efc-80946ddccf8f.webp", "on": false}
         ],
         "price": 1000,
-        "currency": "RUB",
+        "currency": "руб.",
         "on": false
     }
 ]
