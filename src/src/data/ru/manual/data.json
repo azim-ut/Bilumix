@@ -1,0 +1,100 @@
+[
+    {
+        "link": "adjusting-size",
+        "title": "Adjusting the size",
+        "image": "/images/static/manual-adjusting-size.jpg",
+        "video": "/video/1-adjusting-size.mp4",
+        "text": "This video instruction describes how to properly adjust the size of your BiLumix to fit your head."
+    },
+    {
+        "link": "power-on-off",
+        "title": "Power On-Off",
+        "image": "/images/static/manual-power-on-off.jpg",
+        "video": "/video/2-power-on-off.mp4",
+        "text": "This video instruction describes how to turn on/off the light on your BiLumix and details some common problems and troubleshooting tips with regards to the LED lights.<br/> <b>Do not remove the battery while in use. Make sure to turn off the headlamp via the on/off switch on back before removing the battery.<br/>* To turn on the light, hold down the power button for 1 second</b>"
+    },
+    {
+        "link": "battery-connection",
+        "title": "Battery Connection",
+        "image": "/images/static/manual-battery-connection.jpg",
+        "video": "/video/3-battery-connection.mp4",
+        "text": "This video instruction describes how to properly insert and remove the battery.<br/><b>Do not remove the battery while in use. Make sure to turn off the headlamp via the on/off switch on back before removing the battery.</b>"
+    },
+    {
+        "link": "replacing-cushion",
+        "title": "Replacing Cushion",
+        "image": "/images/static/manual-replacing-cushion.jpg",
+        "video": "/video/4-replacing-your-cushion.mp4",
+        "text": "This video instruction describes how to correctly replace the forehead cushion of your BiLumix."
+    },
+    {
+        "link": "replacing-handle",
+        "title": "Replacing Handle",
+        "image": "/images/static/manual-replacing-handle.jpg",
+        "video": "/video/5-replacing-handle.mp4",
+        "text": "This video instruction describes how to replace the handle used to flip your Bilumix headlamp up and down."
+    },
+    {
+        "link": "light-cap-replacement",
+        "title": "Light cap replacement",
+        "image": "/images/static/manual-light-cap-replacement.jpg",
+        "video": "/video/6-light-cap-replacement.mp4",
+        "text": "This video instruction describes how to properly replace the plastic light caps on the two LED lights of your BiLumix."
+    },
+    {
+        "link": "head-support-replacement",
+        "title": "Head support replacement",
+        "image": "/images/static/manual-head-support-replacement.jpg",
+        "video": "/video/7-head-support-replacement.mp4",
+        "text": "This video instruction describes how to correctly replace the head support on the underside of your BiLumix located towards the back."
+    },
+    {
+        "link": "1_5xloupe-setup",
+        "title": "1.5x loupe setup",
+        "image": "/images/static/manual-1_5xloupe-setup.jpg",
+        "video": "/video/8-15xloupe-setup.mp4",
+        "text": "This video instruction describes how to properly set up and remove your 1.5x loupe of your BiLumix."
+    },
+    {
+        "link": "3_5xloupe-setup",
+        "title": "3.5x loupe setup",
+        "image": "/images/static/manual-3_5xloupe-setup.jpg",
+        "video": "/video/8-15xloupe-setup.mp4",
+        "text": "This video instruction describes how to properly set up and remove your 3.5x loupes of your BiLumix."
+    },
+    {
+        "link": "calibrating-your-loupe",
+        "title": "Calibrating loupe",
+        "image": "/images/static/manual-calibrating-your-loupe.jpg",
+        "video": "/video/8-15xloupe-setup.mp4",
+        "text": "This video instruction describes how to properly calibrate your 3.5x loupes to match your interpupillary distance and your focal/working distance."
+    },
+    {
+        "link": "adjusting-forehead-band",
+        "title": "Adjusting forehead band",
+        "image": "/images/static/manual-adjusting-forehead-band.jpg",
+        "video": "/video/11-adjusting-forehead-band.mp4",
+        "text": "This video instruction describes how to adjust the forehead band of your BiLumix to the most comfortable distance away from your head for a more customized fit."
+    },
+    {
+        "link": "troubleshooting",
+        "title": "Troubleshooting",
+        "image": "/images/static/manual-troubleshooting.jpg",
+        "video": "/video/8-15xloupe-setup.mp4",
+        "text": "This video describes troubleshooting tips with regards to the LED lights not turning on."
+    },
+    {
+        "link": "switching-lenses",
+        "title": "Switching lenses",
+        "image": "/images/static/manual-switching-lenses.jpg",
+        "video": "/video/13-switching-lenses.mp4",
+        "text": "This video instruction describes how to easily switch your loupes from the basic 1.5x to the 2.5x or 3.5x loupes and vice versa."
+    },
+    {
+        "link": "camera",
+        "title": "Using BiLumix Cam",
+        "image": "/images/static/bilumix-cam.jpg",
+        "video": "/video/bilumix-cam.mp4",
+        "text": "This video instruction describes how to connect the camera with Wifi."
+    }
+]

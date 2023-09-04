@@ -2,7 +2,7 @@
 <template>
   <HeadMenu :key="$route.path" />
   <div class="contentWrap">
-    <div class="contentBody mainProduct">
+    <div class="mainProduct grid grid181">
       <div>&nbsp;</div>
       <div class="grid grid2" v-for="product in products()">
         <div>
@@ -24,147 +24,147 @@
                    :style="{'background-image': 'url(' + row.url + ')'}"
               ></div>
             </div>
-            <div class="control grid grid4">
-              <div class="slideBtn pointer active"
-                   :ref="'slideBtn3D'"
-                   @click="hideAllSlides()"><div>3D</div></div>
-              <div :class="{'slideBtn pointer':true, 'active': row.on}"
-                   @click="slidesUpdate(row)"
-                   v-for="(row) in product.images">
-                <div class="image"
-                    :style="{'background-image': 'url(' + row.url + ')'}"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div v-if="product && product.price && summary.amount > 1">
-          <div>
-            <h1>{{product.title}}</h1>
-            <div class="price">From {{ targetPrice(product) }}</div>
-            <div>
-            <span class="pointer" @click="product.expandText = !product.expandText">
-              {{bundles.DETAILS}}
-              <font-awesome-icon v-if="!product.expandText" :icon="['fas', 'arrow-right']" />
-              <font-awesome-icon v-if="product.expandText" :icon="['fas', 'arrow-down']" />
-            </span>
-              <div v-if="product.expandText" v-html="product.text"></div>
-            </div>
-          </div>
-
-          <hr/>
-
-          <div class="formBlock">
-            <h2>{{bundles.LOUPES}}:</h2>
-            <div>
-              <div v-for="row in lopes()"
-                   @click="toggleProduct(row)"
-                   :class="{'grid grid2 force pointer additional': true, 'active': hasProduct(row)}">
-                <div>{{row.short}}</div>
-                <div class="right">+{{ targetPrice(row) }}</div>
-              </div>
-            </div>
-          </div>
-
-          <hr/>
-
-          <div v-if="summary.hasLoops">
-            <div class="formBlock">
-              <h3>{{bundles.IPD}}</h3>
-              <Slider :min="ipd.min"
-                      :max="ipd.max"
-                      @update="updateSummary"
-                      v-model="summary.ipd"></Slider>
-            </div>
-
-            <hr/>
-
-            <div class="formBlock">
-              <h3>
-                <label for="subscribeNews">{{bundles.WARE_PROGRESSIVE_GLASS}}
-                  <input type="checkbox" @change="updateSummary" v-model="summary.wear_glass" id="subscribeNews"/></label>
-              </h3>
-              <div v-if="summary.wear_glass">
-                <p>{{bundles.WARE_PROGRESSIVE_GLASS_YEARS}}</p>
-                <Slider :min="glass_wear.min"
-                        :max="glass_wear.max"
-                        @update="updateSummary"
-                        v-model="summary.glass_year"></Slider>
-              </div>
-            </div>
-
-            <hr/>
-          </div>
-
-          <div class="formBlock">
-            <h3>{{bundles.LIGHT_FILTERS}}</h3>
-            <div>
-              <div v-for="row in filters()"
-                   @click="toggleProduct(row)"
-                   :class="{'grid grid21 force pointer additional': true, 'active': hasProduct(row)}">
-                <div>{{row.title}}</div>
-                <div class="right">
-                  <span v-if="!product.free.includes(row.link)">+{{ targetPrice(row) }}</span>
-                  <span v-if="product.free.includes(row.link)" class="included">{{bundles.INCLUDED}}</span>
+            <div class="controlWrap">
+              <div class="control grid grid4">
+                <div :class="{'slideBtn pointer':true}"
+                     v-for="(row) in product.images">
+                  <div :class="{'image':true, 'active': row.on}"
+                       @click="slidesUpdate(row)"
+                       :style="{'background-image': 'url(' + row.url + ')'}"></div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <hr/>
-
-          <div class="formBlock">
-            <h3>{{bundles.WARRANTY}}</h3>
+        <div style="padding: 0 15px;">
+          <div v-if="product && product.price && summary.amount > 1">
             <div>
-              <div :class="{'grid grid21 force pointer additional': true, 'active': (product.warranty == 1)}">
-                <div>{{bundles.WARRANTY_1YEAR}}</div>
-                <div class="right included">{{bundles.INCLUDED}}</div>
+              <h1>{{product.title}}</h1>
+              <div class="price">From {{ targetPrice(product) }}</div>
+              <div>
+              <span class="pointer" @click="product.expandText = !product.expandText">
+                {{bundles.DETAILS}}
+                <font-awesome-icon v-if="!product.expandText" :icon="['fas', 'arrow-right']" />
+                <font-awesome-icon v-if="product.expandText" :icon="['fas', 'arrow-down']" />
+              </span>
+                <div v-if="product.expandText" v-html="product.text"></div>
               </div>
             </div>
-          </div>
 
-          <hr/>
+            <hr/>
 
-          <div class="formBlock">
-            <h3>{{bundles.QUANTITY}}</h3>
-            <div>
-              <input class="packageQuantity" @change="updateSummary()" @keyup="updateKeyDown($event)" v-model="summary.quantity">
+            <div class="formBlock">
+              <h2>{{bundles.LOUPES}}:</h2>
+              <div>
+                <div v-for="row in lopes()"
+                     @click="toggleProduct(row)"
+                     :class="{'grid grid2 force pointer additional': true, 'active': hasProduct(row)}">
+                  <div>{{row.short}}</div>
+                  <div class="right">+{{ targetPrice(row) }}</div>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <hr/>
+            <hr/>
 
-          <div class="formBlock">
-            <h3>{{bundles.SUMMARY}}</h3>
-            <div class="summaryData">
-              <div>BiLumix Package</div>
-            </div>
-            <div class="grid grid2 force summaryData">
-              <div>{{ summary.loopsTitle }}</div> <div class="right bold">{{ sumAndCurrencyPrice(summary.amount, product.currency) }}</div>
-            </div>
-            <div class="grid grid2 force summaryData" v-for="row in summary.filters">
-              <div>{{ row.title }}</div>
-              <div class="right bold" v-if="summary.quantity>1">{{ summary.quantity }} x
-                {{ targetPrice(row) }} =
-                {{ sumAndCurrencyPrice(row.price * summary.quantity, row.currency) }}</div>
-              <div class="right bold" v-if="summary.quantity<=1">{{ targetPrice(row) }}</div>
-            </div>
-            <div class="grid grid2 force summaryData">
-              <div>{{ bundles.SUBTOTAL }}</div> <div class="right bold">{{ sumAndCurrencyPrice(summary.amount, product.currency) }}</div>
-            </div>
-            <div class="grid grid2 force summaryData">
-              <div>{{ bundles.TOTAL }}</div> <div class="right bold">{{ sumAndCurrencyPrice(summary.amount, product.currency) }}</div>
-            </div>
-          </div>
+            <div v-if="summary.hasLoops">
+              <div class="formBlock">
+                <h3>{{bundles.IPD}}</h3>
+                <Slider :min="ipd.min"
+                        :max="ipd.max"
+                        @update="updateSummary"
+                        v-model="summary.ipd"></Slider>
+              </div>
 
-          <div class="formBlock" @click="submitSummary()" style="margin: 2em 0;">
-            <button class="btn bigGray">{{bundles.ADD_TO_CART}}</button>
+              <hr/>
+
+              <div class="formBlock">
+                <h3>
+                  <label for="subscribeNews">{{bundles.WARE_PROGRESSIVE_GLASS}}
+                    <input type="checkbox" @change="updateSummary" v-model="summary.wear_glass" id="subscribeNews"/></label>
+                </h3>
+                <div v-if="summary.wear_glass">
+                  <p>{{bundles.WARE_PROGRESSIVE_GLASS_YEARS}}</p>
+                  <Slider :min="glass_wear.min"
+                          :max="glass_wear.max"
+                          @update="updateSummary"
+                          v-model="summary.glass_year"></Slider>
+                </div>
+              </div>
+
+              <hr/>
+            </div>
+
+            <div class="formBlock">
+              <h3>{{bundles.LIGHT_FILTERS}}</h3>
+              <div>
+                <div v-for="row in filters()"
+                     @click="toggleProduct(row)"
+                     :class="{'grid grid21 force pointer additional': true, 'active': hasProduct(row)}">
+                  <div>{{row.title}}</div>
+                  <div class="right">
+                    <span v-if="!product.free.includes(row.link)">+{{ targetPrice(row) }}</span>
+                    <span v-if="product.free.includes(row.link)" class="included">{{bundles.INCLUDED}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr/>
+
+            <div class="formBlock">
+              <h3>{{bundles.WARRANTY}}</h3>
+              <div>
+                <div :class="{'grid grid21 force pointer additional': true, 'active': (product.warranty == 1)}">
+                  <div>{{bundles.WARRANTY_1YEAR}}</div>
+                  <div class="right included">{{bundles.INCLUDED}}</div>
+                </div>
+              </div>
+            </div>
+
+            <hr/>
+
+            <div class="formBlock">
+              <h3>{{bundles.QUANTITY}}</h3>
+              <div>
+                <input class="packageQuantity" @change="updateSummary()" @keyup="updateKeyDown($event)" v-model="summary.quantity">
+              </div>
+            </div>
+
+            <hr/>
+
+            <div class="formBlock">
+              <h3>{{bundles.SUMMARY}}</h3>
+              <div class="summaryData">
+                <div>BiLumix Package</div>
+              </div>
+              <div class="grid grid2 force summaryData">
+                <div>{{ summary.loopsTitle }}</div> <div class="right bold">{{ sumAndCurrencyPrice(summary.amount, product.currency) }}</div>
+              </div>
+              <div class="grid grid2 force summaryData" v-for="row in summary.filters">
+                <div>{{ row.title }}</div>
+                <div class="right bold" v-if="summary.quantity>1">{{ summary.quantity }} x
+                  {{ targetPrice(row) }} =
+                  {{ sumAndCurrencyPrice(row.price * summary.quantity, row.currency) }}</div>
+                <div class="right bold" v-if="summary.quantity<=1">{{ targetPrice(row) }}</div>
+              </div>
+              <div class="grid grid2 force summaryData">
+                <div>{{ bundles.SUBTOTAL }}</div> <div class="right bold">{{ sumAndCurrencyPrice(summary.amount, product.currency) }}</div>
+              </div>
+              <div class="grid grid2 force summaryData">
+                <div>{{ bundles.TOTAL }}</div> <div class="right bold">{{ sumAndCurrencyPrice(summary.amount, product.currency) }}</div>
+              </div>
+            </div>
+
+            <div class="formBlock" @click="submitSummary()" style="margin: 2em 0;">
+              <button class="btn bigGray">{{bundles.ADD_TO_CART}}</button>
+            </div>
           </div>
         </div>
       </div>
       <div>&nbsp;</div>
-    </div>
+	  </div>
   </div>
   <Footer />
 </template>
@@ -435,9 +435,6 @@ hr{
   border-radius: 50px;
   border: none;
 }
-.contentBody{
-  margin-bottom: 10%;
-}
 
 .additional{
   border-radius: 20px;
@@ -458,11 +455,11 @@ hr{
 
 .additional div{
   display: flex;
-  text-align: right;
   justify-content: left;
-  vertical-align: center;
+  vertical-align: middle;
   align-items: center;
-  padding: 20px;
+  padding: 20px 10px;
+  text-align: left;
 }
 .additional div:last-child{
   display: flex;
@@ -481,8 +478,5 @@ hr{
   font-size: large;
 }
 @media (max-width: 950px) {
-  .contentBody{
-    margin: 120px 10% 10% 10%;
-  }
 }
 </style>

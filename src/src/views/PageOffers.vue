@@ -1,19 +1,18 @@
 <template>
 
   <HeadMenu :key="$route.path" />
-  <div class="contentBody">
+  <div class="contentWrap">
 
-    <div style="min-height: 100vh; background: rgb(21, 21, 21);">
-        <div class="bg_offers">
-          <div class="frstblk">
-              <h2>Special Offers</h2>
+      <div style="min-height: 100vh; background: rgb(21, 21, 21);">
+          <div class="bg_offers">
+            <div class="frstblk">
+                <h2>Special Offers</h2>
+            </div>
+                <div class="scndblk">
+                  <h3 class="textmlty">We will resume the offers back soon.</h3>
+                </div>
           </div>
-              <div class="scndblk">
-                <h3 class="textmlty">We will resume the offers back soon.</h3>
-              </div>
-        </div>
-    </div>
-
+      </div>
 
   </div>
   <Footer />
@@ -58,9 +57,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.contentBody {
-  margin-top: 57px;
-}
 .bg_offers {
   margin: 0px;
   color: rgba(0, 0, 0, 0.87);

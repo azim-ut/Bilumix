@@ -1,10 +1,12 @@
 .photoSlider {
+    margin: 0 10px 0 0;
 }
 .photoSlider .display{
     display: flex;
     align-items: center;
     justify-content: center;
     max-height: 80vh;
+    min-height: 500px;
 }
 .photoSlider .display .slide{
     width: 500px;
@@ -12,9 +14,16 @@
     height: 500px;
     background: transparent no-repeat center center/cover;
     border-radius: 20px;
+    transition: .5s;
 }
 .photoSlider .display .slide.active{
     display: block;
+}
+.photoSlider .controlWrap{
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
 }
 .photoSlider .control{
     padding-top: 20px;
@@ -23,16 +32,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 120px;
-    height: 120px;
-    margin: 2px 5px 20px 0;
-    border: transparent 1px solid;
-}
-.photoSlider .control .slideBtn.active{
-    border-color: #d2d2d2;
-}
-.photoSlider .control .slideBtn:hover{
-    border-color: #949393 !important;
+    margin: 2px 5px 5px 0;
+    transition: .5s;
 }
 .photoSlider .control .slideBtn div{
     width: 120px;
@@ -40,7 +41,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border: transparent 1px solid;
     color: #ccc;
+    transition: .5s;
+}
+.photoSlider .control .slideBtn div.active{
+    border-color: #d2d2d2 !important;
+}
+.photoSlider .control .slideBtn div:hover{
+    border-color: #949393 !important;
 }
 .photoSlider .control .slideBtn .image {
     background: transparent no-repeat center center/cover;

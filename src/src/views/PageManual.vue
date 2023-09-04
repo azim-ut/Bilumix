@@ -6,24 +6,27 @@ const manualStore = mStore()
 <template>
 
   <HeadMenu :key="$route.path" />
-  <div class="contentBody manualList">
-		<div class="grid grid2">
-      <div class="grid">
+  <div class="contentWrap">
+    <div class="grid grid2 manualList">
+      <div class="block" style="border: none; box-shadow: none;background: none; padding: 0;">
         <h1>Manuals</h1>
       </div>
-      <div></div>
+      <div>&nbsp;</div>
+    </div>
+		<div class="grid grid2 manualList" style="margin-top: 0;">
       <div class="block grid grid2 force"
            v-for="row in manualStore.getList">
         <div class="image" :style="{'background-image': 'url(' + row.image + ')'}"></div>
         <div class="right">
           <div class="title">{{row.title}}</div>
           <div class="links">
-            <a class="btn" @click="toManualPage(row.link)">Detail</a>
-            <a class="btn" @click="showVideo(row)">Watch video</a>
+            <a class="btn" @click="toManualPage(row.link)">{{ bundles.DETAILS }}</a>
+            <a class="btn" @click="showVideo(row)">{{ bundles.VIDEO }}</a>
           </div>
         </div>
       </div>
-
+      <br/>
+      <br/>
     </div>
     <Modal :name="'videoModal'"
            :show="() => showModalVideo"
@@ -48,6 +51,7 @@ import IntroFrame1 from "@/components/IntroFrame1.vue";
 import TheaterWheel from "@/components/TheaterWheel.vue";
 import HeadMenu from "@/components/HeadMenu.vue";
 import type {ManualRecord} from "@/store/manual/types";
+import manualTextBundles from "@local/manual_text.json";
 
 export default defineComponent({
   components: {
@@ -56,7 +60,8 @@ export default defineComponent({
     IntroFrame1, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox},
   data() {
     return {
-      showModalVideo: null as any
+      showModalVideo: null as any,
+      bundles: manualTextBundles
     }
   },
   methods: {
@@ -70,11 +75,15 @@ export default defineComponent({
   unmounted () {
   },
   mounted(){
+    window.scroll(0,0)
   }
 })
 </script>
 
 <style scoped>
+.contentWrap{
+  background: #f5f5f7;
+}
 h1{
   margin: 10px 10px 0;
   font-size: 50px;
@@ -83,7 +92,6 @@ h1{
 }
 .manualList{
   margin-top: 57px;
-  background: #f5f5f7;
 }
 .manualList .block{
   overflow: hidden;
@@ -91,10 +99,6 @@ h1{
   margin: 24px 10% 10px;
   background: #fff;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
-}
-.manualList .block:nth-child(3),
-.manualList .block:nth-child(4){
-  margin-top: 0;
 }
 .manualList .block .image{
   min-height: 160px;

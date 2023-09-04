@@ -28,6 +28,14 @@
   grid-template-columns: 1fr 4fr 1fr;
 }
 
+.grid161{
+  grid-template-columns: 1fr 6fr 1fr;
+}
+
+.grid181{
+  grid-template-columns: 1fr 8fr 1fr;
+}
+
 .grid21{
   grid-template-columns: 2fr 1fr;
 }
@@ -38,8 +46,14 @@
   .grid3,
   .grid21,
   .grid141,
+  .grid161,
+  .grid181,
+  .grid4,
   .grid5 {
     grid-template-columns: repeat(1, 1fr);
+  }
+  .grid4{
+    grid-template-columns: repeat(2, 1fr);
   }
   .grid2.force {
     grid-template-columns: repeat(2, 1fr);
@@ -49,5 +63,11 @@
   }
   .grid141.force {
     grid-template-columns: 1fr 4fr 1fr;
+  }
+  .grid161.force {
+    grid-template-columns: 1fr 6fr 1fr;
+  }
+  .grid181.force {
+    grid-template-columns: 1fr 8fr 1fr;
   }
 }

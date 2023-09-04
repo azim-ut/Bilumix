@@ -2,20 +2,30 @@
 <template>
   <HeadMenu :key="$route.path" />
   <div class="contentWrap">
-    <div class="contentBody" v-if="product">
+    <div class="grid grid161 force" style="padding-top: 20px;" v-if="product">
+      <div>&nbsp;</div>
       <div class="grid grid2">
-        <div class="images" v-if="currentImage">
-          <div class="imagesContent">
-            <div class="current" :style="{'background-image': 'url(' + currentImage.url + ')'}"></div>
-            <div class="preList">
-              <div class="pre"
-                   v-for="image in product.images"
-                   :style="{'background-image': 'url(' + image.url + ')'}">
+        <div>
+          <div class="photoSlider">
+            <div class="display">
+              <div :class="{'slide': true, 'active': row.on}"
+                   v-for="row in product.images"
+                   :style="{'background-image': 'url(' + row.url + ')'}"
+              ></div>
+            </div>
+            <div class="controlWrap" v-if="product.images.length>1">
+              <div class="control grid grid4">
+                <div :class="{'slideBtn pointer':true}"
+                     v-for="(row) in product.images">
+                  <div :class="{'image':true, 'active': row.on}"
+                       @click="slidesUpdate(row)"
+                       :style="{'background-image': 'url(' + row.url + ')'}"></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="text" style="padding-right: 40px;">
+        <div class="text">
           <h1>{{product.title}}</h1>
           <div class="price">${{product.price}}</div>
           <div class="tools">
@@ -46,6 +56,7 @@
           </div>
         </div>
       </div>
+      <div>&nbsp;</div>
     </div>
   </div>
   <Footer />
@@ -65,9 +76,11 @@ import {mapStores} from "pinia"
 import {shopStore} from "@/store/shop/shop"
 import type {Image, Product} from "@/store/shop/types";
 import {cartStore} from "@/store/cart/cart";
+import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
 
 export default defineComponent({
   components: {
+    TheaterMainWheel,
     HeadMenu,
     TheaterWheel,
     IntroFrame1, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox},
@@ -86,6 +99,16 @@ export default defineComponent({
     }
   },
   methods: {
+    hideAllSlides(){
+      this.product?.images.forEach((row: Image) => {
+        row.on = false
+      })
+    },
+    slidesUpdate(image: Image){
+      let before = image.on
+      this.hideAllSlides()
+      image.on = !before
+    },
     setFocus(){
       this.$refs.cnt.focus()
     },
@@ -105,6 +128,7 @@ export default defineComponent({
   unmounted () {
   },
   mounted(){
+    window.scroll(0,0)
     this.product = this.shopStore.getItem(this.$route.params.link)
     this.currentImage = this.product?.images[0];
     this.form.cart = this.cartState().cnt
@@ -155,13 +179,7 @@ export default defineComponent({
   border-radius: 50px;
   border: none;
 }
-.contentBody{
-  margin-bottom: 10%;
-}
 
 @media (max-width: 950px) {
-  .contentBody{
-    margin: 120px 10% 10% 10%;
-  }
 }
 </style>

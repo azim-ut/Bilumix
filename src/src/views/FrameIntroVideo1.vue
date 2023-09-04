@@ -1,5 +1,5 @@
 <template>
-  <div class="contentBody">
+  <div class="contentWrap">
     <Theater :name="'product'" :effects="['zoomOut']" :test="true" :bg-mode="'cover'" :frames="this.productTheater.frames" :height="20">
       <div class="mainBanner">
         <div class="content">

@@ -1,7 +1,7 @@
 <template>
 
   <HeadMenu :key="$route.path" />
-  <div class="contentBody">
+  <div class="contentWrap">
     <div class="grid grid121">
       <div>&nbsp;</div>
       <div>

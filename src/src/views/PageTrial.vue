@@ -1,7 +1,7 @@
 <template>
 
   <HeadMenu :key="$route.path" />
-  <div class="contentBody">
+  <div class="contentWrap">
     <!-- PLACE CONTENT HERE -->
   </div>
   <Footer />
