@@ -75,14 +75,18 @@
     </div>
     <div class="preFooterBlock" >
       <div class="specialOffers">
-        <h1>Special Offers</h1>
-        <h3 class="gradientTitle">We will resume the offers back soon.</h3>
+        <div>
+          <h1>Special Offers</h1>
+          <h3 class="gradientTitle">We will resume the offers back soon.</h3>
+        </div>
       </div>
       <div class="stayUpdate">
-        <h1>Stay updated</h1>
-        <p>For exclusive advance information on our new products and promotions.</p>
-        <div class="emailInput">
-          <input type="email" /><button>Subscribe <font-awesome-icon icon="fa-solid fa-envelope" /></button>
+        <div>
+          <h1>Stay updated</h1>
+          <p>For exclusive advance information on our new products and promotions.</p>
+          <div class="emailInput">
+            <input type="email" /><button>Subscribe <font-awesome-icon icon="fa-solid fa-envelope" /></button>
+          </div>
         </div>
       </div>
     </div>
@@ -235,12 +239,24 @@ export default defineComponent({
 }
 .textBlocksPanel2{
   background-color: #151515;
+  margin: 0;
+}
+.textBlocksPanel2 .block{
+  min-width: 40vw;
+  background-position-y: calc(50% + 400px);
+}
+.textBlocksPanel2  .inner{
+  top: 10% !important;
 }
 
 .stayUpdate{
   background: #199ddc;
-  padding: 100px 0;
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+  align-items: center;
 }
 .stayUpdate h1{
   color: #fff;
@@ -280,10 +296,14 @@ export default defineComponent({
 }
 
 .specialOffers{
-  padding: 5%;
   text-align: center;
   background: black;
   color: white;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+  align-items: center;
 }
 .specialOffers h1,
 .stayUpdate h1{

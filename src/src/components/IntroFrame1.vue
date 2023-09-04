@@ -220,6 +220,7 @@ section{
 .mainBanner2 .content{
   position: absolute;
   width: 50%;
+  top: 20%;
   animation: content2AnimationContent 1.01s;
   animation-play-state: paused;
   animation-delay: var(--delay);
@@ -275,6 +276,7 @@ img {
 }
 @keyframes content2Animation {
   0% {
+    clip-path: circle(1px at center);
     opacity: 0;
   }
   20% {
@@ -300,7 +302,7 @@ img {
 }
 @keyframes content1AnimationContent {
   0% {
-    transform: scale(1.4);
+    transform: scale(1);
   }
   30% {
     transform: scale(.1);
@@ -333,6 +335,9 @@ img {
     transform: rotate(25deg) scale(3);
     opacity: 1;
   }
+  35% {
+    opacity: 0;
+  }
   100% {
     opacity: 0;
   }
@@ -345,29 +350,31 @@ img {
   }
 
   @keyframes content2Animation {
+
     0% {
+      clip-path: circle(1px at center);
       opacity: 0;
-      display: none;
+      display: block;
       z-index: 100000;
     }
     20% {
       opacity: 0;
-      display: none;
-      background-position: -130px center !important;
+      display: block;
     }
     25% {
+      clip-path: circle(2px at center);
       display: block;
       opacity: 1;
-      width: 2px;
-      height: 2px;
+      background-position: -350px center;
+    }
+    50% {
+      clip-path: circle(2000px at center);
     }
     65% {
-      background-position: -130px -50px !important;;
       opacity: 1;
-      width: 100%;
-      height: 100%;
     }
     100% {
+      clip-path: circle(2000px at center);
       opacity: 0;
     }
   }

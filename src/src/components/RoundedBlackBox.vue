@@ -56,7 +56,7 @@ export default defineComponent({
   text-align: center;
   margin: 10px 0;
 }
-.block .inner{
+.inner{
   margin: 10px;
   padding: 10px;
   color: #fff;
@@ -66,7 +66,7 @@ export default defineComponent({
   right: 0;
   position: absolute;
 }
-.block .inner p{
+.inner p{
   height: 100px;
   font-size: inherit;
   margin: 0;
