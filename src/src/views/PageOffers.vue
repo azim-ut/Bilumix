@@ -6,10 +6,10 @@
       <div style="min-height: 100vh; background: rgb(21, 21, 21);">
           <div class="bg_offers">
             <div class="frstblk">
-                <h2>Special Offers</h2>
+                <h2>{{mainBundles.SPECIAL_OFFERS_H1}}</h2>
             </div>
                 <div class="scndblk">
-                  <h3 class="textmlty">We will resume the offers back soon.</h3>
+                  <h3 class="textmlty">{{mainBundles.SPECIAL_OFFERS_TEXT}}</h3>
                 </div>
           </div>
       </div>
@@ -28,6 +28,7 @@ import {RouterView} from "vue-router";
 import IntroFrame1 from "@/components/IntroFrame1.vue";
 import TheaterWheel from "@/components/TheaterWheel.vue";
 import HeadMenu from "@/components/HeadMenu.vue";
+import mainBundles from "@local/main_text.json"
 
 export default defineComponent({
   components: {
@@ -36,6 +37,7 @@ export default defineComponent({
     IntroFrame1, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox},
   data() {
     return {
+      mainBundles: mainBundles,
       menu: [
         {title: "Shop", active: false, name: 'shop', link:'/shop', mobileButton: false},
         {title: "Offers", active: true, name:'offers', link:'/offers', mobileButton: false},
@@ -100,9 +102,8 @@ export default defineComponent({
 }
 
 h3{
-  font-size: 35px;
-  font-weight: 600;
-  max-width: 600px;
+  font-size: 36px;
+  font-weight: 400;
   background: #2ee8dc;
   background: -moz-linear-gradient(to right,#2ee8dc 0,#05b4ff 50%,#2d66eb 100%);
   background: -webkit-gradient(linear,left top,right top,from(#2ee8dc),color-stop(50%,#05b4ff),to(#2d66eb));

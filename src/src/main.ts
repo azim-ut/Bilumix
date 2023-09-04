@@ -15,6 +15,7 @@ const app = createApp(App)
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {faBars, faTrash, faShoppingBag, faEnvelope, faCirclePlay, faArrowRight, faArrowDown} from '@fortawesome/free-solid-svg-icons'
+import {faSquare, faSquareCheck} from '@fortawesome/free-regular-svg-icons'
 import {createPinia} from "pinia";
 import localeMessages from "@intlify/unplugin-vue-i18n/messages"
 import pluralization from "./i18n/rules/pluralization"
@@ -30,6 +31,7 @@ export const i18n = createI18n({
 })
 
 library.add(faBars,faTrash, faShoppingBag, faEnvelope, faCirclePlay, faArrowRight, faArrowDown)
+library.add(faSquare, faSquareCheck)
 
 app
     .use(router)

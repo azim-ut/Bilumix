@@ -76,16 +76,33 @@
     <div class="preFooterBlock" >
       <div class="specialOffers">
         <div>
-          <h1>Special Offers</h1>
-          <h3 class="gradientTitle">We will resume the offers back soon.</h3>
+          <h1>{{mainBundles.SPECIAL_OFFERS_H1}}</h1>
+          <h3 class="gradientTitle">{{mainBundles.SPECIAL_OFFERS_TEXT}}</h3>
         </div>
       </div>
       <div class="stayUpdate">
         <div>
-          <h1>Stay updated</h1>
-          <p>For exclusive advance information on our new products and promotions.</p>
-          <div class="emailInput">
-            <input type="email" /><button>Subscribe <font-awesome-icon icon="fa-solid fa-envelope" /></button>
+          <h1>{{mainBundles.STAY_UPDATED_H1}}</h1>
+          <p>{{mainBundles.STAY_UPDATED_TEXT}}</p>
+          <div class="agreeWrap">
+            <div class="agree">
+              <div class="check">
+                <span @click="stayUpdated.agree = !stayUpdated.agree">
+                  <font-awesome-icon :icon="['far', 'square']" v-if="!stayUpdated.agree" />
+                  <font-awesome-icon :icon="['far', 'square-check']" v-if="stayUpdated.agree" />
+                </span>
+              </div>
+              <div class="text">
+                {{mainBundles.AGREE_WITH}} <a href="data-privacy">{{mainBundles.AGREE_WITH_PRIVACY}}</a>.
+              </div>
+            </div>
+          </div>
+          <div :class="{'emailInput': true, 'active': stayUpdated.focus}" @click="stayUpdatedUpdate()">
+            <input type="email" @change="stayUpdatedUpdate()" v-model="stayUpdated.email" :placeholder="mainBundles.ENTER_YOUR_EMAIL"/>
+            <button>
+              <div>{{mainBundles.SUBSCRIBE}}</div>
+              <div><font-awesome-icon icon="fa-solid fa-envelope" /></div>
+            </button>
           </div>
         </div>
       </div>
@@ -118,7 +135,7 @@ import Modal from "@/components/Modal.vue"
 import block1 from "@local/index_text_block1.json"
 import block2 from "@local/index_text_block2.json"
 import block3 from "@local/index_text_block3.json"
-import indexTextBundles from "@local/shop_text.json";
+import mainBundles from "@local/main_text.json"
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import RoundedBlackBox3 from "@/components/RoundedBlackBox3.vue";
 import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
@@ -143,12 +160,17 @@ export default defineComponent({
         show: false,
         src: '/video/bilumix-gen2-cm-long-720.mp4'
       },
-      bundles: indexTextBundles,
+      mainBundles: mainBundles,
       shortTextBlocks1: block1,
       shortTextBlocks2: block2,
       shortTextBlocks3: block3,
       scroll: {
         event: undefined
+      },
+      stayUpdated: {
+        focus: false,
+        agree: false,
+        email: null as string|null
       },
       productTheater: {
         frames: [] as any[]
@@ -164,6 +186,12 @@ export default defineComponent({
   methods: {
     loadedEvent(){
       this.loaded = true
+    },
+    stayUpdatedUpdate(){
+      this.stayUpdated.focus = !this.stayUpdated.focus
+      if(this.stayUpdated.email && this.stayUpdated.email.length > 2){
+        this.stayUpdated.focus = true
+      }
     },
     fillTheaterFrames(){
       this.productTheater.frames = []
@@ -258,31 +286,74 @@ export default defineComponent({
   vertical-align: middle;
   align-items: center;
 }
-.stayUpdate h1{
-  color: #fff;
+.stayUpdate p{
+  font-size: 20px;
+  font-weight: 300;
+  color: #000;
+  margin-top: 0;
 }
 .stayUpdate .emailInput{
-  font-size: larger;
   margin: auto;
-  padding: 0 10%;
-  max-width: 300px;
+  padding: 0;
+  overflow: hidden;
   white-space: nowrap;
+  border-radius: 30px;
+  background: #9acded;
+  border: #3a618b 1px solid;
 }
 .stayUpdate .emailInput input{
   border: none;
   width: 60%;
-  background: #fff;
-  font-size: medium;
-  padding: 10px;
+  height: 50px;
+  outline: none;
+  background: transparent;
+  overflow: hidden;
+  line-height: 25px;
+  padding:  0 10px 0 40px;
   border-radius: 20px 0 0 20px;
+  font-size: 18px;
 }
 .stayUpdate .emailInput button{
   border: none;
-  border-left: #b6e8ff 1px solid;
-  font-size: medium;
-  background: #fff;
-  padding: 10px;
+  border-left: #7596b9 1px solid;
+  font-size: 13px;
+  line-height: 16px;
+  outline: none;
+  height: 47px;
+  width: 200px;
+  margin: 3px;
+  padding: 10px 30px 10px 20px;
   border-radius: 0 20px 20px 0;
+  background: transparent;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+.stayUpdate .emailInput button svg{
+  margin: 0 20px;
+  height: 16px;
+}
+.stayUpdate .agreeWrap{
+}
+.stayUpdate .agreeWrap .agree{
+  display: inline-flex;
+  margin-bottom: 10px;
+}
+.stayUpdate .agreeWrap .agree div.text{
+  margin-left: 10px;
+  line-height: 30px;
+}
+.stayUpdate .agreeWrap .agree div.check span{
+  cursor: pointer;
+  font-size: 20px;
+}
+.stayUpdate .emailInput:hover,
+.stayUpdate .emailInput.active{
+  background: white;
+  border: 2px solid rgba(0,57,110,.8)!important
 }
 .textBlocksPanelWrap{
   min-height: 100vh;
@@ -309,10 +380,9 @@ export default defineComponent({
 .stayUpdate h1{
   margin: auto;
   letter-spacing: normal;
-  font-size: xxx-large;
-}
-.stayUpdate h1{
-  letter-spacing: normal;
+  color: #fff;
+  font-weight: 500;
+  font-size: 3.75rem;
 }
 .specialOffers h3{
   margin: auto;
