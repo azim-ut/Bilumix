@@ -1,11 +1,11 @@
 [
     {
         "link": "light-filter-clear",
-        "title": "Light Filters/Caps (Pair)",
-        "short": "Clear",
-        "text": "Light filters which can be placed over the headlamp LED light source.<br>",
+        "title": "Светофильтры/колпачки (пара)",
+        "short": "Колпачки",
+        "text": "Светофильтры, которые устанавливаются поверх светодиодного источника света.<br>",
         "links": [
-            { "title": "Manual", "url": "/manual/light-cap-replacement/"}
+            { "title": "Инструкция", "url": "/manual/light-cap-replacement/"}
         ],
         "images": [
             { "url": "/images/static/light-filter-clear.webp", "on": true}
@@ -18,9 +18,9 @@
         "link": "light-filter-amber",
         "title": "Light Filters/Caps (Pair) - Amber(flip)",
         "short": "Amber(flip)",
-        "text": "Light filters which can be placed over the headlamp LED light source.<br>\n\nAmber light caps (slow cure and no cure) can be placed over the headlamp LED light source to prevent materials such as resin from getting cured by the high intensity light.",
+        "text": "Светофильтры, которые могут быть установлены поверх светодиодного источника света.<br>\n\n На светодиодный источник света фары можно установить колпачки желтого цвета (с медленным отверждением или без отверждения), чтобы предотвратить отверждение таких материалов, как смола, под воздействием света высокой интенсивности.",
         "links": [
-            { "title": "Manual", "url": "/manual/light-cap-replacement/"}
+            { "title": "Инструкция", "url": "/manual/light-cap-replacement/"}
         ],
         "images": [
             { "url": "/images/static/amber0.webp", "on": true},
