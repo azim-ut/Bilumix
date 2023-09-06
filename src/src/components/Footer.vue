@@ -18,7 +18,7 @@
             <span>Email: <a href="mailto:sales@bilumix.ru" aria-label="Mail to sales@bilumix.ru">sales@bilumix.ru</a></span>
           </address>
         </div>
-        <div class="grid grid5">
+        <div class="grid grid4">
           <div class="block">
             <h6>{{ footerText.PAGES }}</h6>
             <ul>

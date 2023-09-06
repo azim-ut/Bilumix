@@ -67,6 +67,9 @@ export default defineComponent({
   right: 0;
   position: absolute;
 }
+.block .inner p{
+  color: #0ff;
+}
 .block{
   position: relative;
   background: transparent no-repeat center center/cover;

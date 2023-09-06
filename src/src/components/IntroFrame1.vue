@@ -166,7 +166,7 @@ section{
 .front-image{
   background: transparent url(/images/static/bilumix-side.png) no-repeat center top/contain;
   width: 50%;
-  height: 50%;
+  height: 80%;
   top: 10%;
   position: absolute;
   transform: rotate(15deg);
@@ -185,20 +185,22 @@ section{
 
 .mainBanner1 h1{
   color: #fff;
-  font-size: 50px;
+  font-size: 5.3rem;
   height: 40px;
   line-height: 40px;
   display: block;
+  font-weight: 600;
   width: 100%;
   max-width: 600px;
+  font-family: "Roboto";
   text-transform: none;
   text-shadow: 1px 1px 13px rgba(0,0,0,.5);
   text-align: center;
 }
 .mainBanner1 h2{
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
-  letter-spacing: 10px;
+  letter-spacing: 18px;
   color: hsla(0,0%,100%,.6);
   display: block;
   max-width: 600px;
@@ -212,9 +214,12 @@ section{
   animation-play-state: paused;
   animation-delay: var(--delay);
   position: absolute;
-  bottom: 20%;
+  bottom: 10%;
 }
 .mainBanner1 .content h3{
+  font-size: 45px;
+  font-weight: 600;
+  letter-spacing: 2px;
 }
 
 .mainBanner2 .content{
@@ -279,7 +284,7 @@ img {
     clip-path: circle(1px at center);
     opacity: 0;
   }
-  20% {
+  22% {
     background-position: left center;
     opacity: 0;
   }
@@ -304,11 +309,12 @@ img {
   0% {
     transform: scale(1);
   }
-  30% {
+  20% {
     transform: scale(.1);
     opacity: 0;
   }
   100% {
+    opacity: 0;
     transform: scale(.1);
   }
 }
@@ -331,11 +337,8 @@ img {
     transform: rotate(15deg) scale(1);
     opacity: 1;
   }
-  25% {
+  20% {
     transform: rotate(25deg) scale(3);
-    opacity: 1;
-  }
-  35% {
     opacity: 0;
   }
   100% {
@@ -344,6 +347,9 @@ img {
 }
 
 @media (max-width: 500px) {
+  .mainBanner1 h1 {
+    font-size: 4.3rem;
+  }
 
   .mainBanner2 .content{
     width: 80%;

@@ -71,6 +71,7 @@ export default defineComponent({
   position: absolute;
 }
 .inner p{
+  color: #0ff;
   height: 100px;
   font-size: inherit;
   margin: 0;
