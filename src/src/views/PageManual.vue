@@ -7,27 +7,34 @@ const manualStore = mStore()
 
   <HeadMenu :key="$route.path" />
   <div class="contentWrap">
-    <div class="grid grid2 manualList">
-      <div class="block" style="border: none; box-shadow: none;background: none; padding: 0;">
-        <h1>Manuals</h1>
+    <div style="margin: 0 auto;">
+      <div class="grid grid2 manualList">
+        <div class="block" style="border: none; box-shadow: none;background: none; padding: 0;">
+          <h1>Manuals</h1>
+        </div>
+        <div>&nbsp;</div>
       </div>
-      <div>&nbsp;</div>
-    </div>
-		<div class="grid grid2 manualList" style="margin-top: 0;">
-      <div class="block grid grid2 force"
-           v-for="row in manualStore.getList">
-        <div class="image" :style="{'background-image': 'url(' + row.image + ')'}"></div>
-        <div class="right">
-          <div class="title">{{row.title}}</div>
-          <div class="links">
-            <a class="btn" @click="toManualPage(row.link)">{{ bundles.DETAILS }}</a>
-            <a class="btn" @click="showVideo(row)">{{ bundles.VIDEO }}</a>
+      <div class="grid grid2 manualList" style="margin-top: 0;">
+        <div class="block grid grid2 force"
+             v-for="row in manualStore.getList">
+          <div class="image" :style="{'background-image': 'url(' + row.image + ')'}"></div>
+          <div class="right">
+            <div>
+              <div class="title">{{row.title}}</div>
+              <div class="linksWrap">
+                <div class="links">
+                  <a class="btn" @click="toManualPage(row.link)">{{ bundles.DETAILS }}</a>
+                  <a class="btn" @click="showVideo(row)">{{ bundles.VIDEO }}</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      <br/>
+      <br/>
       </div>
-      <br/>
-      <br/>
     </div>
+
     <Modal :name="'videoModal'"
            :show="() => showModalVideo"
            :close-callback="() => {showModalVideo = null}">
@@ -83,6 +90,9 @@ export default defineComponent({
 <style scoped>
 .contentWrap{
   background: #f5f5f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 h1{
   margin: 10px 10px 0;
@@ -105,7 +115,10 @@ h1{
   background: #000 no-repeat center center/cover;
 }
 .manualList .block .right{
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
 }
 .manualList .block .right .title{
   font-weight: bolder;

@@ -57,4 +57,12 @@ export default defineComponent({
 </script>
 
 <style scoped>
+h2{
+  font-size: 2.125rem;
+  font-weight: 700;
+}
+.contentWrap{
+  font-size: 24px;
+  min-height: 50vh;
+}
 </style>
