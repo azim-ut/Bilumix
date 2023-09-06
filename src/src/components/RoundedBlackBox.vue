@@ -43,14 +43,18 @@ export default defineComponent({
   background: #000;
   border-radius: 38px;
   margin: 10px;
-  min-width: 300px;
+  min-width: 370px;
   min-height: 460px;
 }
 .block h1{
   font-size: revert;
   padding: 0;
   letter-spacing: normal;
+  font-weight: 500 !important;
   text-shadow: 1px 1px 13px rgba(0,0,0,.5);
+}
+.block .bg h1{
+  font-weight: 400;
 }
 .block h3{
   text-align: center;
@@ -70,6 +74,7 @@ export default defineComponent({
   height: 100px;
   font-size: inherit;
   margin: 0;
+  text-align: justify !important;
 }
 .block{
   position: relative;
@@ -78,6 +83,7 @@ export default defineComponent({
 
 @media (max-width: 850px) {
   .block{
+    min-width: 370px;
   }
 }
 </style>

@@ -19,15 +19,15 @@
 
 
     <div class="textBlocksPanelWrap" style="margin: 0 !important; padding: 0 !important; background-color: #151515;">
-      <div class="textBlocksPanel textBlocksPanel2 grid grid2" style="min-height: 100vh;">
-        <RoundedBlackBox v-for="row in shortTextBlocks2"
+      <div class="textBlocksPanel textBlocksPanel2 grid grid2" style="min-height: 100vh; min-width: 380px;">
+        <RoundedBlackBox2 v-for="row in shortTextBlocks2"
                          :bg="row.bg"
                          :margin="'10px'"
                          :bgColor="row.bgColor"
                          :title="row.title"
                          :sub="row.sub"
                          :text="row.text"
-        ></RoundedBlackBox>
+        ></RoundedBlackBox2>
       </div>
     </div>
 
@@ -141,9 +141,11 @@ import RoundedBlackBox3 from "@/components/RoundedBlackBox3.vue";
 import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
 import TheaterWheelVideo1 from "@/components/TheaterWheelVideo1.vue";
 import TheaterWheelVideo2 from "@/components/TheaterWheelVideo2.vue";
+import RoundedBlackBox2 from "@/components/RoundedBlackBox2.vue";
 
 export default defineComponent({
   components: {
+    RoundedBlackBox2,
     TheaterWheelVideo2,
     TheaterWheelVideo1,
     TheaterMainWheel,
@@ -269,10 +271,6 @@ export default defineComponent({
   background-color: #151515;
   margin: 0;
 }
-.textBlocksPanel2 .block{
-  min-width: 40vw;
-  background-position-y: calc(50% + 400px);
-}
 .textBlocksPanel2  .inner{
   top: 10% !important;
 }
@@ -282,6 +280,7 @@ export default defineComponent({
   text-align: center;
   min-height: 100vh;
   display: flex;
+  padding: 5%;
   justify-content: center;
   vertical-align: middle;
   align-items: center;
@@ -382,7 +381,7 @@ export default defineComponent({
   letter-spacing: normal;
   color: #fff;
   font-weight: 500;
-  font-size: 3.75rem;
+  font-size: 300%;
 }
 .specialOffers h3{
   margin: auto;
@@ -420,6 +419,9 @@ export default defineComponent({
 @media (max-width: 850px) {
   .textBlocksPanelWrap{
     margin: 0;
+  }
+  .textBlocksPanel2 h1{
+    text-align: left;
   }
 }
 </style>

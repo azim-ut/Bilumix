@@ -1,5 +1,5 @@
 <template>
-  <div class="block" :style="{'margin': margin, 'background-color': ($props.bgColor??'transparent'), 'background-image': 'url(' + $props.bg + ')'}">
+  <div class="block" :style="{'background-color': ($props.bgColor??'transparent'), 'background-image': 'url(' + $props.bg + ')'}">
   	<div class="inner">
       <div class="bg">
         <h1 :style="{'color': color}" v-html="$props.title"></h1>
@@ -39,18 +39,22 @@ export default defineComponent({
 
 <style scoped>
 .block {
+  min-width: 370px;
   position: relative;
   min-height: 50vh;
   background: #000;
   border-radius: 38px;
+  margin: 0 50px;
 }
 .block h1{
   text-align: left;
   font-size: revert;
   letter-spacing: normal;
   margin: 0;
+  top: 10%;
   padding: 0;
   font-weight: 500;
+
 }
 .block h3{
   text-align: center;
@@ -62,20 +66,24 @@ export default defineComponent({
   margin: 10px;
   padding: 20px;
   color: #fff;
-  top: 0;
+  top: 20%;
   left: 0;
   right: 0;
   position: absolute;
 }
 .block{
   position: relative;
-  background: transparent no-repeat center center/cover;
+  background: transparent no-repeat center bottom/contain;
   min-width: 300px;
   min-height: 460px;
 }
 
+.textBlocksPanel2 .block{
+}
+
 @media (max-width: 850px) {
   .block{
+    min-width: 370px;
   }
 }
 </style>

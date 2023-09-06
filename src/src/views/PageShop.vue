@@ -15,14 +15,14 @@
     </div>
 
     <div class="">
-        <div class="grid grid141 center">
-          <div></div>
-          <div class="textContent">
-            <a id="loupes"><h2>{{bundles.LOUPES}}</h2></a>
-            <p>{{bundles.LOUPES_TEXT}}</p>
-          </div>
-          <div></div>
+      <div class="grid grid141 center">
+        <div></div>
+        <div class="textContent">
+          <a id="loupes"><h2>{{bundles.LOUPES}}</h2></a>
+          <p>{{bundles.LOUPES_TEXT}}</p>
         </div>
+        <div></div>
+      </div>
       <div class="shopList grid grid3">
         <div v-for="product in shopStore.loupes"
              class="product"
@@ -38,7 +38,7 @@
               <button class="emphasized-button" @click="toDetails(product.link)">{{ bundles.DETAILS }}</button>
               <button class="emphasized-button" @click="toCart(product.link)">{{ bundles.ADD_TO_CART_SHORT }}</button>
             </div>
-            <div class="price">${{product.price}}</div>
+            <div class="price">{{getPriceTarget(product)}}</div>
           </div>
         </div>
       </div>
@@ -65,7 +65,7 @@
             <div class="tools">
               <button class="emphasized-button" @click="toDetails(product.link)">{{ bundles.DETAILS }}</button>
             </div>
-            <div class="price">${{product.price}}</div>
+            <div class="price">{{getPriceTarget(product)}}</div>
           </div>
         </div>
       </div>
@@ -91,7 +91,7 @@
             <div class="tools">
               <button class="emphasized-button" @click="toDetails(product.link)">{{ bundles.DETAILS }}</button>
             </div>
-            <div class="price">${{product.price}}</div>
+            <div class="price">{{getPriceTarget(product)}}</div>
           </div>
         </div>
       </div>
@@ -114,7 +114,7 @@
             <div class="tools">
               <button class="emphasized-button" @click="toDetails(product.link)">Details</button>
             </div>
-            <div class="price">${{product.price}}</div>
+            <div class="price">{{getPriceTarget(product)}}</div>
           </div>
         </div>
     	</div>
@@ -139,7 +139,7 @@
             <div class="tools">
               <button class="emphasized-button" @click="toDetails(product.link)">{{bundles.DETAILS}}</button>
             </div>
-            <div class="price">${{product.price}}</div>
+            <div class="price">{{getPriceTarget(product)}}</div>
           </div>
         </div>
     	</div>
@@ -163,6 +163,7 @@ import {cartStore} from "@/store/cart/cart";
 import {shopStore} from "@/store/shop/shop";
 import type {Product} from "@/store/shop/types";
 import shopTextBundles from "@local/shop_text.json";
+import {getPriceTarget} from "@/service/PriceService";
 
 export default defineComponent({
   computed:{
@@ -179,6 +180,7 @@ export default defineComponent({
     }
   },
   methods: {
+    getPriceTarget,
     toPackagePage(){
       this.$router.push({name: "package", params: {link: "headlamp"}})
     },

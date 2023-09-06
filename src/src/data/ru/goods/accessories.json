@@ -11,7 +11,7 @@
             { "url": "/images/static/gen2-battery.webp", "on": true}
         ],
         "price": 100,
-        "currency": "руб.",
+        "currency": "RUB",
         "on": false
     },
     {
@@ -23,7 +23,7 @@
             { "url": "/images/static/gen2-battery-craddle.webp", "on": true}
         ],
         "price": 75,
-        "currency": "руб.",
+        "currency": "RUB",
         "on": false
     },
     {
@@ -37,7 +37,7 @@
             { "url": "/images/static/Bag2.webp", "on": false}
         ],
         "price": 150,
-        "currency": "руб.",
+        "currency": "RUB",
         "on": false
     },
     {
@@ -57,7 +57,7 @@
             { "url": "/images/static/ShieldBox_modified_85322ccf-3077-41ee-a231-cf53bff1dea3.webp", "on": false}
         ],
         "price": 38,
-        "currency": "руб.",
+        "currency": "RUB",
         "on": false
     },
     {
@@ -74,7 +74,7 @@
             { "url": "/images/static/bilumix-cam-in-use.webp", "on": false}
         ],
         "price": 4500,
-        "currency": "руб.",
+        "currency": "RUB",
         "on": false
     }
 ]
