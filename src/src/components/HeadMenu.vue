@@ -168,7 +168,7 @@ header {
   padding: 0 100px;
   background: #151515;
   box-sizing: border-box;
-  z-index: 100;
+  z-index: 200;
   display: flex;
   height: 57px;
   align-items: center;

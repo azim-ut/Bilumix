@@ -7,7 +7,19 @@
   "ADDRESS5": "",
   "ADDRESS6": "Office hours",
   "ADDRESS7": "8:00-17:00",
+  "FOLLOW_US": "Follow us",
   "PAGES": "Pages",
+  "PAGES_SHOP": "Shop",
+  "PAGES_OFFERS": "Offers",
+  "PAGES_MANUAL": "Manual",
+  "PAGES_SUPPORT": "Support",
   "PRODUCTS": "Products",
-  "LEGAL": "Legal"
+  "PRODUCTS_HEADLAMP": "Headlamp",
+  "PRODUCTS_LOUPES": "Loupes",
+  "PRODUCTS_ACCESSORIES": "Accessories",
+  "PRODUCTS_REPLACEABLE": "Replaceable",
+  "LEGAL": "Legal",
+  "LEGAL_REFUND_POLICY": "Refund policy",
+  "LEGAL_DATA_PRIVACY": "Data Privacy",
+  "LEGAL_TERMS_SERVICE": "Terms of Service"
 }

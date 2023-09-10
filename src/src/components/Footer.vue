@@ -23,16 +23,16 @@
             <h6>{{ footerText.PAGES }}</h6>
             <ul>
               <li>
-                <a href="/shop/">Shop</a>
+                <a href="/shop/">{{ footerText.PAGES_SHOP }}</a>
               </li>
               <li>
-                <a href="/offers/">Offers</a>
+                <a href="/offers/">{{ footerText.PAGES_OFFERS }}</a>
               </li>
               <li>
-                <a href="/manual/">Manual</a>
+                <a href="/manual/">{{ footerText.PAGES_MANUAL }}</a>
               </li>
               <li>
-                <a href="/support/">Support</a>
+                <a href="/support/">{{ footerText.PAGES_SUPPORT }}</a>
               </li>
             </ul>
           </div>
@@ -40,25 +40,25 @@
           <div class="block">
             <h6><a href="/shop">{{ footerText.PRODUCTS }}</a></h6>
             <ul>
-              <li><a href="/shop">Headlamp</a></li>
-              <li><a href="/shop#loupes">Loupes</a></li>
-              <li><a href="/shop#accessories">Accessories</a></li>
-              <li><a href="/shop#parts">Replaceable</a></li>
+              <li><a href="/shop">{{footerText.PRODUCTS_HEADLAMP}}</a></li>
+              <li><a href="/shop#loupes">{{footerText.PRODUCTS_LOUPES}}</a></li>
+              <li><a href="/shop#accessories">{{footerText.PRODUCTS_ACCESSORIES}}</a></li>
+              <li><a href="/shop#parts">{{footerText.PRODUCTS_REPLACEABLE}}</a></li>
             </ul>
           </div>
 
           <div class="block">
             <h6><a href="/legal/">{{ footerText.LEGAL }}</a></h6>
             <ul>
-              <li><a href="refund-policy/">Refund Policy</a></li>
-              <li><a href="/data-privacy/">Data Privacy</a></li>
-              <li><a href="/terms-of-service/">Terms of Service</a></li>
+              <li><a href="refund-policy/">{{footerText.LEGAL_REFUND_POLICY}}</a></li>
+              <li><a href="/data-privacy/">{{footerText.LEGAL_DATA_PRIVACY}}</a></li>
+              <li><a href="/terms-of-service/">{{footerText.LEGAL_TERMS_SERVICE}}</a></li>
             </ul>
           </div>
 
           <div class="block">
             <div>
-              <h6 style="font-size: 20px; font-weight: normal;">Follow us</h6>
+              <h6 style="font-size: 20px; font-weight: normal;">{{footerText.FOLLOW_US}}</h6>
               <div>
                 <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1yxmbwk" tabindex="0" type="button" style="color: white;">
                   <a href="https://www.facebook.com/BiLumixheadlamp/" rel="noreferrer" target="_blank" aria-label="Connect with our facebook" style="margin-right: 15px; color: white;">

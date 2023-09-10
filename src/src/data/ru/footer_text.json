@@ -7,7 +7,18 @@
   "ADDRESS5": "",
   "ADDRESS6": "Время работы офиса",
   "ADDRESS7": "8:00-17:00",
-  "PAGES": "Инфорация",
+  "PAGES": "Информация",
+  "PAGES_SHOP": "Магазин",
+  "PAGES_OFFERS": "Предложения",
+  "PAGES_MANUAL": "Manual",
+  "PAGES_SUPPORT": "Support",
   "PRODUCTS": "Продукция",
-  "LEGAL": "Условия"
+  "PRODUCTS_HEADLAMP": "Headlamp",
+  "PRODUCTS_LOUPES": "Loupes",
+  "PRODUCTS_ACCESSORIES": "Accessories",
+  "PRODUCTS_REPLACEABLE": "Replaceable",
+  "LEGAL": "Условия",
+  "LEGAL_REFUND_POLICY": "Refund policy",
+  "LEGAL_DATA_PRIVACY": "Data Privacy",
+  "LEGAL_TERMS_SERVICE": "Terms of Service"
 }
