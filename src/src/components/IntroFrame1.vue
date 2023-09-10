@@ -10,20 +10,16 @@
         <div class="content">
           <h1>BiLumix </h1>
           <h2>GENERATION 2.0</h2>
-          <h3 class="gradientTitle">Shadowless Headlamp</h3>
+          <h3 class="gradientTitle">{{mainBundles.INTRO_BANNER_1_TITLE}}</h3>
         </div>
       </div>
       <div class="mainBanner mainBanner2" ref="content2">
           <div class="content" ref="content2content">
             <div class="center">
-              <h1 style="font-size: revert;">BRIGHT</h1>
-              <h1 style="font-size: revert;">CHOICE</h1>
-              <p style="margin: auto; width: 50%; font-size: large;">
-                For any procedure to illuminate
-                an area via a unique, dual light source
-                that eliminates any shadow
-              </p>
-              <button class="emphasized-button" @click="video1.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> Watch Video</button>
+              <h1 style="font-size: revert;">{{mainBundles.INTRO_BANNER_2_TITLE_2_1}}</h1>
+              <h1 style="font-size: revert;">{{mainBundles.INTRO_BANNER_2_TITLE_2_2}}</h1>
+              <p style="margin: auto; width: 50%; font-size: large;" v-html="mainBundles.INTRO_BANNER_2_TEXT"></p>
+              <button class="emphasized-button" @click="video1.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> {{mainBundles.TO_VIDEO}}</button>
             </div>
           </div>
       </div>
@@ -51,11 +47,13 @@ import ScrollDownIndicator from "@/components/ScrollDownIndicator.vue";
 import Footer from "@/components/Footer.vue";
 import {RouterView} from "vue-router";
 import Modal from "@/components/Modal.vue";
+import mainBundles from "@local/main_text.json"
 
 export default defineComponent({
   components: {Modal, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox, Theater},
   data() {
     return {
+      mainBundles: mainBundles,
       animation: {
         lastY: 0,
         temp: 0,
@@ -246,10 +244,12 @@ section{
   animation-play-state: paused;
   animation-delay: var(--delay);
   overflow: hidden;
+  margin: auto;
 }
 .mainBanner2 h1{
   font-size: xxx-large !important;
   line-height: .5em;
+  font-weight: 600;
 }
 .mainBanner2 p{
   padding: 20px;
@@ -352,7 +352,14 @@ img {
   }
 
   .mainBanner2 .content{
+    margin: auto;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+  .front-image{
     width: 80%;
+    left: 0;
   }
 
   @keyframes content2Animation {

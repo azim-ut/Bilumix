@@ -1115,4 +1115,8 @@ h2{
   .modal-content {
     width: 80%;
   }
+  .contentWrap {
+    margin-top: 0px;
+    min-height: 100vh;
+  }
 }

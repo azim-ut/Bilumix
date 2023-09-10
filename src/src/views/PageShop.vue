@@ -4,7 +4,7 @@
   <div class="contentWrap">
     <div class="promo">
       <div class="promoContent">
-        <h1>Shop BiLumix</h1>
+        <h1>{{bundles.SHOP_TITLE}}</h1>
         <div>
           <button class="emphasized-button" @click="toPackagePage()">{{ bundles.BUILD_YOUR_PACKAGE }}</button>
         </div>
@@ -291,6 +291,10 @@ export default defineComponent({
   margin-top: 20px;
 }
 
+.contentWrap .textContent p{
+  margin: 0 10px;
+}
+
 .contentWrap .promo::after {
   content: "";
   position: absolute;
@@ -313,7 +317,10 @@ export default defineComponent({
 .contentWrap .promo .promoContent h1{
   letter-spacing: normal;
   margin: 40px auto 20px;
+  font-size: 70px;
+  text-shadow: 1px 1px 13px rgba(0,0,0,.5);
   color: #fff;
+  font-weight: 500;
 }
 
 .contentWrap .promo .promoContent h3{

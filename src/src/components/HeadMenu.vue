@@ -1,20 +1,22 @@
 <template>
-  <header>
+  <header :class="{'active': showMobileMenu}">
     <div class="menu-toggle" @click="showMobileMenu = !showMobileMenu">
       <font-awesome-icon icon="fa-solid fa-bars" />
     </div>
     <div class="logo" @click="toHome()">
       <img src="@/assets/logo.svg">
     </div>
-    <nav :class="{'active': showMobileMenu}">
-      <ul>
-        <li v-for="row in menu"
-            @click="toggleMenu(row)"
-            :class="{'active':row.active, 'mobileButtons': row.mobileButton}">
-          <a>{{ row.title }}</a>
-        </li>
-      </ul>
-    </nav>
+    <div class="menuBg" @click="showMobileMenu = !showMobileMenu">
+      <nav @click="($event) => {$event.preventDefault()}">
+        <ul>
+          <li v-for="row in menu"
+              @click="toggleMenu(row)"
+              :class="{'active':row.active, 'mobileButtons': row.mobileButton}">
+            <a>{{ row.title }}</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
     <div class="rightBlock">
       <div class="cartIcon">
         <div @click="toCart">
@@ -127,13 +129,17 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.menuBg{
+  margin: auto;
+  transition: .5s;
+}
 .newArrivals{
   background: #ffffff;
   text-align: center;
   padding: 12px 0 5px;
   z-index: 99;
   position: fixed;
-  top: -50px;
+  top: -100px;
   right: 0;
   left: 0;
   transition: .5s;
@@ -180,6 +186,7 @@ header .logo{
 header nav{
   float: right;
   margin: 0 auto;
+  transition: .5s;
 }
 
 header nav ul {
@@ -243,17 +250,21 @@ header .rightBlock {
   header nav {
     position: absolute;
     width: 100%;
-    height: calc(100vh - 50px);
-    background: #262626;
+    min-height: 50vh;
+    background: #fff;
     top: -100vh;
     left: 0;
-    z-index: 10;
+    z-index: 101;
     transition: .5s;
   }
 
-  header nav.active {
-    display: block;
-    top: 55px;
+  header.active nav {
+    display: flex;
+    position: fixed;
+    top: 0;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
   }
 
   header nav ul{
@@ -325,5 +336,37 @@ header .logo .toggle{
 }
 
 @media (max-width: 850px) {
+  header{
+    position: fixed;
+  }
+  header nav ul li a{
+    font-size: 30px;
+    color: #483232;
+  }
+  header nav ul li.active a,
+  header nav ul li:hover a{
+    color: #000;
+  }
+
+  .menuBg{
+    display: none;
+    width: 100%;
+    height: 200vh;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-image: linear-gradient(black, transparent);
+  }
+  .active .menuBg {
+    display: block;
+  }
+  .active nav {
+    top:0;
+  }
+
+  header nav ul li a{
+  }
 }
 </style>

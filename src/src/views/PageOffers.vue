@@ -3,9 +3,9 @@
   <HeadMenu :key="$route.path" />
   <div class="contentWrap">
 
-      <div style="min-height: 100vh; background: rgb(21, 21, 21);">
+      <div class="offersHeadWrap" style="min-height: 100vh; background: rgb(21, 21, 21);">
           <div class="bg_offers">
-            <div class="frstblk">
+            <div class="title">
                 <h2>{{mainBundles.SPECIAL_OFFERS_H1}}</h2>
             </div>
                 <div class="scndblk">
@@ -59,6 +59,13 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.offersHeadWrap{
+  min-height: 100vh;
+  background: rgb(21, 21, 21);
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+}
 .bg_offers {
   margin: 0px;
   color: rgba(0, 0, 0, 0.87);
@@ -73,13 +80,13 @@ export default defineComponent({
   width: 100%;
   text-align: center;
 }
-.frstblk{
+.title{
     max-width: unset;
     width: 100%;
     color: white;
     margin: 0px;
     font-family: Rubik, sans-serif;
-    font-weight: 550;
+    font-weight: 500;
     font-size: 3.75rem;
     line-height: 1.2;
     letter-spacing: -0.00833em;
@@ -115,5 +122,17 @@ h3{
   margin: .8rem;
   letter-spacing: 2px;
   margin: auto;
+}
+
+@media (max-width: 850px) {
+  .title h2{
+    font-weight: 500;
+    font-size: 2.75rem;
+  }
+
+  h3{
+    font-size: 28px;
+    width: 80%;
+  }
 }
 </style>

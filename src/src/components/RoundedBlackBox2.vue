@@ -54,7 +54,7 @@ export default defineComponent({
   top: 10%;
   padding: 0;
   font-weight: 500;
-
+  text-shadow: 1px 1px 13px rgba(0,0,0,.5);
 }
 .block h3{
   text-align: center;
@@ -87,6 +87,11 @@ export default defineComponent({
 @media (max-width: 850px) {
   .block{
     min-width: 370px;
+    margin: 0;
+  }
+  .block .inner{
+    top: auto;
+    bottom: 0%;
   }
 }
 </style>
