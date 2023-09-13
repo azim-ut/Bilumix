@@ -1,5 +1,5 @@
 <?php
-$targetEmail = "9420183@gmail.com";
+$targetEmail = "sales@bilumix.ru";
 $json = file_get_contents('php://input');
 
 

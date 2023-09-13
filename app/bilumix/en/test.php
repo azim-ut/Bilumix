@@ -4,8 +4,12 @@ $json = file_get_contents('php://input');
 
 
 // send email
-$out = mail($targetEmail, "Email from Bilumix.ru", implode("\r\n", jsonToDebug($json)));
-var_dump($out);
+$out = mail($targetEmail, "Email from Bilumix.ru", jsonToDebug($json));
+if(!$out){
+    echo "error";
+    return;
+}
+echo "ok";
 
 function jsonToDebug($jsonText = '')
 {
@@ -25,7 +29,7 @@ function _arrayToHtmlTableRecursive($arr) {
         $str .= "<td>";
         if (is_array($val)) {
             if (!empty($val)) {
-                $str .= self::_arrayToHtmlTableRecursive($val);
+                $str .= _arrayToHtmlTableRecursive($val);
             }
         } else {
             $str .= "<strong>$val</strong>";
