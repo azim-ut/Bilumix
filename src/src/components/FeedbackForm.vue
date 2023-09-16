@@ -59,7 +59,7 @@ export default defineComponent({
     },
     handleSubmit() {
       this.res = null;
-      axios.post("/test.php", this.form).then(response => {
+      axios.post("/ru/test.php", this.form).then(response => {
         this.res = response.data
         console.log(response.data)
         // this.close()

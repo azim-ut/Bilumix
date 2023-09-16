@@ -14,6 +14,16 @@
         </div>
       </div>
       <div class="mainBanner mainBanner2" ref="content2">
+        <TheaterMainWheel
+            class="video1"
+            :name="'main'"
+            :test="true"
+            :bg-mode="'cover'"
+            :style="{}"
+            :scroll-event="scroll.event"
+            :height="'100vh'">
+        </TheaterMainWheel>
+
           <div class="content" ref="content2content">
             <div class="center">
               <h1 style="font-size: revert;">{{mainBundles.INTRO_BANNER_2_TITLE_2_1}}</h1>
@@ -48,12 +58,16 @@ import Footer from "@/components/Footer.vue";
 import {RouterView} from "vue-router";
 import Modal from "@/components/Modal.vue";
 import mainBundles from "@local/main_text.json"
+import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
 
 export default defineComponent({
-  components: {Modal, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox, Theater},
+  components: {TheaterMainWheel, Modal, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox, Theater},
   data() {
     return {
       mainBundles: mainBundles,
+      scroll: {
+        event: null
+      },
       animation: {
         lastY: 0,
         temp: 0,
@@ -74,6 +88,7 @@ export default defineComponent({
       this.loaded = true
     },
     onWheel(event: any): void {
+      this.scroll.event = event
       let rect = this.$refs.IntroProductMarker?.getBoundingClientRect()
       if(!rect){
         return
@@ -99,7 +114,7 @@ export default defineComponent({
       this.$refs.content1.style.setProperty('--delay', (val) + 's')
       this.$refs.content2.style.setProperty('--delay', (val) + 's')
       this.$refs.content2content.style.setProperty('--delay', (val) + 's')
-		}
+		},
   },
   unmounted () {
     window.removeEventListener('load', this.loadedEvent);
@@ -152,7 +167,7 @@ section{
 #IntroProduct .scrollContent{
   position: relative;
   border: transparent 1px solid;
-  min-height: 300vh;
+  min-height: 500vh;
 }
 #IntroProduct .scrollMarkerContent{
   border: transparent 5px solid;
@@ -230,7 +245,7 @@ section{
 }
 
 .mainBanner2{
-  background: #fff url(/images/normal/device_image/bilumix-sequence000.png) no-repeat left center/cover;
+  background: #fff no-repeat left center/cover;
   display: flex;
   align-items: center;
   vertical-align: middle;
@@ -253,6 +268,10 @@ section{
 }
 .mainBanner2 p{
   padding: 20px;
+}
+.mainBanner2 .video1{
+  position: absolute;
+  left: 10%;
 }
 img {
   max-width: 100%;
@@ -346,6 +365,25 @@ img {
   }
 }
 
+@media (max-width: 850px) {
+  .mainBanner2{
+    background-image: none;
+    width: 100%;
+    left: 0;
+    right: 0;
+    display: block;
+  }
+  .mainBanner2 .video1{
+    position: absolute;
+    top: 60px;
+    left: 0;
+  }
+  .mainBanner2 .content{
+    position: absolute;
+    right: 0;
+  }
+}
+
 @media (max-width: 500px) {
   .mainBanner1 h1 {
     font-size: 4.3rem;
@@ -355,6 +393,8 @@ img {
     margin: auto;
     left: 0;
     right: 0;
+    bottom: 20px;
+    top: auto;
     width: 100%;
   }
   .front-image{

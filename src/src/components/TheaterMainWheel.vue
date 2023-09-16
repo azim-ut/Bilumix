@@ -1,5 +1,5 @@
 <template>
-  <div :id="'TheaterMainWheel' + $props.name" :class="{'theaterDiv':true}" :style="{'height': $props.height +'px'}" ref="theaterDiv">
+  <div :id="'TheaterMainWheel' + $props.name" :class="{'theaterDiv':true}" :style="{'height': $props.height}" ref="theaterDiv">
       <div class="projector" ref="projector">
         <div class="front" ref="front">
           <div class="contentWrap">
@@ -11,14 +11,14 @@
                :key="$index"
                :class="{'bgModeCover': $props.bgMode === 'cover', 'bgModeContain': $props.bgMode === 'contain'}"
                v-show="$index === video.current"
-               :style="{'background-image': 'url(' + img + ')', 'height': $props.height + 'px'}"></div>
+               :style="{'background-image': 'url(' + img + ')', 'height': $props.height}"></div>
         </div>
       </div>
       <div class="framesBar" ref="framesBar">
         <div v-for="(img, $index) in video.frames"
              :key="$index"
              :class="{'bgDisabled': !video.loaded.includes($index)}"
-             :style="{'height': ($props.height/video.frames.length) + 'px', 'background-image': 'url(' + img + ')'}"></div>
+             :style="{'height': '10px', 'background-image': 'url(' + img + ')'}"></div>
       </div>
   </div>
 </template>
@@ -32,7 +32,7 @@ export default defineComponent({
   props: <any>{
     name: "" as String,
     test: false,
-    height: 400,
+    height: '500px',
     bgMode: "cover",
     frames: [] as any[],
     scrollEvent: undefined
