@@ -7,6 +7,9 @@ const CART_STORE_NAME = "CART_STORE"
 export const cartStore = defineStore('cart', {
     state: (): CartState => ({
         cart: {
+            subject: "Order from Bilumix.ru",
+            email: "",
+            name: "",
             show: false,
             list: [],
             address: "",
@@ -37,6 +40,12 @@ export const cartStore = defineStore('cart', {
         },
         close(): void {
             this.$state.cart.show = false
+        },
+        email(str: string): void {
+            this.$state.cart.email = str
+        },
+        name(str: string): void {
+            this.$state.cart.name = str
         },
         note(str: string): void {
             this.$state.cart.note = str

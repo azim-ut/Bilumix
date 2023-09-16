@@ -22,7 +22,7 @@
           <div class="cartList" v-if="hasItems()">
             <div class="product grid grid121" v-for="row in cart().list">
 
-              <div class="short" v-if="row.target.images">
+              <div class="short" v-if="row.target && row.target.images">
                 <div class="img" :style="{'background-image' : 'url('+row.target.images[0].url+')'}"></div>
                 <div class="cnt">
                   <span>{{row.cnt}}</span>
@@ -48,6 +48,14 @@
           </div>
         </div>
         <div>
+          <div class="field">
+            <div class="title">Name</div>
+            <input type="text" v-model="name" @keydown="setName" @change="setName" />
+          </div>
+          <div class="field">
+            <div class="title">Email</div>
+            <input type="email" v-model="email" @keydown="setEmail" @change="setEmail" />
+          </div>
           <br/>
           <div class="textAreaWrap">
             <div class="title">Note</div>
@@ -85,6 +93,8 @@ export default defineComponent({
     return {
       showCart: false,
       checkoutSum: 0,
+      email: "",
+      name: "",
       list: [] as any[],
       note: "",
       currency: "USD"
@@ -142,6 +152,14 @@ export default defineComponent({
       this.cartStore.note(this.note)
       this.updateItemsList()
     },
+    setEmail():void{
+      this.cartStore.name(this.email)
+      this.updateItemsList()
+    },
+    setName():void{
+      this.cartStore.name(this.name)
+      this.updateItemsList()
+    },
     setItemCount(link: string, cnt: number):void{
       this.cartStore.setCount(link, cnt)
       this.updateItemsList()
@@ -179,4 +197,49 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
+.field{
+  border-radius: 8px;
+  border: #404040 1px solid;
+  margin: 10px 10px 20px;
+  position: relative;
+  padding: 6px 5px;
+}
+
+.field .title{
+  background: #fff;
+  position: absolute;
+  left: 10px;
+  top: -10px;
+  font-size: small;
+  padding: 0 10px;
+}
+
+.field input{
+  width: -webkit-fill-available;
+  border: none;
+  font-size: 120%;
+}
+
+@media (max-width: 600px) {
+  .cartHead .grid121 .col1 div {
+    display: none;
+  }
+  .cntTool input{
+    width: 50px;
+  }
+  .cartList .grid121{
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .cartContent .tool{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: -20px;
+    z-index: 1;
+  }
+  .cartContent .tool button{
+    background: #ccc;
+  }
+}
 </style>

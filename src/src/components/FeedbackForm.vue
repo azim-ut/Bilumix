@@ -41,7 +41,7 @@ export default defineComponent({
   data() {
     return {
       form: {
-        subject: null as string|null,
+        subject: "Bilumix.ru - customer feedback",
         email: null as string|null,
         name: null as string|null,
         summary: null as string|null,

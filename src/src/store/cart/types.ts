@@ -5,6 +5,9 @@ export interface CartItem {
 }
 
 export interface Cart {
+    subject: string,
+    email: string,
+    name: string,
     show: boolean,
     list: CartItem[],
     address: string,
