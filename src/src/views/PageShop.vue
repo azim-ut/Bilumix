@@ -410,7 +410,7 @@ h2{
   display: flex;
 }
 .shopList .product .productBody .image{
-  width: 320px;
+  width: 280px;
   height: 280px;
   background: #fff no-repeat center center/cover;
   border-radius: 40px;
@@ -430,5 +430,17 @@ h2{
   width: auto;
   top: -20px;
   bottom: 30px;
+}
+
+@media (max-width: 600px) {
+  h2{
+    font-weight: 500;
+    font-size: 2.5rem;
+  }
+
+  h3{
+    font-size: 24px;
+    width: 80%;
+  }
 }
 </style>

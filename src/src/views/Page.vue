@@ -19,7 +19,7 @@
 
 
     <div class="textBlocksPanelWrap" style="margin: 0 !important; padding: 0 !important; background-color: #151515;">
-      <div class="textBlocksPanel textBlocksPanel2 grid grid2" style="min-height: 100vh; min-width: 380px;">
+      <div class="textBlocksPanel textBlocksPanel2 grid grid2" style="min-height: 100vh;">
         <RoundedBlackBox2 v-for="row in shortTextBlocks2"
                          :bg="row.bg"
                          :margin="'10px'"
@@ -238,6 +238,7 @@ export default defineComponent({
 .textBlocksPanel2{
   background-color: #151515;
   margin: 0;
+  min-width: 380px;
 }
 .textBlocksPanel2  .inner{
   top: 10% !important;
@@ -315,6 +316,23 @@ export default defineComponent({
     font-weight: 500;
     font-size: 250%;
     padding: 20px;
+  }
+}
+@media (max-width: 600px) {
+
+  .textBlocksPanel2{
+    min-width: 280px;
+  }
+  .blockH1{
+    font-size: 180%;
+    padding: 20px 0;
+  }
+
+  .specialOffers h1{
+    font-size: 200%;
+  }
+  .specialOffers h3{
+    font-size: large;
   }
 }
 </style>

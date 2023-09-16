@@ -172,8 +172,13 @@ h1{
 }
 
 @media (max-width: 600px) {
+  h1{
+    margin: 20px 0 0;
+    font-weight: 500;
+    padding: 0;
+    font-size: 200%;
+  }
   .manualList .block{
-
     width: 90%;
   }
   .grid2.force {

@@ -28,7 +28,7 @@
             <div class="center">
               <h1 style="font-size: revert;">{{mainBundles.INTRO_BANNER_2_TITLE_2_1}}</h1>
               <h1 style="font-size: revert;">{{mainBundles.INTRO_BANNER_2_TITLE_2_2}}</h1>
-              <p style="margin: auto; width: 50%; font-size: large;" v-html="mainBundles.INTRO_BANNER_2_TEXT"></p>
+              <p style="margin: auto; font-size: large;" v-html="mainBundles.INTRO_BANNER_2_TEXT"></p>
               <button class="emphasized-button" @click="video1.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> {{mainBundles.TO_VIDEO}}</button>
             </div>
           </div>
@@ -268,6 +268,7 @@ section{
 }
 .mainBanner2 p{
   padding: 20px;
+  width: 50%;
 }
 .mainBanner2 .video1{
   position: absolute;
@@ -386,7 +387,21 @@ img {
 
 @media (max-width: 500px) {
   .mainBanner1 h1 {
-    font-size: 4.3rem;
+    font-size: 3.3rem;
+  }
+
+  .mainBanner1 h2 {
+    font-size: .8rem;
+    letter-spacing: 10px;
+  }
+
+  .mainBanner1 .content h3{
+    font-size: 30px;
+  }
+
+
+  .mainBanner2 p{
+    width: 80%;
   }
 
   .mainBanner2 .content{

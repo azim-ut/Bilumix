@@ -94,4 +94,16 @@ export default defineComponent({
     bottom: 0%;
   }
 }
+
+@media (max-width: 600px) {
+  .block{
+    min-width: 270px;
+  }
+  .block h1{
+    font-size: 25px;
+  }
+  .block .inner {
+    margin: 0;
+  }
+}
 </style>

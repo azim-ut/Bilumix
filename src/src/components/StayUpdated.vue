@@ -18,7 +18,7 @@
       </div>
       <div :class="{'emailInput': true, 'active': stayUpdated.focus}" @click="stayUpdatedUpdate()">
         <input type="email" @change="stayUpdatedUpdate()" v-model="stayUpdated.email" :placeholder="mainBundles.ENTER_YOUR_EMAIL"/>
-        <button>
+        <button @click="submitStayUpdated()">
           <div class="icon"><font-awesome-icon icon="fa-solid fa-envelope" /></div>
           <div class="txt">{{mainBundles.SUBSCRIBE}}</div>
         </button>
@@ -30,25 +30,25 @@
 
 <script lang="ts">
 
+import axios from "axios";
 import {defineComponent} from "vue"
 import {mapStores} from "pinia";
-import {feedbackStore} from "@/store/feedback/feedback";
+import {feedbackStore} from "@/store/feedback/feedback"
 import mainBundles from "@local/main_text.json"
+import {bubbleStore} from "@/store/bubble/bubble"
 
 export default defineComponent({
   components: {},
   computed: {
-    ...mapStores(feedbackStore)
+    ...mapStores(feedbackStore, bubbleStore)
   },
   props: {
-    show: null,
-    name: "",
-    closeCallback: Function
   },
   data() {
     return {
       mainBundles: mainBundles,
       stayUpdated: {
+        subject: "Stay updated request",
         focus: false,
         agree: false,
         email: null as string|null
@@ -60,6 +60,15 @@ export default defineComponent({
       this.stayUpdated.focus = !this.stayUpdated.focus
       if(this.stayUpdated.email && this.stayUpdated.email.length > 2){
         this.stayUpdated.focus = true
+      }
+    },
+    submitStayUpdated(){
+      if(this.stayUpdated.agree){
+        axios.post("/php/mail.php", this.stayUpdated).then((response: any) => {
+          this.bubbleStore.setText = response.data
+          this.bubbleStore.show()
+          // this.close()
+        })
       }
     }
   },
@@ -175,6 +184,22 @@ export default defineComponent({
   .stayUpdate .agreeWrap .agree div.text{
     text-align: left;
     line-height: 20px;
+  }
+}
+@media (max-width: 600px) {
+
+  .stayUpdate h1{
+    font-size: 200%;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .stayUpdate p{
+    font-size: 100%;
+    font-weight: 400;
+  }
+  .stayUpdate .emailInput button{
+    margin-left: 0;
   }
 }
 </style>

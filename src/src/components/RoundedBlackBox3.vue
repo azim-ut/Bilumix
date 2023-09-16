@@ -98,4 +98,13 @@ export default defineComponent({
     text-align: left;
   }
 }
+
+@media (max-width: 600px) {
+  .block{
+    min-width: 280px;
+  }
+  .blockH1{
+    font-size: 100%;
+  }
+}
 </style>

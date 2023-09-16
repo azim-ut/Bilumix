@@ -64,15 +64,14 @@ export default defineComponent({
   margin: 10px;
   padding: 10px;
   color: #fff;
-  top: 45%;
-  bottom: 0;
+  top: auto;
+  bottom: 10px;
   left: 0;
   right: 0;
   position: absolute;
 }
 .inner p{
   color: #0ff;
-  height: 100px;
   font-size: inherit;
   margin: 0;
   text-align: justify !important;
@@ -85,6 +84,12 @@ export default defineComponent({
 @media (max-width: 850px) {
   .block{
     min-width: 370px;
+  }
+}
+
+@media (max-width: 600px) {
+  .block{
+    min-width: 270px;
   }
 }
 </style>

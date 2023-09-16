@@ -31,37 +31,38 @@ import {defineComponent} from "vue"
 import {mapStores} from "pinia"
 import {feedbackStore} from "@/store/feedback/feedback";
 import axios from "axios";
+import {bubbleStore} from "@/store/bubble/bubble";
 
 export default defineComponent({
   computed: {
-    ...mapStores(feedbackStore)
+    ...mapStores(feedbackStore, bubbleStore)
   },
   components: {},
   data() {
     return {
-      res: null as string|null,
       form: {
+        subject: null as string|null,
         email: null as string|null,
         name: null as string|null,
         summary: null as string|null,
-        description: null as string|null
+        description: "" as string
       }
     }
   },
   methods: {
     reset(){
       this.form = {
+        subject: "Bilumix.ru - customer feedback",
         email: null,
         name: null,
         summary: null,
-        description: null
+        description: ""
       }
     },
     handleSubmit() {
-      this.res = null;
-      axios.post("/ru/test.php", this.form).then(response => {
-        this.res = response.data
-        console.log(response.data)
+      axios.post("/ru/php/mail.php", this.form).then(response => {
+        this.bubbleStore.setText = response.data
+        this.bubbleStore.show()
         // this.close()
       })
     }

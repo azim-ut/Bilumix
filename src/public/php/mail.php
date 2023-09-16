@@ -16,7 +16,6 @@ try{
     $data = json_decode($json);
     $from = $data->email??"sales@bilumix.ru";
     $subject = $data->subject??"Email from Bilumix.ru";
-
     $content = jsonToDebug($json);
 
     $out = emailSend($from, $to, $subject, $content);
@@ -24,9 +23,9 @@ try{
         echo "error";
         return;
     }
-    echo "ok";
+    echo "Ok";
 }catch (Exception $e){
-    echo "error";
+    echo "Error";
 }
 
 function jsonToDebug($jsonText = '')

@@ -74,10 +74,11 @@ import axios from "axios";
 import type {NamePrice} from "@/store/shop/types";
 import {getPriceAndCurrency, getPriceTarget} from "@/service/PriceService";
 import type {Cart} from "@/store/cart/types";
+import {bubbleStore} from "@/store/bubble/bubble";
 
 export default defineComponent({
   computed: {
-    ...mapStores(cartStore, shopStore)
+    ...mapStores(cartStore, shopStore, bubbleStore)
   },
   components: {Modal},
   data() {
@@ -112,14 +113,11 @@ export default defineComponent({
       this.cartStore.saveCart()
     },
     checkout(){
-      axios.post("/test.php", {
-        summary: "Checkout",
-        text: "checkout text"
-      }).then(response => {
-        console.log(response)
+      axios.post("/ru/php/mail.php", this.cartStore.getCart).then(response => {
+        this.bubbleStore.setText = response.data
+        this.bubbleStore.show()
         // this.close()
       })
-
     },
     cart(): Cart{
       return this.cartStore.getCart

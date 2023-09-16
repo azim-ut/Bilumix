@@ -135,4 +135,16 @@ h3{
     width: 80%;
   }
 }
+
+@media (max-width: 600px) {
+  .title h2{
+    font-weight: 500;
+    font-size: 2.5rem;
+  }
+
+  h3{
+    font-size: 24px;
+    width: 80%;
+  }
+}
 </style>
