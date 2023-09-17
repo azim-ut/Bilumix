@@ -28,7 +28,7 @@
                   <span>{{row.cnt}}</span>
                 </div>
               </div>
-              <div class="title" v-if="row.target.title">
+              <div class="title" v-if="row.target && row.target.title">
                 <div>
                   <h4>{{row.target.title}}</h4>
                   <div class="cntTool">
