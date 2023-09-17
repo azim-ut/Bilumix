@@ -19,11 +19,19 @@ export const cartStore = defineStore('cart', {
     getters: {
         isShow: (state: CartState): boolean => state.cart.show,
         getCart: (state: CartState): Cart => state.cart,
+        getCartToCheckout: (state: CartState): Cart => {
+            let cart = state.cart
+            cart.show = null
+            cart.list.map(row => {
+                row.target = null
+            })
+            return cart
+        },
         getCartItem: (state: CartState) => (link: string | null): CartItem => {
         	let out = state.cart.list.find(row => row.url === link)
             if(!out){
                 return {
-                    url: link??"",
+                    url: link?("https://bilumix.ru/shop/" + link):"",
                     target: null,
                     cnt: 0
                 }
@@ -89,7 +97,7 @@ export const cartStore = defineStore('cart', {
             let record = this.$state.cart.list.find(row => row.url === link);
             if(!record){
                 record = {
-                    url: link,
+                    url: ("https://bilumix.ru/shop/" + link),
                     cnt: 0,
                     target: target
                 } as CartItem

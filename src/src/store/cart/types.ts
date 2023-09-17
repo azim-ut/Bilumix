@@ -8,7 +8,7 @@ export interface Cart {
     subject: string,
     email: string,
     name: string,
-    show: boolean,
+    show: boolean | null,
     list: CartItem[],
     address: string,
     note: string

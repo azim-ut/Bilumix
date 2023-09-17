@@ -8,12 +8,12 @@
           </div>
           <div class="col2">
             <div v-if="checkoutSum">
-              Checkout sum: {{sumAndCurrencyPrice(checkoutSum)}}
+              {{ shopText.CHECKOUT_SUM }}: <span class="nowrap">{{sumAndCurrencyPrice(checkoutSum)}}</span>
             </div>
           </div>
-          <div class="col3">
-            <button class="btn" @click="clear()">Clear</button>
-            <button class="btn" @click="checkout()">Checkout</button>
+          <div class="col3 buttons">
+            <button class="btn" @click="clear()">{{ shopText.CART_CLEAR }}</button>
+            <button class="btn" @click="checkout()">{{ shopText.CART_CHECKOUT }}</button>
           </div>
         </div>
       </div>
@@ -30,11 +30,11 @@
               </div>
               <div class="title" v-if="row.target.title">
                 <div>
-                  <div>{{row.target.title}}</div>
+                  <h4>{{row.target.title}}</h4>
                   <div class="cntTool">
                     <input type="number" @change="setItemCount(row.url, row.cnt)" v-model="row.cnt" />
                   </div>
-                  <div><small>{{row.cnt}} x {{targetPrice(row.target)}} = {{sumAndCurrencyPrice(row.cnt * row.target.price)}}</small></div>
+                  <div><small>{{row.cnt}} x <span class="nowrap">{{targetPrice(row.target)}}</span> = <span class="nowrap">{{sumAndCurrencyPrice(row.cnt * row.target.price)}}</span></small></div>
                 </div>
               </div>
               <div class="tool" v-if="row.url">
@@ -49,7 +49,7 @@
         </div>
         <div>
           <div class="field">
-            <div class="title">Name</div>
+            <div class="title">{{ shopText.CHECKOUT_NAME }}</div>
             <input type="text" v-model="name" @keydown="setName" @change="setName" />
           </div>
           <div class="field">
@@ -58,14 +58,14 @@
           </div>
           <br/>
           <div class="textAreaWrap">
-            <div class="title">Note</div>
+            <div class="title">{{ shopText.CHECKOUT_NOTE }}</div>
             <textarea rows="10" @keydown="setNote" @change="setNote" v-model="note"></textarea>
           </div>
         </div>
       </div>
       <div class="bottomRow">
-        <button class="btn" @click="clear()">Clear</button>
-        <button class="btn" @click="checkout()">Checkout</button>
+        <button class="btn" @click="clear()">{{ shopText.CART_CLEAR }}</button>
+        <button class="btn" @click="checkout()">{{ shopText.CART_CHECKOUT }}</button>
       </div>
     </div>
 </template>
@@ -83,6 +83,7 @@ import type {NamePrice} from "@/store/shop/types";
 import {getPriceAndCurrency, getPriceTarget} from "@/service/PriceService";
 import type {Cart} from "@/store/cart/types";
 import {bubbleStore} from "@/store/bubble/bubble";
+import shopText from "@local/shop_text.json";
 
 export default defineComponent({
   computed: {
@@ -91,6 +92,7 @@ export default defineComponent({
   components: {Modal},
   data() {
     return {
+      shopText: shopText,
       showCart: false,
       checkoutSum: 0,
       email: "",
@@ -120,10 +122,12 @@ export default defineComponent({
       })
       this.list = out
       this.note = this.cartStore.getCart.note
+      this.name = this.cartStore.getCart.name
+      this.email = this.cartStore.getCart.email
       this.cartStore.saveCart()
     },
     checkout(){
-      axios.post("/ru/php/mail.php", this.cartStore.getCart).then(response => {
+      axios.post("/ru/php/mail.php", this.cartStore.getCartToCheckout).then(response => {
         this.bubbleStore.setText = response.data
         this.bubbleStore.show()
         // this.close()
@@ -152,13 +156,13 @@ export default defineComponent({
       this.cartStore.note(this.note)
       this.updateItemsList()
     },
-    setEmail():void{
-      this.cartStore.name(this.email)
-      this.updateItemsList()
+    async setEmail() {
+      this.cartStore.email(this.email)
+      await this.updateItemsList()
     },
-    setName():void{
+    async setName() {
       this.cartStore.name(this.name)
-      this.updateItemsList()
+      await this.updateItemsList()
     },
     setItemCount(link: string, cnt: number):void{
       this.cartStore.setCount(link, cnt)
@@ -197,7 +201,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
+h4{
+  font-weight: 400;
+}
 .field{
   border-radius: 8px;
   border: #404040 1px solid;
@@ -220,8 +226,19 @@ export default defineComponent({
   border: none;
   font-size: 120%;
 }
+.bottomRow .btn{
+  padding: 10px 10px;
+}
 
 @media (max-width: 600px) {
+  .cartHead .buttons .btn{
+    font-size: 14px;
+    padding: 0 2px;
+    margin: 0 2px;
+  }
+  h4{
+    width: min-content;
+  }
   .cartHead .grid121 .col1 div {
     display: none;
   }
@@ -235,11 +252,14 @@ export default defineComponent({
     display: flex;
     width: 100%;
     justify-content: center;
-    margin-top: -20px;
+    margin-top: -40px;
     z-index: 1;
   }
   .cartContent .tool button{
     background: #ccc;
+  }
+  .cartContent .title div{
+    width: min-content;
   }
 }
 </style>

@@ -30,7 +30,7 @@
           <div class="price">${{product.price}}</div>
           <div class="tools">
             <div class="grid grid2 force">
-              <div>
+              <div class="qtyWrap">
                 <div class="counter" @click="setFocus()">
                   <div class="counterBody">
                     <div class="ttl">
@@ -137,9 +137,15 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.images{
+.contentWrap{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.qtyWrap{
   display: flex;
-  position: relative;
+  vertical-align: middle;
+  align-items: center;
+  margin-right: 10px;
 }
 .images .imagesContent{
   width: 80%;
@@ -181,5 +187,16 @@ export default defineComponent({
 }
 
 @media (max-width: 950px) {
+}
+@media (max-width: 600px) {
+  h1{
+    letter-spacing: normal;
+    font-size: 1.8em;
+    line-height: normal;
+    font-weight: 500;
+  }
+  .counterBody input{
+    max-width: 50px;
+  }
 }
 </style>

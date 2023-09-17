@@ -49,6 +49,10 @@ section{
     display: block;
 }
 
+.nowrap{
+    white-space: nowrap;
+}
+
 
 @media (max-width: 850px) {
     .mobileOnly{

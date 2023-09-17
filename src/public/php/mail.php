@@ -14,7 +14,7 @@ try{
     $to = "sales@bilumix.ru";
     $json = file_get_contents('php://input');
     $data = json_decode($json);
-    $from = $data->email??"sales@bilumix.ru";
+    $from = "sales@bilumix.ru";
     $subject = $data->subject??"Email from Bilumix.ru";
     $content = jsonToDebug($json);
 
@@ -42,7 +42,7 @@ function _arrayToHtmlTableRecursive($arr) {
     $str = "<table><tbody>";
     foreach ($arr as $key => $val) {
         $keyStr = ucfirst($key);
-        $valStr = ucfirst($val);
+        $valStr = $val;
         $str .= "<tr>";
         $str .= "<td>$keyStr</td>";
         $str .= "<td>";
@@ -65,7 +65,7 @@ function emailSend(string $from, string $to, string $subject, string $content){
 
     $mail->IsSMTP();
 
-    $mail->SMTPDebug = 3;
+    $mail->SMTPDebug = 0;
 
     $mail->SMTPAuth = true;
     $mail->SMTPSecure = "tls";

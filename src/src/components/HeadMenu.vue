@@ -369,4 +369,9 @@ header .logo .toggle{
   header nav ul li a{
   }
 }
+@media (max-width: 600px) {
+  header .logo{
+    display: none;
+  }
+}
 </style>
