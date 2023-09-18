@@ -36,7 +36,6 @@
             ></div>
             <div class="tools">
               <button class="emphasized-button" @click="toDetails(product.link)">{{ bundles.DETAILS }}</button>
-              <button class="emphasized-button" @click="toCart(product.link)">{{ bundles.ADD_TO_CART_SHORT }}</button>
             </div>
             <div class="price">{{getPriceTarget(product)}}</div>
           </div>
@@ -64,6 +63,7 @@
             ></div>
             <div class="tools">
               <button class="emphasized-button" @click="toDetails(product.link)">{{ bundles.DETAILS }}</button>
+              <button class="emphasized-button" @click="toCart(product.link)">{{ bundles.ADD_TO_CART_SHORT }}</button>
             </div>
             <div class="price">{{getPriceTarget(product)}}</div>
           </div>
@@ -90,6 +90,7 @@
             ></div>
             <div class="tools">
               <button class="emphasized-button" @click="toDetails(product.link)">{{ bundles.DETAILS }}</button>
+              <button class="emphasized-button" @click="toCart(product.link)">{{ bundles.ADD_TO_CART_SHORT }}</button>
             </div>
             <div class="price">{{getPriceTarget(product)}}</div>
           </div>
@@ -112,7 +113,8 @@
             <div class="image" :style="{'background-image': 'url(' + product.images[0].url + ')'}"
             ></div>
             <div class="tools">
-              <button class="emphasized-button" @click="toDetails(product.link)">Details</button>
+              <button class="emphasized-button" @click="toDetails(product.link)">{{ bundles.DETAILS }}</button>
+              <button class="emphasized-button" @click="toCart(product.link)">{{ bundles.ADD_TO_CART_SHORT }}</button>
             </div>
             <div class="price">{{getPriceTarget(product)}}</div>
           </div>
@@ -137,7 +139,8 @@
               ></div>
             </div>
             <div class="tools">
-              <button class="emphasized-button" @click="toDetails(product.link)">{{bundles.DETAILS}}</button>
+              <button class="emphasized-button" @click="toDetails(product.link)">{{ bundles.DETAILS }}</button>
+              <button class="emphasized-button" @click="toCart(product.link)">{{ bundles.ADD_TO_CART_SHORT }}</button>
             </div>
             <div class="price">{{getPriceTarget(product)}}</div>
           </div>

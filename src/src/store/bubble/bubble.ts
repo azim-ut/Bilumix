@@ -1,10 +1,10 @@
 import {defineStore} from "pinia";
-import type {BubbleState } from "./types"
+import type {BubbleState} from "./types"
 
 
 export const bubbleStore = defineStore('bubble', {
     state: (): BubbleState => ({
-        show: false,
+        show: true,
         text: "Hi"
     }),
     getters: {
@@ -15,16 +15,16 @@ export const bubbleStore = defineStore('bubble', {
     },
     actions: {
         toggle(): void {
-            this.show = !this.show
+            this.$state.show = !this.show
 		},
         show(): void {
-            this.show = true
+            this.$state.show = true
 		},
         hide(): void {
-            this.show = false
+            this.$state.show = false
 		},
         setText(val: string): void{
-            this.text = val
+            this.$state.text = val
         }
     }
 })

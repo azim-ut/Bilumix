@@ -7,6 +7,9 @@
         "links": [
             { "title": "Manual", "url": "/manual/1_5xloupe-setup/"}
         ],
+        "need": [
+            { "title": "IPD", "name": "ipd", "val": 65, "min": 55, "max": 72}
+        ],
         "images": [
             { "url": "/images/static/1.5_2.webp", "on": true},
             { "url": "/images/static/1.5_1.webp", "on": false},
@@ -25,6 +28,9 @@
         "text": "We need to know your IPD (Interpupillary Distance). You can check your IPD by yourself.<br><h4>&nbsp;Headlamp Loupe&nbsp;Specification</h4>\n<ul>\n<li>Magnification: 2.5x</li>\n<li>Working distance: 20 ~ 100cm (Adjustable)&nbsp;</li>\n<li>Weight: 19g</li>\n</ul>\n<h4>Compatibility</h4>\n<ul>\n<li>Generation 1.0</li>\n<li>Generation 2.0</li>\n</ul>\n ",
         "links": [
             { "title": "Manual Video", "url": "https://www.youtube.com/watch?v=OXtJXZkP4Qw"}
+        ],
+        "need": [
+            { "title": "IPD", "name": "ipd", "val": 65, "min": 55, "max": 72}
         ],
         "images": [
             { "url": "/images/static/2_941f1d27-2ec9-4fde-84aa-930551e1d077.webp", "on": true},
@@ -45,6 +51,9 @@
         "links": [
             { "title": "Setup manual", "url": "/manual/b3_5xloupe-setup/"},
             { "title": "How to calibrate", "url": "/manual/calibrating-your-loupe/"}
+        ],
+        "need": [
+            { "title": "IPD", "name": "ipd", "val": 65, "min": 55, "max": 72}
         ],
         "images": [
             { "url": "/images/static/bi-prod-loupe3-1.webp", "on": true},

@@ -4,8 +4,8 @@ export interface Product extends NamePrice{
     text: string,
     links: Link[],
     images: Image[],
+    need: any[],
     sale: number,
-
     on: boolean,
     expandText: boolean
 }

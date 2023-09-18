@@ -1,5 +1,7 @@
 <template>
   <footer>
+
+    <div class="bubble" v-if="showBubble()">{{bubbleText()}}</div>
     <div>
       <div class="grid grid12">
         <div class="block">
@@ -107,10 +109,11 @@ import {feedbackStore} from "@/store/feedback/feedback";
 import Cart from "@/components/Cart.vue";
 import FeedbackForm from "@/components/FeedbackForm.vue";
 import footerText from "@local/footer_text.json"
+import {bubbleStore} from "@/store/bubble/bubble";
 
 export default defineComponent({
   computed: {
-    ...mapStores(feedbackStore)
+    ...mapStores(feedbackStore, bubbleStore)
   },
   components: {FeedbackForm, Cart, Modal},
   data() {
@@ -126,6 +129,12 @@ export default defineComponent({
     },
     isFormOpened(): boolean {
       return this.feedbackStore.isOpened
+    },
+    bubbleText(): string {
+      return this.bubbleStore.text
+    },
+    showBubble(): boolean {
+      return this.bubbleStore.isOpened()
     },
     closeForm(){
       this.feedbackStore.close()
@@ -256,6 +265,12 @@ footer button{
   background: #ffffff;
   padding: 20px 20px;
   border-radius: 19px;
+}
+
+.bubble {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }
 
 @media (max-width: 850px) {

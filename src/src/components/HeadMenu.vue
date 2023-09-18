@@ -234,48 +234,6 @@ header .rightBlock {
   right: 10px;
 }
 
-@media (max-width: 900px) {
-  header {
-    /*position: fixed;*/
-    padding: 0 20px;
-  }
-
-  header .menu-toggle {
-    display: block;
-  }
-  header .logo{
-    margin-left: 50px;
-  }
-
-  header nav {
-    position: absolute;
-    width: 100%;
-    min-height: 50vh;
-    background: #fff;
-    top: -100vh;
-    left: 0;
-    z-index: 101;
-    transition: .5s;
-  }
-
-  header.active nav {
-    display: flex;
-    position: fixed;
-    top: 0;
-    align-items: center;
-    vertical-align: middle;
-    justify-content: center;
-  }
-
-  header nav ul{
-    display: block;
-    text-align: center;
-  }
-
-  header nav ul a{
-    font-size: large;
-  }
-}
 
 header ul li.mobileButtons{
   display: none;
@@ -335,7 +293,49 @@ header .logo .toggle{
   color: #fff;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 990px) {
+
+  header {
+    /*position: fixed;*/
+    padding: 0 20px;
+  }
+
+  header .menu-toggle {
+    display: block;
+  }
+  header .logo{
+    margin-left: 50px;
+  }
+
+  header nav {
+    position: absolute;
+    width: 100%;
+    min-height: 50vh;
+    background: #fff;
+    top: -100vh;
+    left: 0;
+    z-index: 101;
+    transition: .5s;
+  }
+
+  header.active nav {
+    display: flex;
+    position: fixed;
+    top: 0;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+  }
+
+  header nav ul{
+    display: block;
+    text-align: center;
+  }
+
+  header nav ul a{
+    font-size: large;
+  }
+
   header{
     position: fixed;
   }

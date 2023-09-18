@@ -27,8 +27,18 @@
   "GENERATION_TITLE": "Generation",
   "LOUPES_TEXT": "loupes can be easily mounted on BiLumix headlamp, Find the right working distance to maintain a correct posture.",
   "CHECKOUT_NAME": "Name",
+  "CHECKOUT_PHONE": "Phone",
   "CHECKOUT_NOTE": "Note",
   "CHECKOUT_SUM": "Sum",
+  "CHECKOUT_OK": "Done!",
+  "CHECKOUT_OK_MORE": "We will contact to you soon.",
+  "CHECKOUT_ERROR": "Error",
+  "CHECKOUT_ERROR_MORE": "Please use the Feedback form or address down the page to contact to us.",
+  "CHECKOUT_FEEDBACK": "Feedback form",
   "CART_CHECKOUT": "Checkout",
-  "CART_CLEAR": "Clear"
+  "CART_CLEAR": "Clear",
+  "CART_EMPTY": "Cart is empty",
+  "CART_GOTO_SHOP": "Continue shopping",
+  "CART_BACKTO_SHOP": "Back to shopping",
+  "CART_CLOSE": "Close"
 }

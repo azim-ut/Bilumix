@@ -40,13 +40,21 @@
                            v-model="form.count"/>
                   </div>
                 </div>
-                <div v-if="form.cart>0">
-                  In cart: {{form.cart}}
-                </div>
               </div>
-              <div class="toCart" >
-                <button @click="addToCart(product, form.count)" class="emphasized-button">Add to cart</button>
+              <div class="toCart">
+                <button @click="addToCart(product, form.count)" class="emphasized-button">{{shopTextBundles.ADD_TO_CART_SHORT}}</button>
               </div>
+            </div>
+            <div v-if="form.cart>0" class="small">
+              In cart: {{form.cart}}
+            </div>
+          </div>
+          <div v-if="product.need && product.need.length" style="margin: 50px 0; padding: 0 10px;">
+            <div v-for="need in product.need">
+              <Slider v-if="need.val >= 0"
+                      :min="need.min"
+                      :max="need.max"
+                      v-model="need.val"></Slider>
             </div>
           </div>
           <hr />
@@ -77,18 +85,22 @@ import {shopStore} from "@/store/shop/shop"
 import type {Image, Product} from "@/store/shop/types";
 import {cartStore} from "@/store/cart/cart";
 import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
+import Slider from "@vueform/slider";
+import shopTextBundles from "@local/shop_text.json";
+import {bubbleStore} from "../store/bubble/bubble";
 
 export default defineComponent({
   components: {
     TheaterMainWheel,
     HeadMenu,
     TheaterWheel,
-    IntroFrame1, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox},
+    IntroFrame1, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox, Slider},
   computed: {
     ...mapStores(shopStore, cartStore)
   },
   data() {
     return {
+      shopTextBundles: shopTextBundles,
       product: undefined as Product|undefined,
       currentImage: undefined as Image|undefined,
       form: {
@@ -99,6 +111,7 @@ export default defineComponent({
     }
   },
   methods: {
+    bubbleStore,
     hideAllSlides(){
       this.product?.images.forEach((row: Image) => {
         row.on = false
@@ -116,7 +129,7 @@ export default defineComponent({
       if(this.form.count===0){
         this.form.count = 1
       }
-      this.cartStore.toCart(product.link, this.form.count)
+      this.cartStore.toCart(product.link, this.form.count, product.need)
       this.form.cart = this.cartState().cnt
     },
     cartState(){

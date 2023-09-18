@@ -1,16 +1,16 @@
 export interface CartItem {
     url: string,
     cnt: number,
-    target: any
+    need: any[]
 }
 
 export interface Cart {
     subject: string,
     email: string,
+    phone: string,
     name: string,
-    show: boolean | null,
+    show: boolean,
     list: CartItem[],
-    address: string,
     note: string
 }
 

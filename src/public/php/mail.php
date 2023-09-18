@@ -23,7 +23,7 @@ try{
         echo "error";
         return;
     }
-    echo "Ok";
+    echo "ok";
 }catch (Exception $e){
     echo "Error";
 }
@@ -75,8 +75,8 @@ function emailSend(string $from, string $to, string $subject, string $content){
     $mail->Username = "sales@bilumix.ru";
     $mail->Password = "aigjzsxotmpsewsa";
 
-    $mail->CharSet = 'windows-1251';
-//    $mail->CharSet = 'utf-8';
+//    $mail->CharSet = 'windows-1251';
+    $mail->CharSet = 'utf-8';
     $mail->SetFrom ($from, 'Form');
 //    $mail->AddBCC ( '', '');
     $mail->Subject = $subject;

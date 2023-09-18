@@ -9,30 +9,35 @@ export const cartStore = defineStore('cart', {
         cart: {
             subject: "Order from Bilumix.ru",
             email: "",
+            phone: "",
             name: "",
             show: false,
             list: [],
-            address: "",
             note: ""
         }
     }),
     getters: {
         isShow: (state: CartState): boolean => state.cart.show,
         getCart: (state: CartState): Cart => state.cart,
-        getCartToCheckout: (state: CartState): Cart => {
-            let cart = state.cart
-            cart.show = null
-            cart.list.map(row => {
-                row.target = null
+        getCartToCheckout: (state: CartState): any => {
+            let cart = JSON.parse(JSON.stringify(state.cart))
+            cart.list.map((row : any) => {
+                row.url = "https://bilumix.ru/shop/" + row.url
             })
-            return cart
+            return {
+                name: cart.name,
+                phone: cart.phone,
+                email: cart.email,
+                note: cart.note,
+                list: cart.list
+            }
         },
         getCartItem: (state: CartState) => (link: string | null): CartItem => {
         	let out = state.cart.list.find(row => row.url === link)
             if(!out){
                 return {
                     url: link?("https://bilumix.ru/shop/" + link):"",
-                    target: null,
+                    need: [],
                     cnt: 0
                 }
             }
@@ -51,6 +56,9 @@ export const cartStore = defineStore('cart', {
         },
         email(str: string): void {
             this.$state.cart.email = str
+        },
+        phone(str: string): void {
+            this.$state.cart.phone = str
         },
         name(str: string): void {
             this.$state.cart.name = str
@@ -82,7 +90,7 @@ export const cartStore = defineStore('cart', {
                 if(record){
                     record.cnt = count
                 }else{
-                    this.toCart(link, count, null)
+                    this.toCart(link, count, [])
                 }
             }else{
                 if(record){
@@ -93,13 +101,14 @@ export const cartStore = defineStore('cart', {
             this.saveCart()
         },
 
-        toCart(link: string, count: number, target: any) {
+        toCart(link: string, count: number, need: any[]) {
             let record = this.$state.cart.list.find(row => row.url === link);
+            console.log(link, record)
             if(!record){
                 record = {
-                    url: ("https://bilumix.ru/shop/" + link),
+                    url: (link),
                     cnt: 0,
-                    target: target
+                    need: need
                 } as CartItem
                 this.$state.cart.list.push(record)
             }

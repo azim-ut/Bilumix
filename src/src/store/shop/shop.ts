@@ -39,6 +39,7 @@ export const shopStore = defineStore('shop', {
                     links: [],
                     images: [],
                     products: [],
+                    need: [],
                     warranty: 0,
                     ipd: 0,
                     sale: 0,
