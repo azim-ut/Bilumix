@@ -48,7 +48,6 @@ export default defineComponent({
 }
 .block h1{
   text-align: left;
-  font-size: revert;
   letter-spacing: normal;
   margin: 0;
   top: 10%;
@@ -100,7 +99,6 @@ export default defineComponent({
     min-width: 270px;
   }
   .block h1{
-    font-size: 25px;
   }
   .block .inner {
     margin: 0;

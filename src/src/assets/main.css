@@ -1,6 +1,7 @@
 @import './base.css';
 
 #app {
+  font-size: 1.1em;
   margin: 0 auto;
   padding: 0;
   overflow-x: hidden;
@@ -1007,12 +1008,12 @@ h1{
   margin: 0px;
   font-family: Rubik, sans-serif;
   letter-spacing: .2em;
-  font-size: 2.8em;
   line-height: 1.167;
-  font-weight: 800;
+  font-weight: 500;
+  font-size: 3.5vw;
 }
 h2{
-  font-size: 3.75rem;
+  font-size: 2.75vw;
   font-weight: 550;
 }
 .contentWrap {
@@ -1038,7 +1039,6 @@ h2{
   background: #404040!important;
   color: #fff!important;
   padding: 1rem 2rem!important;
-  font-size: 20px!important;
   border-radius: 50px!important;
   margin: 0;
 }
@@ -1068,7 +1068,6 @@ h2{
 .modal-content .close {
   color: #000;
   float: right;
-  font-size: 28px;
   font-weight: bold;
   padding: 0 20px !important;
 }
@@ -1084,7 +1083,6 @@ h2{
   background: #404040;
   color: #fff;
   padding: 1rem 2rem;
-  font-size: 20px;
   border: none;
   border-radius: 50px;
   cursor: pointer;
@@ -1111,7 +1109,25 @@ h2{
 }
 
 
+@media (min-width: 1850px) {
+  #app{
+    font-size: 1.1vw;
+  }
+}
+
 @media (max-width: 850px) {
+  #app{
+    font-size: 5vw;
+  }
+  h1 {
+    font-size: 9vw;
+  }
+  h2 {
+    font-size: 2.6vw;
+  }
+  h3 {
+    font-size: 8.0vw;
+  }
   .modal-content {
     width: 80%;
   }

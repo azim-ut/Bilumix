@@ -83,15 +83,12 @@ export default defineComponent({
 }
 .mainBanner .content h1{
   line-height: 40px;
-  font-size: 50px;
   text-shadow: 1px 1px 13px rgba(0,0,0,.5);
 }
 .mainBanner .content h2{
-  font-size: 16px;
   letter-spacing: 10px;
 }
 .mainBanner .content h3{
-  font-size: 35px;
   font-weight: 600;
   max-width: 600px;
   background: #2ee8dc;

@@ -1,5 +1,5 @@
 <template>
-  <div :id="'TheaterMainWheel' + $props.name" :class="{'theaterDiv':true}" :style="{'height': $props.height}" ref="theaterDiv">
+  <div :id="'TheaterMainAuto' + $props.name" :class="{'theaterDiv':true}" :style="{'height': $props.height}" ref="theaterDiv">
     <div class="projector" ref="projector">
       <div class="front" ref="front">
         <div class="contentWrap">
@@ -35,7 +35,7 @@ export default defineComponent({
     height: '500px',
     bgMode: "cover",
     frames: [] as any[],
-    pos: 1 as number
+    scrollEvent: undefined
   },
   data() {
     return {
@@ -43,25 +43,25 @@ export default defineComponent({
       video: {
         frames: [] as any[],
         loaded: [] as number[],
-        current: 0,
+        current: 1,
         index: 1
       },
-      cnt: 279,
       loaded: false,
     }
   },
   methods: {
-    playVideo(progress: number): void{
-      if(progress){
-        let val = Math.round(this.cnt/100*progress)
-        if(this.video.loaded.includes(val)){
-          this.video.current = val
+    playVideo(event: any): void{
+      if(this.video.loaded.length === this.video.frames.length){
+        this.video.current += 1 * this.video.index
+        if(this.video.current>=this.video.frames.length-1 || this.video.current<=0){
+          this.video.index *= -1
         }
       }
+      this.timer = setTimeout(this.playVideo, 20)
     },
     fillVideoFrames(){
       this.video.frames = []
-      let cnt = this.cnt;
+      let cnt = 279;
       while(cnt-->0){
         let path = "/images/min/device_image/bilumix-sequence" + cnt + "-min.png"
         if(cnt>=10 && cnt<100){
@@ -85,11 +85,8 @@ export default defineComponent({
     }
   },
   watch: {
-    pos: function(newVal, oldVal) {
-      if(newVal !== oldVal){
-        console.log(newVal)
-        this.playVideo(newVal)
-      }
+    scrollEvent: function(newVal, oldVal) {
+      // this.handleWheel(newVal)
     }
   },
   unmounted () {
@@ -98,7 +95,7 @@ export default defineComponent({
   async mounted(){
     setTimeout(this.autoUploadFrames, 50)
     await this.fillVideoFrames()
-    this.playVideo(0)
+    this.timer = setTimeout(this.playVideo, 50)
   }
 })
 </script>
@@ -147,6 +144,7 @@ export default defineComponent({
   position: relative;
   width: 100%;
   animation: ease-in;
+  padding: 10px;
   background: transparent none no-repeat 50% center/contain;
 }
 .projector .bg div.bgModeCover{

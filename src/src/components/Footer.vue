@@ -60,7 +60,7 @@
 
           <div class="block">
             <div>
-              <h6 style="font-size: 20px; font-weight: normal;">{{footerText.FOLLOW_US}}</h6>
+              <h6 style="font-weight: normal;">{{footerText.FOLLOW_US}}</h6>
               <div>
                 <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1yxmbwk" tabindex="0" type="button" style="color: white;">
                   <a href="https://www.facebook.com/BiLumixheadlamp/" rel="noreferrer" target="_blank" aria-label="Connect with our facebook" style="margin-right: 15px; color: white;">
@@ -163,14 +163,13 @@ footer {
   color: #d0d0d0;
   font-family: Roboto, sans-serif;
   font-weight: 400;
-  font-size: 18px;
   line-height: 1.5;
   letter-spacing: 0.00938em;
   -webkit-box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
   box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
-  padding: 0 4rem;
+  padding: 4rem 4rem;
   align-items: center;
-  min-height: 100vh;
+  min-height: 50vh;
   display: flex;
   justify-content: center;
 }
@@ -190,7 +189,6 @@ footer h6{
   font-weight: 600;
   text-transform: uppercase;
   line-height: 40px;
-  font-size: 14px;
   padding-top: 0;
   margin: 0;
 }
@@ -205,7 +203,6 @@ footer .block{
 }
 
 footer .block ul li{
-  font-size: 16px;
   line-height: 33px;
   position: relative;
   cursor: pointer;
@@ -248,12 +245,10 @@ footer button{
   fill: currentcolor;
   flex-shrink: 0;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  font-size: 1.5rem;
 }
 
 .copyright{
   text-align: center;
-  font-size: 13px;
   color: #8c8080;
   bottom: 10px;
   left: 0;

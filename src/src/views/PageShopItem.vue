@@ -194,7 +194,6 @@ export default defineComponent({
   background: #404040;
   color: #fff;
   padding: 1rem 2rem;
-  font-size: 20px;
   border-radius: 50px;
   border: none;
 }
@@ -204,7 +203,6 @@ export default defineComponent({
 @media (max-width: 600px) {
   h1{
     letter-spacing: normal;
-    font-size: 1.8em;
     line-height: normal;
     font-weight: 500;
   }

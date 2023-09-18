@@ -20,15 +20,15 @@
             :test="true"
             :bg-mode="'cover'"
             :style="{}"
-            :scroll-event="scroll.event"
+            :pos="animation.current"
             :height="'100vh'">
         </TheaterMainWheel>
 
           <div class="content" ref="content2content">
             <div class="center">
-              <h1 style="font-size: revert;">{{mainBundles.INTRO_BANNER_2_TITLE_2_1}}</h1>
-              <h1 style="font-size: revert;">{{mainBundles.INTRO_BANNER_2_TITLE_2_2}}</h1>
-              <p style="margin: auto; font-size: large;" v-html="mainBundles.INTRO_BANNER_2_TEXT"></p>
+              <h1>{{mainBundles.INTRO_BANNER_2_TITLE_2_1}}</h1>
+              <h1>{{mainBundles.INTRO_BANNER_2_TITLE_2_2}}</h1>
+              <p style="margin: auto;" v-html="mainBundles.INTRO_BANNER_2_TEXT"></p>
               <button class="emphasized-button" @click="video1.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> {{mainBundles.TO_VIDEO}}</button>
             </div>
           </div>
@@ -198,7 +198,6 @@ section{
 
 .mainBanner1 h1{
   color: #fff;
-  font-size: 5.3rem;
   height: 40px;
   line-height: 40px;
   display: block;
@@ -206,12 +205,12 @@ section{
   width: 100%;
   max-width: 600px;
   font-family: "Roboto";
+  font-size: 8rem;
   text-transform: none;
   text-shadow: 1px 1px 13px rgba(0,0,0,.5);
   text-align: center;
 }
 .mainBanner1 h2{
-  font-size: 20px;
   font-weight: 500;
   letter-spacing: 18px;
   color: hsla(0,0%,100%,.6);
@@ -230,15 +229,14 @@ section{
   bottom: 10%;
 }
 .mainBanner1 .content h3{
-  font-size: 45px;
   font-weight: 600;
   letter-spacing: 2px;
+  font-size: 3rem;
 }
 
 .mainBanner2 .content{
   position: absolute;
   width: 50%;
-  top: 20%;
   animation: content2AnimationContent 1.01s;
   animation-play-state: paused;
   animation-delay: var(--delay);
@@ -262,9 +260,9 @@ section{
   margin: auto;
 }
 .mainBanner2 h1{
-  font-size: xxx-large !important;
-  line-height: .5em;
+  font-size: 6vw;
   font-weight: 600;
+  padding: 0;
 }
 .mainBanner2 p{
   padding: 20px;
@@ -273,6 +271,7 @@ section{
 .mainBanner2 .video1{
   position: absolute;
   left: 10%;
+  min-width: 50%;
 }
 img {
   max-width: 100%;
@@ -385,18 +384,31 @@ img {
   }
 }
 
+@media (min-width: 1000px) {
+  .mainBanner2 h1 {
+    height: 90px;
+  }
+}
+
+@media (max-width: 813px) {
+  .mainBanner1 h1 {
+    font-size: 15vw;
+  }
+  .mainBanner2 h1 {
+    height: 70px;
+    font-size: 15vw;
+  }
+}
+
 @media (max-width: 500px) {
   .mainBanner1 h1 {
-    font-size: 3.3rem;
   }
 
   .mainBanner1 h2 {
-    font-size: .8rem;
     letter-spacing: 10px;
   }
 
   .mainBanner1 .content h3{
-    font-size: 30px;
   }
 
 

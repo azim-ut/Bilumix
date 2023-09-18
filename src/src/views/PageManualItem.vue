@@ -78,11 +78,13 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.contentWrap{
+  padding-top: 50px;
+}
 video {
   border-radius: 17px;
 }
 .text {
-  font-size: 18px;
   margin: 0 20px 20px;
 }
 </style>

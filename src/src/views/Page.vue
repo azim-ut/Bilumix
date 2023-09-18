@@ -4,16 +4,17 @@
   <div class="content" style="margin-top: 80px; position: relative;">
     <ScrollDownIndicator />
     <IntroFrame1 />
-    <div class="textBlocksPanelWrap" style="min-height: 100vh;">
-      <div class="textBlocksPanel textBlocksPanel1 grid grid3">
-        <RoundedBlackBox v-for="row in shortTextBlocks1"
-                         :bg="row.bg"
-                         :margin="'10px'"
-                         :bgColor="row.bgColor"
-                         :title="row.title"
-                         :sub="row.sub"
-                         :text="row.text"
-        ></RoundedBlackBox>
+    <div class="textBlocksPanelWrap centered">
+      <div class="">
+        <div class="textBlocksPanel textBlocksPanel1 grid grid3">
+          <RoundedBlackBox v-for="row in shortTextBlocks1"
+                           :bg="row.bg"
+                           :bgColor="row.bgColor"
+                           :title="row.title"
+                           :sub="row.sub"
+                           :text="row.text"
+          ></RoundedBlackBox>
+        </div>
       </div>
     </div>
 
@@ -28,23 +29,6 @@
                          :sub="row.sub"
                          :text="row.text"
         ></RoundedBlackBox2>
-      </div>
-    </div>
-
-    <div class="textBlocksPanelWrap" style="min-height: 100vh;">
-      <div class="notForMobile textBlocksPanel textBlocksPanel3">
-        <h1 class="center blockH1" v-html="shortTextBlocks3[0].title"></h1>
-        <div class=" grid grid3">
-          <RoundedBlackBox3 v-for="row in shortTextBlocks3.slice(1)"
-                            :bg="row.bg"
-                            :margin="'10px'"
-                            :color="(row.color??'#fff')"
-                            :bgColor="row.bgColor"
-                            :title="row.title"
-                            :sub="row.sub"
-                            :text="row.text"
-          ></RoundedBlackBox3>
-        </div>
       </div>
     </div>
 
@@ -71,8 +55,27 @@
                     :test="false">
       </TheaterWheelVideo2>
 
-      <button class="emphasized-button" @click="video2.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> Watch Video</button>
+      <button class="watchVideo emphasized-button" @click="video2.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> Watch Video</button>
     </div>
+
+    <div class="textBlocksPanelWrap" style="min-height: 100vh;">
+      <div class="notForMobile textBlocksPanel textBlocksPanel3">
+        <h1 class="center blockH1" v-html="shortTextBlocks3[0].title"></h1>
+        <div class=" grid grid3">
+          <RoundedBlackBox3 v-for="row in shortTextBlocks3.slice(1)"
+                            :bg="row.bg"
+                            :margin="'10px'"
+                            :color="(row.color??'#fff')"
+                            :bgColor="row.bgColor"
+                            :title="row.title"
+                            :sub="row.sub"
+                            :text="row.text"
+          ></RoundedBlackBox3>
+        </div>
+      </div>
+    </div>
+
+
     <div class="preFooterBlock" >
       <div class="specialOffers">
         <div>
@@ -199,7 +202,6 @@ export default defineComponent({
 
 <style scoped>
 .blockH1{
-  font-size: revert;
   letter-spacing: normal;
 }
 .loaderBase img{
@@ -209,15 +211,12 @@ export default defineComponent({
 
 .mainBanner .content h1{
   line-height: 40px;
-  font-size: 50px;
   text-shadow: 1px 1px 13px rgba(0,0,0,.5);
 }
 .mainBanner .content h2{
-  font-size: 16px;
   letter-spacing: 10px;
 }
 .mainBanner .content h3{
-  font-size: 35px;
   font-weight: 600;
   max-width: 600px;
   background: #2ee8dc;
@@ -249,7 +248,8 @@ export default defineComponent({
   background: white;
   position: relative;
   z-index: 2;
-  display: flex;
+  display: block;
+  padding: 10% 0;
   vertical-align: middle;
   justify-content: center;
   align-items: center;
@@ -259,7 +259,7 @@ export default defineComponent({
   text-align: center;
   background: black;
   color: white;
-  min-height: 100vh;
+  min-height: 50vh;
   display: flex;
   justify-content: center;
   vertical-align: middle;
@@ -270,11 +270,9 @@ export default defineComponent({
   letter-spacing: normal;
   color: #fff;
   font-weight: 500;
-  font-size: 300%;
 }
 .specialOffers h3{
   margin: auto;
-  font-size: x-large;
 }
 .videoBlock{
   position: relative;
@@ -298,6 +296,10 @@ export default defineComponent({
   display: block;
   background: white;
 }
+.watchVideo{
+  font-size: 1.5vw;
+  padding: 1% 2%;
+}
 .mobileOnly{
   display: none;
   z-index: 2;
@@ -314,7 +316,6 @@ export default defineComponent({
   }
   .blockH1{
     font-weight: 500;
-    font-size: 250%;
     padding: 20px;
   }
 }
@@ -324,15 +325,12 @@ export default defineComponent({
     min-width: 280px;
   }
   .blockH1{
-    font-size: 180%;
     padding: 20px 0;
   }
 
   .specialOffers h1{
-    font-size: 200%;
   }
   .specialOffers h3{
-    font-size: large;
   }
 }
 </style>

@@ -9,15 +9,15 @@
           <div class="photoSlider">
             <div class="display">
               <div class="slide active" v-show="product && product.images.findIndex(row => row.on) < 0">
-                <TheaterMainWheel
+                <TheaterMainAuto
                     class="video1"
                     :name="'main'"
                     :test="true"
                     :bg-mode="'cover'"
                     :style="{}"
                     :scroll-event="scroll.event"
-                    :height="500">
-                </TheaterMainWheel>
+                    :height="'500px'">
+                </TheaterMainAuto>
               </div>
               <div :class="{'slide': true, 'active': row.on}"
                    v-for="row in product.images"
@@ -183,8 +183,7 @@ import {mapStores} from "pinia"
 import {shopStore} from "@/store/shop/shop"
 import type {Image, MainProduct, NamePrice, Product} from "@/store/shop/types";
 import {cartStore} from "@/store/cart/cart";
-import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
-import TheaterWheelVideo1 from "@/components/TheaterWheelVideo1.vue";
+import TheaterMainAuto from "@/components/TheaterMainAuto.vue";
 import shopTextBundles from "@local/shop_text.json";
 import Slider from '@vueform/slider'
 import {getPriceAndCurrency, getPriceTarget} from "@/service/PriceService";
@@ -193,8 +192,7 @@ const LOCAL_STORE_SUMMARY_NAME = "summary"
 export default defineComponent({
   components: {
     Slider,
-    TheaterWheelVideo1,
-    TheaterMainWheel,
+    TheaterMainAuto,
     HeadMenu,
     TheaterWheel,
     IntroFrame1, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox},
@@ -403,15 +401,12 @@ hr{
   border-color: rgba(0, 0, 0, 0.12);
 }
 .mainProduct {
-  margin: 100px 50px;
 }
 .mainProduct h1{
   letter-spacing: normal;
-  font-size: xxx-large;
 }
 .mainProduct h3{
   letter-spacing: normal;
-  font-size: x-large;
   text-transform: uppercase;
 }
 .mainProduct .included{
@@ -422,7 +417,6 @@ hr{
   margin: 0;
   font-family: Rubik, sans-serif;
   font-weight: 700;
-  font-size: 1.5rem;
   line-height: 1.334;
   letter-spacing: 0em;
   text-align: right;
@@ -431,7 +425,6 @@ hr{
   background: #404040;
   color: #fff;
   padding: 1rem 2rem;
-  font-size: 20px;
   border-radius: 50px;
   border: none;
 }
@@ -471,11 +464,9 @@ hr{
   padding: 10px 20px;
   border: #ccc 1px solid;
   border-radius: 7px;
-  font-size: x-large;
   width: -webkit-fill-available;
 }
 .summaryData{
-  font-size: large;
 }
 @media (max-width: 950px) {
 }

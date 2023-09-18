@@ -148,7 +148,6 @@ export default defineComponent({
   justify-content: center;
 }
 .newArrivals .closeBtn{
-  font-size: 80%;
   line-height: 20px;
   border-radius: 10px;
   margin-left: 10px;
@@ -178,7 +177,6 @@ header .logo{
   color: #fff;
   height: 20px;
   line-height: 50px;
-  font-size: 24px;
   float: left;
   cursor: pointer;
 }
@@ -200,7 +198,6 @@ header nav ul li{
   cursor: pointer;
 }
 header nav ul li a{
-  font-size: 16px;
   height: 57px;
   line-height: 57px;
   padding: 0 20px;
@@ -220,7 +217,6 @@ header .menu-toggle{
   position: absolute;
   float: right;
   line-height: 50px;
-  font-size: 24px;
   cursor: pointer;
   display: none;
   padding: 0 10px;
@@ -275,7 +271,6 @@ header .logo .toggle{
 .cartIcon{
   color: #bbbbbb;
   cursor: pointer;
-  font-size: large;
 }
 .cartIcon:hover{
   color: #fff;
@@ -284,7 +279,6 @@ header .logo .toggle{
 .langIcon{
   color: #bbbbbb;
   cursor: pointer;
-  font-size: large;
   float: right;
   width: 100px;
   text-align: right;
@@ -333,14 +327,12 @@ header .logo .toggle{
   }
 
   header nav ul a{
-    font-size: large;
   }
 
   header{
     position: fixed;
   }
   header nav ul li a{
-    font-size: 30px;
     color: #483232;
   }
   header nav ul li.active a,

@@ -70,7 +70,6 @@ export default defineComponent({
   margin: 0px;
   color: rgba(0, 0, 0, 0.87);
    font-weight: 400;
-  font-size: 18px;
   line-height: 1.5;
   letter-spacing: 0.00938em;
   box-sizing: border-box;
@@ -98,7 +97,6 @@ export default defineComponent({
   background: -webkit-gradient(linear,left top,right top,from(#2ee8dc),color-stop(50%,#05b4ff),to(#2d66eb));
   -webkit-background-clip: text;
     justify-content: center;
-    font-size: 36px;
     font-weight: 400;
     margin: 0;
 
@@ -109,7 +107,6 @@ export default defineComponent({
 }
 
 h3{
-  font-size: 36px;
   font-weight: 400;
   background: #2ee8dc;
   background: -moz-linear-gradient(to right,#2ee8dc 0,#05b4ff 50%,#2d66eb 100%);
@@ -131,7 +128,6 @@ h3{
   }
 
   h3{
-    font-size: 28px;
     width: 80%;
   }
 }
@@ -143,7 +139,6 @@ h3{
   }
 
   h3{
-    font-size: 24px;
     width: 80%;
   }
 }

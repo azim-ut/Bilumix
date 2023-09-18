@@ -40,7 +40,6 @@
 .cartHead .btn{
   background: rgba(255,255,255, .0);
   color: #fff;
-  font-size: large;
 }
 .cartHead .btn:hover{
   background: rgba(255,255,255, .2);
@@ -103,13 +102,11 @@
   align-items: center;
 }
 .cartList .tool .btn{
-  font-size: large;
 }
 .cartList .cntTool{
 }
 .cartList .cntTool input{
   padding: 10px;
-  font-size: large;
 }
 
 .cartContent .textAreaWrap{
@@ -124,7 +121,6 @@
   position: absolute;
   left: 40px;
   top: -10px;
-  font-size: small;
   padding: 0 10px;
 }
 
@@ -137,7 +133,6 @@
 
 .cartContent .bottomRow {text-align: end}
 .cartContent .bottomRow .btn{
-  font-size: large;
 }
 
 @media (max-width: 900px) {

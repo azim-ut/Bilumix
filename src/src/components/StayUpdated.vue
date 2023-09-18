@@ -86,15 +86,14 @@ export default defineComponent({
 .stayUpdate{
   background: #199ddc;
   text-align: center;
-  min-height: 100vh;
+  min-height: 400px;
   display: flex;
-  padding: 5%;
+  padding: 0 5%;
   justify-content: center;
   vertical-align: middle;
   align-items: center;
 }
 .stayUpdate p{
-  font-size: 20px;
   font-weight: 300;
   color: #000;
   margin-top: 0;
@@ -118,7 +117,6 @@ export default defineComponent({
   line-height: 25px;
   padding:  0 10px 0 40px;
   border-radius: 20px 0 0 20px;
-  font-size: 18px;
 }
 .stayUpdate .emailInput button{
   border: none;
@@ -139,7 +137,6 @@ export default defineComponent({
   vertical-align: middle;
 }
 .stayUpdate .emailInput .icon{
-  font-size: 1.8em;
   margin: 10px;
 }
 
@@ -155,7 +152,6 @@ export default defineComponent({
 }
 .stayUpdate .agreeWrap .agree div.check span{
   cursor: pointer;
-  font-size: 20px;
 }
 .stayUpdate .emailInput:hover,
 .stayUpdate .emailInput.active{
@@ -167,7 +163,6 @@ export default defineComponent({
   letter-spacing: normal;
   color: #fff;
   font-weight: 500;
-  font-size: 300%;
 }
 @media (max-width: 850px) {
   .stayUpdate h1{
@@ -189,13 +184,11 @@ export default defineComponent({
 @media (max-width: 600px) {
 
   .stayUpdate h1{
-    font-size: 200%;
     font-weight: 400;
     margin: 0;
   }
 
   .stayUpdate p{
-    font-size: 100%;
     font-weight: 400;
   }
   .stayUpdate .emailInput button{

@@ -43,11 +43,9 @@ export default defineComponent({
   background: #000;
   border-radius: 38px;
   margin: 10px;
-  min-width: 370px;
-  min-height: 460px;
+  min-height: 100vh;
 }
 .block h1{
-  font-size: revert;
   padding: 0;
   letter-spacing: normal;
   font-weight: 500 !important;
@@ -72,24 +70,21 @@ export default defineComponent({
 }
 .inner p{
   color: #0ff;
-  font-size: inherit;
   margin: 0;
   text-align: justify !important;
 }
 .block{
   position: relative;
-  background: transparent no-repeat center top/cover;
+  background: transparent no-repeat center 15%/contain;
 }
 
 @media (max-width: 850px) {
   .block{
-    min-width: 370px;
   }
 }
 
 @media (max-width: 600px) {
   .block{
-    min-width: 270px;
   }
 }
 </style>

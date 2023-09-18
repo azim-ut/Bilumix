@@ -43,14 +43,14 @@ export default defineComponent({
 <style scoped>
 .block {
   position: relative;
-  min-height: 50vh;
-  background: #000;
   border-radius: 38px;
   overflow: hidden;
+  background: transparent no-repeat center center/cover;
+  min-width: 300px;
+  min-height: 80vh;
 }
 .block h1{
   text-align: left;
-  font-size: revert;
   letter-spacing: normal;
   margin: 0;
   padding: 0;
@@ -84,12 +84,6 @@ export default defineComponent({
 .block .inner p{
   color: #0ff;
 }
-.block{
-  position: relative;
-  background: transparent no-repeat center center/cover;
-  min-width: 300px;
-  min-height: 460px;
-}
 
 @media (max-width: 850px) {
   .block{
@@ -104,7 +98,6 @@ export default defineComponent({
     min-width: 280px;
   }
   .blockH1{
-    font-size: 100%;
   }
 }
 </style>

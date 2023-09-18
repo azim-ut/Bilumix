@@ -92,7 +92,6 @@ export default defineComponent({
   position: absolute;
   left: 10px;
   top: -10px;
-  font-size: small;
   padding: 0 10px;
 }
 

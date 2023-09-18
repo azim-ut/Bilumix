@@ -320,7 +320,6 @@ export default defineComponent({
 .contentWrap .promo .promoContent h1{
   letter-spacing: normal;
   margin: 40px auto 20px;
-  font-size: 70px;
   text-shadow: 1px 1px 13px rgba(0,0,0,.5);
   color: #fff;
   font-weight: 500;
@@ -328,11 +327,9 @@ export default defineComponent({
 
 .contentWrap .promo .promoContent h3{
   text-transform: uppercase;
-  font-size: large;
 }
 
 .contentWrap .promo button{
-  font-size: large;
   padding: 30px 20px;
   background: #d1d1d1;
   cursor: pointer;
@@ -350,7 +347,6 @@ export default defineComponent({
   background: -webkit-gradient(linear,left top,right top,from(#2ee8dc),color-stop(50%,#05b4ff),to(#2d66eb));
   -webkit-background-clip: text;
   justify-content: center;
-  font-size: 36px;
   font-weight: 400;
   margin: 0;
 
@@ -361,7 +357,6 @@ export default defineComponent({
 }
 
 .contentWrap .promo h3{
-  font-size: 35px;
   font-weight: 600;
   max-width: 600px;
   background: #2ee8dc;
@@ -397,7 +392,6 @@ h2{
   left: 0;
   right: 0;
   top: -14px;
-  font-size: large;
   transition: .2s;
   z-index: 100;
 }
@@ -428,7 +422,6 @@ h2{
   border: none;
   height: 30px;
   position: relative;
-  font-size: 15px;
   line-height: 0;
   width: auto;
   top: -20px;
@@ -442,7 +435,6 @@ h2{
   }
 
   h3{
-    font-size: 24px;
     width: 80%;
   }
 }

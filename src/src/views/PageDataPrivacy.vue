@@ -162,7 +162,6 @@ export default defineComponent({
   padding: 1rem 0;
   background-color: rgb(255, 255, 255);
   color: rgb(34, 34, 34);
-  font-size: 32px;
   font-weight: 700;
 }
 </style>

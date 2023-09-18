@@ -76,29 +76,26 @@
       </div>
       <div class="centered center" style="min-height: 50vh;" v-if="!result.done && !checkoutSum">
         <div>
-          <h3 class="thin-text"
-              style="font-size: 180%;">{{ shopText.CART_EMPTY }}</h3>
+          <h3 class="thin-text">{{ shopText.CART_EMPTY }}</h3>
           <button class="btn"
-                  style="font-size: 150%; text-transform: uppercase;"
+                  style="text-transform: uppercase;"
                   @click="toShop()">{{ shopText.CART_GOTO_SHOP }}</button>
         </div>
       </div>
       <div :class="{'centered center resultMsg': true, 'error': !result.ok}" style="min-height: 50vh;" v-if="result.done">
 
           <div v-if="result.ok" style="margin: auto;">
-            <h3 class="thin-text"
-                style="font-size: 180%;">{{ shopText.CHECKOUT_OK }}</h3>
+            <h3 class="thin-text">{{ shopText.CHECKOUT_OK }}</h3>
             <div class="text">{{shopText.CHECKOUT_OK_MORE}}</div>
             <button class="btn"
-                    style="font-size: 150%; text-transform: uppercase;"
+                    style="text-transform: uppercase;"
                     @click="toShop()">{{ shopText.CART_BACKTO_SHOP }}</button>
           </div>
           <div v-if="!result.ok" style="margin: auto;">
-            <h3 class="thin-text"
-                style="font-size: 180%;">{{ shopText.CHECKOUT_ERROR }}</h3>
+            <h3 class="thin-text">{{ shopText.CHECKOUT_ERROR }}</h3>
             <div class="text">{{shopText.CHECKOUT_ERROR_MORE}}</div>
             <button class="btn"
-                    style="font-size: 150%; text-transform: uppercase;"
+                    style="text-transform: uppercase;"
                     @click="toFeedback()">{{ shopText.CHECKOUT_FEEDBACK }}</button>
           </div>
       </div>
@@ -277,14 +274,12 @@ h4{
   position: absolute;
   left: 10px;
   top: -10px;
-  font-size: small;
   padding: 0 10px;
 }
 
 .field input{
   width: -webkit-fill-available;
   border: none;
-  font-size: 120%;
 }
 .bottomRow .btn{
   padding: 10px 10px;
@@ -298,7 +293,6 @@ h4{
 
 @media (max-width: 600px) {
   .cartHead .buttons .btn{
-    font-size: 14px;
     padding: 0 2px;
     margin: 0 2px;
   }

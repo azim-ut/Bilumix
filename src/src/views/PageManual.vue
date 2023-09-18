@@ -96,12 +96,8 @@ export default defineComponent({
 }
 h1{
   margin: 10px 10px 0;
-  font-size: 50px;
   padding: 20px 0 0 0;
   text-align: left;
-}
-.manualList{
-  margin-top: 57px;
 }
 .manualList .block{
   overflow: hidden;
@@ -127,7 +123,6 @@ h1{
   justify-content: center;
   align-items: center;
   vertical-align: middle;
-  font-size: 22px;
   margin: 10px 10px;
 }
 .manualList .block .right .links{
@@ -152,6 +147,9 @@ h1{
 }
 
 @media (max-width: 950px) {
+  .manualList{
+    margin-top: 57px;
+  }
   h1{
     margin: 10px auto;
     min-width: 60%;
@@ -176,7 +174,6 @@ h1{
     margin: 20px 0 0;
     font-weight: 500;
     padding: 0;
-    font-size: 200%;
   }
   .manualList .block{
     width: 90%;
