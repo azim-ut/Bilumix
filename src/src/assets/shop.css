@@ -13,7 +13,7 @@
 }
 .counterBody .ttl {display: flex; vertical-align: center; align-items: center; justify-content: center;}
 .counterBody .ttl .ttlTxt{}
-.counterBody input{ border: none; min-height: 30px; text-align: left; font-size: large;}
+.counterBody input{ border: none; min-height: 30px; text-align: left; }
 
 .toCart{
   text-align: right;

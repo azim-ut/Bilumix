@@ -1,4 +1,5 @@
 import '@/assets/main.css'
+import '@/assets/font-rem.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'

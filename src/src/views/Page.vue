@@ -5,7 +5,7 @@
     <ScrollDownIndicator />
     <IntroFrame1 />
     <div class="textBlocksPanelWrap centered">
-      <div class="">
+      <div style="min-width: 100%;">
         <div class="textBlocksPanel textBlocksPanel1 grid grid3">
           <RoundedBlackBox v-for="row in shortTextBlocks1"
                            :bg="row.bg"
@@ -31,8 +31,9 @@
         ></RoundedBlackBox2>
       </div>
     </div>
-
-    <DoctorsVideo />
+    <div style="position:relative; background: white;">
+      <DoctorsVideo />
+    </div>
 
 
     <div class="textBlocksPanelWrap" style="min-height: 100vh;">
@@ -222,8 +223,6 @@ export default defineComponent({
   background: white;
   position: relative;
   z-index: 2;
-  display: block;
-  padding: 10% 0;
   vertical-align: middle;
   justify-content: center;
   align-items: center;
@@ -235,6 +234,7 @@ export default defineComponent({
   color: white;
   min-height: 50vh;
   display: flex;
+  padding: 5%;
   justify-content: center;
   vertical-align: middle;
   align-items: center;
@@ -256,6 +256,7 @@ export default defineComponent({
 .textBlocksPanel3{
   display: block;
   background: white;
+  padding-bottom: 10%;
 }
 .watchVideo{
   font-size: 1.5vw;

@@ -70,6 +70,7 @@ export default defineComponent({
     window.removeEventListener('click', this.closeModal)
   },
   mounted(){
+    window.scroll(0,0)
   	window.addEventListener('click', this.closeModal)
     window.scroll(0,0)
     this.manual = this.manualStore.getItem(this.getLink())

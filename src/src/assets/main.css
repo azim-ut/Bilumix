@@ -1,7 +1,6 @@
 @import './base.css';
 
 #app {
-  font-size: 1.1em;
   margin: 0 auto;
   padding: 0;
   overflow-x: hidden;
@@ -1010,10 +1009,8 @@ h1{
   letter-spacing: .2em;
   line-height: 1.167;
   font-weight: 500;
-  font-size: 3.5vw;
 }
 h2{
-  font-size: 2.75vw;
   font-weight: 550;
 }
 .contentWrap {
@@ -1082,7 +1079,7 @@ h2{
 .emphasized-button{
   background: #404040;
   color: #fff;
-  padding: 1rem 2rem;
+  padding: 2px 10px;
   border: none;
   border-radius: 50px;
   cursor: pointer;
@@ -1109,25 +1106,9 @@ h2{
 }
 
 
-@media (min-width: 1850px) {
-  #app{
-    font-size: 1.1vw;
-  }
-}
 
-@media (max-width: 850px) {
-  #app{
-    font-size: 5vw;
-  }
-  h1 {
-    font-size: 9vw;
-  }
-  h2 {
-    font-size: 2.6vw;
-  }
-  h3 {
-    font-size: 8.0vw;
-  }
+@media (max-width: 950px) {
+
   .modal-content {
     width: 80%;
   }

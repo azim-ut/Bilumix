@@ -121,6 +121,7 @@ export default defineComponent({
   unmounted () {
   },
   mounted(){
+    window.scroll(0,0)
   }
 })
 </script>

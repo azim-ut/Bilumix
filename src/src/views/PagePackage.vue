@@ -367,6 +367,7 @@ export default defineComponent({
     window.removeEventListener('mousewheel', this.handleScroll);
   },
   mounted(){
+    window.scroll(0,0)
     this.product = this.shopStore.getMainByLink(this.$route.params.link)
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('mousewheel', this.handleScroll);

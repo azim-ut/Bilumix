@@ -1,0 +1,106 @@
+#app {
+    font-size: 1.1rem;
+}
+
+.small {
+    font-size: small;
+}
+
+button{
+    font-size: 1.1rem;
+}
+h1{
+    font-size: 2.2rem;
+}
+
+h2{
+    font-size: 2.15rem;
+}
+.inner p{
+    font-size: 1.2rem;
+}
+header nav ul li a{
+    font-size: 1.0rem;
+}
+.cartContent .product .short .img{
+    font-size: 1.25rem;
+}
+.counterBody input{
+    font-size: large;
+}
+.mainBanner1 h1{
+    font-size: 6rem;
+}
+.mainBanner1 h2{
+    font-size: 2rem;
+}
+.mainBanner1 h3{
+    font-size: 1.8rem;
+}
+.mainBanner2 h1{
+    font-size: 5rem;
+}
+.mainBanner2 p {
+    font-size: 1.2rem;
+}
+.mainBanner2 .emphasized-button {
+    padding: 1rem 2rem;
+}
+footer .block ul li{
+    font-size: 1rem;
+}
+footer .address {
+    font-size: 1.2rem;
+}
+@media (min-width: 1850px) {
+    button,
+    #app{
+        font-size: 1.1rem;
+    }
+
+    button{
+        font-size: 2rem;
+    }
+}
+
+
+@media (max-width: 950px) {
+    #app{
+        font-size: 1rem;
+    }
+
+    button{
+        font-size: 1rem;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+    h3 {
+        font-size: 1.5rem;
+    }
+    .inner p,
+    p {
+        font-size: 1.2rem;
+    }
+    header nav ul li a{
+        font-size: 1.5rem;
+    }
+    .mainBanner1 h1 {
+        font-size: 4rem;
+    }
+    .mainBanner1 .content h3 {
+        font-size: 1.1rem;
+    }
+    .mainBanner1 .content h2 {
+        font-size: 2rem;
+    }
+    .mainBanner2 h1 {
+        font-size: 2rem;
+    }
+    .mainBanner2 p {
+        font-size: 1.3rem;
+    }
+}

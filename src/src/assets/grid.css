@@ -64,6 +64,9 @@
   .grid2.force {
     grid-template-columns: repeat(2, 1fr);
   }
+  .grid4.force {
+    grid-template-columns: repeat(4, 1fr);
+  }
   .grid21.force {
     grid-template-columns: 2fr 1fr;
   }

@@ -19,7 +19,7 @@
           <textarea rows="10" v-model="form.description"></textarea>
         </div>
         <div>
-          <button type="submit" class="emphasized-button" style="padding: 10px; font-size: medium; width: 100%;">Submit</button>
+          <button type="submit" class="emphasized-button" style="padding: 10px; width: 100%;">Submit</button>
         </div>
       </form>
     </div>

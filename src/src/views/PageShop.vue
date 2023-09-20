@@ -430,6 +430,9 @@ h2{
 }
 
 @media (max-width: 600px) {
+  .contentWrap .textContent{
+    max-width: 100%;
+  }
   h2{
     font-weight: 500;
     font-size: 2.5rem;

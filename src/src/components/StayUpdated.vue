@@ -85,7 +85,7 @@ export default defineComponent({
   background: #199ddc;
   text-align: center;
   display: flex;
-  padding: 0 5%;
+  padding: 5% 5%;
   min-height: 50vh;
   justify-content: center;
   vertical-align: middle;

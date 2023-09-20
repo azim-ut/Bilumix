@@ -52,6 +52,7 @@ export default defineComponent({
   unmounted () {
   },
   mounted(){
+    window.scroll(0,0)
   }
 })
 </script>
@@ -64,5 +65,8 @@ h2{
 .contentWrap{
   font-size: 24px;
   min-height: 50vh;
+}
+.emphasized-button{
+  padding: 1rem 3rem;
 }
 </style>

@@ -5,12 +5,12 @@
     </div>
     <div ref="visibleContent"
          id="visibleContent" class="visibleContent">
-      <div class="mainBanner mainBanner1" ref="content1">
+        <div class="mainBanner mainBanner1" ref="content1">
         <div class="front-image" ref="device"></div>
         <div class="content">
           <h1>BiLumix </h1>
-          <h2>GENERATION 2.0</h2>
-          <h3 class="gradientTitle">{{mainBundles.INTRO_BANNER_1_TITLE}}</h3>
+          <h3>GENERATION 2.0</h3>
+          <h2 class="gradientTitle">{{mainBundles.INTRO_BANNER_1_TITLE}}</h2>
         </div>
       </div>
       <div class="mainBanner mainBanner2" ref="content2">
@@ -32,6 +32,9 @@
               <button class="emphasized-button" @click="video1.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> {{mainBundles.TO_VIDEO}}</button>
             </div>
           </div>
+      </div>
+      <div class="mainBanner mainBanner3" ref="content3">
+        <DoctorsVideo />
       </div>
 
       <Modal :name="'video1'"
@@ -59,9 +62,10 @@ import {RouterView} from "vue-router";
 import Modal from "@/components/Modal.vue";
 import mainBundles from "@local/main_text.json"
 import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
+import DoctorsVideo from "@/components/DoctorsVideo.vue";
 
 export default defineComponent({
-  components: {TheaterMainWheel, Modal, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox, Theater},
+  components: {DoctorsVideo, TheaterMainWheel, Modal, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox, Theater},
   data() {
     return {
       mainBundles: mainBundles,
@@ -178,9 +182,9 @@ section{
 }
 .front-image{
   background: transparent url(/images/static/bilumix-side.png) no-repeat center top/contain;
-  width: 50%;
-  height: 80%;
-  top: 10%;
+  width: 40%;
+  height: 60%;
+  top: 15%;
   position: absolute;
   transform: rotate(15deg);
   animation: animate 1.01s;
@@ -205,15 +209,12 @@ section{
   width: 100%;
   max-width: 600px;
   font-family: "Roboto";
-  font-size: 8rem;
   text-transform: none;
   text-shadow: 1px 1px 13px rgba(0,0,0,.5);
   text-align: center;
 }
 .mainBanner1 h2{
   font-weight: 500;
-  letter-spacing: 18px;
-  color: hsla(0,0%,100%,.6);
   display: block;
   max-width: 600px;
   text-transform: uppercase;
@@ -229,9 +230,11 @@ section{
   bottom: 10%;
 }
 .mainBanner1 .content h3{
+  text-transform: uppercase;
+  letter-spacing: 0.6rem;
   font-weight: 600;
-  letter-spacing: 2px;
-  font-size: 3rem;
+  max-width: 600px;
+  color: hsla(0,0%,100%,.6);
 }
 
 .mainBanner2 .content{
@@ -259,14 +262,29 @@ section{
   overflow: hidden;
   margin: auto;
 }
+.mainBanner3{
+  background: #fff no-repeat left center/cover;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  clip-path: circle(10px at center);
+  position: absolute;
+  opacity: 0;
+  animation: content2Animation 1.01s;
+  animation-play-state: paused;
+  animation-delay: var(--delay);
+  overflow: hidden;
+  margin: auto;
+}
 .mainBanner2 h1{
-  font-size: 6vw;
   font-weight: 600;
   padding: 0;
 }
 .mainBanner2 p{
   padding: 20px;
-  width: 50%;
 }
 .mainBanner2 .video1{
   position: absolute;
@@ -352,7 +370,7 @@ img {
 }
 
 @keyframes animate {
-  0% {
+  10% {
     transform: rotate(15deg) scale(1);
     opacity: 1;
   }
@@ -381,6 +399,7 @@ img {
   .mainBanner2 .content{
     position: absolute;
     right: 0;
+    top: calc(50% - 150px);
   }
 }
 
@@ -390,13 +409,6 @@ img {
 }
 
 @media (max-width: 813px) {
-  .mainBanner1 h1 {
-    font-size: 15vw;
-  }
-  .mainBanner2 h1 {
-    height: 70px;
-    font-size: 15vw;
-  }
 }
 
 @media (max-width: 500px) {

@@ -1,5 +1,9 @@
 <template>
-  <section id="DoctorsVideo" ref="IntroProduct" >
+  <section id="DoctorsVideo" ref="DoctorsVideo" >
+    <div class="scrollMarkerContent" ref="DoctorsVideoMarker">
+      &nbsp;
+    </div>
+
     <div class="videoBlock grid grid2">
       <TheaterWheelVideo1
           class="video1"
@@ -20,8 +24,14 @@
           :name="'video2'"
           :test="false">
       </TheaterWheelVideo2>
-
-      <button class="watchVideo emphasized-button" @click="video2.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> Watch Video</button>
+      <div class="circle circle1" ref="circle1"></div>
+      <div class="circle circle2" ref="circle2"></div>
+      <div class="centered" style="width: 100%; position: absolute; left: 0; bottom: 0; top: 0;">
+        <button class="watchVideo emphasized-button"><font-awesome-icon icon="fa-solid fa-circle-play" /> Watch Video</button>
+      </div>
+    </div>
+    <div class="scrollContent" ref="DoctorVideoScroll">
+      &nbsp;
     </div>
   </section>
 </template>
@@ -67,11 +77,11 @@ export default defineComponent({
     },
     onWheel(event: any): void {
       this.scroll.event = event
-      let rect = this.$refs.IntroProductMarker?.getBoundingClientRect()
+      let rect = this.$refs.DoctorsVideoMarker?.getBoundingClientRect()
       if(!rect){
         return
       }
-      let plane = this.$refs.IntroProductScroll?.getBoundingClientRect()
+      let plane = this.$refs.DoctorVideoScroll?.getBoundingClientRect()
       let pos = rect.y * -1
       let progress = Math.floor(pos/plane.height * 100)
       if(progress>this.animation.max){
@@ -88,15 +98,14 @@ export default defineComponent({
 		},
     calcAnimationWheel(): void {
       let val = -1/this.animation.max * this.animation.current
-      this.$refs.device.style.setProperty('--delay', (val) + 's')
-      this.$refs.content1.style.setProperty('--delay', (val) + 's')
-      this.$refs.content2.style.setProperty('--delay', (val) + 's')
-      this.$refs.content2content.style.setProperty('--delay', (val) + 's')
+      console.log(this.animation.current, val)
+      this.$refs.circle1.style?.setProperty('--delay', (val) + 's')
+      this.$refs.circle2.style?.setProperty('--delay', (val) + 's')
 		},
   },
   unmounted () {
     window.removeEventListener('load', this.loadedEvent);
-    let container = document.getElementById('IntroProduct');
+    let container = document.getElementById('DoctorsVideo');
     if(container){
       window.removeEventListener('scroll', this.onWheel)
       window.removeEventListener('wheel', this.onWheel)
@@ -106,7 +115,7 @@ export default defineComponent({
   },
   mounted(){
     window.addEventListener('load', this.loadedEvent);
-    let container = document.getElementById('IntroProduct');
+    let container = document.getElementById('DoctorsVideo');
     if(container) {
       window.addEventListener('scroll', this.onWheel)
       window.addEventListener('wheel', this.onWheel)
@@ -118,25 +127,65 @@ export default defineComponent({
 </script>
 
 <style scoped>
+#DoctorsVideo {
+  background: white;
+}
+#DoctorsVideo .scrollMarkerContent{
+  border: transparent 5px solid;
+  width: 10px;
+  height: 10px;
+  z-index: 100000;
+  position: absolute;
+}
+#DoctorsVideo .scrollContent{
+  position: absolute;
+  top: 0;
+  border: transparent 1px solid;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 :root {
   --delay: 0;
 }
 section{
   height: auto !important;
+  top: 0;
 }
-
+.circle{
+  background: #fff;
+  border: red 5px solid;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: .3;
+  z-index: 10;
+}
+.circle.circle1{
+  clip-path: circle(25% at center);
+  animation-play-state: paused;
+  animation-delay: var(--delay);
+  animation: circleAnimation1 1.01s;
+}
+.circle.circle2{
+  clip-path: circle(20% at center);
+  animation-play-state: paused;
+  animation-delay: var(--delay);
+  animation: circleAnimation2 1.01s;
+}
 .videoBlock{
   position: relative;
   background: #fff;
   z-index: 2;
   min-height: 100vh;
+
 }
 .videoBlock .emphasized-button{
   position: absolute;
   cursor: pointer;
-  top: calc(50% - 30px);
   z-index: 1000;
-  left: calc(50% - 100px);
 }
 .front-image{
   background: transparent url(/images/static/bilumix-side.png) no-repeat center top/contain;
@@ -145,41 +194,27 @@ section{
   top: 10%;
   position: absolute;
   transform: rotate(15deg);
-  animation: animate 1.01s;
+  animation: contentAnimation 1.01s;
   animation-play-state: paused;
   animation-delay: var(--delay);
 }
 
 
-@keyframes content2Animation {
-
+@keyframes circleAnimation1 {
   0% {
-    clip-path: circle(1px at center);
-    opacity: 0;
-    display: block;
-    z-index: 100000;
-  }
-  20% {
-    opacity: 0;
-    display: block;
-  }
-  25% {
-    clip-path: circle(2px at center);
-    display: block;
-    opacity: 1;
-    background-position: -350px center;
-  }
-  50% {
-  }
-  65% {
-    opacity: 1;
-  }
-  70% {
-    clip-path: circle(2000px at center);
+    clip-path: circle(25% at center);
   }
   100% {
-    clip-path: circle(2000px at center);
-    opacity: 0;
+    clip-path: circle(20% at center);
+  }
+}
+
+@keyframes circleAnimation2 {
+  0% {
+    clip-path: circle(20% at center);
+  }
+  100% {
+    clip-path: circle(25% at center);
   }
 }
 

@@ -43,7 +43,7 @@ export default defineComponent({
   background: #000;
   border-radius: 38px;
   margin: 10px;
-  min-height: 100vh;
+  min-height: 80vh;
 }
 .block h1{
   padding: 0;
@@ -56,10 +56,10 @@ export default defineComponent({
 }
 .block h3{
   text-align: center;
-  margin: 10px 0;
+  margin: 10px auto;
 }
 .inner{
-  margin: 10px;
+  margin: 4%;
   padding: 10px;
   color: #fff;
   top: auto;
@@ -75,7 +75,7 @@ export default defineComponent({
 }
 .block{
   position: relative;
-  background: transparent no-repeat center 15%/contain;
+  background: transparent no-repeat center 15%/cover;
 }
 
 @media (max-width: 850px) {

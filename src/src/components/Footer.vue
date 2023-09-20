@@ -1,8 +1,8 @@
 <template>
-  <footer>
+  <footer class="centered">
 
     <div class="bubble" v-if="showBubble()">{{bubbleText()}}</div>
-    <div>
+    <div class="footerWrap">
       <div class="grid grid12">
         <div class="block">
           <img src="/src/assets/logo.svg" style="height: 17px;"> {{ footerText.COMPANY }}
@@ -20,7 +20,7 @@
             <span>Email: <a href="mailto:sales@bilumix.ru" aria-label="Mail to sales@bilumix.ru">sales@bilumix.ru</a></span>
           </address>
         </div>
-        <div class="grid grid4">
+        <div class="grid grid4 force">
           <div class="block">
             <h6>{{ footerText.PAGES }}</h6>
             <ul>
@@ -168,12 +168,12 @@ footer {
   -webkit-box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
   box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
   padding: 4rem 4rem;
-  align-items: center;
   min-height: 50vh;
-  display: flex;
-  justify-content: center;
 }
 
+.footerWrap{
+  min-width: 80%;
+}
 
 a{
   color: hsla(0,0%,100%,.8);
@@ -188,8 +188,7 @@ footer .content{
 footer h6{
   font-weight: 600;
   text-transform: uppercase;
-  line-height: 40px;
-  padding-top: 0;
+  padding: 0 0 10px 0;
   margin: 0;
 }
 footer ul{
@@ -203,7 +202,7 @@ footer .block{
 }
 
 footer .block ul li{
-  line-height: 33px;
+  padding: 3px 0;
   position: relative;
   cursor: pointer;
   font-weight: 200;
@@ -272,6 +271,9 @@ footer button{
   footer{
     padding: 4rem 2rem;
     justify-content: left;
+  }
+  .footerWrap{
+    min-width: 100%;
   }
   footer .grid.grid4 {
     grid-template-columns: repeat(1, 1fr);

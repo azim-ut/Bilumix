@@ -1,0 +1,88 @@
+#app {
+    font-size: 1.1em;
+}
+
+.small {
+    font-size: small;
+}
+
+button{
+    font-size: 1.1vw;
+}
+h1{
+    font-size: 3.5vw;
+}
+
+h2{
+    font-size: 2.75vw;
+}
+.inner p{
+    font-size: 1.5vw;
+}
+.cartContent .product .short .img{
+    font-size: 1.25rem;
+}
+.counterBody input{
+    font-size: large;
+}
+.mainBanner1 h1{
+    font-size: 8rem;
+}
+.mainBanner1 .content h3{
+    font-size: 3rem;
+}
+.mainBanner2 h1{
+    font-size: 6vw;
+}
+.mainBanner2 p {
+    font-size: 2vw;
+}
+footer .block ul li{
+    font-size: 1vw;
+}
+footer .address {
+    font-size: 1.2vw;
+}
+@media (min-width: 1850px) {
+    button,
+    #app{
+        font-size: 1.1vw;
+    }
+
+    button{
+        font-size: 2vw;
+    }
+}
+
+
+@media (max-width: 950px) {
+    #app{
+        font-size: 2vw;
+    }
+
+    button{
+        font-size: 3vw;
+    }
+    h1 {
+        font-size: 7vw;
+    }
+    h2 {
+        font-size: 2.6vw;
+    }
+    h3 {
+        font-size: 5.0vw;
+    }
+    .inner p,
+    p {
+        font-size: 2.5vw;
+    }
+    header nav ul li a{
+        font-size: 3vw;
+    }
+    .mainBanner1 h1 {
+        font-size: 15vw;
+    }
+    .mainBanner2 h1 {
+        font-size: 10vw;
+    }
+}
