@@ -46,6 +46,11 @@ header nav ul li a{
 .mainBanner2 .emphasized-button {
     padding: 1rem 2rem;
 }
+
+.stayUpdate .txt{
+    font-size: 0.7rem;
+}
+
 footer .block ul li{
     font-size: 1rem;
 }
