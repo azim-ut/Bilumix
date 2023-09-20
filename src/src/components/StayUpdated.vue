@@ -42,8 +42,6 @@ export default defineComponent({
   computed: {
     ...mapStores(feedbackStore, bubbleStore)
   },
-  props: {
-  },
   data() {
     return {
       mainBundles: mainBundles,
@@ -86,9 +84,9 @@ export default defineComponent({
 .stayUpdate{
   background: #199ddc;
   text-align: center;
-  min-height: 400px;
   display: flex;
   padding: 0 5%;
+  min-height: 50vh;
   justify-content: center;
   vertical-align: middle;
   align-items: center;

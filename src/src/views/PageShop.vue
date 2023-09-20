@@ -291,7 +291,8 @@ export default defineComponent({
 }
 
 .contentWrap .textContent{
-  margin-top: 20px;
+  margin: 20px auto 40px;
+  max-width: 50%;
 }
 
 .contentWrap .textContent p{

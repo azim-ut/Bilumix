@@ -32,31 +32,8 @@
       </div>
     </div>
 
+    <DoctorsVideo />
 
-
-    <div class="videoBlock grid grid2">
-      <TheaterWheelVideo1
-          					class="video1"
-          					:name="'video1'"
-                    :test="true"
-                    :bg-mode="'cover'"
-                    :style="{'background':'#000'}"
-                    :scroll-event="scroll.event"
-                    :height="500">
-      </TheaterWheelVideo1>
-
-      <TheaterWheelVideo2
-                    class="video2"
-                    :bg-mode="'cover'"
-                    :style="{'background':'#000'}"
-                    :scroll-event="scroll.event"
-                    :height="500"
-                    :name="'video2'"
-                    :test="false">
-      </TheaterWheelVideo2>
-
-      <button class="watchVideo emphasized-button" @click="video2.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> Watch Video</button>
-    </div>
 
     <div class="textBlocksPanelWrap" style="min-height: 100vh;">
       <div class="notForMobile textBlocksPanel textBlocksPanel3">
@@ -123,13 +100,13 @@ import TheaterWheelVideo1 from "@/components/TheaterWheelVideo1.vue";
 import TheaterWheelVideo2 from "@/components/TheaterWheelVideo2.vue";
 import RoundedBlackBox2 from "@/components/RoundedBlackBox2.vue";
 import StayUpdated from "@/components/StayUpdated.vue";
+import DoctorsVideo from "@/components/DoctorsVideo.vue";
 
 export default defineComponent({
   components: {
+    DoctorsVideo,
     StayUpdated,
     RoundedBlackBox2,
-    TheaterWheelVideo2,
-    TheaterWheelVideo1,
     TheaterMainWheel,
     RoundedBlackBox3,
     FontAwesomeIcon,
@@ -179,9 +156,6 @@ export default defineComponent({
         // let path = require(src)
         this.productTheater.frames.unshift(new URL(src, import.meta.url))
       }
-    },
-    handleScroll(event: any){
-      this.scroll.event = event
     }
   },
   unmounted () {
@@ -274,23 +248,10 @@ export default defineComponent({
 .specialOffers h3{
   margin: auto;
 }
-.videoBlock{
-  position: relative;
-  background: #fff;
-  z-index: 2;
-  min-height: 100vh;
-}
 .preFooterBlock{
   position: relative;
   background: #fff;
   z-index: 2;
-}
-.videoBlock .emphasized-button{
-  position: absolute;
-  cursor: pointer;
-  top: calc(50% - 30px);
-  z-index: 1000;
-  left: calc(50% - 100px);
 }
 .textBlocksPanel3{
   display: block;
@@ -333,4 +294,5 @@ export default defineComponent({
   .specialOffers h3{
   }
 }
+
 </style>

@@ -4,7 +4,6 @@ export function getPriceTarget(target: NamePrice): string {
     if(target.currency === "RUB"){
         return printRub(target.price)
     }
-    console.log(target.currency)
     return Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: target.currency,

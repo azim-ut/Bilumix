@@ -386,7 +386,6 @@ img {
 
 @media (min-width: 1000px) {
   .mainBanner2 h1 {
-    height: 90px;
   }
 }
 

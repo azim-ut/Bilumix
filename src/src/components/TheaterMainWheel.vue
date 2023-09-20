@@ -87,7 +87,6 @@ export default defineComponent({
   watch: {
     pos: function(newVal, oldVal) {
       if(newVal !== oldVal){
-        console.log(newVal)
         this.playVideo(newVal)
       }
     }

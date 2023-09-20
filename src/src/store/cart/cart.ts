@@ -103,7 +103,6 @@ export const cartStore = defineStore('cart', {
 
         toCart(link: string, count: number, need: any[]) {
             let record = this.$state.cart.list.find(row => row.url === link);
-            console.log(link, record)
             if(!record){
                 record = {
                     url: (link),

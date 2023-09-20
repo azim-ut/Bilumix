@@ -274,7 +274,6 @@ export default defineComponent({
           this.summary.hasLoops = true
         }
       })
-      console.log(this.summary.ipd, this.summary.glass_year)
       localStorage.setItem(LOCAL_STORE_SUMMARY_NAME, JSON.stringify(this.summary))
     },
     hasProduct(row: Product): boolean {
@@ -368,7 +367,6 @@ export default defineComponent({
     window.removeEventListener('mousewheel', this.handleScroll);
   },
   mounted(){
-    console.log(this.$route.params.link)
     this.product = this.shopStore.getMainByLink(this.$route.params.link)
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('mousewheel', this.handleScroll);
