@@ -69,6 +69,13 @@ export default defineComponent({
           (rect.top + rect.height)<0 ||
           (rect.top-rect.height)>window.innerHeight
       ){
+        console.log(
+            !rect,
+            frameTarget < 0,
+            (frameTarget > this.video.frames.length),
+            (rect.top + rect.height)<0,
+            (rect.top-rect.height)>window.innerHeight
+        )
         return;
       }
       this.reel.current = Math.round(frameTarget)

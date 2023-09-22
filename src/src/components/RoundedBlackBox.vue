@@ -43,7 +43,7 @@ export default defineComponent({
   background: #000;
   border-radius: 38px;
   margin: 10px;
-  min-height: 80vh;
+  height: 600px;
 }
 .block h1{
   padding: 0;

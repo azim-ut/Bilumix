@@ -4,9 +4,9 @@
   <div class="content" style="margin-top: 80px; position: relative;">
     <ScrollDownIndicator />
     <IntroFrame1 />
-    <div class="textBlocksPanelWrap centered">
+    <div class="textBlocksPanelWrap centered min80h">
       <div style="min-width: 100%;">
-        <div class="textBlocksPanel textBlocksPanel1 grid grid3">
+        <div class="textBlocksPanel textBlocksPanel1 grid grid3 ">
           <RoundedBlackBox v-for="row in shortTextBlocks1"
                            :bg="row.bg"
                            :bgColor="row.bgColor"
@@ -19,8 +19,8 @@
     </div>
 
 
-    <div class="textBlocksPanelWrap" style="margin: 0 !important; padding: 0 !important; background-color: #151515;">
-      <div class="textBlocksPanel textBlocksPanel2 grid grid2" style="min-height: 100vh;">
+    <div class="textBlocksPanelWrap centered" style="margin: 0 !important; padding: 0 !important; background-color: #151515;">
+      <div class="textBlocksPanel textBlocksPanel2 grid grid2" style="height: 1%; padding-top: 200px;">
         <RoundedBlackBox2 v-for="row in shortTextBlocks2"
                          :bg="row.bg"
                          :margin="'10px'"
@@ -36,7 +36,7 @@
     </div>
 
 
-    <div class="textBlocksPanelWrap" style="min-height: 100vh;">
+    <div class="textBlocksPanelWrap centered min50h">
       <div class="notForMobile textBlocksPanel textBlocksPanel3">
         <h1 class="center blockH1" v-html="shortTextBlocks3[0].title"></h1>
         <div class=" grid grid3">
@@ -209,17 +209,23 @@ export default defineComponent({
 .textBlocksPanel{
   background: white;
 }
+
+.textBlocksPanel1{
+  background: white;
+  max-width: 1280px;
+  margin: auto;
+}
 .textBlocksPanel2{
   background-color: #151515;
-  margin: 0;
-  min-width: 380px;
+  margin: 0 auto;
+  min-width: 270px;
+  max-width: 1280px;
 }
 .textBlocksPanel2  .inner{
   top: 10% !important;
 }
 
 .textBlocksPanelWrap{
-  min-height: 100vh;
   background: white;
   position: relative;
   z-index: 2;
@@ -255,8 +261,12 @@ export default defineComponent({
 }
 .textBlocksPanel3{
   display: block;
+  padding: 5% 0;
   background: white;
-  padding-bottom: 10%;
+  margin: auto;
+  width: 100%;
+  min-width: 270px;
+  max-width: 1280px;
 }
 .watchVideo{
   font-size: 1.5vw;

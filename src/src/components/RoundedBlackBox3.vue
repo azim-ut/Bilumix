@@ -46,8 +46,8 @@ export default defineComponent({
   border-radius: 38px;
   overflow: hidden;
   background: transparent no-repeat center center/cover;
-  min-width: 300px;
-  min-height: 80vh;
+  min-width: 270px;
+  height: 600px;
 }
 .block h1{
   text-align: left;

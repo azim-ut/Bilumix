@@ -41,7 +41,7 @@ export default defineComponent({
 .block {
   min-width: 370px;
   position: relative;
-  min-height: 50vh;
+  height: 675px;
   background: #000;
   border-radius: 38px;
   margin: 0 50px;

@@ -240,6 +240,7 @@ section{
 .mainBanner2 .content{
   position: absolute;
   width: 50%;
+  max-width: 400px;
   animation: content2AnimationContent 1.01s;
   animation-play-state: paused;
   animation-delay: var(--delay);
@@ -330,7 +331,7 @@ img {
     opacity: 1;
   }
   70% {
-    clip-path: circle(2000px at center);
+    clip-path: circle(3000px at center);
   }
   85% {
     background-size: contain;
@@ -338,7 +339,7 @@ img {
     opacity: 1;
   }
   100% {
-    clip-path: circle(2000px at center);
+    clip-path: circle(3000px at center);
     opacity: 0;
   }
 }
@@ -357,15 +358,16 @@ img {
 }
 @keyframes content2AnimationContent {
   0% {
+    opacity: .8;
   }
   30% {
-    right: calc(50% - 150px);
+    transform: translate3d(0px, 0px, 0px);
   }
   65% {
-    right: 1%;
+    transform: translate3d(60%, 0px, 0px);
   }
   100% {
-    right: 1%;
+    transform: translate3d(60%, 0px, 0px);
   }
 }
 
@@ -411,7 +413,41 @@ img {
 @media (max-width: 813px) {
 }
 
+@media (max-width: 800px) {
+
+  @keyframes content2AnimationContent {
+    0% {
+      opacity: .8;
+    }
+    30% {
+      transform: translate3d(0px, 0px, 0px);
+    }
+    65% {
+      transform: translate3d(10%, 0px, 0px);
+    }
+    100% {
+      transform: translate3d(10%, 0px, 0px);
+    }
+  }
+}
+
 @media (max-width: 500px) {
+
+  @keyframes content2AnimationContent {
+    0% {
+      opacity: .8;
+    }
+    30% {
+      transform: translate3d(0px, 0%, 0px);
+    }
+    65% {
+      transform: translate3d(0%, -10%, 0px);
+    }
+    100% {
+      transform: translate3d(0%, -10%, 0px);
+    }
+  }
+
   .mainBanner1 h1 {
   }
 
@@ -464,10 +500,10 @@ img {
       opacity: 1;
     }
     70% {
-      clip-path: circle(2000px at center);
+      clip-path: circle(3000px at center);
     }
     100% {
-      clip-path: circle(2000px at center);
+      clip-path: circle(3000px at center);
       opacity: 0;
     }
   }

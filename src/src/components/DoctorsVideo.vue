@@ -98,7 +98,6 @@ export default defineComponent({
 		},
     calcAnimationWheel(): void {
       let val = -1/this.animation.max * this.animation.current
-      console.log(this.animation.current, val)
       this.$refs.circle1.style?.setProperty('--delay', (val) + 's')
       this.$refs.circle2.style?.setProperty('--delay', (val) + 's')
 		},

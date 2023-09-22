@@ -163,7 +163,7 @@ footer {
   color: #d0d0d0;
   font-family: Roboto, sans-serif;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.8;
   letter-spacing: 0.00938em;
   -webkit-box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
   box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
@@ -172,7 +172,8 @@ footer {
 }
 
 .footerWrap{
-  min-width: 80%;
+  width: 100%;
+  max-width: 1380px;
 }
 
 a{
@@ -199,6 +200,7 @@ footer ul{
 
 footer .block{
   padding: 10px;
+  min-width: 190px;
 }
 
 footer .block ul li{

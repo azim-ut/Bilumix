@@ -49,12 +49,24 @@
               In cart: {{form.cart}}
             </div>
           </div>
-          <div v-if="product.need && product.need.length" style="margin: 50px 0; padding: 0 10px;">
-            <div v-for="need in product.need">
-              <Slider v-if="need.val >= 0"
-                      :min="need.min"
-                      :max="need.max"
-                      v-model="need.val"></Slider>
+          <div v-if="product.need && product.need.length" style="margin: 50px 0 0px; padding: 0 10px;">
+            <div v-for="need in product.need" class="p-0-0-20-0">
+              <div v-if="need.check">
+                <div class="check pointer" @click="need.check.val = !need.check.val">
+                  <span class="icon">
+                    <font-awesome-icon :icon="['far', 'square']" v-if="!need.check.val" />
+                    <font-awesome-icon :icon="['far', 'square-check']" v-if="need.check.val" />
+                  </span>&nbsp;
+                  <p v-html="need.check.html"></p>
+                </div>
+              </div>
+              <div v-if="!need.check || need.check.val">
+                <p v-html="need.html" class="p-0-0-20-0"></p>
+                <Slider v-if="need.val >= 0"
+                        :min="need.min"
+                        :max="need.max"
+                        v-model="need.val"></Slider>
+              </div>
             </div>
           </div>
           <hr />
@@ -153,6 +165,16 @@ export default defineComponent({
 .contentWrap{
   margin-top: 50px;
   margin-bottom: 50px;
+}
+.check {
+  display: flex;
+}
+.check .icon{
+  font-size: 20px;
+  float: left;
+}
+.check p{
+  margin: 0 0 0 10px;
 }
 .qtyWrap{
   display: flex;
