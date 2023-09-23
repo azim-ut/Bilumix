@@ -1,8 +1,26 @@
 [
     {
+        "link": "light-filter",
+        "title": "Светофильтры/колпачки (пара)",
+        "short": "Светофильтры/колпачки (пара)",
+        "text": "<p>Светофильтры, которые устанавливаются на светодиодный источник света.</p><p>Желтые колпачки (для медленного отверждения и препятствующие отверждению) устанавливаются на светодиодный источник света, чтобы предотвратить полимеризацию светоотверждаемых материалов, снижая световую интенсивность.</p>",
+        "links": [
+            { "title": "Инструкция", "url": "/manual/light-cap-replacement/"}
+        ],
+        "images": [
+            { "url": "/images/static/light-filter-clear.webp", "on": true},
+            { "url": "/images/static/amber0.webp", "on": false},
+            { "url": "/images/static/Amber1.webp", "on": false},
+            { "url": "/images/static/Amber2.webp", "on": false}
+        ],
+        "price": 1268,
+        "currency": "RUB",
+        "on": false
+    },
+    {
         "link": "rechargeable-battery-gen-2",
-        "title": "Перезаряжаемая батарея",
-        "short": "Перезаряжаемая батарея",
+        "title": "Аккумуляторная батарея",
+        "short": "Аккумуляторная батарея",
         "text": "<h4>Технические характеристики продукции</h4>\n<ul>\n<li class=\"li1\">\n<span class=\"s1\"></span><span class=\"s2\">Непрерывность работы: 3-8 часов (зависит от интенсивности)</span>\n</li>\n<li>Время зарядки: около 2 часов</li>\n<li>Выходная мощность батареи: 7,4 вольта / 1700 мАч</li>\n<li>Вход зарядного устройства: <a href=\"/shop/battery-cradle\">Подставка для аккумулятора</a>\n</li>\n</ul>",
         "links": [
             { "title": "Инструкция", "url": "/manual/battery-connection/"}
@@ -10,33 +28,33 @@
         "images": [
             { "url": "/images/static/gen2-battery.webp", "on": true}
         ],
-        "price": 100,
+        "price": 10565,
         "currency": "RUB",
         "on": false
     },
     {
         "link": "battery-cradle",
         "title": "Подставка для аккумулятора",
-        "short": "Перезаряжаемая батарея",
+        "short": "Подставка для аккумулятора",
         "text": "<p>Подставка для&nbsp;<a href=\"/shop/rechargeable-battery-gen-2\" title=\"Просмотреть подробную информацию о перезаряжаемой батарее\">перезаряжаемой батареи</a> BiLumix Поколение 2.0&nbsp;использует<strong>&nbsp;USB тип-C</strong> в качестве входа для зарядки. Что значительно повышает мобильность и скорость зарядки.</p>",
         "images": [
             { "url": "/images/static/gen2-battery-craddle.webp", "on": true}
         ],
-        "price": 75,
+        "price": 7924,
         "currency": "RUB",
         "on": false
     },
     {
         "link": "dr-kim-shadowless-headlamp-travel-bag",
-        "title": "Сумка для налобного фонаря BiLumix",
+        "title": "Сумка для налобного осветителя BiLumix",
         "short": "Транспортировочная сумка",
-        "text": "<h4>Транспортировочная сумка для налобного фонаря BiLumix</h4>",
+        "text": "<h4>Транспортировочная сумка для налобного осветителя BiLumix</h4>",
         "images": [
             { "url": "/images/static/Bag1.webp", "on": true},
             { "url": "/images/static/TravelBag-2_c0e37618-f203-485d-b864-4a7252a60cac.webp", "on": false},
             { "url": "/images/static/Bag2.webp", "on": false}
         ],
-        "price": 150,
+        "price": 15847,
         "currency": "RUB",
         "on": false
     },
@@ -56,7 +74,7 @@
             { "url": "/images/static/FS_2.webp", "on": false},
             { "url": "/images/static/ShieldBox_modified_85322ccf-3077-41ee-a231-cf53bff1dea3.webp", "on": false}
         ],
-        "price": 38,
+        "price": 4015,
         "currency": "RUB",
         "on": false
     },
@@ -73,7 +91,7 @@
             { "url": "/images/static/cam-4.webp", "on": false},
             { "url": "/images/static/bilumix-cam-in-use.webp", "on": false}
         ],
-        "price": 4500,
+        "price": 475408,
         "currency": "RUB",
         "on": false
     }
