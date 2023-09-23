@@ -1,41 +1,41 @@
 [
     {
         "link": "lamp-handle",
-        "title": "Light Source Handle",
-        "short": "Light Source Handle",
-        "text": "This handle provide convenient for user to lift the light source up and down.",
+        "title": "Ручка источника света",
+        "short": "Ручка источника света",
+        "text": "Эта ручка позволяет пользователю удобно направлять источник света вверх и вниз.",
         "links": [
-            { "title": "Manual", "url": "/manual/replacing-handle/"}
+            { "title": "Инструкция", "url": "/manual/replacing-handle/"}
         ],
         "images": [
             { "url": "/images/static/lamp-handle.webp", "on": true}
         ],
-        "price": 7,
+        "price": 740,
         "currency": "RUB",
         "on": false
     },
     {
         "link": "head-support-leaf",
-        "title": "Rear Head Support Leaf",
-        "short": "Rear Head Support Leaf",
-        "text": "This piece supports the headlamp to firmly placed over your head.",
+        "title": "Задняя опорная створка головы",
+        "short": "Задняя опорная створка головы",
+        "text": "Эта деталь обеспечивает надежное крепление осветителя на вашей голове.",
         "links": [
-            { "title": "Manual", "url": "/manual/head-support-replacement/"}
+            { "title": "Инструкция", "url": "/manual/head-support-replacement/"}
         ],
         "images": [
             { "url": "/images/static/head-support-leaf.webp", "on": true}
         ],
-        "price": 4.50,
+        "price": 476,
         "currency": "RUB",
         "on": false
     },
     {
         "link": "forehead-plate",
-        "title": "Forehead Plate",
-        "short": "Forehead Plate",
-        "text": "<p>BiLumix headlamp forehead plate has Velcro inside which allow user to easily replace <a class=\"product-link\" href=\"/shop/bilumix-frontpad-cushion/\" target=\"_blank\">forehead pad/cushion</a> with new one.<br></p>\n<p>* FOR GEN 2 ONLY</p>",
+        "title": "Накладка на лоб",
+        "short": "Накладка на лоб",
+        "text": "<p>Налобная накладка осветителя BiLumix имеет внутреннюю застежку-липучку, которая позволяет пользователю легко заменить <a class=\"product-link\" href=\"/shop/bilumix-frontpad-cushion/\" target=\"_blank\">налобную накладку/уплотнитель</a> на новую.<br></p>\n<p>* ТОЛЬКО ДЛЯ ПОКОЛЕНИЯ 2</p>",
         "links": [
-            { "title": "Manual", "url": "/manual/adjusting-forehead-band/"}
+            { "title": "Инструкция", "url": "/manual/adjusting-forehead-band/"}
         ],
         "images": [
             { "url": "/images/static/frontplate.webp", "on": true},
@@ -43,24 +43,24 @@
             { "url": "/images/static/frontplate-03.webp", "on": false},
             { "url": "/images/static/frontplate-04.webp", "on": false}
         ],
-        "price": 7.00,
+        "price": 740.00,
         "currency": "RUB",
         "on": false
     },
     {
         "link": "bilumix-frontpad-cushion",
-        "title": "Forehead Pad/Cushion",
-        "short": "Forehead Plate",
-        "text": "<p>Detachable&nbsp;pad for <a class=\"product-link\" href=\"/shop/forehead-plate/\" target=\"_blank\">forehead plate</a>. This&nbsp;pad can be attached to Velcro on the inner side of the <a class=\"product-link\" href=\"/shop/forehead-plate/\" target=\"_blank\">forehead plate</a>.&nbsp;<span class=\"s1\">This improved pad will give you maximum comfort.</span></p>\n",
+        "title": "Накладка/уплотнитель для лба",
+        "short": "Налобная накладка",
+        "text": "<p>Съемная накладка для <a class=\"product-link\" href=\"/shop/forehead-plate/\" target=\"_blank\">накладка на лоб</a>. Эту накладку можно прикрепить на липучку с внутренней стороны <a class=\"product-link\" href=\"/shop/forehead-plate/\" target=\"_blank\">накладки на лоб</a>.<span class=\"s1\">Эта улучшенная прокладка обеспечит вам максимальный комфорт.</span></p>",
         "links": [
-            { "title": "Manual", "url": "/manual/replacing-cushion"}
+            { "title": "Инструкция", "url": "/manual/replacing-cushion"}
         ],
         "images": [
             { "url": "/images/static/font-pad.webp", "on": true},
             { "url": "/images/static/frontplate-02_a1baca66-c20e-4e71-919e-093ac5dcd788.webp", "on": false},
             { "url": "/images/static/frontplate-03_a13db675-bfd5-4e70-9274-efe5dc9d1a34.webp", "on": false}
         ],
-        "price": 24.00,
+        "price": 2536.00,
         "currency": "RUB",
         "on": false
     }

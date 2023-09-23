@@ -1,9 +1,9 @@
 [
     {
         "link": "bilumix-headlamp-repair-light-source-issue",
-        "title": "BiLumix GEN. 2 Repair Service",
-        "short": "Light source issue(s)",
-        "text": "<h4>\n<meta charset=\"utf-8\">Service Specifications<br>\n</h4>\n<h4></h4>\n<ul>\n<li>Front &amp; Rear Band Replacement</li>\n<li>Light Source Replacement</li>\n<li>Other Service (Surgical Loupes)</li>\n</ul>\n<p>* Please contact us before you place an order.</p>\n<ul></ul>",
+        "title": "BiLumix сервис по ремонту поколения 2",
+        "short": "Проблема (ы) с источником (ами) света",
+        "text": "<h4>\n<meta charset=\"utf-8\">Спецификация услуги<br>\n</h4>\n<h4></h4>\n<ул>\n<li>Замена передних и задних ремешков</li>\n<li>Замена источника света</li>\n<li>Прочие услуги (хирургические лупы)</li>\n</ul>\n<p>* Пожалуйста, свяжитесь с нами перед оформлением заказа.</p>\n<ul></ul>",
         "links": [
                     ],
         "images": [
@@ -12,14 +12,14 @@
             { "url": "/images/static/bi-prod-repair-front-body.webp", "on": false},
             { "url": "/images/static/bi-prod-repair-rear-body.webp", "on": false}
         ],
-        "price": 100,
+        "price": 13734,
         "currency": "RUB",
         "on": false
     },
     {
         "link": "bilumix-headlamp-repair-front-body-issue",
-        "title": "BiLumix GEN. 2 Repair Service",
-        "short": "Front body issue(s)",
+        "title": "BiLumix сервис по ремонту поколения 2",
+        "short": "Проблема(ы) с передней частью корпуса",
         "text": "<h4>\n<meta charset=\"utf-8\">Service Specifications<br>\n</h4>\n<h4></h4>\n<ul>\n<li>Front &amp; Rear Band Replacement</li>\n<li>Light Source Replacement</li>\n<li>Other Service (Surgical Loupes)</li>\n</ul>\n<p>* Please contact us before you place an order.</p>\n<ul></ul>",
         "links": [
         ],
@@ -29,15 +29,15 @@
             { "url": "/images/static/bi-prod-repair-front-body.webp", "on": false},
             { "url": "/images/static/bi-prod-repair-rear-body.webp", "on": false}
         ],
-        "price": 100,
+        "price": 11622,
         "currency": "RUB",
         "on": false
     },
     {
         "link": "bilumix-headlamp-repair-rear-body-issue",
-        "title": "BiLumix GEN. 2 Repair Service",
-        "short": "Rear body issue(s)",
-        "text": "<h4>\n<meta charset=\"utf-8\">Service Specifications<br>\n</h4>\n<h4></h4>\n<ul>\n<li>Front &amp; Rear Band Replacement</li>\n<li>Light Source Replacement</li>\n<li>Other Service (Surgical Loupes)</li>\n</ul>\n<p>* Please contact us before you place an order.</p>\n<ul></ul>",
+        "title": "BiLumix сервис по ремонту поколения 2",
+        "short": "Проблема(ы) с задней частью корпуса",
+        "text": "<h4>\n<meta charset=\"utf-8\">Спецификация услуги<br>\n</h4>\n<h4></h4>\n<ул>\n<li>Замена передних и задних ремешков</li>\n<li>Замена источника света</li>\n<li>Прочие услуги (хирургические лупы)</li>\n</ul>\n<p>* Пожалуйста, свяжитесь с нами перед оформлением заказа.</p>\n<ul></ul>",
         "links": [
         ],
         "images": [
@@ -46,7 +46,7 @@
             { "url": "/images/static/bi-prod-repair-front-body.webp", "on": false},
             { "url": "/images/static/bi-prod-repair-rear-body.webp", "on": false}
         ],
-        "price": 100,
+        "price": 17960,
         "currency": "RUB",
         "on": false
     }
