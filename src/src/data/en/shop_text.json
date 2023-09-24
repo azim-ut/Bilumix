@@ -25,6 +25,7 @@
   "REP_PARTS_TEXT": "When you need extra parts, we got them ready.",
   "REPAIR_TITLE": "Repair Service",
   "GENERATION_TITLE": "Generation",
+  "GENERATION_TEXT": "This is model which Generation 2.0 inherited from. Our previous model still packed with great feature.",
   "LOUPES_TEXT": "loupes can be easily mounted on BiLumix headlamp, Find the right working distance to maintain a correct posture.",
   "CHECKOUT_NAME": "Name",
   "CHECKOUT_PHONE": "Phone",
@@ -40,5 +41,6 @@
   "CART_EMPTY": "Cart is empty",
   "CART_GOTO_SHOP": "Continue shopping",
   "CART_BACKTO_SHOP": "Back to shopping",
-  "CART_CLOSE": "Close"
+  "CART_CLOSE": "Close",
+  "QTY_SHORT": "Qty"
 }

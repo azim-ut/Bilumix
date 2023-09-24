@@ -5,7 +5,8 @@
     </div>
     <div ref="visibleContent"
          id="visibleContent" class="visibleContent">
-        <div class="mainBanner mainBanner1" ref="content1">
+
+      <div class="mainBanner mainBanner1" ref="content1">
         <div class="front-image" ref="device"></div>
         <div class="content">
           <h1>BiLumix </h1>
@@ -13,16 +14,18 @@
           <h2 class="gradientTitle">{{mainBundles.INTRO_BANNER_1_TITLE}}</h2>
         </div>
       </div>
+
       <div class="mainBanner mainBanner2" ref="content2">
-        <TheaterMainWheel
-            class="video1"
-            :name="'main'"
-            :test="true"
-            :bg-mode="'cover'"
-            :style="{}"
-            :pos="animation.current"
-            :height="'100vh'">
-        </TheaterMainWheel>
+        <div class="content2Wrap">
+          <TheaterMainWheel
+              class="video1"
+              :name="'main'"
+              :test="true"
+              :bg-mode="'cover'"
+              :style="{}"
+              :pos="animation.current"
+              :height="'100vh'">
+          </TheaterMainWheel>
 
           <div class="content" ref="content2content">
             <div class="center">
@@ -32,9 +35,7 @@
               <button class="emphasized-button" @click="video1.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> {{mainBundles.TO_VIDEO}}</button>
             </div>
           </div>
-      </div>
-      <div class="mainBanner mainBanner3" ref="content3">
-        <DoctorsVideo />
+        </div>
       </div>
 
       <Modal :name="'video1'"
@@ -114,6 +115,7 @@ export default defineComponent({
 		},
     calcAnimationWheel(): void {
       let val = -1/this.animation.max * this.animation.current
+      this.$refs.visibleContent.style.setProperty('--delay', (val) + 's')
       this.$refs.device.style.setProperty('--delay', (val) + 's')
       this.$refs.content1.style.setProperty('--delay', (val) + 's')
       this.$refs.content2.style.setProperty('--delay', (val) + 's')
@@ -167,11 +169,14 @@ section{
   align-items: center;
   justify-content: center;
   vertical-align: middle;
+  animation: bgAnimati0n 1.01s;
+  animation-play-state: paused;
+  animation-delay: var(--delay);
 }
 #IntroProduct .scrollContent{
   position: relative;
   border: transparent 1px solid;
-  min-height: 500vh;
+  min-height: 800vh;
 }
 #IntroProduct .scrollMarkerContent{
   border: transparent 5px solid;
@@ -236,11 +241,20 @@ section{
   max-width: 600px;
   color: hsla(0,0%,100%,.6);
 }
+.content2Wrap {
+  position:relative;
+  min-height: 100vh;
+  width: 100%;
+  min-width: 100vw;
+  background: white;
+}
 
 .mainBanner2 .content{
   position: absolute;
   width: 50%;
   max-width: 400px;
+  top: calc(50% - 150px);
+  right: calc(50% - 200px);
   animation: content2AnimationContent 1.01s;
   animation-play-state: paused;
   animation-delay: var(--delay);
@@ -289,8 +303,11 @@ section{
 }
 .mainBanner2 .video1{
   position: absolute;
-  left: 10%;
-  min-width: 50%;
+  left: 2%;
+  min-width: 70%;
+  animation: content2VideoAnimation 1.01s;
+  animation-play-state: paused;
+  animation-delay: var(--delay);
 }
 img {
   max-width: 100%;
@@ -317,6 +334,36 @@ img {
     opacity: 0;
   }
 }
+
+@keyframes content2VideoAnimation {
+  0% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bgAnimation {
+  0% {
+    background-color: #151515;
+  }
+  40% {
+    background-color: #151515;
+  }
+  41% {
+    background-color: #fff;
+  }
+  100% {
+    background-color: #fff;
+  }
+}
 @keyframes content2Animation {
   0% {
     clip-path: circle(1px at center);
@@ -340,7 +387,7 @@ img {
   }
   100% {
     clip-path: circle(3000px at center);
-    opacity: 0;
+    opacity: 1;
   }
 }
 @keyframes content1AnimationContent {
@@ -360,14 +407,21 @@ img {
   0% {
     opacity: .8;
   }
-  30% {
+  20% {
     transform: translate3d(0px, 0px, 0px);
   }
-  65% {
+  45% {
     transform: translate3d(60%, 0px, 0px);
   }
-  100% {
+  75% {
     transform: translate3d(60%, 0px, 0px);
+    opacity: 0.8;
+  }
+  85% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
@@ -385,7 +439,7 @@ img {
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 950px) {
   .mainBanner2{
     background-image: none;
     width: 100%;
@@ -397,23 +451,31 @@ img {
     position: absolute;
     top: 60px;
     left: 0;
+    right: 0;
+    min-width: 70%;
   }
   .mainBanner2 .content{
     position: absolute;
-    right: 0;
+    right: 5%;
     top: calc(50% - 150px);
   }
 }
 
 @media (min-width: 1000px) {
-  .mainBanner2 h1 {
+  .mainBanner2 .video1{
+    left: 5%;
+    min-width: 50%;
+  }
+  .mainBanner2 .content{
+    right: calc(50% - 150px);
+    top: calc(50% - 150px);
   }
 }
 
 @media (max-width: 813px) {
 }
 
-@media (max-width: 800px) {
+@media (max-width: 950px) {
 
   @keyframes content2AnimationContent {
     0% {
@@ -424,6 +486,9 @@ img {
     }
     65% {
       transform: translate3d(10%, 0px, 0px);
+    }
+    90% {
+      opacity: .8;
     }
     100% {
       transform: translate3d(10%, 0px, 0px);
@@ -442,9 +507,14 @@ img {
     }
     65% {
       transform: translate3d(0%, -10%, 0px);
+      opacity: 0.8;
+    }
+    85% {
+      opacity: 0;
     }
     100% {
       transform: translate3d(0%, -10%, 0px);
+      opacity: 0;
     }
   }
 
@@ -457,7 +527,6 @@ img {
 
   .mainBanner1 .content h3{
   }
-
 
   .mainBanner2 p{
     width: 80%;
@@ -473,19 +542,18 @@ img {
   }
   .front-image{
     width: 80%;
-    left: 0;
   }
 
   @keyframes content2Animation {
 
     0% {
       clip-path: circle(1px at center);
-      opacity: 0;
+      opacity: 1;
       display: block;
       z-index: 100000;
     }
     20% {
-      opacity: 0;
+      opacity: 1;
       display: block;
     }
     25% {
@@ -504,7 +572,7 @@ img {
     }
     100% {
       clip-path: circle(3000px at center);
-      opacity: 0;
+      opacity: 1;
     }
   }
 }

@@ -125,6 +125,7 @@
         <div></div>
         <div class="textContent">
           <a id="repair"><h2>{{bundles.GENERATION_TITLE}}</h2></a>
+          <p>{{bundles.GENERATION_TEXT}}</p>
         </div>
         <div></div>
       </div>
@@ -397,7 +398,7 @@ h2{
   z-index: 100;
 }
 .shopList .product .productBody .price{
-  margin-top: 20px;
+  margin-bottom: 20px;
   text-align: center;
   transition: .2s;
 }
@@ -413,6 +414,7 @@ h2{
   background: #fff no-repeat center center/cover;
   border-radius: 40px;
   transition: .2s;
+  margin: auto;
 }
 
 .productBody:hover {
@@ -442,4 +444,5 @@ h2{
     width: 80%;
   }
 }
+
 </style>

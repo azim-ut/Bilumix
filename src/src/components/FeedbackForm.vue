@@ -1,25 +1,25 @@
 <template>
     <div class="feedback">
       <form @submit="handleSubmit">
-        <h3>Ask question(s)</h3>
+        <h3>{{ bundles.FORM_TITLE }}</h3>
         <div class="field">
           <div class="title">Email</div>
           <input type="text" v-model="form.email" />
         </div>
         <div class="field">
-          <div class="title">Name</div>
+          <div class="title">{{ bundles.NAME }}</div>
           <input type="text" v-model="form.name" />
         </div>
         <div class="field">
-          <div class="title">Summary</div>
+          <div class="title">{{ bundles.SUMMARY }}</div>
           <input type="text" v-model="form.summary" />
         </div>
         <div class="field">
-          <div class="title">Description</div>
+          <div class="title">{{ bundles.DESCRIPTION }}</div>
           <textarea rows="10" v-model="form.description"></textarea>
         </div>
         <div>
-          <button type="submit" class="emphasized-button" style="padding: 10px; width: 100%;">Submit</button>
+          <button type="submit" class="emphasized-button" style="padding: 10px; width: 100%;">{{ bundles.SUBMIT }}</button>
         </div>
       </form>
     </div>
@@ -32,6 +32,7 @@ import {mapStores} from "pinia"
 import {feedbackStore} from "@/store/feedback/feedback";
 import axios from "axios";
 import {bubbleStore} from "@/store/bubble/bubble";
+import feedbackBundles from "@local/feedback_text.json";
 
 export default defineComponent({
   computed: {
@@ -40,6 +41,7 @@ export default defineComponent({
   components: {},
   data() {
     return {
+      bundles: feedbackBundles,
       form: {
         subject: "Bilumix.ru - customer feedback",
         email: null as string|null,
@@ -84,7 +86,7 @@ export default defineComponent({
   border: #404040 1px solid;
   margin: 10px 10px 20px;
   position: relative;
-  padding: 4px 5px;
+  padding: 10px 5px;
 }
 
 .feedback .field .title{

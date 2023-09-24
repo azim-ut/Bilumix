@@ -53,9 +53,12 @@ export default defineComponent({
   methods: {
     playVideo(progress: number): void{
       if(progress){
-        let val = Math.round(this.cnt/100*progress)
-        if(this.video.loaded.includes(val)){
+        let val = Math.round(this.cnt/70 * progress)
+        if(val <= this.cnt && this.video.loaded.includes(val)){
           this.video.current = val
+        }
+        if(val>this.cnt){
+          this.video.current = this.cnt-1
         }
       }
     },

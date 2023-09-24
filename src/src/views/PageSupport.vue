@@ -6,9 +6,9 @@
       <div class="grid grid3">
         <div>&nbsp;</div>
         <div class="center" style="padding: 50px 0 100px;">
-          <h2>We are here for you</h2>
-          <p>I want to ask a question!</p>
-          <button class="emphasized-button" @click="callForm()">Submit a question</button>
+          <h2>{{bundles.FEEDBACK_TITLE}}</h2>
+          <p>{{bundles.FEEDBACK_TEXT}}</p>
+          <button class="emphasized-button" @click="callForm()">{{bundles.FEEDBACK_SUBMIT}}</button>
         </div>
         <div>&nbsp;</div>
       </div>
@@ -29,6 +29,7 @@ import HeadMenu from "@/components/HeadMenu.vue";
 import Modal from "@/components/Modal.vue";
 import {mapStores} from "pinia";
 import {feedbackStore} from "@/store/feedback/feedback";
+import textBundles from "@local/feedback_text.json";
 
 export default defineComponent({
   computed: {
@@ -41,7 +42,7 @@ export default defineComponent({
     IntroFrame1, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox},
   data() {
     return {
-
+      bundles: textBundles
     }
   },
   methods: {

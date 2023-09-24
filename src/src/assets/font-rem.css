@@ -63,6 +63,14 @@ footer .block ul li{
 footer address {
     font-size: 1.1rem;
 }
+.modal-content .close{
+    font-size: 2rem;
+}
+@media (min-width: 1000px) {
+    .emphasized-button{
+        font-size: 1rem;
+    }
+}
 @media (min-width: 1850px) {
     button,
     #app{

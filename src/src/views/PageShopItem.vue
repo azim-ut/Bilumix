@@ -27,14 +27,14 @@
         </div>
         <div class="text">
           <h1>{{product.title}}</h1>
-          <div class="price">${{product.price}}</div>
+          <div class="price">{{getPriceTarget(product)}}</div>
           <div class="tools">
             <div class="grid grid2 force">
               <div class="qtyWrap">
                 <div class="counter" @click="setFocus()">
                   <div class="counterBody">
                     <div class="ttl">
-                      <div class="ttlTxt">Qty</div>
+                      <div class="ttlTxt">{{ shopTextBundles.QTY_SHORT }}</div>
                     </div>
                     <input type="number" ref="cnt"
                            v-model="form.count"/>
@@ -100,6 +100,7 @@ import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
 import Slider from "@vueform/slider";
 import shopTextBundles from "@local/shop_text.json";
 import {bubbleStore} from "../store/bubble/bubble";
+import {getPriceTarget} from "../service/PriceService";
 
 export default defineComponent({
   components: {
@@ -123,6 +124,7 @@ export default defineComponent({
     }
   },
   methods: {
+    getPriceTarget,
     bubbleStore,
     hideAllSlides(){
       this.product?.images.forEach((row: Image) => {

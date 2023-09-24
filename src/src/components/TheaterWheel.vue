@@ -71,7 +71,6 @@ export default defineComponent({
       }
       let rect = this.$refs.theaterDiv?.getBoundingClientRect()
       let root = document.getElementById("app").getBoundingClientRect()
-      // console.log((rect.top + rect.height)<0, (rect.top-rect.height)>window.innerHeight)
       if(
           !rect ||
           (rect.top + rect.height)<0 ||

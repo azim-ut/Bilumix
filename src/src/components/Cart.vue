@@ -266,7 +266,7 @@ h4{
   border: #404040 1px solid;
   margin: 10px 10px 20px;
   position: relative;
-  padding: 6px 5px;
+  padding: 10px 5px;
 }
 
 .field .title{

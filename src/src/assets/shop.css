@@ -12,7 +12,9 @@
   border: #949090 1px solid;
 }
 .counterBody .ttl {display: flex; vertical-align: center; align-items: center; justify-content: center;}
-.counterBody .ttl .ttlTxt{}
+.counterBody .ttl .ttlTxt{
+  white-space: nowrap;
+}
 .counterBody input{ border: none; min-height: 30px; text-align: left; }
 
 .toCart{
