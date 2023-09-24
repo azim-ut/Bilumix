@@ -1,23 +1,5 @@
 [
     {
-        "link": "light-filter",
-        "title": "Светофильтры/колпачки (пара)",
-        "short": "Светофильтры/колпачки (пара)",
-        "text": "<p>Светофильтры, которые устанавливаются на светодиодный источник света.</p><p>Желтые колпачки (для медленного отверждения и препятствующие отверждению) устанавливаются на светодиодный источник света, чтобы предотвратить полимеризацию светоотверждаемых материалов, снижая световую интенсивность.</p>",
-        "links": [
-            { "title": "Инструкция", "url": "/manual/light-cap-replacement/"}
-        ],
-        "images": [
-            { "url": "/images/static/light-filter-clear.webp", "on": true},
-            { "url": "/images/static/amber0.webp", "on": false},
-            { "url": "/images/static/Amber1.webp", "on": false},
-            { "url": "/images/static/Amber2.webp", "on": false}
-        ],
-        "price": 1268,
-        "currency": "RUB",
-        "on": false
-    },
-    {
         "link": "rechargeable-battery-gen-2",
         "title": "Аккумуляторная батарея",
         "short": "Аккумуляторная батарея",
