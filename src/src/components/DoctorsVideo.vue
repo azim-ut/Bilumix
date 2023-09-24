@@ -27,13 +27,21 @@
       <div class="circle circle1" ref="circle1"></div>
       <div class="circle circle2" ref="circle2"></div>
       <div class="centered" style="width: 100%; position: absolute; left: 0; bottom: 0; top: 0;">
-        <button class="watchVideo emphasized-button"><font-awesome-icon icon="fa-solid fa-circle-play" /> Watch Video</button>
+        <button class="watchVideo emphasized-button"
+                @click="video.show = !video.show"><font-awesome-icon icon="fa-solid fa-circle-play" /> Watch Video</button>
       </div>
     </div>
     <div class="scrollContent" ref="DoctorVideoScroll">
       &nbsp;
     </div>
   </section>
+  <Modal :name="'videoDoctor2'"
+         :show="() => video.show"
+         :close-callback="() => {video.show = false}">
+    <div class="video" v-if="video.show">
+      <video :src="video.src" preload="auto" controls="true" style="width: 100%; height: 100%;"></video>
+    </div>
+  </Modal>
 </template>
 
 <script lang="ts">
@@ -61,7 +69,7 @@ export default defineComponent({
         step: .5,
         current: 1
       },
-      video1: {
+      video: {
         show: false,
         src: '/video/intro.mp4'
       },
@@ -217,6 +225,9 @@ section{
   }
 }
 
-@media (max-width: 500px) {
+@media (min-width: 500px) {
+  .emphasized-button {
+    padding: 10px 20px;
+  }
 }
 </style>

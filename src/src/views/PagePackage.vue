@@ -128,7 +128,13 @@
             <div class="formBlock">
               <h3>{{bundles.QUANTITY}}</h3>
               <div>
-                <input class="packageQuantity" @change="updateSummary()" @keyup="updateKeyDown($event)" v-model="summary.quantity">
+                <input class="packageQuantity"
+                       type="number"
+                       min="1"
+                       max="10000"
+                       @wheel="updateSummary()"
+                       @change="updateSummary()"
+                       @keyup="updateKeyDown($event)" v-model="summary.quantity">
               </div>
             </div>
 
@@ -140,20 +146,22 @@
                 <div>BiLumix Package</div>
               </div>
               <div class="grid grid2 force summaryData">
-                <div>{{ summary.loopsTitle }}</div> <div class="right bold">{{ sumAndCurrencyPrice(summary.amount, product.currency) }}</div>
+                <div>{{ summary.loopsTitle }}</div>
+                <div class="right sum" v-if="summary.quantity>1">{{ summary.quantity }} x {{ sumAndCurrencyPrice(product.price, product.currency) }}</div>
+                <div class="right sum" v-if="summary.quantity<=1">{{ sumAndCurrencyPrice(product.price, product.currency) }}</div>
               </div>
               <div class="grid grid2 force summaryData" v-for="row in summary.filters">
                 <div>{{ row.title }}</div>
-                <div class="right bold" v-if="summary.quantity>1">{{ summary.quantity }} x
+                <div class="right sum" v-if="summary.quantity>1">{{ summary.quantity }} x
                   {{ targetPrice(row) }} =
                   {{ sumAndCurrencyPrice(row.price * summary.quantity, row.currency) }}</div>
-                <div class="right bold" v-if="summary.quantity<=1">{{ targetPrice(row) }}</div>
+                <div class="right sum" v-if="summary.quantity<=1">{{ targetPrice(row) }}</div>
+              </div>
+              <div class="grid grid2 force summaryData" v-if="false">
+                <div>{{ bundles.SUBTOTAL }}</div> <div class="right sum">{{ sumAndCurrencyPrice(summary.amount, product.currency) }}</div>
               </div>
               <div class="grid grid2 force summaryData">
-                <div>{{ bundles.SUBTOTAL }}</div> <div class="right bold">{{ sumAndCurrencyPrice(summary.amount, product.currency) }}</div>
-              </div>
-              <div class="grid grid2 force summaryData">
-                <div>{{ bundles.TOTAL }}</div> <div class="right bold">{{ sumAndCurrencyPrice(summary.amount, product.currency) }}</div>
+                <div>{{ bundles.TOTAL }}</div> <div class="right sum">{{ sumAndCurrencyPrice(summary.amount, product.currency) }}</div>
               </div>
             </div>
 
@@ -265,16 +273,18 @@ export default defineComponent({
       location.reload()
     },
     updateSummary(): void {
-      this.summary.loopsTitle = this.getSummaryWithLopes()
-      this.summary.amount = this.getSummarySum() * this.summary.quantity
-      this.summary.filtersAmount = this.getFiltersSum() * this.summary.quantity
-      this.summary.hasLoops = false
-      this.lopes().forEach((row: Product) => {
-        if(!this.summary.hasLoops && this.hasProduct(row)){
-          this.summary.hasLoops = true
-        }
-      })
-      localStorage.setItem(LOCAL_STORE_SUMMARY_NAME, JSON.stringify(this.summary))
+      if(this.summary.quantity >= 0){
+        this.summary.loopsTitle = this.getSummaryWithLopes()
+        this.summary.amount = this.getSummarySum() * this.summary.quantity
+        this.summary.filtersAmount = this.getFiltersSum() * this.summary.quantity
+        this.summary.hasLoops = false
+        this.lopes().forEach((row: Product) => {
+          if(!this.summary.hasLoops && this.hasProduct(row)){
+            this.summary.hasLoops = true
+          }
+        })
+        localStorage.setItem(LOCAL_STORE_SUMMARY_NAME, JSON.stringify(this.summary))
+      }
     },
     hasProduct(row: Product): boolean {
       if(this.product) {
@@ -464,6 +474,9 @@ hr{
   border: #ccc 1px solid;
   border-radius: 7px;
   width: -webkit-fill-available;
+}
+.sum{
+  font-weight: 500;
 }
 .summaryData{
 }
