@@ -30,7 +30,7 @@
             { "url": "/images/static/1.5_4.webp", "on": false},
             { "url": "/images/static/1.5_5.webp", "on": false}
         ],
-        "price": 10565,
+        "price": 10600,
         "currency": "RUB",
         "on": false
     },
@@ -52,7 +52,7 @@
             { "url": "/images/static/4_5998b5d8-8eeb-44b0-bdb4-de7db377b49d.webp", "on": false},
             { "url": "/images/static/5_b13301d8-a335-4095-a8bb-25cdb4b35edb.webp", "on": false}
         ],
-        "price": 68670,
+        "price": 69000,
         "currency": "RUB",
         "on": false
     },
@@ -74,7 +74,7 @@
             { "url": "/images/static/3.5x_2_72d588f4-a360-493f-892a-94cad47fa3de.webp", "on": false},
             { "url": "/images/static/3.5x_3_a603b7c1-35c4-4386-9efc-80946ddccf8f.webp", "on": false}
         ],
-        "price": 105647,
+        "price": 106000,
         "currency": "RUB",
         "on": false
     }
