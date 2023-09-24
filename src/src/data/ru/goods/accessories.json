@@ -10,7 +10,7 @@
         "images": [
             { "url": "/images/static/gen2-battery.webp", "on": true}
         ],
-        "price": 10565,
+        "price": 10600,
         "currency": "RUB",
         "on": false
     },
@@ -22,7 +22,7 @@
         "images": [
             { "url": "/images/static/gen2-battery-craddle.webp", "on": true}
         ],
-        "price": 7924,
+        "price": 7990,
         "currency": "RUB",
         "on": false
     },
@@ -30,13 +30,13 @@
         "link": "dr-kim-shadowless-headlamp-travel-bag",
         "title": "Сумка для налобного осветителя BiLumix",
         "short": "Транспортировочная сумка",
-        "text": "<h4>Транспортировочная сумка для налобного осветителя BiLumix</h4>",
+        "text": "<h4>Кейс для хранения и переноски налобного осветителя BiLumix</h4>",
         "images": [
             { "url": "/images/static/Bag1.webp", "on": true},
             { "url": "/images/static/TravelBag-2_c0e37618-f203-485d-b864-4a7252a60cac.webp", "on": false},
             { "url": "/images/static/Bag2.webp", "on": false}
         ],
-        "price": 15847,
+        "price": 15900,
         "currency": "RUB",
         "on": false
     },
@@ -56,7 +56,7 @@
             { "url": "/images/static/FS_2.webp", "on": false},
             { "url": "/images/static/ShieldBox_modified_85322ccf-3077-41ee-a231-cf53bff1dea3.webp", "on": false}
         ],
-        "price": 4015,
+        "price": 4050,
         "currency": "RUB",
         "on": false
     },
@@ -73,7 +73,7 @@
             { "url": "/images/static/cam-4.webp", "on": false},
             { "url": "/images/static/bilumix-cam-in-use.webp", "on": false}
         ],
-        "price": 475408,
+        "price": 475500,
         "currency": "RUB",
         "on": false
     }
