@@ -10,7 +10,7 @@
         "images": [
             { "url": "/images/static/lamp-handle.webp", "on": true}
         ],
-        "price": 740,
+        "price": 800,
         "currency": "RUB",
         "on": false
     },
@@ -25,7 +25,7 @@
         "images": [
             { "url": "/images/static/head-support-leaf.webp", "on": true}
         ],
-        "price": 476,
+        "price": 500,
         "currency": "RUB",
         "on": false
     },
@@ -43,7 +43,7 @@
             { "url": "/images/static/frontplate-03.webp", "on": false},
             { "url": "/images/static/frontplate-04.webp", "on": false}
         ],
-        "price": 740.00,
+        "price": 800.00,
         "currency": "RUB",
         "on": false
     },
@@ -60,7 +60,7 @@
             { "url": "/images/static/frontplate-02_a1baca66-c20e-4e71-919e-093ac5dcd788.webp", "on": false},
             { "url": "/images/static/frontplate-03_a13db675-bfd5-4e70-9274-efe5dc9d1a34.webp", "on": false}
         ],
-        "price": 2536.00,
+        "price": 2600.00,
         "currency": "RUB",
         "on": false
     }
