@@ -4,20 +4,20 @@
     "bg": "/images/static/bl-overview-01.png",
     "bgColor": "#252525",
     "sub": "Light and Sturdy",
-    "text": "!EN! No pressure or added weight on the nose. Contoured to fit snugly on the head for a comfortable wear all day long."
+    "text": "No pressure or added weight on the nose. Contoured to fit snugly on the head for a comfortable wear all day long."
   },
   {
     "title": "Shadowless",
     "bg": "/images/static/bl-overview-02.png",
     "bgColor": "#252525",
     "sub": "Dual Lights",
-    "text": "!EN!Two LED light sources deliver a strong spotlight in angles that eliminate any shadow from a first person POV."
+    "text": "Two LED light sources deliver a strong spotlight in angles that eliminate any shadow from a first person POV."
   },
   {
     "title": "Wireless",
     "bg": "/images/static/bl-overview-03.png",
     "bgColor": "#252525",
     "sub": "Two Rechargeable Batteries",
-    "text": "!EN!An enhanced power management system along with two rechargeable batteries allow you to work continuously for up to 12 hours."
+    "text": "An enhanced power management system along with two rechargeable batteries allow you to work continuously for up to 12 hours."
   }
 ]

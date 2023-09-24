@@ -10,19 +10,19 @@
     "title": "One-touch<br/>On-Off",
     "bg": "/images/static/bl-system-feature-01.png",
     "bgColor": "#252525",
-    "text": "!EN!Additional on and off switch on back to help you control your light more efficiently during your procedures."
+    "text": "Additional on and off switch on back to help you control your light more efficiently during your procedures."
   },
   {
     "title": "Power<br/>Indicator",
     "bg": "/images/static/bl-system-feature-02.png",
     "bgColor": "#252525",
-    "text": "!EN!Easy way to check battery status."
+    "text": "Easy way to check battery status."
   },
   {
     "title": "Easy<br/>Control",
     "bg": "/images/static/bl-system-feature-03.png",
     "bgColor": "#252525",
     "sub": null,
-    "text": "!EN!Easy way to check battery status."
+    "text": "Easy way to check battery status."
   }
 ]
