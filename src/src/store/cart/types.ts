@@ -1,6 +1,9 @@
+import type {Product} from "@/store/shop/types";
+
 export interface CartItem {
     url: string,
     cnt: number,
+    target: Product,
     need: any[]
 }
 

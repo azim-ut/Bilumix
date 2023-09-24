@@ -216,4 +216,14 @@ export default defineComponent({
 .framesBar div.bgDisabled{
   background: none !important;
 }
+@media (max-width: 400px) {
+
+  .framesBar{
+    position: inherit;
+    left: 0px;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+}
 </style>

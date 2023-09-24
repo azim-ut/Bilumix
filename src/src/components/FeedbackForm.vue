@@ -93,17 +93,20 @@ export default defineComponent({
   background: #fff;
   position: absolute;
   left: 10px;
-  top: -10px;
+  top: -17px;
   padding: 0 10px;
 }
 
 .feedback .field input{
+  outline: none;
   width: -webkit-fill-available;
   border: none;
+  line-height: 2rem;
 }
 
 .feedback .field textarea{
   width: auto;
+  outline: none;
   margin: 10px 5px 0;
   border: none;
   min-width: -webkit-fill-available;

@@ -33,7 +33,7 @@
         ],
         "price": 100,
         "currency": "USD",
-        "on": false
+        "on": true
     },
     {
         "link": "copy-of-headlamp-loupe",
@@ -55,7 +55,7 @@
         ],
         "price": 650,
         "currency": "USD",
-        "on": false
+        "on": true
     },
     {
         "link": "bilumix-3-5x-loupe",

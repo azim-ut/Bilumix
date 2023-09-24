@@ -4,7 +4,7 @@
         <div class="grid grid121">
           <div class="col1">
             <button class="btn" @click="close()">X</button>
-            <div>Cart</div>
+            <div>{{ shopText.CART }}</div>
           </div>
           <div class="col2">
             <div v-if="checkoutSum>0">
@@ -22,7 +22,7 @@
           <div class="cartList" v-if="hasItems()">
             <div class="product grid grid121" v-for="row in cart().list">
 
-              <div class="short" v-if="row.target && row.target.images">
+              <div class="short centered" v-if="row.target && row.target.images">
                 <div class="img" :style="{'background-image' : 'url('+row.target.images[0].url+')'}"></div>
                 <div class="cnt">
                   <span>{{row.cnt}}</span>
@@ -31,7 +31,7 @@
               <div class="title" v-if="row.target && row.target.title">
                 <div>
                   <h4>{{row.target.title}}</h4>
-                  <div class="small" v-for="n in row.need">
+                  <div class="small" v-for="n in row.target.need">
                     {{n.title}}: {{n.val}}
                   </div>
                   <div class="cntTool">
@@ -51,6 +51,7 @@
           </div>
         </div>
         <div>
+          <br/>
           <div class="field">
             <div class="title">{{ shopText.CHECKOUT_NAME }}</div>
             <input type="text" v-model="name" @keydown="setName" @change="setName" />
@@ -113,7 +114,7 @@ import type {Product} from "@/store/shop/types";
 import axios from "axios";
 import type {NamePrice} from "@/store/shop/types";
 import {getPriceAndCurrency, getPriceTarget} from "@/service/PriceService";
-import type {Cart} from "@/store/cart/types";
+import type {Cart, CartItem} from "@/store/cart/types";
 import {bubbleStore} from "@/store/bubble/bubble";
 import shopText from "@local/shop_text.json";
 import {feedbackStore} from "@/store/feedback/feedback";
@@ -145,18 +146,22 @@ export default defineComponent({
       let out: any[] = []
       let catalog = this.shopStore.getAll
       this.checkoutSum = 0
-      this.cartStore.getCart.list.forEach((row:any) => {
+      this.cartStore.getCart.list.forEach((row:CartItem) => {
         let target = row.target
         if(!target){
           catalog.forEach((cat: Product) => {
             if(cat.link === row.url){
               target = cat
+              row.target = target
+              if(row && row.need && row.target.need){
+                row.target.need = row.need
+              }
             }
           })
         }
-        row.target = target
-        this.checkoutSum += row.cnt * target.price
-        out.push(row)
+        if(row.target){
+          this.checkoutSum += row.cnt * row.target.price
+        }
       })
       this.list = out
       this.note = this.cartStore.getCart.note
@@ -191,7 +196,6 @@ export default defineComponent({
     async clear(){
       await this.cartStore.clearCart()
       this.updateItemsList()
-      this.close()
     },
     close(){
       this.updateItemsList()
@@ -246,8 +250,10 @@ export default defineComponent({
     'cartStore.isShow': {
       handler(newVal,oldValue){
         if(newVal != oldValue){
-          this.showCart = newVal
-          this.updateItemsList()
+          if(newVal){
+            this.showCart = newVal
+            this.updateItemsList()
+          }
         }
       },
       immediate: true
@@ -273,16 +279,35 @@ h4{
   background: #fff;
   position: absolute;
   left: 10px;
-  top: -10px;
+  top: -17px;
   padding: 0 10px;
 }
 
 .field input{
   width: -webkit-fill-available;
   border: none;
+  outline: none;
+  line-height: 2rem;
+}
+textarea{
+  outline: none;
 }
 .bottomRow .btn{
   padding: 10px 10px;
+}
+
+.cartList .short{
+  min-width: 200px;
+}
+
+.cartList .tool{
+  margin: auto;
+  display: flex;
+  position: absolute;
+  vertical-align: middle;
+  align-items: center;
+  right: 10px;
+  top: calc(50% - 30px);
 }
 
 .resultMsg {}
@@ -291,6 +316,14 @@ h4{
 .resultMsg.error h3 {color: #ff0000; }
 .resultMsg .text { margin: 0 auto 30px;}
 
+@media (min-width: 600px) {
+  .cartList .title{
+    width: fit-content;
+  }
+  h4{
+    width: auto;
+  }
+}
 @media (max-width: 600px) {
   .cartHead .buttons .btn{
     padding: 0 2px;

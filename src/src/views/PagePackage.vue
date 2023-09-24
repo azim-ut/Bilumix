@@ -4,7 +4,7 @@
   <div class="contentWrap">
     <div class="mainProduct grid grid181">
       <div>&nbsp;</div>
-      <div class="grid grid2" v-for="product in products()">
+      <div v-if="!result.done" class="grid grid2" v-for="product in products()">
         <div>
           <div class="photoSlider">
             <div class="display">
@@ -38,10 +38,10 @@
         </div>
 
         <div style="padding: 0 15px;">
-          <div v-if="product && product.price && summary.amount > 1">
+          <div v-if="product && product.price">
             <div>
               <h1>{{product.title}}</h1>
-              <div class="price">From {{ targetPrice(product) }}</div>
+              <div class="price">{{ bundles.FROM }} {{ targetPrice(product) }}</div>
               <div>
               <span class="pointer" @click="product.expandText = !product.expandText">
                 {{bundles.DETAILS}}
@@ -70,7 +70,7 @@
 
             <div v-if="summary.hasLoops">
               <div class="formBlock">
-                <h3>{{bundles.IPD}}</h3>
+                <h3 style="margin-bottom: 40px;">{{bundles.IPD}}</h3>
                 <Slider :min="ipd.min"
                         :max="ipd.max"
                         @update="updateSummary"
@@ -85,7 +85,7 @@
                     <input type="checkbox" @change="updateSummary" v-model="summary.wear_glass" id="subscribeNews"/></label>
                 </h3>
                 <div v-if="summary.wear_glass">
-                  <p>{{bundles.WARE_PROGRESSIVE_GLASS_YEARS}}</p>
+                  <p style="margin-bottom: 40px;">{{bundles.WARE_PROGRESSIVE_GLASS_YEARS}}</p>
                   <Slider :min="glass_wear.min"
                           :max="glass_wear.max"
                           @update="updateSummary"
@@ -142,26 +142,39 @@
 
             <div class="formBlock">
               <h3>{{bundles.SUMMARY}}</h3>
-              <div class="summaryData">
-                <div>BiLumix Package</div>
+              <div class="grid grid2 force summaryData">
+                <div>{{bundles.PACKAGE}}</div>
+                <div class="right sum" v-if="summary.quantity>1">
+                  {{ summary.quantity }} x {{ sumAndCurrencyPrice(product.price, product.currency) }}
+                </div>
+                <div class="right sum" v-if="summary.quantity<=1">{{ sumAndCurrencyPrice(product.price, product.currency) }}</div>
               </div>
               <div class="grid grid2 force summaryData">
                 <div>{{ summary.loopsTitle }}</div>
-                <div class="right sum" v-if="summary.quantity>1">{{ summary.quantity }} x {{ sumAndCurrencyPrice(product.price, product.currency) }}</div>
-                <div class="right sum" v-if="summary.quantity<=1">{{ sumAndCurrencyPrice(product.price, product.currency) }}</div>
+                <div class="right sum" v-if="summary.loopsAmount && summary.quantity>1">
+                  {{ summary.quantity }} x {{ sumAndCurrencyPrice(summary.loopsAmount, product.currency) }}
+                </div>
+                <div class="right sum" v-if="summary.loopsAmount && summary.quantity<=1">
+                  {{ sumAndCurrencyPrice(summary.loopsAmount, product.currency) }}
+                </div>
               </div>
+
               <div class="grid grid2 force summaryData" v-for="row in summary.filters">
                 <div>{{ row.title }}</div>
                 <div class="right sum" v-if="summary.quantity>1">{{ summary.quantity }} x
-                  {{ targetPrice(row) }} =
-                  {{ sumAndCurrencyPrice(row.price * summary.quantity, row.currency) }}</div>
+                  {{ targetPrice(row) }}
+                </div>
                 <div class="right sum" v-if="summary.quantity<=1">{{ targetPrice(row) }}</div>
               </div>
               <div class="grid grid2 force summaryData" v-if="false">
-                <div>{{ bundles.SUBTOTAL }}</div> <div class="right sum">{{ sumAndCurrencyPrice(summary.amount, product.currency) }}</div>
+                <div>{{ bundles.SUBTOTAL }}</div> <div class="right sum">{{
+                  sumAndCurrencyPrice(summary.total, product.currency)
+                }}</div>
               </div>
               <div class="grid grid2 force summaryData">
-                <div>{{ bundles.TOTAL }}</div> <div class="right sum">{{ sumAndCurrencyPrice(summary.amount, product.currency) }}</div>
+                <div>{{ bundles.TOTAL }}</div> <div class="right sum">{{
+                  sumAndCurrencyPrice(summary.total, product.currency)
+                }}</div>
               </div>
             </div>
 
@@ -171,9 +184,21 @@
           </div>
         </div>
       </div>
+      <div v-if="result.done">
+        <div class="doneBlock centered">
+          <div class="content center">
+              <p>{{bundles.CART_GOTO_CART_DESCR}}</p>
+              <button class="btn" @click="openCart()">{{bundles.CART_GOTO_CART}}</button>
+              <br/>
+              <p>{{bundles.OR}}</p>
+              <button class="btn nowrap" @click="newPackage()">{{bundles.NEW_PACKAGE}}</button>
+          </div>
+        </div>
+      </div>
       <div>&nbsp;</div>
 	  </div>
   </div>
+
   <Footer />
 </template>
 
@@ -195,10 +220,13 @@ import TheaterMainAuto from "@/components/TheaterMainAuto.vue";
 import shopTextBundles from "@local/shop_text.json";
 import Slider from '@vueform/slider'
 import {getPriceAndCurrency, getPriceTarget} from "@/service/PriceService";
+import Modal from "@/components/Modal.vue";
+import FeedbackForm from "@/components/FeedbackForm.vue";
 
 const LOCAL_STORE_SUMMARY_NAME = "summary"
 export default defineComponent({
   components: {
+    FeedbackForm, Modal,
     Slider,
     TheaterMainAuto,
     HeadMenu,
@@ -225,11 +253,17 @@ export default defineComponent({
         max: 25,
         def: 15
       },
+      result: {
+        done: false,
+        msg: ""
+      },
       summary: {
-        amount: 0,
-        filtersAmount: [],
+        total: 0,
+        billumixAmount: 0,
+        loopsAmount: 0,
+        filtersAmount: 0,
         loopsTitle: "",
-        quantity: 1 as number,
+        quantity: 1,
         hasLoops: false,
         filters: [] as NamePrice[],
         products: [] as string[],
@@ -240,6 +274,14 @@ export default defineComponent({
     }
   },
   methods: {
+    newPackage(){
+      window.scrollTo(0,10)
+      this.result.done = false
+    },
+    openCart(){
+      window.scrollTo(0,10)
+      this.cartStore.open()
+    },
     hideAllSlides(){
       this.product?.images.forEach((row: Image) => {
         row.on = false
@@ -258,8 +300,18 @@ export default defineComponent({
     submitSummary(): void {
       if(this.product){
         this.summary.products.forEach((link: string) => {
-          let product = this.shopStore.getItem(link)
-          this.cartStore.toCart(product.link, this.summary.quantity, null)
+          let productAdditional = this.shopStore.getItem(link)
+          if(productAdditional.need && productAdditional.need.length>0){
+            productAdditional.need.forEach(need => {
+              if(need.name === "ipd"){
+                need.val = this.summary.ipd
+              }
+              if(need.name === "glass"){
+                need.val = this.summary.glass_year
+              }
+            })
+          }
+          this.cartStore.toCart(productAdditional.link, this.summary.quantity, productAdditional.need)
         })
         this.product.ipd = this.summary.ipd
         this.product.glassYear = 0
@@ -267,17 +319,20 @@ export default defineComponent({
           this.product.glassYear = this.summary.glass_year
         }
         this.cartStore.toCart(this.product.link, this.summary.quantity, this.product)
+        localStorage.removeItem(LOCAL_STORE_SUMMARY_NAME)
+        this.result.done = true
+        // location.reload()
       }
-
-      localStorage.removeItem(LOCAL_STORE_SUMMARY_NAME)
-      location.reload()
     },
     updateSummary(): void {
-      if(this.summary.quantity >= 0){
+      this.result.done = false
+      if(this.product && this.summary.quantity >= 0){
         this.summary.loopsTitle = this.getSummaryWithLopes()
-        this.summary.amount = this.getSummarySum() * this.summary.quantity
-        this.summary.filtersAmount = this.getFiltersSum() * this.summary.quantity
+        this.summary.billumixAmount = this.product.price
+        this.summary.loopsAmount = this.getLoopsSum()
+        this.summary.filtersAmount = this.getFiltersSum()
         this.summary.hasLoops = false
+        this.summary.total = (this.summary.billumixAmount + this.summary.loopsAmount + this.summary.filtersAmount) * this.summary.quantity
         this.lopes().forEach((row: Product) => {
           if(!this.summary.hasLoops && this.hasProduct(row)){
             this.summary.hasLoops = true
@@ -291,6 +346,15 @@ export default defineComponent({
         return (this.summary.products.includes(row.link) || this.product.free.includes(row.link))
       }
       return false
+    },
+    getLoopsSum(): number {
+      let res = 0;
+      this.lopes().forEach((row: Product) => {
+        if(this.hasProduct(row)){
+          res += row.price
+        }
+      })
+      return res
     },
     getSummarySum(): number {
       let res = 0;
@@ -313,7 +377,7 @@ export default defineComponent({
         this.filters().forEach((row: Product) => {
           if(this.summary?.products.includes(row.link)){
             this.summary.filters.push({
-              title: row.short,
+              title: row.title,
               price: row.price,
               currency: row.currency
             })
@@ -333,10 +397,10 @@ export default defineComponent({
           }
         })
         if(parts.length === 1){
-          res = this.bundles.WITH + " " + parts.join(" + ") + " " + this.bundles.LOUPE;
+          res = this.bundles.WITH + " " + this.bundles.LOUPE + " (" +parts.join(", ") + ")";
         }
         if(parts.length > 1){
-          res = this.bundles.WITH + " " + parts.join(" + ") + " " + this.bundles.LOUPES;
+          res = this.bundles.WITH + " " + this.bundles.LOUPES + " (" +parts.join(", ") + ")";
         }
       }
       return res;
@@ -479,7 +543,27 @@ hr{
   font-weight: 500;
 }
 .summaryData{
+  margin-bottom: 25px;
 }
-@media (max-width: 950px) {
+
+.doneBlock{
+  min-height: 80vh;
+}
+
+.doneBlock .close{
+  position: absolute;left: 0;
+}
+.doneBlock .content{
+  background-color: white;
+  height: 250px;
+  width: 250px;
+  margin: auto;
+  border-radius: 50%;
+}
+@media (max-width: 450px) {
+  .doneBlock .content {
+    width: 100%;
+    padding: 0 5%;
+  }
 }
 </style>

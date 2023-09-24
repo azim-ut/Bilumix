@@ -172,4 +172,11 @@ export default defineComponent({
 .framesBar div.bgDisabled{
   background: none !important;
 }
+@media (max-width: 400px) {
+
+  .framesBar{
+    width: 100%;
+  }
+}
+
 </style>

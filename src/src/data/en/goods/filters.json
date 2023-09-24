@@ -8,7 +8,7 @@
             { "title": "Manual", "url": "/manual/light-cap-replacement/"}
         ],
         "images": [
-            { "url": "/images/static/light-filter-clear.webp", "on": false}
+            { "url": "/images/static/light-filter-clear.webp", "on": true}
         ],
         "price": 12,
         "currency": "USD",
@@ -23,7 +23,7 @@
             { "title": "Manual", "url": "/manual/light-cap-replacement/"}
         ],
         "images": [
-            { "url": "/images/static/amber0.webp", "on": false},
+            { "url": "/images/static/amber0.webp", "on": true},
             { "url": "/images/static/Amber1.webp", "on": false},
             { "url": "/images/static/Amber2.webp", "on": false}
         ],
