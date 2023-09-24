@@ -22,7 +22,7 @@ export const shopStore = defineStore('shop', {
     getters: {
         getMain: (state: ShopState): MainProduct[] => state.main,
         getLoupes: (state: ShopState): Product[] => state.loupes,
-        getAccessories: (state: ShopState): Product[] => state.accessories,
+        getAccessories: (state: ShopState): Product[] => [...state.filters, ...state.accessories],
         getParts: (state: ShopState): Product[] => state.parts,
         getFilters: (state: ShopState): Product[] => state.filters,
         getGeneration: (state: ShopState): Product[] => state.generation,

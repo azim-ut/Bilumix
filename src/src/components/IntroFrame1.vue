@@ -191,6 +191,8 @@ section{
   height: 60%;
   top: 15%;
   position: absolute;
+  transition: opacity 0.6s ease-out 0s, transform 1.2s linear 0s;
+  transform-origin: center center;
   transform: rotate(15deg);
   animation: animate 1.01s;
   animation-play-state: paused;
@@ -426,12 +428,15 @@ img {
 }
 
 @keyframes animate {
-  10% {
-    transform: rotate(15deg) scale(1);
+  0% {
+    transform: rotate(15deg) scale(1) translate3d(0px, 0px, 0px);
+    opacity: 1;
+  }
+  1% {
     opacity: 1;
   }
   20% {
-    transform: rotate(25deg) scale(3);
+    transform: rotate(25deg) scale(3) translate3d(0px, 0px, 0px);
     opacity: 0;
   }
   100% {

@@ -52,7 +52,7 @@
         <div></div>
       </div>
       <div class=" shopList grid grid3">
-        <div v-for="product in shopStore.accessories"
+        <div v-for="product in shopStore.getAccessories"
              :id="product.link+'ID'"
              class="product">
           <div class="productBody">
