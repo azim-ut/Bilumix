@@ -51,10 +51,14 @@
 
           <div class="block">
             <h6><a href="/legal/">{{ footerText.LEGAL }}</a></h6>
+
             <ul>
-              <li><a href="refund-policy/">{{footerText.LEGAL_REFUND_POLICY}}</a></li>
-              <li><a href="/data-privacy/">{{footerText.LEGAL_DATA_PRIVACY}}</a></li>
-              <li><a href="/terms-of-service/">{{footerText.LEGAL_TERMS_SERVICE}}</a></li>
+              <li v-if="lang==='en'"><a href="refund-policy/">{{footerText.LEGAL_REFUND_POLICY}}</a></li>
+              <li v-if="lang==='en'"><a href="/data-privacy/">{{footerText.LEGAL_DATA_PRIVACY}}</a></li>
+              <li v-if="lang==='en'"><a href="/terms-of-service/">{{footerText.LEGAL_TERMS_SERVICE}}</a></li>
+              <li v-if="lang==='ru'"><a href="/files/buklet.pdf" target="_blank">{{footerText.BUKLET}}</a></li>
+              <li v-if="lang==='ru'"><a href="/files/preview1.jpg" target="_blank">{{footerText.BROCHURE1}}</a></li>
+              <li v-if="lang==='ru'"><a href="/files/preview2.jpg" target="_blank">{{footerText.BROCHURE2}}</a></li>
             </ul>
           </div>
 
@@ -118,6 +122,7 @@ export default defineComponent({
   components: {FeedbackForm, Cart, Modal},
   data() {
     return {
+      lang: "en",
       showQuestionModal: {},
       footerText: footerText
     }
@@ -141,6 +146,7 @@ export default defineComponent({
     },
   },
   mounted () {
+    this.lang = import.meta.env.VITE_DEFAULT_LOCALE
   },
   created() {
   },

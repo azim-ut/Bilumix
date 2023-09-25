@@ -12,7 +12,7 @@
         </div>
         <div>
           <div class="text" v-html="manual.text"></div>
-          <div class="btn" @click="toManualsList">Back</div>
+          <div class="btn" @click="toManualsList">{{bundles.BACK}}</div>
         </div>
       </div>
     </div>
@@ -33,6 +33,7 @@ import HeadMenu from "@/components/HeadMenu.vue";
 import {manualStore} from "@/store/manual/manual";
 import {mapStores} from "pinia";
 import type {ManualRecord} from "@/store/manual/types";
+import bundles from "@local/manual_text.json";
 
 export default defineComponent({
   computed: {
@@ -44,6 +45,7 @@ export default defineComponent({
     IntroFrame1, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox},
   data() {
     return {
+      bundles: bundles,
       manual: {
         title: "-",
         text: "",

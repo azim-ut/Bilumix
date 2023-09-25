@@ -321,6 +321,7 @@ export default defineComponent({
         this.cartStore.toCart(this.product.link, this.summary.quantity, this.product)
         localStorage.removeItem(LOCAL_STORE_SUMMARY_NAME)
         this.result.done = true
+        window.scroll(0,0)
         // location.reload()
       }
     },
