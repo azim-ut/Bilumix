@@ -1,5 +1,5 @@
 <template>
-  <section id="IntroProduct" ref="IntroProduct" >
+  <section id="IntroProduct" ref="IntroProduct" style="min-height: 600vh;">
     <div class="scrollMarkerContent" ref="IntroProductMarker">
       &nbsp;
     </div>
@@ -38,6 +38,10 @@
         </div>
       </div>
 
+      <div class="mainBanner mainBanner3" ref="content3">
+        <DoctorsVideo :progress="$props.progress??0"/>
+      </div>
+
       <Modal :name="'video1'"
              :show="() => video1.show"
              :close-callback="() => {video1.show = false}">
@@ -46,15 +50,17 @@
         </div>
       </Modal>
     </div>
+    2
     <div class="scrollContent" ref="IntroProductScroll">
       &nbsp;
     </div>
+    <div class="contentScrollToMiss"></div>2
   </section>
 </template>
 
 <script lang="ts">
 
-import {defineComponent} from "vue"
+import {defineComponent, PropType} from "vue"
 import Theater from "@/components/Theater.vue";
 import RoundedBlackBox from "@/components/RoundedBlackBox.vue";
 import ScrollDownIndicator from "@/components/ScrollDownIndicator.vue";
@@ -64,9 +70,16 @@ import Modal from "@/components/Modal.vue";
 import mainBundles from "@local/main_text.json"
 import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
 import DoctorsVideo from "@/components/DoctorsVideo.vue";
+import TheaterWheelVideo2 from "@/components/TheaterWheelVideo2.vue";
 
 export default defineComponent({
-  components: {DoctorsVideo, TheaterMainWheel, Modal, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox, Theater},
+  components: {
+    TheaterWheelVideo2,
+    DoctorsVideo, TheaterMainWheel, Modal, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox, Theater},
+  props: {
+    progress: 0 as PropType<number>,
+    screenH: 0 as PropType<number>
+  },
   data() {
     return {
       mainBundles: mainBundles,
@@ -92,54 +105,41 @@ export default defineComponent({
     loadedEvent(){
       this.loaded = true
     },
-    onWheel(event: any): void {
-      this.scroll.event = event
-      let rect = this.$refs.IntroProductMarker?.getBoundingClientRect()
-      if(!rect){
-        return
-      }
-      let plane = this.$refs.IntroProductScroll?.getBoundingClientRect()
-      let pos = rect.y * -1
-      let progress = Math.floor(pos/plane.height * 100)
-      if(progress>this.animation.max){
-          progress = this.animation.max
-          return
-      }
-      if(progress<this.animation.min){
-          progress = this.animation.min
-        	return
-      }
-
-      this.animation.current = progress
-      this.calcAnimationWheel()
-		},
     calcAnimationWheel(): void {
-      let val = -1/this.animation.max * this.animation.current
+      let val = -1/this.animation.max * this.$props.progress??0
+
       this.$refs.visibleContent.style.setProperty('--delay', (val) + 's')
       this.$refs.device.style.setProperty('--delay', (val) + 's')
       this.$refs.content1.style.setProperty('--delay', (val) + 's')
       this.$refs.content2.style.setProperty('--delay', (val) + 's')
       this.$refs.content2content.style.setProperty('--delay', (val) + 's')
+      this.$refs.content3.style.setProperty('--delay', (val) + 's')
 		},
   },
   unmounted () {
     window.removeEventListener('load', this.loadedEvent);
-    let container = document.getElementById('IntroProduct');
-    if(container){
-      window.removeEventListener('scroll', this.onWheel)
-      window.removeEventListener('wheel', this.onWheel)
-      window.removeEventListener('touchmove', this.onWheel)
-      window.removeEventListener('mousewheel', this.onWheel)
-    }
   },
   mounted(){
     window.addEventListener('load', this.loadedEvent);
-    let container = document.getElementById('IntroProduct');
-    if(container) {
-      window.addEventListener('scroll', this.onWheel)
-      window.addEventListener('wheel', this.onWheel)
-      window.addEventListener('touchmove', this.onWheel)
-      window.addEventListener('mousewheel', this.onWheel)
+  },
+  watch:{
+    progress: function(newVal, oldVal) { // watch it)
+      if(newVal != oldVal){
+        let rect = this.$refs.IntroProduct?.getBoundingClientRect()
+        if(!rect){
+          return
+        }
+        let screenY = (newVal * this.$props.screenH)/100
+
+        let posY = screenY - rect.y
+        let min = rect.y
+        let max = rect.y + rect.height
+
+        console.log((posY/(max - min) * 100), "%")
+
+        this.animation.current =
+        this.calcAnimationWheel()
+      }
     }
   }
 })
@@ -153,7 +153,7 @@ section{
   height: auto !important;
 }
 #IntroProduct{
-  position: relative;
+  position: fixed;
   overflow: scroll;
 }
 #IntroProduct .visibleContent{
@@ -278,6 +278,7 @@ section{
   animation-delay: var(--delay);
   overflow: hidden;
   margin: auto;
+  top:0;
 }
 .mainBanner3{
   background: #fff no-repeat left center/cover;
@@ -289,12 +290,13 @@ section{
   height: 100%;
   clip-path: circle(10px at center);
   position: absolute;
-  opacity: 0;
-  animation: content2Animation 1.01s;
+  animation: content3Animation 1.01s;
   animation-play-state: paused;
   animation-delay: var(--delay);
   overflow: hidden;
   margin: auto;
+  z-index: 111;
+  top:0;
 }
 .mainBanner2 h1{
   font-weight: 600;
@@ -371,24 +373,46 @@ img {
     clip-path: circle(1px at center);
     opacity: 0;
   }
-  22% {
+  12% {
     background-position: left center;
     opacity: 0;
   }
-  25% {
+  13% {
     clip-path: circle(2px at center);
     opacity: 1;
   }
-  70% {
+  20% {
     clip-path: circle(3000px at center);
   }
-  85% {
+  35% {
     background-size: contain;
     background-position: -250px center;
     opacity: 1;
   }
-  100% {
+  40% {
     clip-path: circle(3000px at center);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes content3Animation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  51% {
+    clip-path: circle(1px at center);
+    opacity: 1;
+  }
+  95% {
+    clip-path: circle(10000px at center);
+    opacity: 1;
+  }
+  100% {
     opacity: 1;
   }
 }

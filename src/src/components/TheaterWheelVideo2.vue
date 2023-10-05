@@ -34,6 +34,7 @@ export default defineComponent({
     test: false,
     height: 500,
     bgMode: "cover",
+    progress: 0,
     scrollEvent: undefined
   },
   data() {
@@ -56,7 +57,42 @@ export default defineComponent({
     }
   },
   methods: {
-    handleWheel(event: any): void{
+    progressUpdate(progress: number): void{
+      let rect = this.$refs.theaterDiv?.getBoundingClientRect()
+      let min = 1
+      let max = this.video.frames.length
+      let pos = progress/100 * max
+      this.reel.current = Math.floor(pos)
+      if(this.reel.lastPos === undefined){
+        this.reel.lastPos = rect.top
+      }
+      if(this.video.frames[this.reel.current] && this.video.loaded.includes(this.reel.current)){
+        this.theaterDivIndex = this.reel.current
+      }
+
+      for(let i = this.reel.current-5; i<this.reel.current+5; i++){
+        if(i>=0 && i<this.video.frames.length && !this.video.loaded.includes(i)){
+          this.video.loaded.push(i)
+        }
+      }
+    },
+    updateScreen(frameTarget: number): void{
+      let rect = this.$refs.theaterDiv?.getBoundingClientRect()
+      this.reel.current = Math.round(frameTarget)
+      if(this.reel.lastPos === undefined){
+        this.reel.lastPos = rect.top
+      }
+      if(this.video.frames[this.reel.current] && this.video.loaded.includes(this.reel.current)){
+        this.theaterDivIndex = this.reel.current
+      }
+
+      for(let i = this.reel.current-5; i<this.reel.current+5; i++){
+        if(i>=0 && i<this.video.frames.length && !this.video.loaded.includes(i)){
+          this.video.loaded.push(i)
+        }
+      }
+    },
+    handleWheel(): void{
       if(!this.$refs.theaterDiv){
         return;
       }
@@ -71,19 +107,7 @@ export default defineComponent({
       ){
         return;
       }
-      this.reel.current = Math.round(frameTarget)
-      if(this.reel.lastPos === undefined){
-        this.reel.lastPos = rect.top
-      }
-      if(this.video.frames[this.reel.current] && this.video.loaded.includes(this.reel.current)){
-        this.theaterDivIndex = this.reel.current
-      }
-
-      for(let i = this.reel.current-5; i<this.reel.current+5; i++){
-        if(i>=0 && i<this.video.frames.length && !this.video.loaded.includes(i)){
-          this.video.loaded.push(i)
-        }
-      }
+      this.updateScreen(frameTarget)
     },
     fillVideoFrames(){
       this.video.frames = []
@@ -114,19 +138,26 @@ export default defineComponent({
     }
   },
   watch: {
+    progress: function(newVal, oldVal) { // watch it
+      if(newVal != oldVal){
+        this.progressUpdate(newVal)
+      }
+    },
     scrollEvent: function(newVal, oldVal) {
-      this.handleWheel(newVal)
+      if(newVal != oldVal && newVal) {
+        this.handleWheel()
+      }
     }
   },
   unmounted () {
     let container = document.getElementById('TheaterWheel' + this.$props.name);
     // window.removeEventListener('scroll', this.handleWheel);
-    window.removeEventListener('load', this.loadedEvent);
+    // window.removeEventListener('load', this.loadedEvent);
   },
   mounted(){
     this.reel.max = this.video.frames.length
     let container = document.getElementById('TheaterWheel' + this.$props.name);
-    window.addEventListener('load', this.loadedEvent);
+    // window.addEventListener('load', this.loadedEvent);
     setTimeout(this.autoUploadFrames, 150)
     this.fillVideoFrames()
   }

@@ -13,7 +13,6 @@ export default defineConfig(({ command, mode }) => {
     langTemp = base.split("\/")[1]
   }
   const lang = langTemp
-  console.log(lang, base)
   return {
     base: base,
     plugins: [

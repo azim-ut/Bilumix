@@ -3,7 +3,12 @@
   <HeadMenu :key="$route.path" />
   <div class="content" style="margin-top: 80px; position: relative;">
     <ScrollDownIndicator />
-    <IntroFrame1 />
+    <IntroFrame1 :progress="scroll.progress"
+                 :screenH="this.screenHeight"/>
+
+    <div style="position:relative; height: 900vh; background: transparent;">
+    </div>
+
     <div class="textBlocksPanelWrap centered min80h">
       <div style="min-width: 100%;">
         <div class="textBlocksPanel textBlocksPanel1 grid grid3 ">
@@ -18,6 +23,8 @@
       </div>
     </div>
 
+    <div style="position:relative; height: 0vh; background: transparent;">
+    </div>
 
     <div class="textBlocksPanelWrap centered" style="margin: 0 !important; padding: 0 !important; background-color: #151515;">
       <div class="textBlocksPanel textBlocksPanel2 grid grid2" style="height: 1%; padding-top: 200px;">
@@ -31,8 +38,7 @@
         ></RoundedBlackBox2>
       </div>
     </div>
-    <div style="position:relative; background: white;">
-      <DoctorsVideo />
+    <div style="position:relative; height: 400vh; background: transparent;">
     </div>
 
 
@@ -118,6 +124,7 @@ export default defineComponent({
   data() {
     return {
       loaded: false,
+      screenHeight: 0,
       video2: {
         show: false,
         src: '/video/bilumix-gen2-cm-long-720.mp4'
@@ -127,6 +134,7 @@ export default defineComponent({
       shortTextBlocks2: block2,
       shortTextBlocks3: block3,
       scroll: {
+        progress: 0,
         event: undefined
       },
       productTheater: {
@@ -144,6 +152,12 @@ export default defineComponent({
     loadedEvent(){
       this.loaded = true
     },
+    onWheel(event: any): void {
+      this.scroll.event = event
+      let plane = this.$refs.IntroProductScroll?.getBoundingClientRect()
+      this.screenHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
+      this.scroll.progress = Math.floor(window.scrollY/this.screenHeight * 100)
+    },
     fillTheaterFrames(){
       this.productTheater.frames = []
       let cnt = 279;
@@ -157,16 +171,16 @@ export default defineComponent({
         // let path = require(src)
         this.productTheater.frames.unshift(new URL(src, import.meta.url))
       }
-    }
+    },
   },
   unmounted () {
-    window.removeEventListener('scroll', this.handleScroll);
-    window.removeEventListener('mousewheel', this.handleScroll);
+    window.removeEventListener('scroll', this.onWheel);
+    window.removeEventListener('mousewheel', this.onWheel);
     window.removeEventListener('load', this.loadedEvent);
   },
   mounted(){
-    window.addEventListener('scroll', this.handleScroll);
-    window.addEventListener('mousewheel', this.handleScroll);
+    window.addEventListener('scroll', this.onWheel);
+    window.addEventListener('mousewheel', this.onWheel);
     window.addEventListener('load', this.loadedEvent);
     // this.fillTheaterFrames()
     // this.fillVideoTheaterFrames()
@@ -238,9 +252,8 @@ export default defineComponent({
   text-align: center;
   background: black;
   color: white;
-  min-height: 50vh;
   display: flex;
-  padding: 5%;
+  padding: 10%;
   justify-content: center;
   vertical-align: middle;
   align-items: center;
@@ -267,17 +280,6 @@ export default defineComponent({
   width: 100%;
   min-width: 270px;
   max-width: 1280px;
-}
-.watchVideo{
-  font-size: 1.5vw;
-  padding: 1% 2%;
-}
-.mobileOnly{
-  display: none;
-  z-index: 2;
-  position: relative;
-  overflow: hidden;
-  background: white;
 }
 @media (max-width: 850px) {
   .textBlocksPanelWrap{

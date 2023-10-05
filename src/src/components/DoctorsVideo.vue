@@ -1,17 +1,18 @@
 <template>
   <section id="DoctorsVideo" ref="DoctorsVideo" >
+    <span style="background: yellow; color: black;">{{$props.progress}}</span>
     <div class="scrollMarkerContent" ref="DoctorsVideoMarker">
       &nbsp;
     </div>
 
-    <div class="videoBlock grid grid2">
+    <div class="videoBlock grid grid2 force">
       <TheaterWheelVideo1
           class="video1"
           :name="'video1'"
           :test="true"
           :bg-mode="'cover'"
           :style="{'background':'#000'}"
-          :scroll-event="scroll.event"
+          :progress="video.progress"
           :height="500">
       </TheaterWheelVideo1>
 
@@ -19,7 +20,7 @@
           class="video2"
           :bg-mode="'cover'"
           :style="{'background':'#000'}"
-          :scroll-event="scroll.event"
+          :progress="video.progress"
           :height="500"
           :name="'video2'"
           :test="false">
@@ -28,7 +29,9 @@
       <div class="circle circle2" ref="circle2"></div>
       <div class="centered" style="width: 100%; position: absolute; left: 0; bottom: 0; top: 0;">
         <button class="watchVideo emphasized-button"
-                @click="video.show = !video.show"><font-awesome-icon icon="fa-solid fa-circle-play" /> Watch Video</button>
+                @click="video.show = !video.show"><font-awesome-icon icon="fa-solid fa-circle-play" />
+          Watch Video -{{$props.progress}}-
+        </button>
       </div>
     </div>
     <div class="scrollContent" ref="DoctorVideoScroll">
@@ -46,7 +49,7 @@
 
 <script lang="ts">
 
-import {defineComponent} from "vue"
+import {defineComponent, PropType} from "vue"
 import {RouterView} from "vue-router";
 import Modal from "@/components/Modal.vue";
 import mainBundles from "@local/main_text.json"
@@ -55,6 +58,9 @@ import TheaterWheelVideo1 from "@/components/TheaterWheelVideo1.vue";
 
 export default defineComponent({
   components: {TheaterWheelVideo1, Modal, RouterView, TheaterWheelVideo2},
+  props: {
+    progress: 0 as PropType<number>
+  },
   data() {
     return {
       mainBundles: mainBundles,
@@ -70,6 +76,7 @@ export default defineComponent({
         current: 1
       },
       video: {
+        progress: 0,
         show: false,
         src: '/video/intro.mp4'
       },
@@ -101,11 +108,13 @@ export default defineComponent({
         	return
       }
 
-      this.animation.current = progress
+      this.animation.current = this.$props.progress
       this.calcAnimationWheel()
 		},
     calcAnimationWheel(): void {
-      let val = -1/this.animation.max * this.animation.current
+      this.animation.current = this.$props.progress
+      let val = (this.animation.max * this.animation.current??1)/100
+      this.video.progress = (((this.$props.progress - 50)/50) * 100)??0;
       this.$refs.circle1.style?.setProperty('--delay', (val) + 's')
       this.$refs.circle2.style?.setProperty('--delay', (val) + 's')
 		},
@@ -128,6 +137,13 @@ export default defineComponent({
       window.addEventListener('wheel', this.onWheel)
       window.addEventListener('touchmove', this.onWheel)
       window.addEventListener('mousewheel', this.onWheel)
+    }
+  },
+  watch:{
+    progress: function(newVal, oldVal) { // watch it
+      if(newVal != oldVal){
+        this.calcAnimationWheel()
+      }
     }
   }
 })
