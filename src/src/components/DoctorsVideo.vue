@@ -114,7 +114,9 @@ export default defineComponent({
     calcAnimationWheel(): void {
       this.animation.current = this.$props.progress
       let val = (this.animation.max * this.animation.current??1)/100
-      this.video.progress = (((this.$props.progress - 50)/50) * 100)??0;
+      let progressStart = 60
+      let progressEnd = 80
+      this.video.progress = (((this.$props.progress - progressStart)/(progressEnd - progressStart)) * 100)??0;
       this.$refs.circle1.style?.setProperty('--delay', (val) + 's')
       this.$refs.circle2.style?.setProperty('--delay', (val) + 's')
 		},

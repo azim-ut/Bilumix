@@ -270,7 +270,7 @@ section{
   justify-content: center;
   width: 100%;
   height: 100%;
-  clip-path: circle(10px at center);
+  clip-path: circle(0px at center);
   position: absolute;
   opacity: 0;
   animation: content2Animation 1.01s;
@@ -288,7 +288,7 @@ section{
   justify-content: center;
   width: 100%;
   height: 100%;
-  clip-path: circle(10px at center);
+  clip-path: circle(0px at center);
   position: absolute;
   animation: content3Animation 1.01s;
   animation-play-state: paused;
@@ -370,7 +370,7 @@ img {
 }
 @keyframes content2Animation {
   0% {
-    clip-path: circle(1px at center);
+    clip-path: circle(0px at center);
     opacity: 0;
   }
   12% {
@@ -378,7 +378,7 @@ img {
     opacity: 0;
   }
   13% {
-    clip-path: circle(2px at center);
+    clip-path: circle(0px at center);
     opacity: 1;
   }
   20% {
@@ -405,7 +405,7 @@ img {
     opacity: 0;
   }
   51% {
-    clip-path: circle(1px at center);
+    clip-path: circle(0px at center);
     opacity: 1;
   }
   95% {
@@ -576,7 +576,7 @@ img {
   @keyframes content2Animation {
 
     0% {
-      clip-path: circle(1px at center);
+      clip-path: circle(0px at center);
       opacity: 1;
       display: block;
       z-index: 100000;
@@ -586,7 +586,7 @@ img {
       display: block;
     }
     25% {
-      clip-path: circle(2px at center);
+      clip-path: circle(0px at center);
       display: block;
       opacity: 1;
       background-position: -350px center;
