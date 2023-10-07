@@ -46,7 +46,7 @@
              :show="() => video1.show"
              :close-callback="() => {video1.show = false}">
         <div class="video" v-if="video1.show">
-          <video :src="video1.src" preload="auto" controls="true" style="width: 100%; height: 100%;"></video>
+          <video :src="video1.src" autoplay preload="auto" controls="true" style="width: 100%; height: 100%;"></video>
         </div>
       </Modal>
     </div>

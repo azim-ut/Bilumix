@@ -7,7 +7,7 @@
       <div class="grid grid2">
         <div>
           <div class="video">
-            <video :src="manual.video" preload="auto" controls="" style="width: 100%; height: 100%;"></video>
+            <video :src="manual.video" autoplay preload="auto" controls="" style="width: 100%; height: 100%;"></video>
           </div>
         </div>
         <div>

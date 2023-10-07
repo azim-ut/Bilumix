@@ -77,7 +77,7 @@
            :show="() => video2.show"
            :close-callback="() => {video2.show = false}">
       <div class="video" v-if="video2.show">
-        <video :src="video2.src" preload="auto" controls="true" style="width: 100%; height: 100%;"></video>
+        <video :src="video2.src" autoplay preload="auto" controls="true" style="width: 100%; height: 100%;"></video>
       </div>
     </Modal>
   </div>
@@ -253,13 +253,14 @@ export default defineComponent({
   background: black;
   color: white;
   display: flex;
-  padding: 10%;
+  padding: 5% 10%;
   justify-content: center;
   vertical-align: middle;
   align-items: center;
 }
 .specialOffers h1{
   margin: auto;
+  padding: 0;
   letter-spacing: normal;
   color: #fff;
   font-weight: 500;

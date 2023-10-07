@@ -85,7 +85,7 @@ export default defineComponent({
   background: #199ddc;
   text-align: center;
   display: flex;
-  padding: 10%;
+  padding: 5% 10%;
   justify-content: center;
   vertical-align: middle;
   align-items: center;
@@ -160,6 +160,7 @@ export default defineComponent({
   letter-spacing: normal;
   color: #fff;
   font-weight: 500;
+  padding: 0;
 }
 @media (max-width: 850px) {
   .stayUpdate h1{
