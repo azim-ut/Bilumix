@@ -282,7 +282,7 @@ export default defineComponent({
 }
 
 .contentWrap .promo{
-  min-height: 95vh;
+  min-height: 75vh;
   margin-bottom: 50px;
   display: flex;
   vertical-align: middle;
