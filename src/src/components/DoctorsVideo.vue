@@ -30,7 +30,7 @@
       <div class="centered" style="width: 100%; position: absolute; left: 0; bottom: 0; top: 0;">
         <button class="watchVideo emphasized-button"
                 @click="video.show = !video.show"><font-awesome-icon icon="fa-solid fa-circle-play" />
-          Watch Video
+          {{mainBundles.TO_VIDEO}}
         </button>
       </div>
     </div>

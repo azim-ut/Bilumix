@@ -137,7 +137,7 @@ export default defineComponent({
 
         console.log((posY/(max - min) * 100), "%")
 
-        this.animation.current = this.$props.screenH
+        this.animation.current =
         this.calcAnimationWheel()
       }
     }
@@ -164,7 +164,7 @@ section{
   bottom: 0;
   z-index: 1;
   min-height: 100vh;
-  background: #fff;
+  background: #151515;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -263,7 +263,7 @@ section{
 }
 
 .mainBanner2{
-  background: #000 no-repeat left center/cover;
+  background: #fff no-repeat left center/cover;
   display: flex;
   align-items: center;
   vertical-align: middle;
@@ -347,10 +347,10 @@ img {
     opacity: 1;
   }
   85% {
-    opacity: 0;
+    opacity: 1;
   }
   100% {
-    opacity: 0;
+    opacity: 1;
   }
 }
 
@@ -391,10 +391,10 @@ img {
   }
   40% {
     clip-path: circle(3000px at center);
-    opacity: 0;
+    opacity: 1;
   }
   100% {
-    opacity: 0;
+    opacity: 1;
   }
 }
 @keyframes content3Animation {

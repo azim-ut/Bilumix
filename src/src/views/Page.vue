@@ -27,7 +27,7 @@
     </div>
 
     <div class="textBlocksPanelWrap centered" style="margin: 0 !important; padding: 0 !important; background-color: #151515;">
-      <div class="textBlocksPanel textBlocksPanel2 grid grid2" style="height: 1%; padding-top: 200px;">
+      <div class="textBlocksPanel textBlocksPanel2 grid grid2" style="height: 1%;">
         <RoundedBlackBox2 v-for="row in shortTextBlocks2"
                          :bg="row.bg"
                          :margin="'10px'"
