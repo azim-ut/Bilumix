@@ -50,7 +50,7 @@
         </div>
       </Modal>
     </div>
-    2
+
     <div class="scrollContent" ref="IntroProductScroll">
       &nbsp;
     </div>
