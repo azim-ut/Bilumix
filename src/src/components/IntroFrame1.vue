@@ -137,7 +137,7 @@ export default defineComponent({
 
         console.log((posY/(max - min) * 100), "%")
 
-        this.animation.current =
+        this.animation.current = this.$props.screenH
         this.calcAnimationWheel()
       }
     }
@@ -164,7 +164,7 @@ section{
   bottom: 0;
   z-index: 1;
   min-height: 100vh;
-  background: #151515;
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -263,7 +263,7 @@ section{
 }
 
 .mainBanner2{
-  background: #fff no-repeat left center/cover;
+  background: #000 no-repeat left center/cover;
   display: flex;
   align-items: center;
   vertical-align: middle;
