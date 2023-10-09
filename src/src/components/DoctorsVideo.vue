@@ -1,5 +1,5 @@
 <template>
-  <section id="DoctorsVideo" ref="DoctorsVideo" >
+  <section id="DoctorsVideo" ref="DoctorsVideo" >11
     <span style="background: yellow; color: black;">{{$props.progress}}</span>
     <div class="scrollMarkerContent" ref="DoctorsVideoMarker">
       &nbsp;
@@ -12,7 +12,7 @@
           :test="true"
           :bg-mode="'cover'"
           :style="{'background':'#000'}"
-          :progress="video.progress"
+          :progress="$props.progress"
           :height="500">
       </TheaterWheelVideo1>
 
@@ -20,7 +20,7 @@
           class="video2"
           :bg-mode="'cover'"
           :style="{'background':'#000'}"
-          :progress="video.progress"
+          :progress="$props.progress"
           :height="500"
           :name="'video2'"
           :test="false">
@@ -114,8 +114,8 @@ export default defineComponent({
     calcAnimationWheel(): void {
       this.animation.current = this.$props.progress
       let val = (this.animation.max * this.animation.current??1)/100
-      let progressStart = 60
-      let progressEnd = 80
+      let progressStart = 70
+      let progressEnd = 85
       this.video.progress = (((this.$props.progress - progressStart)/(progressEnd - progressStart)) * 100)??0;
       this.$refs.circle1.style?.setProperty('--delay', (val) + 's')
       this.$refs.circle2.style?.setProperty('--delay', (val) + 's')
@@ -125,20 +125,20 @@ export default defineComponent({
     window.removeEventListener('load', this.loadedEvent);
     let container = document.getElementById('DoctorsVideo');
     if(container){
-      window.removeEventListener('scroll', this.onWheel)
-      window.removeEventListener('wheel', this.onWheel)
-      window.removeEventListener('touchmove', this.onWheel)
-      window.removeEventListener('mousewheel', this.onWheel)
+      // window.removeEventListener('scroll', this.onWheel)
+      // window.removeEventListener('wheel', this.onWheel)
+      // window.removeEventListener('touchmove', this.onWheel)
+      // window.removeEventListener('mousewheel', this.onWheel)
     }
   },
   mounted(){
     window.addEventListener('load', this.loadedEvent);
     let container = document.getElementById('DoctorsVideo');
     if(container) {
-      window.addEventListener('scroll', this.onWheel)
-      window.addEventListener('wheel', this.onWheel)
-      window.addEventListener('touchmove', this.onWheel)
-      window.addEventListener('mousewheel', this.onWheel)
+      // window.addEventListener('scroll', this.onWheel)
+      // window.addEventListener('wheel', this.onWheel)
+      // window.addEventListener('touchmove', this.onWheel)
+      // window.addEventListener('mousewheel', this.onWheel)
     }
   },
   watch:{

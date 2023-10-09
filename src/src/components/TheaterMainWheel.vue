@@ -35,7 +35,9 @@ export default defineComponent({
     height: '500px',
     bgMode: "cover",
     frames: [] as any[],
-    pos: 1 as number
+    from: 0 as number,
+    to: 0 as number,
+    progress: 0 as number
   },
   data() {
     return {
@@ -52,8 +54,12 @@ export default defineComponent({
   },
   methods: {
     playVideo(progress: number): void{
-      if(progress){
-        let val = Math.round(this.cnt/70 * progress)
+      if(progress >= 0 && (progress >= this.$props.from && progress <= this.$props.to)){
+        let innerProgress = Math.floor(progress / this.$props.to - this.$props.from) * 100
+        console.log(progress, innerProgress)
+        let frame = innerProgress * 100 / this.cnt
+        let val = Math.floor(frame)
+        console.log(val)
         if(val <= this.cnt && this.video.loaded.includes(val)){
           this.video.current = val
         }
@@ -75,6 +81,10 @@ export default defineComponent({
         this.video.frames.unshift(path)
       }
     },
+    onWheel(event: any){
+      // console.log(this.$refs.theaterDiv.scrollY)
+      // this.playVideo(this.video.current)
+    },
     autoUploadFrames(){
       if(this.video && this.video.loaded.length !== this.video.frames.length){
         let max = 5
@@ -87,17 +97,21 @@ export default defineComponent({
       }
     }
   },
-  watch: {
-    pos: function(newVal, oldVal) {
-      if(newVal !== oldVal){
+  unmounted () {
+    // window.removeEventListener('scroll', this.onWheel);
+    // window.removeEventListener('mousewheel', this.onWheel);
+    clearTimeout(this.timer)
+  },
+  watch:{
+    progress: function(newVal, oldVal) { // watch it
+      if(newVal != oldVal){
         this.playVideo(newVal)
       }
     }
   },
-  unmounted () {
-    clearTimeout(this.timer)
-  },
   async mounted(){
+    // window.addEventListener('scroll', this.onWheel);
+    // window.addEventListener('mousewheel', this.onWheel);
     setTimeout(this.autoUploadFrames, 50)
     await this.fillVideoFrames()
     this.playVideo(0)

@@ -1,12 +1,12 @@
 <template>
-  <section id="IntroProduct" ref="IntroProduct" style="min-height: 600vh;">
+  <section id="IntroProduct" ref="IntroProduct" style="min-height: 600vh; background: white;">
     <div class="scrollMarkerContent" ref="IntroProductMarker">
       &nbsp;
     </div>
-    <div ref="visibleContent"
-         id="visibleContent" class="visibleContent">
+    <div id="visibleContent" class="visibleContent">
 
-      <div class="mainBanner mainBanner1" ref="content1">
+      <div class="mainBanner mainBanner1" ref="content1" v-if="blocks[0].on">
+        <div class="bg"></div>
         <div class="front-image" ref="device"></div>
         <div class="content">
           <h1>BiLumix </h1>
@@ -15,7 +15,7 @@
         </div>
       </div>
 
-      <div class="mainBanner mainBanner2" ref="content2">
+      <div class="mainBanner mainBanner2"  ref="content2" v-if="blocks[1].on">
         <div class="content2Wrap">
           <TheaterMainWheel
               class="video1"
@@ -23,7 +23,9 @@
               :test="true"
               :bg-mode="'cover'"
               :style="{}"
-              :pos="animation.current"
+              :progress="blocks[1].progress"
+              :from="0"
+              :to="60"
               :height="'100vh'">
           </TheaterMainWheel>
 
@@ -38,8 +40,9 @@
         </div>
       </div>
 
-      <div class="mainBanner mainBanner3" ref="content3">
-        <DoctorsVideo :progress="$props.progress??0"/>
+      <div class="mainBanner mainBanner3" ref="content3" v-if="blocks[2].on">
+        <span style="color: black">111</span>
+        <DoctorsVideo :progress="blocks[2].progress"/>
       </div>
 
       <Modal :name="'video1'"
@@ -86,12 +89,35 @@ export default defineComponent({
       scroll: {
         event: null
       },
+      blocks: [
+        {
+          on: true,
+          from: 0,
+          to: 12,
+          progress: 1,
+          refs: [ 'content1', 'device' ]
+        },
+        {
+          on: false,
+          from: 10,
+          to: 20,
+          progress: 1,
+          refs: [ 'content2', 'content2content' ]
+        },
+        {
+          on: false,
+          from: 20,
+          to: 80,
+          progress: 1,
+          refs: [ 'content3' ]
+        }
+      ],
       animation: {
         lastY: 0,
         temp: 0,
         min: 0,
         max: 100,
-        step: .5,
+        step: .01,
         current: 1
       },
       video1: {
@@ -102,25 +128,54 @@ export default defineComponent({
     }
   },
   methods: {
-    loadedEvent(){
-      this.loaded = true
-    },
-    calcAnimationWheel(): void {
-      let val = -1/this.animation.max * this.$props.progress??0
+    onWheel(event: any): void {
+      this.scroll.event = event
 
-      this.$refs.visibleContent.style.setProperty('--delay', (val) + 's')
-      this.$refs.device.style.setProperty('--delay', (val) + 's')
-      this.$refs.content1.style.setProperty('--delay', (val) + 's')
-      this.$refs.content2.style.setProperty('--delay', (val) + 's')
-      this.$refs.content2content.style.setProperty('--delay', (val) + 's')
-      this.$refs.content3.style.setProperty('--delay', (val) + 's')
-		},
+      this.blocks
+          .forEach((row: any) => { row.on = row.from <= this.$props.progress && row.to >= this.$props.progress})
+
+      this.blocks
+          .filter((row: any) => row.on)
+          .find((animation: any) => {
+            let minProgress = animation.from * this.$props.screenH / 100
+            let maxProgress = animation.to * this.$props.screenH / 100
+            // console.log(minProgress, maxProgress, window.scrollY)
+            let progress = Math.floor((window.scrollY - minProgress) / (maxProgress - minProgress) * 100)
+            if(progress<0 || progress>100){
+              return;
+            }
+            animation.progress = progress
+            let val = Math.floor(window.scrollY/maxProgress * animation.progress*100) / -10000
+            // console.log("Global %:", this.$props.progress??0, "Block %", animation.progress, "delay:", val)
+            animation.refs.forEach((ref: any) => {
+              this.calcAnimationWheel(ref, val)
+            })
+          })
+    },
+    calcAnimationWheel(ref: any, val: number): void {
+      if(this.$refs[ref]){
+        this.$refs[ref].style.setProperty('--delay', (val) + 's')
+      }
+    },
   },
   unmounted () {
-    window.removeEventListener('load', this.loadedEvent);
+    window.removeEventListener('scroll', this.onWheel);
+    let container = document.getElementById('IntroProduct');
+    if(container){
+      window.removeEventListener('scroll', this.onWheel)
+      window.removeEventListener('wheel', this.onWheel)
+      window.removeEventListener('touchmove', this.onWheel)
+      window.removeEventListener('mousewheel', this.onWheel)
+    }
   },
   mounted(){
-    window.addEventListener('load', this.loadedEvent);
+    let container = document.getElementById('IntroProduct');
+    if(container) {
+      window.addEventListener('scroll', this.onWheel)
+      window.addEventListener('wheel', this.onWheel)
+      window.addEventListener('touchmove', this.onWheel)
+      window.addEventListener('mousewheel', this.onWheel)
+    }
   },
   watch:{
     progress: function(newVal, oldVal) { // watch it)
@@ -135,10 +190,9 @@ export default defineComponent({
         let min = rect.y
         let max = rect.y + rect.height
 
-        console.log((posY/(max - min) * 100), "%")
 
-        this.animation.current =
-        this.calcAnimationWheel()
+        // this.animation.current =
+        // this.calcAnimationWheel()
       }
     }
   }
@@ -164,14 +218,11 @@ section{
   bottom: 0;
   z-index: 1;
   min-height: 100vh;
-  background: #151515;
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   vertical-align: middle;
-  animation: bgAnimati0n 1.01s;
-  animation-play-state: paused;
-  animation-delay: var(--delay);
 }
 #IntroProduct .scrollContent{
   position: relative;
@@ -204,6 +255,14 @@ section{
   animation-play-state: paused;
   animation-delay: var(--delay);
   display: contents;
+  background: black !important;
+  top: 0; bottom: 0; right: 0; left: 0;
+}
+
+.mainBanner1 .bg{
+  display: block;
+  position: absolute;
+  background: #151515 !important;
   top: 0; bottom: 0; right: 0; left: 0;
 }
 
@@ -228,7 +287,6 @@ section{
   text-align: center;
 }
 .mainBanner1 .content{
-  z-index: 2;
   text-align: center;
   animation: content1AnimationContent 1.01s;
   animation-play-state: paused;
@@ -326,15 +384,8 @@ img {
     transform: scale(3);
     opacity: 0;
   }
-  10% {
-    opacity: 1;
-  }
-  20% {
-    transform: scale(.2);
-    opacity: 0;
-    display: none;
-  }
   100% {
+    transform: scale(.2);
     opacity: 0;
   }
 }
@@ -358,10 +409,7 @@ img {
   0% {
     background-color: #151515;
   }
-  40% {
-    background-color: #151515;
-  }
-  41% {
+  1% {
     background-color: #fff;
   }
   100% {
@@ -371,75 +419,48 @@ img {
 @keyframes content2Animation {
   0% {
     clip-path: circle(0px at center);
-    opacity: 0;
-  }
-  12% {
-    background-position: left center;
-    opacity: 0;
-  }
-  13% {
-    clip-path: circle(0px at center);
     opacity: 1;
   }
-  20% {
+  80% {
     clip-path: circle(3000px at center);
-  }
-  35% {
     background-size: contain;
     background-position: -250px center;
     opacity: 1;
   }
-  40% {
-    clip-path: circle(3000px at center);
-    opacity: 1;
-  }
   100% {
-    opacity: 1;
+    opacity: 0;
   }
 }
 @keyframes content3Animation {
   0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0;
-  }
-  51% {
     clip-path: circle(0px at center);
-    opacity: 1;
   }
-  95% {
+  30% {
     clip-path: circle(10000px at center);
-    opacity: 1;
-  }
-  100% {
     opacity: 1;
   }
 }
 @keyframes content1AnimationContent {
   0% {
     transform: scale(1);
-  }
-  20% {
-    transform: scale(.1);
-    opacity: 0;
+    opacity: 1;
   }
   100% {
+    transform: scale(.01);
     opacity: 0;
-    transform: scale(.1);
   }
 }
 @keyframes content2AnimationContent {
   0% {
     opacity: .8;
   }
-  20% {
+  15% {
     transform: translate3d(0px, 0px, 0px);
   }
-  45% {
+  35% {
     transform: translate3d(60%, 0px, 0px);
   }
-  75% {
+  45% {
     transform: translate3d(60%, 0px, 0px);
     opacity: 0.8;
   }
@@ -456,14 +477,8 @@ img {
     transform: rotate(15deg) scale(1) translate3d(0px, 0px, 0px);
     opacity: 1;
   }
-  1% {
-    opacity: 1;
-  }
-  20% {
-    transform: rotate(25deg) scale(3) translate3d(0px, 0px, 0px);
-    opacity: 0;
-  }
   100% {
+    transform: rotate(25deg) scale(3) translate3d(0px, 0px, 0px);
     opacity: 0;
   }
 }
@@ -510,7 +525,7 @@ img {
     0% {
       opacity: .8;
     }
-    30% {
+    15% {
       transform: translate3d(0px, 0px, 0px);
     }
     65% {

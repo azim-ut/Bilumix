@@ -3,11 +3,11 @@
   <HeadMenu :key="$route.path" />
   <div class="content" style="margin-top: 80px; position: relative;">
     <ScrollDownIndicator />
+
+    <div style="position:relative; height: 1500vh; background: transparent;">
+    </div>
     <IntroFrame1 :progress="scroll.progress"
                  :screenH="this.screenHeight"/>
-
-    <div style="position:relative; height: 900vh; background: transparent;">
-    </div>
 
     <div class="textBlocksPanelWrap centered min80h">
       <div style="min-width: 100%;">

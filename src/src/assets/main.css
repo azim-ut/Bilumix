@@ -1100,7 +1100,7 @@ h2{
   font-weight: 600;
   max-width: 600px;
   -webkit-text-fill-color: transparent;
-  text-align: center;
+  text-align: left;
   margin: .8rem;
   letter-spacing: 2px;
 }

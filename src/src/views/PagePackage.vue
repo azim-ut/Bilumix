@@ -37,7 +37,7 @@
           </div>
         </div>
 
-        <div style="padding: 0 15px;">
+        <div style="padding: 0 15px; max-width: 600px;">
           <div v-if="product && product.price">
             <div>
               <h1>{{product.title}}</h1>
