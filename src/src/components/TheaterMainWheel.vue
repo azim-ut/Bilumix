@@ -55,16 +55,16 @@ export default defineComponent({
   methods: {
     playVideo(progress: number): void{
       if(progress >= 0 && (progress >= this.$props.from && progress <= this.$props.to)){
-        let innerProgress = Math.floor(progress / this.$props.to - this.$props.from) * 100
-        console.log(progress, innerProgress)
-        let frame = innerProgress * 100 / this.cnt
-        let val = Math.floor(frame)
-        console.log(val)
-        if(val <= this.cnt && this.video.loaded.includes(val)){
-          this.video.current = val
-        }
+        const progressDelta = this.cnt/(this.$props.to - this.$props.from)
+        const frame = Math.floor(progress * progressDelta)
+        const val = Math.floor(frame)
+
         if(val>this.cnt){
-          this.video.current = this.cnt-1
+          this.video.current = this.cnt-2
+        }else{
+          if(val <= this.cnt && this.video.loaded.includes(val)) {
+            this.video.current = val
+          }
         }
       }
     },
@@ -83,7 +83,7 @@ export default defineComponent({
     },
     onWheel(event: any){
       // console.log(this.$refs.theaterDiv.scrollY)
-      // this.playVideo(this.video.current)
+      this.playVideo(this.$props.progress)
     },
     autoUploadFrames(){
       if(this.video && this.video.loaded.length !== this.video.frames.length){
@@ -98,21 +98,23 @@ export default defineComponent({
     }
   },
   unmounted () {
-    // window.removeEventListener('scroll', this.onWheel);
-    // window.removeEventListener('mousewheel', this.onWheel);
+    window.removeEventListener('scroll', this.onWheel);
+    window.removeEventListener('mousewheel', this.onWheel);
     clearTimeout(this.timer)
   },
   watch:{
     progress: function(newVal, oldVal) { // watch it
       if(newVal != oldVal){
-        this.playVideo(newVal)
+        // this.playVideo(newVal)
       }
     }
   },
   async mounted(){
-    // window.addEventListener('scroll', this.onWheel);
-    // window.addEventListener('mousewheel', this.onWheel);
+    this.video.loaded = []
+    window.addEventListener('scroll', this.onWheel);
+    window.addEventListener('mousewheel', this.onWheel);
     setTimeout(this.autoUploadFrames, 50)
+    this.autoUploadFrames()
     await this.fillVideoFrames()
     this.playVideo(0)
   }

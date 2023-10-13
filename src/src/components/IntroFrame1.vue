@@ -41,7 +41,6 @@
       </div>
 
       <div class="mainBanner mainBanner3" ref="content3" v-if="blocks[2].on">
-        <span style="color: black">111</span>
         <DoctorsVideo :progress="blocks[2].progress"/>
       </div>
 
@@ -93,7 +92,7 @@ export default defineComponent({
         {
           on: true,
           from: 0,
-          to: 12,
+          to: 14,
           progress: 1,
           refs: [ 'content1', 'device' ]
         },
@@ -106,7 +105,7 @@ export default defineComponent({
         },
         {
           on: false,
-          from: 20,
+          from: 50,
           to: 80,
           progress: 1,
           refs: [ 'content3' ]
@@ -421,10 +420,13 @@ img {
     clip-path: circle(0px at center);
     opacity: 1;
   }
-  80% {
+  50% {
     clip-path: circle(3000px at center);
     background-size: contain;
     background-position: -250px center;
+    opacity: 1;
+  }
+  8% {
     opacity: 1;
   }
   100% {
@@ -435,7 +437,7 @@ img {
   0% {
     clip-path: circle(0px at center);
   }
-  30% {
+  50% {
     clip-path: circle(10000px at center);
     opacity: 1;
   }

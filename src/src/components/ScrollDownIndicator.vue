@@ -32,6 +32,7 @@ export default defineComponent({
   z-index: 3;
   bottom: 60px;
   left: 50%;
+  pointer-events: none;
 }
 .box span {
   display: block;

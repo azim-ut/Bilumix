@@ -1,5 +1,5 @@
 <template>
-  <section id="DoctorsVideo" ref="DoctorsVideo" >11
+  <section id="DoctorsVideo" ref="DoctorsVideo" >
     <span style="background: yellow; color: black;">{{$props.progress}}</span>
     <div class="scrollMarkerContent" ref="DoctorsVideoMarker">
       &nbsp;
