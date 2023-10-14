@@ -99,7 +99,7 @@ export default defineComponent({
         {
           on: false,
           from: 10,
-          to: 20,
+          to: 25,
           progress: 1,
           refs: [ 'content2', 'content2content' ]
         },
@@ -383,8 +383,24 @@ img {
     transform: scale(3);
     opacity: 0;
   }
-  100% {
+  60% {
     transform: scale(.2);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes content1AnimationContent {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(.01);
+    opacity: 0;
+  }
+  100% {
     opacity: 0;
   }
 }
@@ -442,16 +458,6 @@ img {
     opacity: 1;
   }
 }
-@keyframes content1AnimationContent {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(.01);
-    opacity: 0;
-  }
-}
 @keyframes content2AnimationContent {
   0% {
     opacity: .8;
@@ -479,8 +485,11 @@ img {
     transform: rotate(15deg) scale(1) translate3d(0px, 0px, 0px);
     opacity: 1;
   }
-  100% {
+  60% {
     transform: rotate(25deg) scale(3) translate3d(0px, 0px, 0px);
+    opacity: 0;
+  }
+  100% {
     opacity: 0;
   }
 }
