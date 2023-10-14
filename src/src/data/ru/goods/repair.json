@@ -12,7 +12,7 @@
             { "url": "/images/static/bi-prod-repair-front-body.webp", "on": false},
             { "url": "/images/static/bi-prod-repair-rear-body.webp", "on": false}
         ],
-        "price": 14000,
+        "price": 130,
         "currency": "RUB",
         "on": false
     },
@@ -29,7 +29,7 @@
             { "url": "/images/static/bi-prod-repair-front-body.webp", "on": false},
             { "url": "/images/static/bi-prod-repair-rear-body.webp", "on": false}
         ],
-        "price": 12000,
+        "price": 110,
         "currency": "RUB",
         "on": false
     },
@@ -46,7 +46,7 @@
             { "url": "/images/static/bi-prod-repair-front-body.webp", "on": false},
             { "url": "/images/static/bi-prod-repair-rear-body.webp", "on": false}
         ],
-        "price": 18000,
+        "price": 170,
         "currency": "RUB",
         "on": false
     }
