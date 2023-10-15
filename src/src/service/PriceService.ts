@@ -11,7 +11,6 @@ function getCurrencyPrice(val: number, currency: string, coverage: number = 0): 
         if(!rates){
             location.reload()
         }
-        console.log(rates, JSON.parse(jsonString))
     }
     if(rates){
         rates.filter((row: Rate) => row.currency === currency)

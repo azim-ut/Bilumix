@@ -59,12 +59,9 @@ export default defineComponent({
         const frame = Math.floor(progress * progressDelta)
         const val = Math.floor(frame)
 
-        if(val>this.cnt){
-          this.video.current = this.cnt-2
-        }else{
-          if(val <= this.cnt && this.video.loaded.includes(val)) {
-            this.video.current = val
-          }
+        // if(val >=0 && val <= this.cnt && this.video.loaded.includes(val)) {
+        if(val >=0 && val <= this.cnt - 2) {
+          this.video.current = val
         }
       }
     },
