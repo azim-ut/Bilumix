@@ -1,6 +1,5 @@
 import {defineStore} from "pinia";
 import type {Cart, CartItem, CartState} from "@/store/cart/types";
-import type {NamePrice} from "@/store/shop/types";
 
 const CART_STORE_NAME = "CART_STORE"
 

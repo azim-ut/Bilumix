@@ -167,7 +167,7 @@ import {cartStore} from "@/store/cart/cart";
 import {shopStore} from "@/store/shop/shop";
 import type {Product} from "@/store/shop/types";
 import shopTextBundles from "@local/shop_text.json";
-import {getPriceTarget} from "@/service/PriceService";
+import {convertTargetPrice} from "@/service/PriceService";
 
 export default defineComponent({
   computed:{
@@ -184,7 +184,7 @@ export default defineComponent({
     }
   },
   methods: {
-    getPriceTarget,
+    getPriceTarget: convertTargetPrice,
     toPackagePage(){
       this.$router.push({name: "package", params: {link: "headlamp"}})
     },
@@ -309,7 +309,6 @@ export default defineComponent({
   bottom: 0;
   opacity: .1;
   width: 100%;
-  min-height: 100vh;
   z-index: 1;
   background: #171717 url(/images/static/top-light-on-1024-819.png) no-repeat calc(50% + 200px) calc(50% + 200px)/cover;
 }

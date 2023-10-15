@@ -5,26 +5,43 @@ export let rates: Rate[] = [];
 
 
 function getCurrencyPrice(val: number, currency: string, coverage: number = 0): number{
+    if(currency === "USD"){
+        return val
+    }
     if(!rates || rates.length === 0){
         let jsonString = localStorage.getItem("RATES")
         rates = JSON.parse(jsonString)
         if(!rates){
             location.reload()
+            return 0
         }
     }
     if(rates){
         rates.filter((row: Rate) => row.currency === currency)
             .forEach((row: Rate) => {
-                val = Math.floor(val * row.rate / 100) * 100
-                val += val/100 * coverage
+                val = Math.floor(val * row.rate)
+                val += Math.floor((val/row.rate) * coverage)
+                val = Math.round((val/10)) * 10
+                console.log(row.currency, val, row.rate)
             })
         return val
     }
     return 0
 }
 
-export function getPriceTarget(target: NamePrice): string {
-    target.price = getCurrencyPrice(target.price, target.currency)
+
+export function getRatedPrice(price: number, toCurrency: string): number{
+    let cover = 0;
+    let fromCurrency = "USD"
+
+    if(toCurrency === "RUB"){
+        cover = 10
+    }
+    let res = getCurrencyPrice(price, fromCurrency, cover)
+    return res
+}
+
+export function convertTargetPrice(target: NamePrice): string {
     if(target.currency === "RUB"){
         return printRub(target.price)
     }
@@ -36,11 +53,10 @@ export function getPriceTarget(target: NamePrice): string {
         currency: target.currency,
     }).format(target.price)
 }
-export function getPriceAndCurrency(price: number, currency: string): string {
-    price = getCurrencyPrice(price, currency)
-    if(currency === "RUB"){
-        return printRub(price)
-    }
+export function convertAndPrintPrice(price: number, currency: string): string {
+    return printPrice(price, currency)
+}
+export function printPrice(price: number, currency: string): string {
     if(price === 0){
         return "-"
     }
@@ -51,7 +67,6 @@ export function getPriceAndCurrency(price: number, currency: string): string {
 }
 
 function printRub(price: number){
-    price = getCurrencyPrice(price, "USD", 10)
     if(price === 0){
         return "-"
     }

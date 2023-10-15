@@ -100,7 +100,7 @@ import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
 import Slider from "@vueform/slider";
 import shopTextBundles from "@local/shop_text.json";
 import {bubbleStore} from "../store/bubble/bubble";
-import {getPriceTarget} from "../service/PriceService";
+import {convertTargetPrice} from "../service/PriceService";
 
 export default defineComponent({
   components: {
@@ -124,7 +124,7 @@ export default defineComponent({
     }
   },
   methods: {
-    getPriceTarget,
+    getPriceTarget: convertTargetPrice,
     bubbleStore,
     hideAllSlides(){
       this.product?.images.forEach((row: Image) => {

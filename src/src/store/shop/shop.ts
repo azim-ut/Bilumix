@@ -9,15 +9,24 @@ import partsList from "@local/goods/parts.json"
 import filtersList from "@local/goods/filters.json"
 import repairList from "@local/goods/repair.json"
 import generationList from "@local/goods/generation.json"
+import {getRatedPrice} from "@/service/PriceService"
+
+function recalculate(list: Product[]): Product[]{
+    list.forEach(product => {
+        product.price = getRatedPrice(product.price, product.currency)
+    })
+    return list
+}
+
 export const shopStore = defineStore('shop', {
     state: (): ShopState => ({
-        main: mainList,
-        loupes: loupesList,
-        accessories: accessoriesList,
-        parts: partsList,
-        filters: filtersList,
-        repair: repairList,
-        generation: generationList
+        main: recalculate(mainList),
+        loupes: recalculate(loupesList),
+        accessories: recalculate(accessoriesList),
+        parts: recalculate(partsList),
+        filters: recalculate(filtersList),
+        repair: recalculate(repairList),
+        generation: recalculate(generationList)
     }),
     getters: {
         getMain: (state: ShopState): MainProduct[] => state.main,

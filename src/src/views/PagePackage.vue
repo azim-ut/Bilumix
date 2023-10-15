@@ -219,7 +219,7 @@ import {cartStore} from "@/store/cart/cart";
 import TheaterMainAuto from "@/components/TheaterMainAuto.vue";
 import shopTextBundles from "@local/shop_text.json";
 import Slider from '@vueform/slider'
-import {getPriceAndCurrency, getPriceTarget} from "@/service/PriceService";
+import {convertAndPrintPrice, convertTargetPrice} from "@/service/PriceService";
 import Modal from "@/components/Modal.vue";
 import FeedbackForm from "@/components/FeedbackForm.vue";
 
@@ -428,10 +428,10 @@ export default defineComponent({
       this.updateSummary()
     },
     targetPrice(target: NamePrice): string{
-      return getPriceTarget(target)
+      return convertTargetPrice(target)
     },
     sumAndCurrencyPrice(price: number, currency: string): string{
-      return getPriceAndCurrency(price, currency)
+      return convertAndPrintPrice(price, currency)
     },
     handleScroll(event: any){
       this.scroll.event = event

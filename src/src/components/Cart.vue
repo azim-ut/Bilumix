@@ -113,7 +113,7 @@ import Modal from "@/components/Modal.vue";
 import type {Product} from "@/store/shop/types";
 import axios from "axios";
 import type {NamePrice} from "@/store/shop/types";
-import {getPriceAndCurrency, getPriceTarget} from "@/service/PriceService";
+import {getRatedPrice, printPrice} from "@/service/PriceService";
 import type {Cart, CartItem} from "@/store/cart/types";
 import {bubbleStore} from "@/store/bubble/bubble";
 import shopText from "@local/shop_text.json";
@@ -229,10 +229,10 @@ export default defineComponent({
       this.updateItemsList()
     },
     targetPrice(target: NamePrice): string{
-      return getPriceTarget(target)
+      return printPrice(target.price, target.currency)
     },
     sumAndCurrencyPrice(price: number): string{
-      return getPriceAndCurrency(price, this.currency)
+      return printPrice(price, this.currency)
     },
     isShow(): boolean {
       return this.cartStore.isShow

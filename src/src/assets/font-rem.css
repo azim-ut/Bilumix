@@ -69,6 +69,7 @@ footer address {
 
 .field input,
 textarea{
+    font-family: Arial;
     font-size: 1.1rem;
 }
 @media (min-width: 1000px) {

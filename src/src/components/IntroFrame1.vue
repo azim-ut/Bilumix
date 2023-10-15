@@ -99,14 +99,14 @@ export default defineComponent({
         {
           on: false,
           from: 10,
-          to: 25,
+          to: 30,
           progress: 1,
           refs: [ 'content2', 'content2content' ]
         },
         {
           on: false,
-          from: 50,
-          to: 80,
+          from: 57,
+          to: 76,
           progress: 1,
           refs: [ 'content3' ]
         }
@@ -442,11 +442,12 @@ img {
     background-position: -250px center;
     opacity: 1;
   }
-  8% {
+  80% {
     opacity: 1;
   }
   100% {
     opacity: 0;
+    clip-path: circle(3000px at center);
   }
 }
 @keyframes content3Animation {
@@ -541,37 +542,20 @@ img {
     }
     65% {
       transform: translate3d(10%, 0px, 0px);
+      opacity: .8;
     }
     90% {
-      opacity: .8;
+      opacity: 0;
     }
     100% {
       transform: translate3d(10%, 0px, 0px);
+      opacity: 0;
     }
   }
 }
 
 @media (max-width: 500px) {
 
-  @keyframes content2AnimationContent {
-    0% {
-      opacity: .8;
-    }
-    30% {
-      transform: translate3d(0px, 0%, 0px);
-    }
-    65% {
-      transform: translate3d(0%, -10%, 0px);
-      opacity: 0.8;
-    }
-    85% {
-      opacity: 0;
-    }
-    100% {
-      transform: translate3d(0%, -10%, 0px);
-      opacity: 0;
-    }
-  }
 
   .mainBanner1 h1 {
   }
@@ -599,36 +583,5 @@ img {
     width: 80%;
   }
 
-  @keyframes content2Animation {
-
-    0% {
-      clip-path: circle(0px at center);
-      opacity: 1;
-      display: block;
-      z-index: 100000;
-    }
-    20% {
-      opacity: 1;
-      display: block;
-    }
-    25% {
-      clip-path: circle(0px at center);
-      display: block;
-      opacity: 1;
-      background-position: -350px center;
-    }
-    50% {
-    }
-    65% {
-      opacity: 1;
-    }
-    70% {
-      clip-path: circle(3000px at center);
-    }
-    100% {
-      clip-path: circle(3000px at center);
-      opacity: 1;
-    }
-  }
 }
 </style>

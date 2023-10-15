@@ -4,7 +4,7 @@
   <div class="content" style="margin-top: 80px; position: relative;">
     <ScrollDownIndicator />
 
-    <div style="position:relative; height: 500vh; background: transparent;">
+    <div style="position:relative; height: 700vh; background: transparent;">
     </div>
     <IntroFrame1 :progress="scroll.progress"
                  :screenH="this.screenHeight"/>
@@ -38,7 +38,7 @@
         ></RoundedBlackBox2>
       </div>
     </div>
-    <div style="position:relative; height: 500vh; background: transparent;">
+    <div style="position:relative; height: 500vh; pointer-events: none; background: transparent;">
     </div>
 
 
