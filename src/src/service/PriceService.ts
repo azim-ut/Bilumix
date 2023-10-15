@@ -5,9 +5,6 @@ export let rates: Rate[] = [];
 
 
 function getCurrencyPrice(val: number, currency: string, coverage: number = 0): number{
-    if(currency === "USD"){
-        return val
-    }
     if(!rates || rates.length === 0){
         let jsonString = localStorage.getItem("RATES")
         rates = JSON.parse(jsonString)
@@ -22,7 +19,6 @@ function getCurrencyPrice(val: number, currency: string, coverage: number = 0): 
                 val = Math.floor(val * row.rate)
                 val += Math.floor((val/row.rate) * coverage)
                 val = Math.round((val/10)) * 10
-                console.log(row.currency, val, row.rate)
             })
         return val
     }
@@ -30,15 +26,8 @@ function getCurrencyPrice(val: number, currency: string, coverage: number = 0): 
 }
 
 
-export function getRatedPrice(price: number, toCurrency: string): number{
-    let cover = 0;
-    let fromCurrency = "USD"
-
-    if(toCurrency === "RUB"){
-        cover = 10
-    }
-    let res = getCurrencyPrice(price, fromCurrency, cover)
-    return res
+export function getRatedPrice(price: number, currency: string, cover: number): number{
+    return getCurrencyPrice(price, currency, cover)
 }
 
 export function convertTargetPrice(target: NamePrice): string {

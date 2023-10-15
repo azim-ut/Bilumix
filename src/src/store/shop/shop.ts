@@ -13,7 +13,9 @@ import {getRatedPrice} from "@/service/PriceService"
 
 function recalculate(list: Product[]): Product[]{
     list.forEach(product => {
-        product.price = getRatedPrice(product.price, product.currency)
+        if(product.currency === "RUB"){
+            product.price = getRatedPrice(product.price, "USD", 10)
+        }
     })
     return list
 }
