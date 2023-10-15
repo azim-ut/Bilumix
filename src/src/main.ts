@@ -11,7 +11,8 @@ import './assets/grid.css'
 import './assets/shop.css'
 import './assets/cart.css'
 import './assets/slider.css'
-const app = createApp(App)
+const app = createApp(App, {
+})
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -33,6 +34,7 @@ export const i18n = createI18n({
 
 library.add(faBars,faTrash, faPaperPlane, faShoppingBag, faEnvelope, faCirclePlay, faArrowRight, faArrowDown)
 library.add(faSquare, faSquareCheck)
+
 
 app
     .use(router)

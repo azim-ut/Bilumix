@@ -8,6 +8,22 @@
   </head>
   <body>
     <div id="app"></div>
+    <script>
+        function CBR_XML_Daily_Ru(incomeRates){
+            let rates = []
+            Object.keys(incomeRates.Valute).forEach((cur) => {
+                let data = incomeRates.Valute[cur]
+                let rate = {
+                    currency: cur,
+                    nominal: data.Nominal,
+                    rate: data.Value
+                }
+                rates.push(rate)
+            })
+            localStorage.setItem("RATES", JSON.stringify(rates))
+        }
+    </script>
     <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="//www.cbr-xml-daily.ru/daily_jsonp.js" async></script>
   </body>
 </html>
