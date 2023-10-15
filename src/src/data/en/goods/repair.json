@@ -12,7 +12,7 @@
             { "url": "/images/static/bi-prod-repair-front-body.webp", "on": false},
             { "url": "/images/static/bi-prod-repair-rear-body.webp", "on": false}
         ],
-        "price": 100,
+        "price": 130,
         "currency": "USD",
         "on": false
     },
@@ -29,7 +29,7 @@
             { "url": "/images/static/bi-prod-repair-front-body.webp", "on": false},
             { "url": "/images/static/bi-prod-repair-rear-body.webp", "on": false}
         ],
-        "price": 100,
+        "price": 110,
         "currency": "USD",
         "on": false
     },
@@ -46,7 +46,7 @@
             { "url": "/images/static/bi-prod-repair-front-body.webp", "on": false},
             { "url": "/images/static/bi-prod-repair-rear-body.webp", "on": false}
         ],
-        "price": 100,
+        "price": 170,
         "currency": "USD",
         "on": false
     }
