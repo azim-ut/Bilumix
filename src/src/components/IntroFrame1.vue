@@ -559,6 +559,9 @@ img {
 
 @media (max-width: 500px) {
 
+  .mainBanner2 h1{
+    text-align: center;
+  }
 
   .mainBanner1 h1 {
   }
@@ -567,12 +570,10 @@ img {
     letter-spacing: 10px;
   }
 
-  .mainBanner1 .content h3{
-  }
-
   .mainBanner2 p{
-    width: 80%;
+    width: 90%;
     text-align: center;
+    padding: 0 0 10px 0;
   }
 
   .mainBanner2 .content{
@@ -587,5 +588,24 @@ img {
     width: 80%;
   }
 
+  @keyframes content2AnimationContent {
+    0% {
+      opacity: .8;
+    }
+    15% {
+      transform: translate3d(0px, 0px, 0px);
+    }
+    65% {
+      transform: translate3d(0px, -10%, 0px);
+      opacity: .8;
+    }
+    90% {
+      opacity: 0;
+    }
+    100% {
+      transform: translate3d(0px, 0px, 0px);
+      opacity: 0;
+    }
+  }
 }
 </style>

@@ -54,7 +54,7 @@ export default defineComponent({
         let slide = this.slideStore.getLoadedSlide(next, this.$props.name)
         if(slide && slide.loaded){
           this.lastSlide = this.slide;
-          setTimeout(() => {this.slide = slide}, 100)
+          this.slide = slide
         }
       }
     },

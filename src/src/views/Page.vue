@@ -2,6 +2,9 @@
 
   <HeadMenu :key="$route.path" />
   <div class="MySlidesStore">
+    <div>
+      <img src="/images/static/bilumix-side.png" />
+    </div>
     <div v-for="row in getSlides()">
       <img :src="row.path" @load="markAsLoaded(row)" />
     </div>
