@@ -111,6 +111,8 @@
           <div class="productBody">
             <div class="title">{{product.short}}</div>
             <div class="image" :style="{'background-image': 'url(' + product.images[0].url + ')'}"
+                 @mousemove="transforms($event, product.link+'ID')"
+                 @mouseout="clearTransform($event, product.link+'ID')"
             ></div>
             <div class="tools">
               <button class="emphasized-button" @click="toDetails(product.link)">{{ bundles.DETAILS }}</button>
@@ -137,6 +139,8 @@
             <div class="title">{{product.short}}</div>
             <div class="imageWrap">
               <div class="image" :style="{'background-image': 'url(' + product.images[0].url + ')'}"
+                   @mousemove="transforms($event, product.link+'ID')"
+                   @mouseout="clearTransform($event, product.link+'ID')"
               ></div>
             </div>
             <div class="tools">

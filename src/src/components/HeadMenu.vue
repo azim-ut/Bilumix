@@ -137,7 +137,7 @@ export default defineComponent({
   background: #ffffff;
   text-align: center;
   padding: 12px 0 5px;
-  z-index: 99;
+  z-index: 103;
   position: fixed;
   top: -100px;
   right: 0;
@@ -159,6 +159,9 @@ export default defineComponent({
 }
 .newArrivals.active{
   top: 50px;
+}
+.newArrivals a{
+  color: #000 !important;
 }
 header {
   position: fixed;

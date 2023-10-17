@@ -7,18 +7,17 @@
         </div>
       </div>
       <div class="bg">
-        <div v-for="(img, $index) in video.frames"
-             :key="$index"
+        <div v-if="lastSlide"
              :class="{'bgModeCover': $props.bgMode === 'cover', 'bgModeContain': $props.bgMode === 'contain'}"
-             v-show="$index === video.current"
-             :style="{'background-image': 'url(' + img + ')', 'height': $props.height}"></div>
+             :style="{'background-image': 'url(' + lastSlide.path + ')'}"></div>
+        <div v-if="slide"
+             :class="{'bgModeCover': $props.bgMode === 'cover', 'bgModeContain': $props.bgMode === 'contain'}"
+             :style="{'background-image': 'url(' + slide.path + ')'}"></div>
       </div>
-    </div>
-    <div class="framesBar" ref="framesBar">
-      <div v-for="(img, $index) in video.frames"
-           :key="$index"
-           :class="{'bgDisabled': !video.loaded.includes($index)}"
-           :style="{'height': '10px', 'background-image': 'url(' + img + ')'}"></div>
+      <div class="framesBar" ref="framesBar">
+        <div :class="{'bgDisabled': true}"
+             :style="{'height': '10px'}"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -26,12 +25,17 @@
 <script lang="ts">
 
 import {defineComponent} from "vue"
+import {mapStores} from "pinia";
+import {slideStore} from "@/store/slide/slide";
+import type {Slide} from "@/store/slide/types";
 
 export default defineComponent({
+  computed: {
+    ...mapStores(slideStore)
+  },
   components: { },
   props: <any>{
     name: "" as String,
-    test: false,
     height: '500px',
     bgMode: "cover",
     frames: [] as any[],
@@ -41,63 +45,34 @@ export default defineComponent({
   },
   data() {
     return {
-      timer: undefined as undefined|number,
-      video: {
-        frames: [] as any[],
-        loaded: [] as number[],
-        current: 0,
-        index: 1
-      },
-      cnt: 279,
-      loaded: false,
+      slide: null as Slide|null,
+      lastSlide: null as Slide|null
     }
   },
   methods: {
     playVideo(progress: number): void{
       if(progress >= 0 && (progress >= this.$props.from && progress <= this.$props.to)){
-        const progressDelta = this.cnt/(this.$props.to - this.$props.from)
+        const progressDelta = this.slideStore.getSlides(this.$props.name).length/(this.$props.to - this.$props.from)
         const frame = Math.floor(progress * progressDelta)
-        const val = Math.floor(frame)
+        const val: number = Math.floor(frame)
 
-        // if(val >=0 && val <= this.cnt && this.video.loaded.includes(val)) {
-        if(val >=0 && val <= this.cnt - 2) {
-          this.video.current = val
+        if(this.slideStore?.isLoaded(val, this.$props.name)) {
+          let slide = this.slideStore.getLoadedSlide(val, this.$props.name)
+          if(slide){
+            this.lastSlide = this.slide;
+            this.slide = slide
+          }
         }
-      }
-    },
-    fillVideoFrames(){
-      this.video.frames = []
-      let cnt = this.cnt;
-      while(cnt-->0){
-        let path = "/images/min/device_image/bilumix-sequence" + cnt + "-min.png"
-        if(cnt>=10 && cnt<100){
-          path = "/images/min/device_image/bilumix-sequence0" + cnt + "-min.png"
-        }else if(cnt<10){
-          path = "/images/min/device_image/bilumix-sequence00" + cnt + "-min.png"
-        }
-        this.video.frames.unshift(path)
       }
     },
     onWheel(event: any){
       // console.log(this.$refs.theaterDiv.scrollY)
       this.playVideo(this.$props.progress)
-    },
-    autoUploadFrames(){
-      if(this.video && this.video.loaded.length !== this.video.frames.length){
-        let max = 5
-        this.video.frames.forEach((row, ind) => {
-          if(!this.video.loaded.includes(ind) && max-->0){
-            this.video.loaded.push(ind)
-          }
-        })
-        setTimeout(this.autoUploadFrames, 150)
-      }
     }
   },
   unmounted () {
     window.removeEventListener('scroll', this.onWheel);
     window.removeEventListener('mousewheel', this.onWheel);
-    clearTimeout(this.timer)
   },
   watch:{
     progress: function(newVal, oldVal) { // watch it
@@ -107,13 +82,10 @@ export default defineComponent({
     }
   },
   async mounted(){
-    this.video.loaded = []
     window.addEventListener('scroll', this.onWheel);
     window.addEventListener('mousewheel', this.onWheel);
-    setTimeout(this.autoUploadFrames, 50)
-    this.autoUploadFrames()
-    await this.fillVideoFrames()
     this.playVideo(0)
+    this.slide = this.slideStore.getLoadedSlide(0, this.$props.name)
   }
 })
 </script>
@@ -161,10 +133,12 @@ export default defineComponent({
 .projector .bg div{
   position: relative;
   width: 100%;
+  min-height: 100vh;
   animation: ease-in;
   background: transparent none no-repeat 50% center/contain;
 }
 .projector .bg div.bgModeCover{
+  opacity: .9;
   background-size: cover !important;
 }
 .projector .bg div.bgModeContain{

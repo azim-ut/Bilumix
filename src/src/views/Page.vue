@@ -1,10 +1,28 @@
 <template>
 
   <HeadMenu :key="$route.path" />
+  <div class="MySlidesStore">
+
+    <div>
+      <img src="/images/static/bilumix-side.png" />
+
+      <img src="/images/static/bl-overview-01.png" />
+      <img src="/images/static/bl-overview-02.png" />
+      <img src="/images/static/bl-overview-03.png" />
+      <img src="/images/static/bl-system-feature-01.png" />
+      <img src="/images/static/bl-system-feature-02.png" />
+      <img src="/images/static/bl-system-feature-03.png" />
+      <img src="/images/static/bl-user-feature-01.png" />
+      <img src="/images/static/bl-user-feature-02.png" />
+    </div>
+    <div v-for="row in getFirstSlides()">
+      <img :src="row.path" @load="markAsLoaded(row)" />
+    </div>
+  </div>
   <div class="content" style="margin-top: 80px; position: relative;">
     <ScrollDownIndicator />
 
-    <div style="position:relative; height: 700vh; background: transparent;">
+    <div class="IntroFrame">
     </div>
     <IntroFrame1 :progress="scroll.progress"
                  :screenH="this.screenHeight"/>
@@ -38,7 +56,7 @@
         ></RoundedBlackBox2>
       </div>
     </div>
-    <div style="position:relative; height: 500vh; pointer-events: none; background: transparent;">
+    <div class="DoctorVideoFrame">
     </div>
 
 
@@ -82,6 +100,11 @@
     </Modal>
   </div>
   <Footer />
+  <div class="MySlidesStore">
+    <div v-for="row in getSlides()">
+      <img :src="row.path" @load="markAsLoaded(row)" />
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -103,13 +126,17 @@ import mainBundles from "@local/main_text.json"
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import RoundedBlackBox3 from "@/components/RoundedBlackBox3.vue";
 import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
-import TheaterWheelVideo1 from "@/components/TheaterWheelVideo1.vue";
-import TheaterWheelVideo2 from "@/components/TheaterWheelVideo2.vue";
 import RoundedBlackBox2 from "@/components/RoundedBlackBox2.vue";
 import StayUpdated from "@/components/StayUpdated.vue";
 import DoctorsVideo from "@/components/DoctorsVideo.vue";
+import {mapStores} from "pinia";
+import {slideStore} from "@/store/slide/slide";
+import type {Slide} from "@/store/slide/types";
 
 export default defineComponent({
+  computed: {
+    ...mapStores(slideStore)
+  },
   components: {
     DoctorsVideo,
     StayUpdated,
@@ -149,6 +176,12 @@ export default defineComponent({
     }
   },
   methods: {
+    getSlides(): Slide[]{
+      return this.slideStore.list
+    },
+    getFirstSlides(): Slide[]{
+      return this.slideStore.getFirstSlides()
+    },
     loadedEvent(){
       this.loaded = true
     },
@@ -172,6 +205,60 @@ export default defineComponent({
         this.productTheater.frames.unshift(new URL(src, import.meta.url))
       }
     },
+    fillDoctor1Frames(){
+      let cnt = 224;
+      while(cnt-->0){
+        let path = "/images/min/video1/video1-sq-" + cnt + "-min.jpg"
+        if(cnt>=10 && cnt<100){
+          path = "/images/min/video1/video1-sq-0" + cnt + "-min.jpg"
+        }else if(cnt<10){
+          path = "/images/min/video1/video1-sq-00" + cnt + "-min.jpg"
+        }
+        this.slideStore.addSlide({
+          ind: cnt,
+          group: "Doctor1",
+          path: path,
+          loaded: false
+        })
+      }
+    },
+    fillDoctor2Frames(){
+      let cnt = 235;
+      while(cnt-->0){
+        let path = "/images/min/video2/video2-sq-" + cnt + "-min.jpg"
+        if(cnt>=10 && cnt<100){
+          path = "/images/min/video2/video2-sq-0" + cnt + "-min.jpg"
+        }else if(cnt<10){
+          path = "/images/min/video2/video2-sq-00" + cnt + "-min.jpg"
+        }
+        this.slideStore.addSlide({
+          ind: cnt,
+          group: "Doctor2",
+          path: path,
+          loaded: false
+        })
+      }
+    },
+    fillIntroDeviceFrames(){
+      let cnt = 279;
+      while(cnt-->0){
+        let path = "/images/min/device_image/bilumix-sequence" + cnt + "-min.png"
+        if(cnt>=10 && cnt<100){
+          path = "/images/min/device_image/bilumix-sequence0" + cnt + "-min.png"
+        }else if(cnt<10){
+          path = "/images/min/device_image/bilumix-sequence00" + cnt + "-min.png"
+        }
+        this.slideStore.addSlide({
+          ind: cnt,
+          group: "IntroDevice",
+          path: path,
+          loaded: false
+        })
+      }
+    },
+    markAsLoaded(slide: Slide) {
+      this.slideStore.loaded(slide)
+    }
   },
   unmounted () {
     window.removeEventListener('scroll', this.onWheel);
@@ -179,6 +266,9 @@ export default defineComponent({
     window.removeEventListener('load', this.loadedEvent);
   },
   mounted(){
+    this.fillIntroDeviceFrames()
+    this.fillDoctor1Frames()
+    this.fillDoctor2Frames()
     window.addEventListener('scroll', this.onWheel);
     window.addEventListener('mousewheel', this.onWheel);
     window.addEventListener('load', this.loadedEvent);
@@ -197,7 +287,12 @@ export default defineComponent({
   width: 10px; height: 10px;
   opacity: .01;
 }
-
+.IntroFrame{
+  position:relative; height: 450vh; background: transparent;
+}
+.DoctorVideoFrame{
+  position:relative; min-height: 400vh; pointer-events: none; background: transparent;
+}
 .mainBanner .content h1{
   line-height: 40px;
   text-shadow: 1px 1px 13px rgba(0,0,0,.5);
@@ -223,6 +318,7 @@ export default defineComponent({
 .textBlocksPanel{
   background: white;
 }
+
 
 .textBlocksPanel1{
   background: white;
@@ -282,6 +378,9 @@ export default defineComponent({
   min-width: 270px;
   max-width: 1280px;
 }
+.MySlidesStore{overflow: hidden; position: absolute; z-index: -11000; opacity: 1; top: 0;}
+.MySlidesStore div{ float: left; border: red 1px solid; width: 10px; height: 10px; background: white;}
+.MySlidesStore div img{width: 10px; height: 10px; opacity: .4;}
 @media (max-width: 850px) {
   .textBlocksPanelWrap{
     margin: 0;
@@ -296,6 +395,12 @@ export default defineComponent({
 }
 @media (max-width: 600px) {
 
+  .DoctorVideoFrame{
+    min-height: 600vh;
+  }
+  .IntroFrame{
+    min-height: 750vh;
+  }
   .textBlocksPanel2{
     min-width: 280px;
   }

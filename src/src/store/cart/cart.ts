@@ -31,7 +31,7 @@ export const cartStore = defineStore('cart', {
                 list: cart.list
             }
         },
-        getCartItem: (state: CartState) => (link: string | null): CartItem => {
+            getCartItem: (state: CartState) => (link: string | null): CartItem => {
         	let out = state.cart.list.find(row => row.url === link)
             if(!out){
                 return {

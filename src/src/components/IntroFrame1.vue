@@ -19,13 +19,11 @@
         <div class="content2Wrap">
           <TheaterMainWheel
               class="video1"
-              :name="'main'"
-              :test="true"
+              :name="'IntroDevice'"
               :bg-mode="'cover'"
-              :style="{}"
               :progress="blocks[1].progress"
               :from="0"
-              :to="60"
+              :to="40"
               :height="'100vh'">
           </TheaterMainWheel>
 
@@ -105,8 +103,8 @@ export default defineComponent({
         },
         {
           on: false,
-          from: 57,
-          to: 76,
+          from: 51.5,
+          to: 79.5,
           progress: 1,
           refs: [ 'content3' ]
         }
@@ -358,9 +356,11 @@ section{
 .mainBanner2 h1{
   font-weight: 600;
   padding: 0;
+  text-align: left;
 }
 .mainBanner2 p{
   padding: 20px;
+  text-align: left;
 }
 .mainBanner2 .video1{
   position: absolute;
@@ -437,7 +437,7 @@ img {
     opacity: 1;
   }
   50% {
-    clip-path: circle(3000px at center);
+    clip-path: circle(300vh at center);
     background-size: contain;
     background-position: -250px center;
     opacity: 1;
@@ -447,7 +447,7 @@ img {
   }
   100% {
     opacity: 0;
-    clip-path: circle(3000px at center);
+    clip-path: circle(300vh at center);
   }
 }
 @keyframes content3Animation {
@@ -455,29 +455,24 @@ img {
     clip-path: circle(0px at center);
   }
   50% {
-    clip-path: circle(10000px at center);
+    clip-path: circle(300vh at center);
     opacity: 1;
+  }
+  100% {
+    clip-path: circle(0px at center);
   }
 }
 @keyframes content2AnimationContent {
   0% {
-    opacity: .8;
   }
   15% {
     transform: translate3d(0px, 0px, 0px);
   }
   35% {
-    transform: translate3d(60%, 0px, 0px);
-  }
-  45% {
-    transform: translate3d(60%, 0px, 0px);
-    opacity: 0.8;
-  }
-  85% {
-    opacity: 0;
+    transform: translate3d(50%, 0px, 0px);
   }
   100% {
-    opacity: 0;
+    transform: translate3d(50%, 0px, 0px);
   }
 }
 
@@ -541,21 +536,21 @@ img {
       transform: translate3d(0px, 0px, 0px);
     }
     65% {
-      transform: translate3d(10%, 0px, 0px);
-      opacity: .8;
+      transform: translate3d(-10%, 0px, 0px);
     }
     90% {
-      opacity: 0;
     }
     100% {
-      transform: translate3d(10%, 0px, 0px);
-      opacity: 0;
+      transform: translate3d(-10%, 0px, 0px);
     }
   }
 }
 
 @media (max-width: 500px) {
 
+  .mainBanner2 h1{
+    text-align: center;
+  }
 
   .mainBanner1 h1 {
   }
@@ -564,11 +559,10 @@ img {
     letter-spacing: 10px;
   }
 
-  .mainBanner1 .content h3{
-  }
-
   .mainBanner2 p{
-    width: 80%;
+    width: 90%;
+    text-align: center;
+    padding: 0 0 10px 0;
   }
 
   .mainBanner2 .content{
@@ -583,5 +577,24 @@ img {
     width: 80%;
   }
 
+  @keyframes content2AnimationContent {
+    0% {
+      opacity: .8;
+    }
+    15% {
+      transform: translate3d(0px, 0px, 0px);
+    }
+    65% {
+      transform: translate3d(0px, -10%, 0px);
+      opacity: .8;
+    }
+    90% {
+      opacity: 0;
+    }
+    100% {
+      transform: translate3d(0px, 0px, 0px);
+      opacity: 0;
+    }
+  }
 }
 </style>

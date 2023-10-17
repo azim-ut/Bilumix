@@ -7,10 +7,7 @@
         "links": [
                     ],
         "images": [
-            { "url": "/images/static/bi-prod-repair-service_84daaf89-a794-47bf-b35c-653c6fe3f946.webp", "on": true},
-            { "url": "/images/static/bi-prod-repair-light-source.webp", "on": false},
-            { "url": "/images/static/bi-prod-repair-front-body.webp", "on": false},
-            { "url": "/images/static/bi-prod-repair-rear-body.webp", "on": false}
+            { "url": "/images/static/bi-prod-repair-light-source.webp", "on": true}
         ],
         "price": 130,
         "currency": "RUB",
@@ -24,10 +21,7 @@
         "links": [
         ],
         "images": [
-            { "url": "/images/static/bi-prod-repair-service_84daaf89-a794-47bf-b35c-653c6fe3f946.webp", "on": true},
-            { "url": "/images/static/bi-prod-repair-light-source.webp", "on": false},
-            { "url": "/images/static/bi-prod-repair-front-body.webp", "on": false},
-            { "url": "/images/static/bi-prod-repair-rear-body.webp", "on": false}
+            { "url": "/images/static/bi-prod-repair-front-body.webp", "on": true}
         ],
         "price": 110,
         "currency": "RUB",
@@ -41,10 +35,7 @@
         "links": [
         ],
         "images": [
-            { "url": "/images/static/bi-prod-repair-service_84daaf89-a794-47bf-b35c-653c6fe3f946.webp", "on": true},
-            { "url": "/images/static/bi-prod-repair-light-source.webp", "on": false},
-            { "url": "/images/static/bi-prod-repair-front-body.webp", "on": false},
-            { "url": "/images/static/bi-prod-repair-rear-body.webp", "on": false}
+            { "url": "/images/static/bi-prod-repair-rear-body.webp", "on": true}
         ],
         "price": 170,
         "currency": "RUB",
