@@ -208,6 +208,7 @@ section{
   position: absolute;
   cursor: pointer;
   z-index: 1000;
+  padding: 10px 20px;
 }
 .front-image{
   background: transparent url(/images/static/bilumix-side.png) no-repeat center top/contain;

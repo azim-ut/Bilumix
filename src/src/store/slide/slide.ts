@@ -13,6 +13,9 @@ export const slideStore = defineStore('slide', {
         getAllSlides: (state: SlideState) => (): Slide[] => {
             return state.list
         },
+        getFirstSlides: (state: SlideState) => (): Slide[] => {
+            return state.list.filter(slide => slide.ind === 0)
+        },
         getSlides: (state: SlideState) => (group: string): Slide[] => {
             return state.list.filter(slide => slide.group === group)
         },
@@ -46,7 +49,7 @@ export const slideStore = defineStore('slide', {
 
             const loaded = this?.$state.list
                 .filter((row: Slide) => row.group === slide.group && row.loaded).length
-            console.log(slide.group, ": ", loaded)
+            // console.log(slide.group, ": ", loaded)
 		}
     }
 })

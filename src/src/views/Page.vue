@@ -2,10 +2,20 @@
 
   <HeadMenu :key="$route.path" />
   <div class="MySlidesStore">
+
     <div>
       <img src="/images/static/bilumix-side.png" />
+
+      <img src="/images/static/bl-overview-01.png" />
+      <img src="/images/static/bl-overview-02.png" />
+      <img src="/images/static/bl-overview-03.png" />
+      <img src="/images/static/bl-system-feature-01.png" />
+      <img src="/images/static/bl-system-feature-02.png" />
+      <img src="/images/static/bl-system-feature-03.png" />
+      <img src="/images/static/bl-user-feature-01.png" />
+      <img src="/images/static/bl-user-feature-02.png" />
     </div>
-    <div v-for="row in getSlides()">
+    <div v-for="row in getFirstSlides()">
       <img :src="row.path" @load="markAsLoaded(row)" />
     </div>
   </div>
@@ -90,6 +100,11 @@
     </Modal>
   </div>
   <Footer />
+  <div class="MySlidesStore">
+    <div v-for="row in getSlides()">
+      <img :src="row.path" @load="markAsLoaded(row)" />
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -163,6 +178,9 @@ export default defineComponent({
   methods: {
     getSlides(): Slide[]{
       return this.slideStore.list
+    },
+    getFirstSlides(): Slide[]{
+      return this.slideStore.getFirstSlides()
     },
     loadedEvent(){
       this.loaded = true
@@ -360,7 +378,7 @@ export default defineComponent({
   min-width: 270px;
   max-width: 1280px;
 }
-.MySlidesStore{overflow: hidden; position: absolute; z-index: -11000; opacity: 1}
+.MySlidesStore{overflow: hidden; position: absolute; z-index: -11000; opacity: 1; top: 0;}
 .MySlidesStore div{ float: left; border: red 1px solid; width: 10px; height: 10px; background: white;}
 .MySlidesStore div img{width: 10px; height: 10px; opacity: .4;}
 @media (max-width: 850px) {

@@ -103,8 +103,8 @@ export default defineComponent({
         },
         {
           on: false,
-          from: 53,
-          to: 78,
+          from: 51.5,
+          to: 79.5,
           progress: 1,
           refs: [ 'content3' ]
         }
@@ -464,23 +464,15 @@ img {
 }
 @keyframes content2AnimationContent {
   0% {
-    opacity: .8;
   }
   15% {
     transform: translate3d(0px, 0px, 0px);
   }
   35% {
-    transform: translate3d(60%, 0px, 0px);
-  }
-  45% {
-    transform: translate3d(60%, 0px, 0px);
-    opacity: 0.8;
-  }
-  85% {
-    opacity: 0;
+    transform: translate3d(50%, 0px, 0px);
   }
   100% {
-    opacity: 0;
+    transform: translate3d(50%, 0px, 0px);
   }
 }
 
@@ -544,15 +536,12 @@ img {
       transform: translate3d(0px, 0px, 0px);
     }
     65% {
-      transform: translate3d(10%, 0px, 0px);
-      opacity: .8;
+      transform: translate3d(-10%, 0px, 0px);
     }
     90% {
-      opacity: 0;
     }
     100% {
-      transform: translate3d(10%, 0px, 0px);
-      opacity: 0;
+      transform: translate3d(-10%, 0px, 0px);
     }
   }
 }
