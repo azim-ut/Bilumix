@@ -6,15 +6,14 @@
     </div>
 
     <div class="videoBlock grid grid2 force">
-      <TheaterWheelVideo1
+      <TheaterWheelVideo2
           class="video1"
-          :name="'video1'"
-          :test="true"
+          :name="'Doctor1'"
           :bg-mode="'cover'"
           :style="{'background':'#000'}"
           :progress="$props.progress"
           :height="500">
-      </TheaterWheelVideo1>
+      </TheaterWheelVideo2>
 
       <TheaterWheelVideo2
           class="video2"
@@ -22,8 +21,7 @@
           :style="{'background':'#000'}"
           :progress="$props.progress"
           :height="500"
-          :name="'video2'"
-          :test="false">
+          :name="'Doctor2'">
       </TheaterWheelVideo2>
       <div class="circle circle1" ref="circle1"></div>
       <div class="circle circle2" ref="circle2"></div>
@@ -54,10 +52,9 @@ import {RouterView} from "vue-router";
 import Modal from "@/components/Modal.vue";
 import mainBundles from "@local/main_text.json"
 import TheaterWheelVideo2 from "@/components/TheaterWheelVideo2.vue";
-import TheaterWheelVideo1 from "@/components/TheaterWheelVideo1.vue";
 
 export default defineComponent({
-  components: {TheaterWheelVideo1, Modal, RouterView, TheaterWheelVideo2},
+  components: {Modal, RouterView, TheaterWheelVideo2},
   props: {
     progress: 0 as PropType<number>
   },

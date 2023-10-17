@@ -6,19 +6,14 @@
           <slot></slot>
         </div>
       </div>
-      <div class="bg">
-        <div v-for="(img, $index) in video.frames"
-             :key="$index"
-             :class="{'bgModeCover': $props.bgMode === 'cover', 'bgModeContain': $props.bgMode === 'contain'}"
-             v-show="$index === theaterDivIndex"
-             :style="{'background-image': 'url(' + img + ')'}"></div>
+        <div class="bg">
+          <div v-if="lastSlide"
+               :class="{'bgModeCover': $props.bgMode === 'cover', 'bgModeContain': $props.bgMode === 'contain'}"
+               :style="{'background-image': 'url(' + lastSlide.path + ')'}"></div>
+          <div v-if="slide"
+               :class="{'bgModeCover': $props.bgMode === 'cover', 'bgModeContain': $props.bgMode === 'contain'}"
+               :style="{'background-image': 'url(' + slide.path + ')'}"></div>
       </div>
-    </div>
-    <div class="framesBar" ref="framesBar">
-      <div v-for="(img, $index) in video.frames"
-           :key="$index"
-           :class="{'bgDisabled': !video.loaded.includes($index)}"
-           :style="{'height': ($props.height/video.length) + 'px', 'background-image': 'url(' + img + ')'}"></div>
     </div>
   </div>
 </template>
@@ -26,8 +21,14 @@
 <script lang="ts">
 
 import {defineComponent} from "vue"
+import {mapStores} from "pinia";
+import {slideStore} from "@/store/slide/slide";
+import {Slide} from "@/store/slide/types";
 
 export default defineComponent({
+  computed: {
+    ...mapStores(slideStore)
+  },
   components: { },
   props: <any>{
     name: "" as String,
@@ -39,102 +40,26 @@ export default defineComponent({
   },
   data() {
     return {
-      video: {
-        frames: [] as any[],
-        loaded: [] as any[]
-      },
-      wh: 0,
-      theaterDivIndex: 5,
-      loaded: false,
-      theaterDivHeight: 100,
-      reel: {
-        min: 1,
-        max: 3,
-        step: 1,
-        current: 1,
-        lastPos: undefined,
-      }
+      slide: null as Slide|null,
+      lastSlide: null as Slide|null
     }
   },
   methods: {
     progressUpdate(progress: number): void{
-      let rect = this.$refs.theaterDiv?.getBoundingClientRect()
-      let min = 1
-      let max = this.video.frames.length
+      let max = this.slideStore.getSlides(this.$props.name).length
       let pos = progress/100 * max
-      this.reel.current = Math.floor(pos)
-      if(this.reel.lastPos === undefined){
-        this.reel.lastPos = rect.top
-      }
-      if(this.video.frames[this.reel.current] && this.video.loaded.includes(this.reel.current)){
-        this.theaterDivIndex = this.reel.current
-      }
+      const next = Math.floor(pos)
 
-      for(let i = this.reel.current-5; i<this.reel.current+5; i++){
-        if(i>=0 && i<this.video.frames.length && !this.video.loaded.includes(i)){
-          this.video.loaded.push(i)
+      if(this.slideStore?.isLoaded(next, this.$props.name)){
+        let slide = this.slideStore.getLoadedSlide(next, this.$props.name)
+        if(slide && slide.loaded){
+          this.lastSlide = this.slide;
+          setTimeout(() => {this.slide = slide}, 100)
         }
-      }
-    },
-    updateScreen(frameTarget: number): void{
-      let rect = this.$refs.theaterDiv?.getBoundingClientRect()
-      this.reel.current = Math.round(frameTarget)
-      if(this.reel.lastPos === undefined){
-        this.reel.lastPos = rect.top
-      }
-      if(this.video.frames[this.reel.current] && this.video.loaded.includes(this.reel.current)){
-        this.theaterDivIndex = this.reel.current
-      }
-
-      for(let i = this.reel.current-5; i<this.reel.current+5; i++){
-        if(i>=0 && i<this.video.frames.length && !this.video.loaded.includes(i)){
-          this.video.loaded.push(i)
-        }
-      }
-    },
-    handleWheel(): void{
-      if(!this.$refs.theaterDiv){
-        return;
-      }
-      let rect = this.$refs.theaterDiv?.getBoundingClientRect()
-      let frameTarget = (rect.top - rect.height)/this.$props.height * 100 * -1
-      if(
-          !rect ||
-          frameTarget < 0 ||
-          frameTarget > this.video.frames.length ||
-          (rect.top + rect.height)<0 ||
-          (rect.top-rect.height)>window.innerHeight
-      ){
-        return;
-      }
-      this.updateScreen(frameTarget)
-    },
-    fillVideoFrames(){
-      this.video.frames = []
-      let cnt = 235;
-      while(cnt-->20){
-        let path = "/images/min/video2/video2-sq-" + cnt + "-min.jpg"
-        if(cnt>=10 && cnt<100){
-          path = "/images/min/video2/video2-sq-0" + cnt + "-min.jpg"
-        }else if(cnt<10){
-          path = "/images/min/video2/video2-sq-00" + cnt + "-min.jpg"
-        }
-        this.video.frames.unshift(path)
       }
     },
     loadedEvent(){
       this.loaded = true;
-    },
-    autoUploadFrames(){
-      if(this.video && this.video.loaded.length !== this.video.frames.length){
-        let max = 5
-        this.video.frames.forEach((row, ind) => {
-          if(!this.video.loaded.includes(ind) && max-->0){
-            this.video.loaded.push(ind)
-          }
-        })
-        setTimeout(this.autoUploadFrames, 150)
-      }
     }
   },
   watch: {
@@ -145,21 +70,15 @@ export default defineComponent({
     },
     scrollEvent: function(newVal, oldVal) {
       if(newVal != oldVal && newVal) {
-        this.handleWheel()
+        // this.handleWheel()
       }
     }
   },
   unmounted () {
     let container = document.getElementById('TheaterWheel' + this.$props.name);
-    // window.removeEventListener('scroll', this.handleWheel);
-    // window.removeEventListener('load', this.loadedEvent);
   },
   mounted(){
-    this.reel.max = this.video.frames.length
-    let container = document.getElementById('TheaterWheel' + this.$props.name);
-    // window.addEventListener('load', this.loadedEvent);
-    setTimeout(this.autoUploadFrames, 150)
-    this.fillVideoFrames()
+    this.slide = this.slideStore.getLoadedSlide(0, this.$props.name)
   }
 })
 </script>
@@ -226,12 +145,6 @@ export default defineComponent({
 .projector .bg div.bgModeContain{
   background-size: contain !important;
 }
-.framesBar{
-  left: 0px;
-  top: 0;
-  width: 400px;
-  overflow: hidden;
-}
 .framesBar h1{
   text-align: center;
 }
@@ -241,8 +154,5 @@ export default defineComponent({
   opacity: .0;
   border: red 1px solid;
   background: transparent none no-repeat center center/contain;
-}
-.framesBar div.bgDisabled{
-  background: none !important;
 }
 </style>

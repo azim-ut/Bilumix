@@ -16,9 +16,16 @@ function getCurrencyPrice(val: number, currency: string, coverage: number = 0): 
     if(rates){
         rates.filter((row: Rate) => row.currency === currency)
             .forEach((row: Rate) => {
-                val = Math.floor(val * row.rate)
-                val += Math.floor((val/row.rate) * coverage)
+                val = Math.round(val * row.rate)
+                val += Math.round((val/row.rate) * coverage)
                 val = Math.round((val/10)) * 10
+                const afterDot = val%100
+                let temp = (afterDot > 25 && afterDot < 50)?50:0
+                if(afterDot>50){
+                    temp = 0
+                }
+                // console.log(val, afterDot, temp)
+                val = Math.round(val/100) * 100 + temp
             })
         return val
     }

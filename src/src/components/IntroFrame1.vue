@@ -19,13 +19,11 @@
         <div class="content2Wrap">
           <TheaterMainWheel
               class="video1"
-              :name="'main'"
-              :test="true"
+              :name="'IntroDevice'"
               :bg-mode="'cover'"
-              :style="{}"
               :progress="blocks[1].progress"
               :from="0"
-              :to="60"
+              :to="40"
               :height="'100vh'">
           </TheaterMainWheel>
 
@@ -105,8 +103,8 @@ export default defineComponent({
         },
         {
           on: false,
-          from: 57,
-          to: 76,
+          from: 53,
+          to: 78,
           progress: 1,
           refs: [ 'content3' ]
         }
@@ -358,9 +356,11 @@ section{
 .mainBanner2 h1{
   font-weight: 600;
   padding: 0;
+  text-align: left;
 }
 .mainBanner2 p{
   padding: 20px;
+  text-align: left;
 }
 .mainBanner2 .video1{
   position: absolute;
@@ -437,7 +437,7 @@ img {
     opacity: 1;
   }
   50% {
-    clip-path: circle(3000px at center);
+    clip-path: circle(300vh at center);
     background-size: contain;
     background-position: -250px center;
     opacity: 1;
@@ -447,7 +447,7 @@ img {
   }
   100% {
     opacity: 0;
-    clip-path: circle(3000px at center);
+    clip-path: circle(300vh at center);
   }
 }
 @keyframes content3Animation {
@@ -455,8 +455,11 @@ img {
     clip-path: circle(0px at center);
   }
   50% {
-    clip-path: circle(10000px at center);
+    clip-path: circle(300vh at center);
     opacity: 1;
+  }
+  100% {
+    clip-path: circle(0px at center);
   }
 }
 @keyframes content2AnimationContent {
@@ -569,6 +572,7 @@ img {
 
   .mainBanner2 p{
     width: 80%;
+    text-align: center;
   }
 
   .mainBanner2 .content{
