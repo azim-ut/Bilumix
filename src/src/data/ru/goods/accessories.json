@@ -47,7 +47,7 @@
         "text": "<h4>Технические характеристики изделия</h4>\n<ul>\n<li class=\"li1\">\n<span class=\"s1\"></span><span class=\"s2\">Непрерывность работы: 3-8 часов (зависит в зависимости от интенсивности)</span>\n</li>\n<li>Время зарядки: около 2 часов</li>\n<li>Выходная мощность батареи: 7,4 вольта / 1700 мАч</li>\n<li>Вход зарядного устройства: <a href=\"/shop/battery-cradle\">Подставка для аккумулятора</a>\n</li>\n</ul>",
         "links": [
             { "title": "Инструкция", "url": "https://shop.jkdentalgroup.com/blogs/bilumix-manual-videos/bilumix-face-shield-x2-manual-videos"},
-            { "title": "<p><strong><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/DWrKGa9p3lw\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen=\"\"></iframe></strong></p>", "url": "https://www.youtube.com/watch?v=DWrKGa9p3lw"}
+            { "title": ""}
         ],
         "images": [
             { "url": "/images/static/bi-prod-fs-x2.webp", "on": true},
