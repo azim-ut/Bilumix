@@ -60,7 +60,7 @@
         "link": "bilumix-3-5x-loupe",
         "title": "Лупы BiLumix с увеличением 3,5x",
         "short": "3.5x лупы",
-        "text": "While 3.5x loupe can be calibrated by user, we will setup the initial calibration according to your IPD (Interpupillary Distance). You can check your IPD by yourself.<br>\n<h4>Loupe Specification</h4>\n<ul>\n<li>Magnification: 3.5x</li>\n<li>Working Distance: Adjustable (20 ~ 60cm)</li>\n<li>Weight: 69g</li>\n</ul>\n<h4>Features</h4>\n<ul>\n<li>Adjustable Working Distance</li>\n<li>Adjustable Pupil Distance (User Friendly)</li>\n</ul>\n<p></p>",
+        "text": "Линзы 3,5 x могут быть откалиброваны пользователем, производитель настраивает первоначальную калибровку в соответствии с вашим межзрачковым расстоянием. Вы можете проверить своё межзрачковое расстояниее самостоятельно.<br>\n<h4>Спецификация линз</h4>\n<ул>\n<li>Увеличение: 3,5x</li>\n<li>Рабочее расстояние: регулируемое (20 ~ 60 см)</li>\n<li>Вес: 69 г</li>\n</ul>\n<h4>Особенности</h4>\n<ул>\n<li>Регулируемое рабочее расстояние</li>\n<li>Регулируемое расстояние между зрачками (удобно для пользователя)</li>\n</ul>\n",
         "links": [
             { "title": "Setup manual", "url": "/manual/b3_5xloupe-setup/"},
             { "title": "How to calibrate", "url": "/manual/calibrating-your-loupe/"}
