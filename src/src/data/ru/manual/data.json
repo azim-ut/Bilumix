@@ -59,14 +59,14 @@
         "link": "3_5xloupe-setup",
         "title": "Установка бинокулярных луп 3.5-кратных",
         "image": "/images/static/manual-3_5xloupe-setup.jpg",
-        "video": "/video/ru/8-15xloupe-setup.mp4",
+        "video": "/video/ru/9-35xloupe-setup.mp4",
         "text": "В этой видеоинструкции описано, как правильно установить и снять 3,5-кратные бинокулярных лупы на ваш BiLumix."
     },
     {
         "link": "calibrating-your-loupe",
         "title": "Калибровка луп",
         "image": "/images/static/manual-calibrating-your-loupe.jpg",
-        "video": "/video/ru/8-15xloupe-setup.mp4",
+        "video": "/video/ru/10-calibrating-your-loupe.mp4",
         "text": "В этой видеоинструкции описано, как правильно откалибровать 3,5-кратные лупы в соответствии с вашим межзрачковым расстоянием и фокусным/рабочим расстоянием."
     },
     {
@@ -80,7 +80,7 @@
         "link": "troubleshooting",
         "title": "Диагностика",
         "image": "/images/static/manual-troubleshooting.jpg",
-        "video": "/video/ru/8-15xloupe-setup.mp4",
+        "video": "/video/ru/12-yroubleshooting.mp4",
         "text": "В этом видео описаны советы по устранению неполадок, связанных с тем, что светодиодные индикаторы не включаются."
     },
     {
