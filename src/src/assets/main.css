@@ -1063,7 +1063,7 @@ h2{
 
 /* The Close Button */
 .modal-content .close {
-  color: #000;
+  color: #444;
   float: right;
   font-weight: bold;
   padding: 0 20px !important;
@@ -1071,7 +1071,7 @@ h2{
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: #505050;
   text-decoration: none;
   cursor: pointer;
 }
@@ -1105,7 +1105,9 @@ h2{
   letter-spacing: 2px;
 }
 
-
+.white {
+  color: white;
+}
 
 @media (max-width: 950px) {
 

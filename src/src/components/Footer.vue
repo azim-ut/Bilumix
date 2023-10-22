@@ -89,6 +89,7 @@
         </div>
       </div>
 
+      <div class="white" v-if="isVideoOpened" @click="videoToggle">testest</div>
       <div class="copyright">
         Copyright © 2023 BiLumix.ru Designed and built by SK
       </div>
@@ -96,6 +97,15 @@
   </footer>
 
   <Cart />
+
+  <Modal :name="'video1'"
+         :show="isVideoOpened"
+         :close-callback="closeVideo">
+    <div class="video white">
+      <video :src="videoSource" autoplay preload="auto" controls="true" style="width: 100%; height: 100%;"></video>
+    </div>
+  </Modal>
+
 
   <Modal :name="'QuestionModal'"
          :show="isFormOpened"
@@ -112,12 +122,13 @@ import {mapStores} from "pinia";
 import {feedbackStore} from "@/store/feedback/feedback";
 import Cart from "@/components/Cart.vue";
 import FeedbackForm from "@/components/FeedbackForm.vue";
-import footerText from "@local/footer_text.json"
 import {bubbleStore} from "@/store/bubble/bubble";
+import {videoStore} from "@/store/video/video";
+import footerText from "@local/footer_text.json"
 
 export default defineComponent({
   computed: {
-    ...mapStores(feedbackStore, bubbleStore)
+    ...mapStores(feedbackStore, videoStore, bubbleStore)
   },
   components: {FeedbackForm, Cart, Modal},
   data() {
@@ -135,6 +146,9 @@ export default defineComponent({
     isFormOpened(): boolean {
       return this.feedbackStore.isOpened
     },
+    isVideoOpened(): boolean {
+      return this.videoStore.isOpened
+    },
     bubbleText(): string {
       return this.bubbleStore.text
     },
@@ -144,9 +158,15 @@ export default defineComponent({
     closeForm(){
       this.feedbackStore.close()
     },
+    closeVideo() {
+      return this.videoStore.toggle()
+    },
+    videoSource(): string {
+      return this.videoStore.src
+    }
   },
   mounted () {
-    this.lang = import.meta.env.VITE_DEFAULT_LOCALE
+    // this.lang = import.meta.env.VITE_DEFAULT_LOCALE
   },
   created() {
   },
@@ -154,6 +174,12 @@ export default defineComponent({
     'feedbackStore.isOpened': {
       handler(newVal,oldValue){
 
+      },
+      immediate: true
+    },
+    'videoStore.isOpened': {
+      handler(newVal,oldValue){
+        console.log(newVal, oldValue)
       },
       immediate: true
     }

@@ -4,7 +4,7 @@ import type {BubbleState} from "./types"
 
 export const bubbleStore = defineStore('bubble', {
     state: (): BubbleState => ({
-        show: true,
+        show: false,
         text: "Hi"
     }),
     getters: {

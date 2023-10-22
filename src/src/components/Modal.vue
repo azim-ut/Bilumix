@@ -3,7 +3,7 @@
   <div :id="$props.name" :style="{'display': ($props.show())?'block':'none'}" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
-      <span class="close" @click="closeModal()">&times;</span>
+      <span class="close" :id="'Cls_' + $props.name" @click="closeModal()">&times;</span>
       <div>
         <slot></slot>
       </div>
@@ -26,7 +26,7 @@ export default defineComponent({
     ...mapStores(feedbackStore)
   },
   props: {
-    show: null,
+    show: false,
     name: "",
     closeCallback: Function
   },
@@ -38,8 +38,8 @@ export default defineComponent({
     closeModal(){
       this.$props.closeCallback()
     },
-    modalKeyDown(event: Event){
-      if (event.target && event.target.getAttribute("id") === this.$props.name) {
+    modalKeyDown(event: any){
+      if (event.target && event.target?.getAttribute("id") === 'Cls_'+this.$props.name) {
         this.closeModal()
       }
     }

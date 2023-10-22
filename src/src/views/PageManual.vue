@@ -50,7 +50,7 @@ const manualStore = mStore()
 <script lang="ts">
 
 import {defineComponent} from "vue"
-import RoundedBlackBox from "@/components/RoundedBlackBox.vue";
+import RoundedBlackBox from "@/components/RoundedBlackBox.vue"
 import ScrollDownIndicator from "@/components/ScrollDownIndicator.vue";
 import Footer from "@/components/Footer.vue";
 import {RouterView} from "vue-router";
@@ -73,6 +73,9 @@ export default defineComponent({
   },
   methods: {
     showVideo(link: ManualRecord){
+      this.showModalVideo = link
+    },
+    isVideoOpened(link: ManualRecord){
       this.showModalVideo = link
     },
     toManualPage(link: string){

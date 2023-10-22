@@ -27,7 +27,7 @@
       <div class="circle circle2" ref="circle2"></div>
       <div class="centered" style="width: 100%; position: absolute; left: 0; bottom: 0; top: 0;">
         <button class="watchVideo emphasized-button"
-                @click="video.show = !video.show"><font-awesome-icon icon="fa-solid fa-circle-play" />
+                @click="showVideo(mainBundles.VIDEO1_PATH)"><font-awesome-icon icon="fa-solid fa-circle-play" />
           {{mainBundles.TO_VIDEO}}
         </button>
       </div>
@@ -52,9 +52,12 @@ import {RouterView} from "vue-router";
 import Modal from "@/components/Modal.vue";
 import mainBundles from "@local/main_text.json"
 import TheaterWheelVideo2 from "@/components/TheaterWheelVideo2.vue";
+import {mapStores} from "pinia";
+import {videoStore} from "@/store/video/video";
 
 export default defineComponent({
   components: {Modal, RouterView, TheaterWheelVideo2},
+  computed: {...mapStores(videoStore)},
   props: {
     progress: 0 as PropType<number>
   },
@@ -81,6 +84,10 @@ export default defineComponent({
     }
   },
   methods: {
+    showVideo(src: string): void {
+      this.videoStore.setVideo(src)
+      this.videoStore.showVideo()
+    },
     loadedEvent(){
       this.loaded = true
     },

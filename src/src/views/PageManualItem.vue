@@ -56,7 +56,7 @@ export default defineComponent({
     }
   },
   methods: {
-    showVideo(link: string){
+    isVideoOpened(link: string){
     },
     getLink():any {return this.$route.params.link},
     toManualsList() {

@@ -31,10 +31,12 @@ export const cartStore = defineStore('cart', {
                 list: cart.list
             }
         },
-            getCartItem: (state: CartState) => (link: string | null): CartItem => {
+        getCartItem: (state: CartState) => (link: string | null): CartItem => {
+            console.log(link, "!!")
         	let out = state.cart.list.find(row => row.url === link)
             if(!out){
                 return {
+                    target: undefined,
                     url: link?("https://bilumix.ru/shop/" + link):"",
                     need: [],
                     cnt: 0

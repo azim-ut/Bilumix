@@ -12,7 +12,7 @@
           <li v-for="row in menu"
               @click="toggleMenu(row)"
               :class="{'active':row.active, 'mobileButtons': row.mobileButton}">
-            <a>{{ row.title }}</a>
+            <a :href="row.link">{{ row.title }}</a>
           </li>
         </ul>
       </nav>

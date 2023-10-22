@@ -32,7 +32,7 @@
               <h1>{{mainBundles.INTRO_BANNER_2_TITLE_2_1}}</h1>
               <h1>{{mainBundles.INTRO_BANNER_2_TITLE_2_2}}</h1>
               <p style="margin: auto;" v-html="mainBundles.INTRO_BANNER_2_TEXT"></p>
-              <button class="emphasized-button" @click="video1.show = true"><font-awesome-icon icon="fa-solid fa-circle-play" /> {{mainBundles.TO_VIDEO}}</button>
+              <button class="emphasized-button" @click="showVideo(mainBundles.VIDEO1_PATH)"><font-awesome-icon icon="fa-solid fa-circle-play" /> {{mainBundles.TO_VIDEO}}</button>
             </div>
           </div>
         </div>
@@ -42,13 +42,6 @@
         <DoctorsVideo :progress="blocks[2].progress"/>
       </div>
 
-      <Modal :name="'video1'"
-             :show="() => video1.show"
-             :close-callback="() => {video1.show = false}">
-        <div class="video" v-if="video1.show">
-          <video :src="video1.src" autoplay preload="auto" controls="true" style="width: 100%; height: 100%;"></video>
-        </div>
-      </Modal>
     </div>
 
     <div class="scrollContent" ref="IntroProductScroll">
@@ -71,11 +64,14 @@ import mainBundles from "@local/main_text.json"
 import TheaterMainWheel from "@/components/TheaterMainWheel.vue";
 import DoctorsVideo from "@/components/DoctorsVideo.vue";
 import TheaterWheelVideo2 from "@/components/TheaterWheelVideo2.vue";
+import {mapStores} from "pinia";
+import {videoStore} from "@/store/video/video";
 
 export default defineComponent({
   components: {
     TheaterWheelVideo2,
     DoctorsVideo, TheaterMainWheel, Modal, RouterView, Footer, ScrollDownIndicator, RoundedBlackBox, Theater},
+  computed: {...mapStores(videoStore)},
   props: {
     progress: 0 as PropType<number>,
     screenH: 0 as PropType<number>
@@ -154,6 +150,10 @@ export default defineComponent({
         this.$refs[ref].style.setProperty('--delay', (val) + 's')
       }
     },
+    showVideo(src: string): void {
+      this.videoStore.setVideo(src)
+      this.videoStore.showVideo()
+    }
   },
   unmounted () {
     window.removeEventListener('scroll', this.onWheel);
