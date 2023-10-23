@@ -89,7 +89,6 @@
         </div>
       </div>
 
-      <div class="white" v-if="isVideoOpened" @click="videoToggle">testest</div>
       <div class="copyright">
         Copyright © 2023 BiLumix.ru Designed and built by SK
       </div>
@@ -102,7 +101,7 @@
          :show="isVideoOpened"
          :close-callback="closeVideo">
     <div class="video white">
-      <video :src="videoSource" autoplay preload="auto" controls="true" style="width: 100%; height: 100%;"></video>
+      <video :src="videoSource()" autoplay preload="auto" controls="true" style="width: 100%; height: 100%;"></video>
     </div>
   </Modal>
 
