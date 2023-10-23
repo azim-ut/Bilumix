@@ -22,9 +22,9 @@ export const videoStore = defineStore('video', {
         hideVideo(): void {
             this.$state.show = false
 		},
-        setVideo(val: string): void{
+        setVideo(val: string|null): void{
             this.$state.src = val
-            console.log(this.$state.show, this.$state.src)
+            // console.log(this.$state.show, this.$state.src)
         }
     }
 })

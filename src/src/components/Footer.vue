@@ -101,7 +101,12 @@
          :show="isVideoOpened"
          :close-callback="closeVideo">
     <div class="video white">
-      <video :src="videoSource()" autoplay preload="auto" controls="true" style="width: 100%; height: 100%;"></video>
+      <video :src="videoSource()"
+             v-if="videoSource()"
+             autoplay
+             preload="auto"
+             controls="true"
+             style="width: 100%; height: 100%;"></video>
     </div>
   </Modal>
 
@@ -158,7 +163,8 @@ export default defineComponent({
       this.feedbackStore.close()
     },
     closeVideo() {
-      return this.videoStore.toggle()
+      this.videoStore.setVideo(null)
+      return this.videoStore.hideVideo()
     },
     videoSource(): string {
       return this.videoStore.src
@@ -178,7 +184,7 @@ export default defineComponent({
     },
     'videoStore.isOpened': {
       handler(newVal,oldValue){
-        console.log(newVal, oldValue)
+        // console.log(newVal, oldValue)
       },
       immediate: true
     }
