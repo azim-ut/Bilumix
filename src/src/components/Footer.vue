@@ -97,19 +97,6 @@
 
   <Cart />
 
-  <Modal :name="'video1'"
-         :show="isVideoOpened"
-         :close-callback="closeVideo">
-    <div class="video white">
-      <video :src="videoSource()"
-             v-if="videoSource()"
-             autoplay
-             preload="auto"
-             controls="true"
-             style="width: 100%; height: 100%;"></video>
-    </div>
-  </Modal>
-
 
   <Modal :name="'QuestionModal'"
          :show="isFormOpened"
