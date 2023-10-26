@@ -3,7 +3,7 @@
         "link": "headlamp-loupe",
         "title": "BiLumix Headlamp 1.5x Loupe",
         "short": "1.5x",
-        "text": "<p><strong>Headlamp Loupe&nbsp;Specification</strong><br></p>\n<ul>\n<li>Magnification:&nbsp;1.5x</li>\n<li>Working distance: 5~100cm&nbsp;</li>\n<li>Working field size: 45cm</li>\n<li>Weight: 13g</li>\n</ul>\n<h4>Compatibility</h4>\n<ul>\n<li>Generation 1.0</li>\n<li>Generation 2.0</li>\n</ul>\n<p>",
+        "text": "<p><strong>Headlamp Loupe&nbsp;Specification</strong><br></p><ul><li>Magnification:&nbsp;1.5x</li><li>Working distance: 5~100cm&nbsp;</li><li>Working field size: 45cm</li><li>Weight: 13g</li></ul><h4>Compatibility</h4><ul><li>Generation 1.0</li><li>Generation 2.0</li></ul><p>",
         "links": [
             { "title": "Manual", "url": "/en/manual/1_5xloupe-setup"}
         ],
@@ -39,7 +39,7 @@
         "link": "copy-of-headlamp-loupe",
         "title": "Surgical Loupe 2.5x",
         "short": "2.5x",
-        "text": "<h4>&nbsp;Headlamp Loupe&nbsp;Specification</h4>\n<ul>\n<li>Magnification: 2.5x</li>\n<li>Working distance: 20 ~ 100cm (Adjustable)&nbsp;</li>\n<li>Weight: 19g</li>\n</ul>\n<h4>Compatibility</h4>\n<ul>\n<li>Generation 1.0</li>\n<li>Generation 2.0</li>\n</ul>\n ",
+        "text": "<h4>&nbsp;Headlamp Loupe&nbsp;Specification</h4><ul><li>Magnification: 2.5x</li><li>Working distance: 20 ~ 100cm (Adjustable)&nbsp;</li><li>Weight: 19g</li></ul><h4>Compatibility</h4><ul><li>Generation 1.0</li><li>Generation 2.0</li></ul> ",
         "links": [
             { "title": "Manual Video", "url": "/en/manual/3_5xloupe-setup"}
         ],
@@ -61,7 +61,7 @@
         "link": "bilumix-3-5x-loupe",
         "title": "BiLumix 3.5x Loupe",
         "short": "3.5x",
-        "text": "<br>\n<h4>Loupe Specification</h4>\n<ul>\n<li>Magnification: 3.5x</li>\n<li>Working Distance: Adjustable (20 ~ 60cm)</li>\n<li>Weight: 69g</li>\n</ul>\n<h4>Features</h4>\n<ul>\n<li>Adjustable Working Distance</li>\n<li>Adjustable Pupil Distance (User Friendly)</li>\n</ul>\n<p></p>",
+        "text": "<br><h4>Loupe Specification</h4><ul><li>Magnification: 3.5x</li><li>Working Distance: Adjustable (20 ~ 60cm)</li><li>Weight: 69g</li></ul><h4>Features</h4><ul><li>Adjustable Working Distance</li><li>Adjustable Pupil Distance (User Friendly)</li></ul><p></p>",
         "links": [
             { "title": "Setup manual", "url": "/en/manual/3_5xloupe-setup"},
             { "title": "How to calibrate", "url": "/en/manual/calibrating-your-loupe"}

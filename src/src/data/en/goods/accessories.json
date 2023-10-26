@@ -3,7 +3,7 @@
         "link": "rechargeable-battery-gen-2",
         "title": "Rechargeable Battery",
         "short": "Rechargeable Battery",
-        "text": "<h4>Products Specification</h4>\n<ul>\n<li class=\"li1\">\n<span class=\"s1\"></span><span class=\"s2\">Operation continuity: 3 - 8hours (depends on Intensity)</span>\n</li>\n<li>Charging time: About 2 hours</li>\n<li>Battery output: 7.4Volts / 1700mAh</li>\n<li>Charger Input: <a href=\"/en/shop/battery-cradle\">Battery Cradle</a>\n</li>\n</ul>",
+        "text": "<h4>Products Specification</h4><ul><li class=\"li1\"><span class=\"s1\"></span><span class=\"s2\">Operation continuity: 3 - 8hours (depends on Intensity)</span></li><li>Charging time: About 2 hours</li><li>Battery output: 7.4Volts / 1700mAh</li><li>Charger Input: <a href=\"/en/shop/battery-cradle\">Battery Cradle</a></li></ul>",
         "links": [
             { "title": "Manual", "url": "/manual/battery-connection/"}
         ],
@@ -18,7 +18,7 @@
         "link": "battery-cradle",
         "title": "Battery Cradle",
         "short": "Rechargeable Battery",
-        "text": "<p>The cradle for the BiLumix Gen 2.0&nbsp;<a href=\"/en/shop/rechargeable-battery-gen-2\" title=\"View rechargeable battery detail\">rechargeable battery</a>&nbsp;uses&nbsp;<strong><em>USB type-c</em></strong>&nbsp; as the charge input. This greatly improves portability and charging speed.</p>\n<ul>\n<li>Charger&nbsp;output: 7.4Volts / 1,700mAh</li>\n<li>Charger Input:&nbsp;<em><strong>USB type-c</strong></em> (included)</li>\n</ul>\n<p><strong>* Only for&nbsp;BiLumix's&nbsp;Rechargeable Battery for Generation 2.0</strong></p>",
+        "text": "<p>The cradle for the BiLumix Gen 2.0&nbsp;<a href=\"/en/shop/rechargeable-battery-gen-2\" title=\"View rechargeable battery detail\">rechargeable battery</a>&nbsp;uses&nbsp;<strong><em>USB type-c</em></strong>&nbsp; as the charge input. This greatly improves portability and charging speed.</p><ul><li>Charger&nbsp;output: 7.4Volts / 1,700mAh</li><li>Charger Input:&nbsp;<em><strong>USB type-c</strong></em> (included)</li></ul><p><strong>* Only for&nbsp;BiLumix's&nbsp;Rechargeable Battery for Generation 2.0</strong></p>",
         "images": [
             { "url": "/images/static/gen2-battery-craddle.webp", "on": true}
         ],
@@ -44,7 +44,7 @@
         "link": "bilumix-face-shield-x2-package",
         "title": "BiLumix Face Shield X2 Package",
         "short": "Face Shield X2",
-        "text": "<h4>Include</h4>\n<p>* Frame + 5 Re-usable Shields</p>\n<h4>Features</h4>\n<p>* Perfect for BiLumix Headlamp</p>\n<p>* Anti Fog&nbsp;Shields</p>\n<p>* Adjustable Angle</p>\n<p>* Can flip up and Down</p>",
+        "text": "<h4>Include</h4><p>* Frame + 5 Re-usable Shields</p><h4>Features</h4><p>* Perfect for BiLumix Headlamp</p><p>* Anti Fog&nbsp;Shields</p><p>* Adjustable Angle</p><p>* Can flip up and Down</p>",
         "links": [
             { "title": "Manual", "url": "https://bilumix.ru/en/manual"},
             { "title": "", "url": ""}
@@ -64,7 +64,7 @@
         "link": "bilumix-cam",
         "title": "BiLumix Cam [PREORDER]",
         "short": "BiLumix Cam",
-        "text": "<p class=\"p1\" data-mce-fragment=\"1\"><span class=\"s1\" data-mce-fragment=\"1\">High quality video camera optimized for medical operation. Preorder now to receive our BiLumixCam on its first arrival!</span></p>\n<ul>\n<li class=\"li1\">\n<meta charset=\"utf-8\">Enables user to perform the operation on the area without looking directly</li>\n<li class=\"li1\">Enables to share the operation with cooperators and large audience.</li>\n<li class=\"li1\">Enables to review the operation and make decisions and adjustment to improve your operation based on analysis.</li>\n</ul>\n<h4>Feature</h4>\n<ul>\n<li class=\"li1\">Stream &amp; record video with desired point of view</li>\n<li class=\"li1\">Mountable to BiLumix Headlamp &amp; any surface</li>\n<li class=\"li1\">View the operational area in close up view with zoom</li>\n</ul>\n<h4 data-mce-fragment=\"1\">Specification</h4>\n<ul>\n<li>Camera:&nbsp;64 Mega Pixel</li>\n<li>Magnification: BL-2(4-9x)</li>\n<li>Display Resolution 1920 x 1080 (FHD)<br>\n</li>\n<li>Focus type: Single triggering auto focus &amp; fine tuning</li>\n<li>Wireless Connection: Wi-Fi 802.11n/ac, 5GHz. 2x2 MIMO</li>\n<li>Battery: 5000mAH Li-ion battery integrated<br>USB-C current bank(external) supported (10,000mAH x 2)<br>\n</li>\n<li>Status LED indication: Power on/off, battery status<br>\n</li>\n<li>Remote Controller: Bluetooth 4.0, 2.4GHz</li>\n<li>Video Encoding H.264</li>\n<li>Camera Viewing Angle: Tilt function supported (+45°, -55°)<br>\n</li>\n<li>Software Requirement:<br>- O/S: Windows 10, 64bit<br>- CPU: Dual Core, 2.3GHz<br>- Memory: SSH 256GB<br>- Graphic Card: Intel HD Graphic card integrated<br>- WiFi: Wireless LAN IEEE 802.11 n/ac 867Mbps on 5GHz&nbsp;</li>\n</ul>\n<p class=\"p1\" data-mce-fragment=\"1\"><span class=\"s1\" data-mce-fragment=\"1\"><meta charset=\"utf-8\"> <em>Fast wireless data transmitter included</em></span></p>",
+        "text": "<p class=\"p1\" data-mce-fragment=\"1\"><span class=\"s1\" data-mce-fragment=\"1\">High quality video camera optimized for medical operation. Preorder now to receive our BiLumixCam on its first arrival!</span></p><ul><li class=\"li1\">Enables user to perform the operation on the area without looking directly</li><li class=\"li1\">Enables to share the operation with cooperators and large audience.</li><li class=\"li1\">Enables to review the operation and make decisions and adjustment to improve your operation based on analysis.</li></ul><h4>Feature</h4><ul><li class=\"li1\">Stream &amp; record video with desired point of view</li><li class=\"li1\">Mountable to BiLumix Headlamp &amp; any surface</li><li class=\"li1\">View the operational area in close up view with zoom</li></ul><h4 data-mce-fragment=\"1\">Specification</h4><ul><li>Camera:&nbsp;64 Mega Pixel</li><li>Magnification: BL-2(4-9x)</li><li>Display Resolution 1920 x 1080 (FHD)<br></li><li>Focus type: Single triggering auto focus &amp; fine tuning</li><li>Wireless Connection: Wi-Fi 802.11n/ac, 5GHz. 2x2 MIMO</li><li>Battery: 5000mAH Li-ion battery integrated<br>USB-C current bank(external) supported (10,000mAH x 2)<br></li><li>Status LED indication: Power on/off, battery status<br></li><li>Remote Controller: Bluetooth 4.0, 2.4GHz</li><li>Video Encoding H.264</li><li>Camera Viewing Angle: Tilt function supported (+45°, -55°)<br></li><li>Software Requirement:<br>- O/S: Windows 10, 64bit<br>- CPU: Dual Core, 2.3GHz<br>- Memory: SSH 256GB<br>- Graphic Card: Intel HD Graphic card integrated<br>- WiFi: Wireless LAN IEEE 802.11 n/ac 867Mbps on 5GHz&nbsp;</li></ul><p class=\"p1\" data-mce-fragment=\"1\"><span class=\"s1\" data-mce-fragment=\"1\"> <em>Fast wireless data transmitter included</em></span></p>",
         "images": [
             { "url": "/images/static/cam-1.webp", "on": false},
             { "url": "/images/static/cam-2.webp", "on": false},
