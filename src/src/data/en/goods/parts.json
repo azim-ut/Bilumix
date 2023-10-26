@@ -5,7 +5,7 @@
         "short": "Light Source Handle",
         "text": "This handle provide convenient for user to lift the light source up and down.",
         "links": [
-            { "title": "Manual", "url": "/manual/replacing-handle/"}
+            { "title": "Manual", "url": "/en/manual/replacing-handle/"}
         ],
         "images": [
             { "url": "/images/static/lamp-handle.webp", "on": true}
@@ -20,7 +20,7 @@
         "short": "Rear Head Support Leaf",
         "text": "This piece supports the headlamp to firmly placed over your head.",
         "links": [
-            { "title": "Manual", "url": "/manual/head-support-replacement/"}
+            { "title": "Manual", "url": "/en/manual/head-support-replacement/"}
         ],
         "images": [
             { "url": "/images/static/head-support-leaf.webp", "on": true}
@@ -33,9 +33,9 @@
         "link": "forehead-plate",
         "title": "Forehead Plate",
         "short": "Forehead Plate",
-        "text": "<p>BiLumix headlamp forehead plate has Velcro inside which allow user to easily replace <a class=\"product-link\" href=\"/shop/bilumix-frontpad-cushion/\" target=\"_blank\">forehead pad/cushion</a> with new one.<br></p>\n<p>* FOR GEN 2 ONLY</p>",
+        "text": "<p>BiLumix headlamp forehead plate has Velcro inside which allow user to easily replace <a class=\"product-link\" href=\"/en/shop/bilumix-frontpad-cushion/\" target=\"_blank\">forehead pad/cushion</a> with new one.<br></p>\n<p>* FOR GEN 2 ONLY</p>",
         "links": [
-            { "title": "Manual", "url": "/manual/adjusting-forehead-band/"}
+            { "title": "Manual", "url": "/en/manual/adjusting-forehead-band/"}
         ],
         "images": [
             { "url": "/images/static/frontplate.webp", "on": true},
@@ -50,10 +50,10 @@
     {
         "link": "bilumix-frontpad-cushion",
         "title": "Forehead Pad/Cushion",
-        "short": "Forehead Plate",
-        "text": "<p>Detachable&nbsp;pad for <a class=\"product-link\" href=\"/shop/forehead-plate/\" target=\"_blank\">forehead plate</a>. This&nbsp;pad can be attached to Velcro on the inner side of the <a class=\"product-link\" href=\"/shop/forehead-plate/\" target=\"_blank\">forehead plate</a>.&nbsp;<span class=\"s1\">This improved pad will give you maximum comfort.</span></p>\n",
+        "short": "Forehead Pad/Cushion",
+        "text": "<p>Detachable&nbsp;pad for <a class=\"product-link\" href=\"/en/shop/forehead-plate/\" target=\"_blank\">forehead plate</a>. This&nbsp;pad can be attached to Velcro on the inner side of the <a class=\"product-link\" href=\"/shop/forehead-plate/\" target=\"_blank\">forehead plate</a>.&nbsp;<span class=\"s1\">This improved pad will give you maximum comfort.</span></p>\n",
         "links": [
-            { "title": "Manual", "url": "/manual/replacing-cushion"}
+            { "title": "Manual", "url": "/en/manual/replacing-cushion"}
         ],
         "images": [
             { "url": "/images/static/font-pad.webp", "on": true},

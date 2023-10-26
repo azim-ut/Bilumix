@@ -5,7 +5,7 @@
         "short": "1.5x",
         "text": "<p><strong>Headlamp Loupe&nbsp;Specification</strong><br></p>\n<ul>\n<li>Magnification:&nbsp;1.5x</li>\n<li>Working distance: 5~100cm&nbsp;</li>\n<li>Working field size: 45cm</li>\n<li>Weight: 13g</li>\n</ul>\n<h4>Compatibility</h4>\n<ul>\n<li>Generation 1.0</li>\n<li>Generation 2.0</li>\n</ul>\n<p>",
         "links": [
-            { "title": "Manual", "url": "/manual/1_5xloupe-setup/"}
+            { "title": "Manual", "url": "/en/manual/1_5xloupe-setup"}
         ],
         "need": [
 
@@ -41,7 +41,7 @@
         "short": "2.5x",
         "text": "<h4>&nbsp;Headlamp Loupe&nbsp;Specification</h4>\n<ul>\n<li>Magnification: 2.5x</li>\n<li>Working distance: 20 ~ 100cm (Adjustable)&nbsp;</li>\n<li>Weight: 19g</li>\n</ul>\n<h4>Compatibility</h4>\n<ul>\n<li>Generation 1.0</li>\n<li>Generation 2.0</li>\n</ul>\n ",
         "links": [
-            { "title": "Manual Video", "url": "https://www.youtube.com/watch?v=OXtJXZkP4Qw"}
+            { "title": "Manual Video", "url": "/en/manual/3_5xloupe-setup"}
         ],
         "need": [
             { "title": "IPD", "name": "ipd", "val": 65, "min": 55, "max": 72, "html": "We need to know your IPD (Interpupillary Distance). You can check your IPD by yourself." }
@@ -63,8 +63,8 @@
         "short": "3.5x",
         "text": "<br>\n<h4>Loupe Specification</h4>\n<ul>\n<li>Magnification: 3.5x</li>\n<li>Working Distance: Adjustable (20 ~ 60cm)</li>\n<li>Weight: 69g</li>\n</ul>\n<h4>Features</h4>\n<ul>\n<li>Adjustable Working Distance</li>\n<li>Adjustable Pupil Distance (User Friendly)</li>\n</ul>\n<p></p>",
         "links": [
-            { "title": "Setup manual", "url": "/manual/b3_5xloupe-setup/"},
-            { "title": "How to calibrate", "url": "/manual/calibrating-your-loupe/"}
+            { "title": "Setup manual", "url": "/en/manual/3_5xloupe-setup"},
+            { "title": "How to calibrate", "url": "/en/manual/calibrating-your-loupe"}
         ],
         "need": [
             { "title": "IPD", "name": "ipd", "val": 65, "min": 55, "max": 72, "html": "We need to know your IPD (Interpupillary Distance). You can check your IPD by yourself." }

@@ -25,14 +25,14 @@
         "title": "Замена уплотнителя",
         "image": "/images/static/manual-replacing-cushion.jpg",
         "video": "/video/ru/4-replacing-your-cushion.mp4",
-        "text": "В этой видеоинструкции описано, как правильно заменить уплотитель для лба в вашем BiLumix."
+        "text": "В этой видеоинструкции описано, как правильно заменить уплотнитель для лба в вашем BiLumix."
     },
     {
         "link": "replacing-handle",
-        "title": "Замена ручки",
+        "title": "Замена пальцевого держателя",
         "image": "/images/static/manual-replacing-handle.jpg",
         "video": "/video/ru/5-replacing-handle.mp4",
-        "text": "В этой видеоинструкции описано, как заменить ручку, используемую для наклона осветителя Bilumix вверх и вниз."
+        "text": "В этой видеоинструкции описано, как заменить заменить пальцевой держатель используемую для наклона осветителя Bilumix вверх и вниз."
     },
     {
         "link": "light-cap-replacement",
@@ -92,9 +92,9 @@
     },
     {
         "link": "camera",
-        "title": "Использование камеры BiLumix Cam",
+        "title": "Подключение камеры BiLumix Cam к компьютеру используя Wi-Fi",
         "image": "/images/static/bilumix-cam.jpg",
         "video": "/video/ru/bilumix-cam.mp4",
-        "text": "В этой видеоинструкции описано, как подключить камеру к Wi-Fi."
+        "text": "В этой видеоинструкции показано, как подключить камеру к компьютеру используя Wi-Fi."
     }
 ]

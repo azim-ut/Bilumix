@@ -1,9 +1,9 @@
 [
     {
         "link": "lamp-handle",
-        "title": "Ручка источника света",
-        "short": "Ручка источника света",
-        "text": "Эта ручка позволяет пользователю удобно направлять источник света вверх и вниз.",
+        "title": "Пальцевой держатель источника света",
+        "short": "Пальцевой держатель",
+        "text": "Этот пальцевой держатель позволяет пользователю удобно направлять источник света вверх и вниз.",
         "links": [
             { "title": "Инструкция", "url": "/manual/replacing-handle/"}
         ],
@@ -51,7 +51,7 @@
         "link": "bilumix-frontpad-cushion",
         "title": "Накладка/уплотнитель для лба",
         "short": "Налобная накладка",
-        "text": "<p>Съемная накладка для <a class=\"product-link\" href=\"/shop/forehead-plate/\" target=\"_blank\">накладка на лоб</a>. Эту накладку можно прикрепить на липучку с внутренней стороны <a class=\"product-link\" href=\"/shop/forehead-plate/\" target=\"_blank\">накладки на лоб</a>.<span class=\"s1\">Эта улучшенная прокладка обеспечит вам максимальный комфорт.</span></p>",
+        "text": "<p>Съемная накладка <a class=\"product-link\" href=\"/shop/forehead-plate/\" target=\"_blank\">на лоб</a>.  Эту накладку можно прикрепить на липучку с внутренней стороны <a class=\"product-link\" href=\"/shop/forehead-plate/\" target=\"_blank\">накладки на лоб</a>.<span class=\"s1\"> Эта улучшенная прокладка обеспечит вам максимальный комфорт.</span></p>",
         "links": [
             { "title": "Инструкция", "url": "/manual/replacing-cushion"}
         ],
