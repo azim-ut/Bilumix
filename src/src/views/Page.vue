@@ -101,7 +101,7 @@
   </div>
   <Footer />
   <div class="MySlidesStore">
-    <div v-for="row in getSlides()">
+    <div v-for="row in getSlides().map(value => [Math.random(), value]).sort(([a], [b]) => a - b).map(entry => entry[1])">
       <img :src="row.path" @load="markAsLoaded(row)" />
     </div>
   </div>
@@ -349,7 +349,7 @@ export default defineComponent({
   background: black;
   color: white;
   display: flex;
-  padding: 5% 10%;
+  padding: 3% 10%;
   justify-content: center;
   vertical-align: middle;
   align-items: center;

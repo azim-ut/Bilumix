@@ -2,7 +2,7 @@
 
   <HeadMenu :key="$route.path" />
   <div class="contentWrap">
-    <div style="padding: 0 20px;">
+    <div style="padding: 0 20px; margin-bottom: 5%;">
       <h1>{{manual.title}}</h1>
       <div class="grid grid2">
         <div>
@@ -76,13 +76,18 @@ export default defineComponent({
   	window.addEventListener('click', this.closeModal)
     window.scroll(0,0)
     this.manual = this.manualStore.getItem(this.getLink())
+    document.title = this.manual?.title + ' ' + document.title
   }
 })
 </script>
 
 <style scoped>
+h1{
+  margin: 10px 0;
+}
 .contentWrap{
-  padding-top: 50px;
+  padding-top: 10px;
+  min-height: 50vh;
 }
 video {
   border-radius: 17px;

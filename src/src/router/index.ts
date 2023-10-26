@@ -15,6 +15,9 @@ import PageDataPrivacy from "@/views/PageDataPrivacy.vue";
 import PageTermOfUse from "@/views/PageTermOfUse.vue";
 import PageShopItem from "@/views/PageShopItem.vue";
 
+import seo from "@local/SEO.json";
+import stayUpdated from "@/components/StayUpdated.vue";
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -100,5 +103,33 @@ const router = createRouter({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  let defaultTitle = seo.TITLE_
+  let title = undefined
+  const seoKey = 'TITLE' + to.fullPath.split('?')[0].replaceAll('/','_')
+  if(seo[seoKey]){
+    title = seo[seoKey]
+  }
+  if(!title){
+    let offset = 0
+    while (offset = seoKey.indexOf('_', offset)){
+      let subKey = seoKey.substring(0, offset)
+      if(!seo[subKey]){
+        break;
+      }
+      title = seo[subKey]
+      offset++
+    }
+  }
+
+  //console.log(title, seoKey, seo[seoKey], to)
+
+  if(!title){
+    title = defaultTitle
+  }
+  document.title = title + ' Bilumix';
+  next();
+});
 
 export default router

@@ -161,6 +161,8 @@ export default defineComponent({
     this.product = this.shopStore.getItem(this.$route.params.link)
     this.currentImage = this.product?.images[0];
     this.form.cart = this.cartState().cnt
+
+    document.title = this.product?.title + ' ' + document.title
   }
 })
 </script>

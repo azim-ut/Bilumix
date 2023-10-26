@@ -27,6 +27,7 @@ export default defineConfig(({ command, mode }) => {
         '@local': fileURLToPath(new URL('./src/data/' + lang, import.meta.url)),
       }
     },
+
     build: {
       chunkSizeWarningLimit: 1600,
       outDir: "../app/bilumix/" + lang + "/",

@@ -10,7 +10,7 @@ const manualStore = mStore()
     <div style="margin: 0 auto;">
       <div class="grid grid2 manualList">
         <div class="block" style="border: none; box-shadow: none;background: none; padding: 0;">
-          <h1>Manuals</h1>
+          <h1>{{ bundles.TITLE }}</h1>
         </div>
         <div>&nbsp;</div>
       </div>
