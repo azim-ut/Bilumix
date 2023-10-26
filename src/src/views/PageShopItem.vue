@@ -72,7 +72,9 @@
           <hr />
           <div class="text" v-html="product.text"></div>
           <div class="links">
-              <a v-for="link in product.links" :href="link.url">{{link.title}}</a>
+            <div v-for="link in product.links">
+              <a style="clear: both; margin: 10px;" :href="link.url">{{link.title}}</a>
+            </div>
           </div>
         </div>
       </div>

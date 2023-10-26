@@ -29,6 +29,20 @@
       </div>
     </div>
   </header>
+
+  <Modal :name="'video1'"
+         :show="isVideoOpened"
+         :close-callback="closeVideo">
+    <div class="video white">
+      <video :src="videoSource()"
+             v-if="videoSource()"
+             autoplay
+             preload="auto"
+             controls="true"
+             style="width: 100%; height: 100%;"></video>
+    </div>
+  </Modal>
+
   <div :class="{'newArrivals':true, 'active': !hideNewAdv }">
     <span v-html="bundles.NEW_VERSION_ENABLE"></span>
     <div class="closeBtn pointer" @click="hideNewAdvBar()">X</div>
@@ -43,11 +57,13 @@ import {cartStore} from "@/store/cart/cart";
 import Cart from "@/components/Cart.vue";
 import headMenuJson from "@local/head_menu.json";
 import indexTextBundles from "@local/main_text.json";
+import Modal from "@/components/Modal.vue";
+import {videoStore} from "@/store/video/video";
 
 export default defineComponent({
-  components: {Cart},
+  components: {Modal, Cart},
   computed: {
-    ...mapStores(cartStore)
+    ...mapStores(cartStore, videoStore)
   },
   props: {
     key: null
@@ -71,6 +87,16 @@ export default defineComponent({
     toggleMenu(menu: any){
       this.$router?.push({name: menu.name})
       this.updateMenu(menu)
+    },
+    isVideoOpened(): boolean {
+      return this.videoStore.isOpened
+    },
+    closeVideo() {
+      this.videoStore.setVideo(null)
+      return this.videoStore.hideVideo()
+    },
+    videoSource(): string {
+      return this.videoStore.src
     },
     toggleNext(){
       let target = this.nextLang()
