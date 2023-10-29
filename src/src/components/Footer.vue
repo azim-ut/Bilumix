@@ -8,6 +8,7 @@
           <img src="/src/assets/logo.svg" style="height: 17px;"> {{ footerText.COMPANY }}
           <address>
             <span>
+              <div class="phone"><a href="tel:footerBundles.PHONE_NUM"><span>{{footerText.PHONE}}</span></a></div>
               {{ footerText.ADDRESS1 }}<br />
               {{ footerText.ADDRESS2 }}<br />
               {{ footerText.ADDRESS3 }}<br />
@@ -124,7 +125,7 @@ export default defineComponent({
   components: {FeedbackForm, Cart, Modal},
   data() {
     return {
-      lang: "en",
+      lang: import.meta.env.VITE_DEFAULT_LOCALE,
       showQuestionModal: {},
       footerText: footerText
     }
@@ -291,6 +292,27 @@ footer button{
   position: fixed;
   bottom: 20px;
   right: 20px;
+}
+
+.phone{
+  cursor: pointer;
+  opacity: 1;
+  margin: 20px 0 10px;
+}
+.phone a{
+  color: white;
+  text-decoration: none;
+}
+.phone:hover{
+  cursor: pointer;
+  opacity: 1;
+}
+.phone span{
+  font-weight: 800;
+  font-style: normal;
+}
+.phone svg{
+  margin-right: 10px;
 }
 
 @media (max-width: 850px) {

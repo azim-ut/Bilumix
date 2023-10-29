@@ -6,16 +6,19 @@
     <div class="logo" @click="toHome()">
       <img src="@/assets/logo.svg">
     </div>
-    <div class="menuBg" @click="showMobileMenu = !showMobileMenu">
-      <nav @click="($event) => {$event.preventDefault()}">
-        <ul>
-          <li v-for="row in menu"
-              @click="toggleMenu(row)"
-              :class="{'active':row.active, 'mobileButtons': row.mobileButton}">
-            <a :href="row.link">{{ row.title }}</a>
-          </li>
-        </ul>
-      </nav>
+    <div class="centerBlock">
+      <div class="menuBg" @click="showMobileMenu = !showMobileMenu">
+        <nav @click="($event) => {$event.preventDefault()}">
+          <ul>
+            <li v-for="row in menu"
+                @click="toggleMenu(row)"
+                :class="{'active':row.active, 'mobileButtons': row.mobileButton}">
+              <a :href="row.link">{{ row.title }}</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="phone"><a href="tel:footerBundles.PHONE_NUM"><font-awesome-icon :icon="['fas', 'phone']" /><span>{{footerBundles.PHONE}}</span></a></div>
     </div>
     <div class="rightBlock">
       <div class="cartIcon">
@@ -56,6 +59,7 @@ import {mapStores} from "pinia";
 import {cartStore} from "@/store/cart/cart";
 import Cart from "@/components/Cart.vue";
 import headMenuJson from "@local/head_menu.json";
+import footerBundles from "@local/footer_text.json";
 import indexTextBundles from "@local/main_text.json";
 import Modal from "@/components/Modal.vue";
 import {videoStore} from "@/store/video/video";
@@ -73,6 +77,7 @@ export default defineComponent({
       bundles: indexTextBundles,
       showMobileMenu: false,
       hideNewAdv: false,
+      footerBundles: footerBundles,
       menu: headMenuJson,
       langs: [
           {title: 'EN', link: '/en'},
@@ -158,6 +163,8 @@ export default defineComponent({
 .menuBg{
   margin: auto;
   transition: .5s;
+  display: inline-flex;
+  color: white;
 }
 .newArrivals{
   background: #ffffff;
@@ -214,6 +221,28 @@ header nav{
   float: right;
   margin: 0 auto;
   transition: .5s;
+  display: inline-flex;
+  color: white;
+}
+header .phone{
+  line-height: 60px;
+  cursor: pointer;
+  opacity: .8;
+}
+header .phone a{
+  color: white;
+  text-decoration: none;
+}
+header .phone:hover{
+  line-height: 60px;
+  cursor: pointer;
+  opacity: 1;
+}
+header .phone span{
+  line-height: 60px;
+}
+header .phone svg{
+  margin-right: 10px;
 }
 
 header nav ul {
@@ -257,6 +286,12 @@ header .rightBlock {
   float: right;
   position: absolute;
   right: 10px;
+}
+header .centerBlock {
+  display: inline-flex;
+  margin: auto;
+  transition: .5s;
+  color: white;
 }
 
 
@@ -316,7 +351,7 @@ header .logo .toggle{
   color: #fff;
 }
 
-@media (max-width: 990px) {
+@media (max-width: 1300px) {
 
   header {
     /*position: fixed;*/
@@ -328,6 +363,10 @@ header .logo .toggle{
   }
   header .logo{
     margin-left: 50px;
+  }
+  header .langIcon {
+    width: auto;
+    margin-left: 10px;
   }
 
   header nav {
@@ -391,7 +430,21 @@ header .logo .toggle{
   }
 }
 @media (max-width: 600px) {
+  header .phone{
+    margin: auto;
+  }
   header .logo{
+    display: none;
+  }
+  header .langIcon {
+    width: auto;
+    margin-left: 10px;
+  }
+}
+@media (max-width: 400px) {
+
+
+  header .phone span{
     display: none;
   }
 }

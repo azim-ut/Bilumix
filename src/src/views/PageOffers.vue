@@ -1,9 +1,9 @@
 <template>
 
   <HeadMenu :key="$route.path" />
-  <div class="contentWrap">
+  <div class="contentWrap" style="min-height: auto;">
 
-      <div class="offersHeadWrap" style="min-height: 100vh; background: rgb(21, 21, 21);">
+      <div class="offersHeadWrap" style="min-height: 20vh; padding-top: 60px; background: rgb(21, 21, 21);">
           <div class="bg_offers">
             <div class="title">
                 <h2>{{mainBundles.SPECIAL_OFFERS_H1}}</h2>
