@@ -1,6 +1,6 @@
 {
-  "PHONE": "8 (800) 511-82-19",
-  "PHONE_NUM": "88005118219",
+  "PHONE": "8 (960) 266-10-60",
+  "PHONE_NUM": "89602661060",
   "COMPANY": "Russia",
   "ADDRESS1": "Saint Petersburg,",
   "ADDRESS2": "embankment of the Obvodny Canal,",
@@ -20,11 +20,12 @@
   "PRODUCTS_LOUPES": "Loupes",
   "PRODUCTS_ACCESSORIES": "Accessories",
   "PRODUCTS_REPLACEABLE": "Replaceable",
-  "LEGAL": "Legal",
+  "LEGAL": "Dowloads",
   "LEGAL_REFUND_POLICY": "Refund policy",
   "LEGAL_DATA_PRIVACY": "Data Privacy",
   "LEGAL_TERMS_SERVICE": "Terms of Service",
-  "BUKLET": "Booklet",
-  "BROCHURE1": "Brochure 1",
-  "BROCHURE2": "Brochure 2"
+  "BUKLET": "Product catalog",
+  "BROCHURE1": "Loups",
+  "BROCHURE2": "Bilumix headlamp & Camera",
+  "BROCHURE3": "Shadowless headlamp"
 }
