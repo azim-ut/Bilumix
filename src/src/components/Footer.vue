@@ -60,6 +60,7 @@
               <li v-if="lang==='ru'"><a href="/files/buklet.pdf" target="_blank">{{footerText.BUKLET}}</a></li>
               <li v-if="lang==='ru'"><a href="/files/preview1.jpg" target="_blank">{{footerText.BROCHURE1}}</a></li>
               <li v-if="lang==='ru'"><a href="/files/preview2.jpg" target="_blank">{{footerText.BROCHURE2}}</a></li>
+              <li v-if="lang==='ru'"><a href="/files/preview2.jpg" target="_blank">{{footerText.BROCHURE3}}</a></li>
             </ul>
           </div>
 
