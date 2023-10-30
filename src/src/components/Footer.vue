@@ -54,14 +54,13 @@
             <h6><a href="/legal/">{{ footerText.LEGAL }}</a></h6>
 
             <ul>
-              <li v-if="lang==='en'"><a href="/files/LCD_halfscreen_1080x1920.pdf">{{footerText.BUKLET}}</a></li>
-              <li v-if="lang==='en'"><a href="/files/new 2.5x_loupe email marketing.pdf">{{footerText.BROCHURE1}}</a></li>
-              <li v-if="lang==='en'"><a href="/files/2022-Nov-bilumix-flyer-final-bleed-cmyk-2.pdf">{{footerText.BROCHURE2}}</a></li>
-              <li v-if="lang==='en'"><a href="/files/bilumix-flyer.pdf">{{footerText.BROCHURE3}}</a></li>
+              <li v-if="lang==='en'"><a href="refund-policy/">{{footerText.LEGAL_REFUND_POLICY}}</a></li>
+              <li v-if="lang==='en'"><a href="/data-privacy/">{{footerText.LEGAL_DATA_PRIVACY}}</a></li>
+              <li v-if="lang==='en'"><a href="/terms-of-service/">{{footerText.LEGAL_TERMS_SERVICE}}</a></li>
               <li v-if="lang==='ru'"><a href="/files/buklet.pdf" target="_blank">{{footerText.BUKLET}}</a></li>
-              <li v-if="lang==='ru'"><a href="/files/final_new 2.5x_loupe_email marketing.pdf" target="_blank">{{footerText.BROCHURE1}}</a></li>
-              <li v-if="lang==='ru'"><a href="/files/final_2022-Nov-bilumix-flyer-final-bleed-cmyk-2.pdf" target="_blank">{{footerText.BROCHURE2}}</a></li>
-              <li v-if="lang==='ru'"><a href="/files/final_bilumix-flyer.pdf" target="_blank">{{footerText.BROCHURE3}}</a></li>
+              <li v-if="lang==='ru'"><a href="/files/preview1.jpg" target="_blank">{{footerText.BROCHURE1}}</a></li>
+              <li v-if="lang==='ru'"><a href="/files/preview2.jpg" target="_blank">{{footerText.BROCHURE2}}</a></li>
+              <li v-if="lang==='ru'"><a href="/files/preview2.jpg" target="_blank">{{footerText.BROCHURE3}}</a></li>
             </ul>
           </div>
 
