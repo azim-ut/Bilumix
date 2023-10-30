@@ -15,10 +15,12 @@
     </div>
 
     <div class="">
+      <a id="loupes" class="anchor"></a>
+      <br/>
       <div class="grid grid141 center">
         <div></div>
         <div class="textContent">
-          <a id="loupes"><h2>{{bundles.LOUPES}}</h2></a>
+          <h2>{{bundles.LOUPES}}</h2>
           <p>{{bundles.LOUPES_TEXT}}</p>
         </div>
         <div></div>
@@ -42,15 +44,19 @@
         </div>
       </div>
 
-
-      <div class="grid grid141 center">
-        <div></div>
-        <div class="textContent">
-          <a id="accessories"><h2>{{bundles.ACCESSORIES}}</h2></a>
-          <p>{{bundles.LOUPES_TEXT}}</p>
+      <div>
+        <a id="accessories" class="anchor"></a>
+        <br/>
+        <div class="grid grid141 center">
+          <div></div>
+          <div class="textContent">
+            <a><h2>{{bundles.ACCESSORIES}}</h2></a>
+            <p>{{bundles.LOUPES_TEXT}}</p>
+          </div>
+          <div></div>
         </div>
-        <div></div>
       </div>
+
       <div class=" shopList grid grid3">
         <div v-for="product in shopStore.getAccessories"
              :id="product.link+'ID'"
@@ -69,14 +75,17 @@
           </div>
         </div>
       </div>
-
-      <div class="grid grid141 center">
-        <div></div>
-        <div class="textContent">
-          <a id="parts"><h2>{{bundles.REP_PARTS}}</h2></a>
-          <p>{{ bundles.REP_PARTS_TEXT }}</p>
+      <div>
+        <a  id="parts"></a>
+        <br/>
+        <div class="grid grid141 center">
+          <div></div>
+          <div class="textContent">
+            <a><h2>{{bundles.REP_PARTS}}</h2></a>
+            <p>{{ bundles.REP_PARTS_TEXT }}</p>
+          </div>
+          <div></div>
         </div>
-        <div></div>
       </div>
       <div class=" shopList grid grid3">
         <div v-for="product in shopStore.parts"
@@ -97,12 +106,16 @@
         </div>
       </div>
 
-      <div class="grid grid141 center">
-        <div></div>
-        <div class="textContent">
-          <a id="repair"><h2>{{ bundles.REPAIR_TITLE }}</h2></a>
+      <div>
+        <a id="repair" class="anchor"></a>
+        <br/>
+        <div class="grid grid141 center">
+          <div></div>
+          <div class="textContent">
+            <h2>{{ bundles.REPAIR_TITLE }}</h2>
+          </div>
+          <div></div>
         </div>
-        <div></div>
       </div>
       <div class="shopList grid grid3">
         <div v-for="product in shopStore.repair"
@@ -123,13 +136,17 @@
         </div>
     	</div>
 
-      <div class="grid grid141 center">
-        <div></div>
-        <div class="textContent">
-          <a id="repair"><h2>{{bundles.GENERATION_TITLE}}</h2></a>
-          <p>{{bundles.GENERATION_TEXT}}</p>
+      <div>
+        <a id="repair" class="anchor"></a>
+        <br/>
+        <div class="grid grid141 center">
+          <div></div>
+          <div class="textContent">
+            <h2>{{bundles.GENERATION_TITLE}}</h2>
+            <p>{{bundles.GENERATION_TEXT}}</p>
+          </div>
+          <div></div>
         </div>
-        <div></div>
       </div>
       <div class="shopList grid grid3">
         <div v-for="product in getGeneration()"
@@ -280,6 +297,10 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.anchor{
+  padding-bottom: 40px;
+  line-height: 50px;
+}
 .contentWrap{
   background: #f5f5f7;
   padding-bottom: 150px;

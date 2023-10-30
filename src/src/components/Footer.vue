@@ -26,27 +26,27 @@
             <h6>{{ footerText.PAGES }}</h6>
             <ul>
               <li>
-                <a href="/shop/">{{ footerText.PAGES_SHOP }}</a>
+                <a :href="getLink('/shop/')">{{ footerText.PAGES_SHOP }}</a>
               </li>
               <li>
-                <a href="/offers/">{{ footerText.PAGES_OFFERS }}</a>
+                <a :href="getLink('/offers/')">{{ footerText.PAGES_OFFERS }}</a>
               </li>
               <li>
-                <a href="/manual/">{{ footerText.PAGES_MANUAL }}</a>
+                <a :href="getLink('/manual/')">{{ footerText.PAGES_MANUAL }}</a>
               </li>
               <li>
-                <a href="/support/">{{ footerText.PAGES_SUPPORT }}</a>
+                <a :href="getLink('/support/')">{{ footerText.PAGES_SUPPORT }}</a>
               </li>
             </ul>
           </div>
 
           <div class="block">
-            <h6><a href="/shop">{{ footerText.PRODUCTS }}</a></h6>
+            <h6><a :href="getLink('/shop')">{{ footerText.PRODUCTS }}</a></h6>
             <ul>
-              <li><a href="/shop">{{footerText.PRODUCTS_HEADLAMP}}</a></li>
-              <li><a href="/shop#loupes">{{footerText.PRODUCTS_LOUPES}}</a></li>
-              <li><a href="/shop#accessories">{{footerText.PRODUCTS_ACCESSORIES}}</a></li>
-              <li><a href="/shop#parts">{{footerText.PRODUCTS_REPLACEABLE}}</a></li>
+              <li><a :href="getLink('/package/headlamp')">{{footerText.PRODUCTS_HEADLAMP}}</a></li>
+              <li><a :href="getLink('/shop#loupes')">{{footerText.PRODUCTS_LOUPES}}</a></li>
+              <li><a :href="getLink('/shop#accessories')">{{footerText.PRODUCTS_ACCESSORIES}}</a></li>
+              <li><a :href="getLink('/shop#parts')">{{footerText.PRODUCTS_REPLACEABLE}}</a></li>
             </ul>
           </div>
 
@@ -54,9 +54,11 @@
             <h6><a href="/legal/">{{ footerText.LEGAL }}</a></h6>
 
             <ul>
-              <li v-if="lang==='en'"><a href="refund-policy/">{{footerText.LEGAL_REFUND_POLICY}}</a></li>
+              <li v-if="lang==='en'"><a href="/refund-policy/">{{footerText.LEGAL_REFUND_POLICY}}</a></li>
               <li v-if="lang==='en'"><a href="/data-privacy/">{{footerText.LEGAL_DATA_PRIVACY}}</a></li>
               <li v-if="lang==='en'"><a href="/terms-of-service/">{{footerText.LEGAL_TERMS_SERVICE}}</a></li>
+              <li v-if="lang==='en'"><a href="/files/preview2.jpg" target="_blank">{{footerText.BROCHURE3}}</a></li>
+
               <li v-if="lang==='ru'"><a href="/files/buklet.pdf" target="_blank">{{footerText.BUKLET}}</a></li>
               <li v-if="lang==='ru'"><a href="/files/preview1.jpg" target="_blank">{{footerText.BROCHURE1}}</a></li>
               <li v-if="lang==='ru'"><a href="/files/preview2.jpg" target="_blank">{{footerText.BROCHURE2}}</a></li>
@@ -92,7 +94,7 @@
       </div>
 
       <div class="copyright">
-        Copyright © 2023 BiLumix.ru Designed and built by SK
+        Copyright © 2023 BiLumix.ru
       </div>
     </div>
   </footer>
@@ -133,6 +135,12 @@ export default defineComponent({
   },
   emits: ['show-feedback-form'],
   methods: {
+    getLink(link: string):string {
+      if(this.lang === "en"){
+        return '/en'+link;
+      }
+      return link;
+    },
     openedForm(){
       this.feedbackStore.open()
     },
