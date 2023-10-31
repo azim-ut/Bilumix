@@ -93,7 +93,7 @@
       </div>
 
       <div class="copyright">
-        Copyright © 2023 BiLumix.ru Designed and built by SK
+        Copyright © 2023 BiLumix.ru
       </div>
     </div>
   </footer>
