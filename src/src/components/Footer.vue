@@ -14,14 +14,15 @@
               {{ footerText.ADDRESS3 }}<br />
               {{ footerText.ADDRESS4 }}<br />
               {{ footerText.ADDRESS5 }}<br />
-              {{ footerText.ADDRESS6 }}<br />
-              {{ footerText.ADDRESS7 }}
             </span>
-            <br/>
-            <span>Email: <a href="mailto:sales@bilumix.ru" aria-label="Mail to sales@bilumix.ru">sales@bilumix.ru</a></span>
           </address>
         </div>
-        <div class="grid grid4 force">
+        <div class="grid grid5 force">
+          <div class="block">
+            <h6>{{ footerText.ADDRESS6 }}</h6>
+            {{ footerText.ADDRESS7 }}<br />
+            <span>Email: <a href="mailto:sales@bilumix.ru" aria-label="Mail to sales@bilumix.ru">sales@bilumix.ru</a></span>
+          </div>
           <div class="block">
             <h6>{{ footerText.PAGES }}</h6>
             <ul>
