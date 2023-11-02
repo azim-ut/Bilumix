@@ -8,19 +8,19 @@
   },
   {
     "title": "Включение-выключение<br/>Одним касанием",
-    "bg": "/images/static/bl-system-feature-01.png",
+    "bg": "/images/static/bl-system-feature-01.webp",
     "bgColor": "#252525",
     "text": "Включатель сзади поможет вам эффективно управлять освещением во время процедур."
   },
   {
     "title": "Индикатор<br/>Питания",
-    "bg": "/images/static/bl-system-feature-02.png",
+    "bg": "/images/static/bl-system-feature-02.webp",
     "bgColor": "#252525",
     "text": "Простой способ проверить состояние заряда батареи."
   },
   {
     "title": "Простое<br/>Управление",
-    "bg": "/images/static/bl-system-feature-03.png",
+    "bg": "/images/static/bl-system-feature-03.webp",
     "bgColor": "#252525",
     "sub": null,
     "text": "Быстрое изменение яркости поворотным регулятором."

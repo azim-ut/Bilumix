@@ -335,7 +335,7 @@ export default defineComponent({
   opacity: .1;
   width: 100%;
   z-index: 1;
-  background: #171717 url(/images/static/top-light-on-1024-819.png) no-repeat calc(50% + 200px) calc(50% + 200px)/cover;
+  background: #171717 url(/images/static/top-light-on-1024-819.webp) no-repeat calc(50% + 200px) calc(50% + 200px)/cover;
 }
 
 .contentWrap .promo .promoContent{

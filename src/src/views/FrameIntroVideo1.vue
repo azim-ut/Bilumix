@@ -40,11 +40,11 @@ export default defineComponent({
       this.productTheater.frames = []
       let cnt = 224;
       while(cnt-->0){
-        let path = "/images/min/video1/video1-sq-" + cnt + "-min.jpg"
+        let path = "/images/min/video1/video1-sq-" + cnt + "-min.webp"
         if(cnt>=10 && cnt<100){
-          path = "/images/min/video1/video1-sq-0" + cnt + "-min.jpg"
+          path = "/images/min/video1/video1-sq-0" + cnt + "-min.webp"
         }else if(cnt<10){
-          path = "/images/min/video1/video1-sq-00" + cnt + "-min.jpg"
+          path = "/images/min/video1/video1-sq-00" + cnt + "-min.webp"
         }
         this.productTheater.frames.unshift(path)
       }

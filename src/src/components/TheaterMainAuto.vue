@@ -63,11 +63,11 @@ export default defineComponent({
       this.video.frames = []
       let cnt = 279;
       while(cnt-->0){
-        let path = "/images/min/device_image/bilumix-sequence" + cnt + "-min.png"
+        let path = "/images/min/device_image/bilumix-sequence" + cnt + "-min.webp"
         if(cnt>=10 && cnt<100){
-          path = "/images/min/device_image/bilumix-sequence0" + cnt + "-min.png"
+          path = "/images/min/device_image/bilumix-sequence0" + cnt + "-min.webp"
         }else if(cnt<10){
-          path = "/images/min/device_image/bilumix-sequence00" + cnt + "-min.png"
+          path = "/images/min/device_image/bilumix-sequence00" + cnt + "-min.webp"
         }
         this.video.frames.unshift(path)
       }

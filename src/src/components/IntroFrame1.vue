@@ -234,7 +234,7 @@ section{
   position: absolute;
 }
 .front-image{
-  background: transparent url(/images/static/bilumix-side.png) no-repeat center top/contain;
+  background: transparent url(/images/static/bilumix-side.webp) no-repeat center top/contain;
   width: 40%;
   height: 60%;
   top: 15%;

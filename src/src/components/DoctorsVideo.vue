@@ -218,7 +218,7 @@ section{
   padding: 10px 20px;
 }
 .front-image{
-  background: transparent url(/images/static/bilumix-side.png) no-repeat center top/contain;
+  background: transparent url(/images/static/bilumix-side.webp) no-repeat center top/contain;
   width: 50%;
   height: 80%;
   top: 10%;

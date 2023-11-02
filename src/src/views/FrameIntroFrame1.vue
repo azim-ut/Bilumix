@@ -40,11 +40,11 @@ export default defineComponent({
       this.productTheater.frames = []
       let cnt = 279;
       while(cnt-->0){
-        let src = "/images/min/device_image/bilumix-sequence" + cnt + "-min.png"
+        let src = "/images/min/device_image/bilumix-sequence" + cnt + "-min.webp"
         if(cnt>=10 && cnt<100){
-          src = "/images/min/device_image/bilumix-sequence0" + cnt + "-min.png"
+          src = "/images/min/device_image/bilumix-sequence0" + cnt + "-min.webp"
         }else if(cnt<10){
-          src = "/images/min/device_image/bilumix-sequence00" + cnt + "-min.png"
+          src = "/images/min/device_image/bilumix-sequence00" + cnt + "-min.webp"
         }
         // let path = require(src)
         this.productTheater.frames.unshift(new URL(src, import.meta.url))

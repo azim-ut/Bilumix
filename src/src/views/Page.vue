@@ -4,16 +4,16 @@
   <div class="MySlidesStore">
 
     <div>
-      <img src="/images/static/bilumix-side.png" />
+      <img src="/images/static/bilumix-side.webp" />
 
-      <img src="/images/static/bl-overview-01.png" />
-      <img src="/images/static/bl-overview-02.png" />
-      <img src="/images/static/bl-overview-03.png" />
-      <img src="/images/static/bl-system-feature-01.png" />
-      <img src="/images/static/bl-system-feature-02.png" />
-      <img src="/images/static/bl-system-feature-03.png" />
-      <img src="/images/static/bl-user-feature-01.png" />
-      <img src="/images/static/bl-user-feature-02.png" />
+      <img src="/images/static/bl-overview-01.webp" />
+      <img src="/images/static/bl-overview-02.webp" />
+      <img src="/images/static/bl-overview-03.webp" />
+      <img src="/images/static/bl-system-feature-01.webp" />
+      <img src="/images/static/bl-system-feature-02.webp" />
+      <img src="/images/static/bl-system-feature-03.webp" />
+      <img src="/images/static/bl-user-feature-01.webp" />
+      <img src="/images/static/bl-user-feature-02.webp" />
     </div>
     <div v-for="row in getFirstSlides()">
       <img :src="row.path" @load="markAsLoaded(row)" />
@@ -101,7 +101,7 @@
   </div>
   <Footer />
   <div class="MySlidesStore">
-    <div v-for="row in getSlides().map(value => [Math.random(), value]).sort(([a], [b]) => a - b).map(entry => entry[1])">
+    <div v-for="row in getSlides()">
       <img :src="row.path" @load="markAsLoaded(row)" />
     </div>
   </div>
@@ -195,11 +195,11 @@ export default defineComponent({
       this.productTheater.frames = []
       let cnt = 279;
       while(cnt-->0){
-        let src = "/images/min/device_image/bilumix-sequence" + cnt + "-min.png"
+        let src = "/images/min/device_image/bilumix-sequence" + cnt + "-min.webp"
         if(cnt>=10 && cnt<100){
-          src = "/images/min/device_image/bilumix-sequence0" + cnt + "-min.png"
+          src = "/images/min/device_image/bilumix-sequence0" + cnt + "-min.webp"
         }else if(cnt<10){
-          src = "/images/min/device_image/bilumix-sequence00" + cnt + "-min.png"
+          src = "/images/min/device_image/bilumix-sequence00" + cnt + "-min.webp"
         }
         // let path = require(src)
         this.productTheater.frames.unshift(new URL(src, import.meta.url))
@@ -208,11 +208,11 @@ export default defineComponent({
     fillDoctor1Frames(){
       let cnt = 224;
       while(cnt-->0){
-        let path = "/images/min/video1/video1-sq-" + cnt + "-min.jpg"
+        let path = "/images/min/video1/video1-sq-" + cnt + "-min.webp"
         if(cnt>=10 && cnt<100){
-          path = "/images/min/video1/video1-sq-0" + cnt + "-min.jpg"
+          path = "/images/min/video1/video1-sq-0" + cnt + "-min.webp"
         }else if(cnt<10){
-          path = "/images/min/video1/video1-sq-00" + cnt + "-min.jpg"
+          path = "/images/min/video1/video1-sq-00" + cnt + "-min.webp"
         }
         this.slideStore.addSlide({
           ind: cnt,
@@ -225,11 +225,11 @@ export default defineComponent({
     fillDoctor2Frames(){
       let cnt = 235;
       while(cnt-->0){
-        let path = "/images/min/video2/video2-sq-" + cnt + "-min.jpg"
+        let path = "/images/min/video2/video2-sq-" + cnt + "-min.webp"
         if(cnt>=10 && cnt<100){
-          path = "/images/min/video2/video2-sq-0" + cnt + "-min.jpg"
+          path = "/images/min/video2/video2-sq-0" + cnt + "-min.webp"
         }else if(cnt<10){
-          path = "/images/min/video2/video2-sq-00" + cnt + "-min.jpg"
+          path = "/images/min/video2/video2-sq-00" + cnt + "-min.webp"
         }
         this.slideStore.addSlide({
           ind: cnt,
@@ -242,11 +242,11 @@ export default defineComponent({
     fillIntroDeviceFrames(){
       let cnt = 279;
       while(cnt-->0){
-        let path = "/images/min/device_image/bilumix-sequence" + cnt + "-min.png"
+        let path = "/images/min/device_image/bilumix-sequence" + cnt + "-min.webp"
         if(cnt>=10 && cnt<100){
-          path = "/images/min/device_image/bilumix-sequence0" + cnt + "-min.png"
+          path = "/images/min/device_image/bilumix-sequence0" + cnt + "-min.webp"
         }else if(cnt<10){
-          path = "/images/min/device_image/bilumix-sequence00" + cnt + "-min.png"
+          path = "/images/min/device_image/bilumix-sequence00" + cnt + "-min.webp"
         }
         this.slideStore.addSlide({
           ind: cnt,

@@ -76,25 +76,25 @@ export default defineComponent({
       shortTextBlocks1: [
         {
           title: "Weightless",
-          bg: "/images/static/bl-overview-01.png",
+          bg: "/images/static/bl-overview-01.webp",
           sub: "Light & Sturdy",
           text: "No pressure or added weight on the nose. Contoured to fit snugly on the head for a comfortable wear all day long."
         },
         {
           title: "Shadowless",
-          bg: "/images/static/bl-overview-02.png",
+          bg: "/images/static/bl-overview-02.webp",
           sub: "Dual Lights",
           text: "Two LED light sources deliver a strong spotlight in angles that eliminate any shadow from a first person POV."
         },
         {
           title: "Wireless",
-          bg: "/images/static/bl-overview-03.png",
+          bg: "/images/static/bl-overview-03.webp",
           sub: "Two Rechargeable Batteries",
           text: "An enhanced power management system along with two rechargeable batteries allow you to work continuously for up to 12 hours."
         },
         {
           title: "Weightless 2",
-          bg: "/images/static/bl-overview-01.png",
+          bg: "/images/static/bl-overview-01.webp",
           sub: "Light & Sturdy 2",
           text: "text 222."
         }
@@ -128,11 +128,11 @@ export default defineComponent({
       this.productTheater.frames = []
       let cnt = 279;
       while(cnt-->0){
-        let src = "/images/min/device_image/bilumix-sequence" + cnt + "-min.png"
+        let src = "/images/min/device_image/bilumix-sequence" + cnt + "-min.webp"
         if(cnt>=10 && cnt<100){
-          src = "/images/min/device_image/bilumix-sequence0" + cnt + "-min.png"
+          src = "/images/min/device_image/bilumix-sequence0" + cnt + "-min.webp"
         }else if(cnt<10){
-          src = "/images/min/device_image/bilumix-sequence00" + cnt + "-min.png"
+          src = "/images/min/device_image/bilumix-sequence00" + cnt + "-min.webp"
         }
         // let path = require(src)
         this.productTheater.frames.unshift(new URL(src, import.meta.url))
@@ -142,11 +142,11 @@ export default defineComponent({
       this.video1Theater.frames = []
       let cnt = 224;
       while(cnt-->0){
-        let path = "/images/min/video1/video1-sq-" + cnt + "-min.jpg"
+        let path = "/images/min/video1/video1-sq-" + cnt + "-min.webp"
         if(cnt>=10 && cnt<100){
-          path = "/images/min/video1/video1-sq-0" + cnt + "-min.jpg"
+          path = "/images/min/video1/video1-sq-0" + cnt + "-min.webp"
         }else if(cnt<10){
-          path = "/images/min/video1/video1-sq-00" + cnt + "-min.jpg"
+          path = "/images/min/video1/video1-sq-00" + cnt + "-min.webp"
         }
         this.video1Theater.frames.unshift(path)
       }
@@ -155,11 +155,11 @@ export default defineComponent({
       this.video2Theater.frames = []
       let cnt = 235;
       while(cnt-->0){
-        let path = "/images/min/video2/video2-sq-" + cnt + "-min.jpg"
+        let path = "/images/min/video2/video2-sq-" + cnt + "-min.webp"
         if(cnt>=10 && cnt<100){
-          path = "/images/min/video2/video2-sq-0" + cnt + "-min.jpg"
+          path = "/images/min/video2/video2-sq-0" + cnt + "-min.webp"
         }else if(cnt<10){
-          path = "/images/min/video2/video2-sq-00" + cnt + "-min.jpg"
+          path = "/images/min/video2/video2-sq-00" + cnt + "-min.webp"
         }
         this.video2Theater.frames.unshift(path)
       }
