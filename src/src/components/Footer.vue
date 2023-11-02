@@ -8,7 +8,7 @@
           <img src="/src/assets/logo.svg" style="height: 17px;"> {{ footerText.COMPANY }}
           <address>
             <span>
-              <div class="phone"><a href="tel:footerBundles.PHONE_NUM"><span>{{footerText.PHONE}}</span></a></div>
+              <div class="phone"><a :href="getPhoneLink(footerText.PHONE_NUM)"><span>{{footerText.PHONE}}</span></a></div>
               {{ footerText.ADDRESS1 }}<br />
               {{ footerText.ADDRESS2 }}<br />
               {{ footerText.ADDRESS3 }}<br />
@@ -26,27 +26,27 @@
             <h6>{{ footerText.PAGES }}</h6>
             <ul>
               <li>
-                <a href="/shop/">{{ footerText.PAGES_SHOP }}</a>
+                <a :href="getLink('/shop/')">{{ footerText.PAGES_SHOP }}</a>
               </li>
               <li>
-                <a href="/offers/">{{ footerText.PAGES_OFFERS }}</a>
+                <a :href="getLink('/offers/')">{{ footerText.PAGES_OFFERS }}</a>
               </li>
               <li>
-                <a href="/manual/">{{ footerText.PAGES_MANUAL }}</a>
+                <a :href="getLink('/manual/')">{{ footerText.PAGES_MANUAL }}</a>
               </li>
               <li>
-                <a href="/support/">{{ footerText.PAGES_SUPPORT }}</a>
+                <a :href="getLink('/support/')">{{ footerText.PAGES_SUPPORT }}</a>
               </li>
             </ul>
           </div>
 
           <div class="block">
-            <h6><a href="/shop">{{ footerText.PRODUCTS }}</a></h6>
+            <h6><a :href="getLink('/shop')">{{ footerText.PRODUCTS }}</a></h6>
             <ul>
-              <li><a href="/shop">{{footerText.PRODUCTS_HEADLAMP}}</a></li>
-              <li><a href="/shop#loupes">{{footerText.PRODUCTS_LOUPES}}</a></li>
-              <li><a href="/shop#accessories">{{footerText.PRODUCTS_ACCESSORIES}}</a></li>
-              <li><a href="/shop#parts">{{footerText.PRODUCTS_REPLACEABLE}}</a></li>
+              <li><a :href="getLink('/package/headlamp')">{{footerText.PRODUCTS_HEADLAMP}}</a></li>
+              <li><a :href="getLink('/shop#loupes')">{{footerText.PRODUCTS_LOUPES}}</a></li>
+              <li><a :href="getLink('/shop#accessories')">{{footerText.PRODUCTS_ACCESSORIES}}</a></li>
+              <li><a :href="getLink('/shop#parts')">{{footerText.PRODUCTS_REPLACEABLE}}</a></li>
             </ul>
           </div>
 
@@ -134,6 +134,15 @@ export default defineComponent({
   },
   emits: ['show-feedback-form'],
   methods: {
+    getLink(link: string):string {
+      if(this.lang === "en"){
+        return '/en'+link;
+      }
+      return link;
+    },
+    getPhoneLink(link: string):string {
+      return 'tel:'+link
+    },
     openedForm(){
       this.feedbackStore.open()
     },

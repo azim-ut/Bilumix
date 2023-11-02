@@ -107,10 +107,11 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   let defaultTitle = seo.TITLE_
   let title = undefined
-  const seoKey = 'TITLE' + to.fullPath.split('?')[0].replaceAll('/','_')
+  const seoKey = 'TITLE' + to.fullPath.split(/\?|\#/)[0].replaceAll('/','_')
   if(seo[seoKey]){
     title = seo[seoKey]
   }
+  console.log(seoKey)
   if(!title){
     let offset = 0
     while (offset = seoKey.indexOf('_', offset)){

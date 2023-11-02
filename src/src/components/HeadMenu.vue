@@ -18,7 +18,7 @@
           </ul>
         </nav>
       </div>
-      <div class="phone"><a href="tel:footerBundles.PHONE_NUM"><font-awesome-icon :icon="['fas', 'phone']" /><span>{{footerBundles.PHONE}}</span></a></div>
+      <div class="phone"><a :href="getPhoneLink(footerBundles.PHONE_NUM)"><font-awesome-icon :icon="['fas', 'phone']" /><span>{{footerBundles.PHONE}}</span></a></div>
     </div>
     <div class="rightBlock">
       <div class="cartIcon">
@@ -86,6 +86,9 @@ export default defineComponent({
     }
   },
   methods: {
+    getPhoneLink(link: string):string {
+      return 'tel:'+link
+    },
     getTotalCount(): number {
       return this.cartStore.countItems()
     },
