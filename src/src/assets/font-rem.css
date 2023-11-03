@@ -57,10 +57,13 @@ footer{
 footer h6{
     font-size: 1.2rem;
 }
+footer .address{
+    font-size: 1.1rem;
+}
 footer .block ul li{
     font-size: 1.1rem;
 }
-footer address {
+italic {
     font-size: 1.1rem;
 }
 .modal-content .close{
@@ -75,6 +78,11 @@ textarea{
 @media (min-width: 1000px) {
     .emphasized-button{
         font-size: 1rem;
+    }
+}
+@media (max-width: 1400px) {
+    footer .address{
+        font-size: 1.0rem;
     }
 }
 @media (min-width: 1850px) {

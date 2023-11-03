@@ -81,6 +81,7 @@ export default defineComponent({
 }
 
 .textBlocksPanel2 .block{
+  padding: 0;
 }
 
 @media (max-width: 850px) {

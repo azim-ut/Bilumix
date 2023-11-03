@@ -20,6 +20,10 @@
   grid-template-columns: repeat(5, 1fr);
 }
 
+.grid6{
+  grid-template-columns: repeat(6, 1fr);
+}
+
 .grid13{
   grid-template-columns: 1fr 3fr;
 }
@@ -59,7 +63,8 @@
   .grid161,
   .grid181,
   .grid4,
-  .grid5 {
+  .grid5,
+  .grid6 {
     grid-template-columns: repeat(1, 1fr);
   }
   .grid4{
@@ -70,6 +75,9 @@
   }
   .grid4.force {
     grid-template-columns: repeat(4, 1fr);
+  }
+  .grid6.force {
+    grid-template-columns: repeat(6, 1fr);
   }
   .grid21.force {
     grid-template-columns: 2fr 1fr;

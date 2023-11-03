@@ -1,0 +1,217 @@
+[
+  {
+    "currency": "AUD",
+    "nominal": 1,
+    "rate": 59.065
+  },
+  {
+    "currency": "AZN",
+    "nominal": 1,
+    "rate": 54.8706
+  },
+  {
+    "currency": "GBP",
+    "nominal": 1,
+    "rate": 113.1861
+  },
+  {
+    "currency": "AMD",
+    "nominal": 100,
+    "rate": 23.1815
+  },
+  {
+    "currency": "BYN",
+    "nominal": 1,
+    "rate": 29.1519
+  },
+  {
+    "currency": "BGN",
+    "nominal": 1,
+    "rate": 50.6462
+  },
+  {
+    "currency": "BRL",
+    "nominal": 1,
+    "rate": 18.445
+  },
+  {
+    "currency": "HUF",
+    "nominal": 100,
+    "rate": 26.0174
+  },
+  {
+    "currency": "VND",
+    "nominal": 10000,
+    "rate": 38.7231
+  },
+  {
+    "currency": "HKD",
+    "nominal": 1,
+    "rate": 11.9437
+  },
+  {
+    "currency": "GEL",
+    "nominal": 1,
+    "rate": 34.4474
+  },
+  {
+    "currency": "DKK",
+    "nominal": 1,
+    "rate": 13.2696
+  },
+  {
+    "currency": "AED",
+    "nominal": 1,
+    "rate": 25.3962
+  },
+  {
+    "currency": "USD",
+    "nominal": 1,
+    "rate": 93.2801
+  },
+  {
+    "currency": "EUR",
+    "nominal": 1,
+    "rate": 98.4365
+  },
+  {
+    "currency": "EGP",
+    "nominal": 10,
+    "rate": 30.1944
+  },
+  {
+    "currency": "INR",
+    "nominal": 10,
+    "rate": 11.218
+  },
+  {
+    "currency": "IDR",
+    "nominal": 10000,
+    "rate": 58.6778
+  },
+  {
+    "currency": "KZT",
+    "nominal": 100,
+    "rate": 19.8608
+  },
+  {
+    "currency": "CAD",
+    "nominal": 1,
+    "rate": 67.2483
+  },
+  {
+    "currency": "QAR",
+    "nominal": 1,
+    "rate": 25.6264
+  },
+  {
+    "currency": "KGS",
+    "nominal": 10,
+    "rate": 10.4434
+  },
+  {
+    "currency": "CNY",
+    "nominal": 1,
+    "rate": 12.7052
+  },
+  {
+    "currency": "MDL",
+    "nominal": 10,
+    "rate": 51.3634
+  },
+  {
+    "currency": "NZD",
+    "nominal": 1,
+    "rate": 54.1025
+  },
+  {
+    "currency": "NOK",
+    "nominal": 10,
+    "rate": 83.2776
+  },
+  {
+    "currency": "PLN",
+    "nominal": 1,
+    "rate": 22.0421
+  },
+  {
+    "currency": "RON",
+    "nominal": 1,
+    "rate": 19.8106
+  },
+  {
+    "currency": "XDR",
+    "nominal": 1,
+    "rate": 122.5831
+  },
+  {
+    "currency": "SGD",
+    "nominal": 1,
+    "rate": 68.0926
+  },
+  {
+    "currency": "TJS",
+    "nominal": 10,
+    "rate": 85.1663
+  },
+  {
+    "currency": "THB",
+    "nominal": 10,
+    "rate": 25.7482
+  },
+  {
+    "currency": "TRY",
+    "nominal": 10,
+    "rate": 33.0055
+  },
+  {
+    "currency": "TMT",
+    "nominal": 1,
+    "rate": 26.6515
+  },
+  {
+    "currency": "UZS",
+    "nominal": 10000,
+    "rate": 76.244
+  },
+  {
+    "currency": "UAH",
+    "nominal": 10,
+    "rate": 25.641
+  },
+  {
+    "currency": "CZK",
+    "nominal": 10,
+    "rate": 40.3199
+  },
+  {
+    "currency": "SEK",
+    "nominal": 10,
+    "rate": 83.4385
+  },
+  {
+    "currency": "CHF",
+    "nominal": 1,
+    "rate": 104.6328
+  },
+  {
+    "currency": "RSD",
+    "nominal": 100,
+    "rate": 84.1486
+  },
+  {
+    "currency": "ZAR",
+    "nominal": 10,
+    "rate": 49.7983
+  },
+  {
+    "currency": "KRW",
+    "nominal": 1000,
+    "rate": 68.7247
+  },
+  {
+    "currency": "JPY",
+    "nominal": 100,
+    "rate": 61.6524
+  }
+]
