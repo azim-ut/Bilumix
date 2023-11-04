@@ -1,7 +1,7 @@
 <template>
 
   <HeadMenu :key="$route.path" />
-  <div class="MySlidesStore">
+  <div class="MySlidesStore" onload="myFunction()">
 
     <div>
       <img src="/images/static/bilumix-side.webp" />
@@ -259,6 +259,9 @@ export default defineComponent({
     },
     markAsLoaded(slide: Slide) {
       this.slideStore.loaded(slide)
+    },
+    markPageLoaded(event: any) {
+      this.startLoadAnimation = true
     }
   },
   unmounted () {
@@ -273,7 +276,6 @@ export default defineComponent({
     window.addEventListener('scroll', this.onWheel);
     window.addEventListener('mousewheel', this.onWheel);
     window.addEventListener('load', this.loadedEvent);
-    setTimeout(() => { this.startLoadAnimation = true }, 1000)
     // this.fillTheaterFrames()
     // this.fillVideoTheaterFrames()
     // this.fillVideo2TheaterFrames()
