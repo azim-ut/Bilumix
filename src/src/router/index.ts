@@ -111,7 +111,6 @@ router.beforeEach((to, from, next) => {
   if(seo[seoKey]){
     title = seo[seoKey]
   }
-  console.log(seoKey)
   if(!title){
     let offset = 0
     while (offset = seoKey.indexOf('_', offset)){

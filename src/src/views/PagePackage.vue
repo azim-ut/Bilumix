@@ -322,7 +322,6 @@ export default defineComponent({
         localStorage.removeItem(LOCAL_STORE_SUMMARY_NAME)
         this.result.done = true
         window.scroll(0,0)
-        // location.reload()
       }
     },
     updateSummary(): void {

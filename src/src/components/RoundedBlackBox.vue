@@ -27,6 +27,8 @@ export default defineComponent({
     text: "" as string
   },
   data() {
+    return {
+    }
   },
   methods: {
   },

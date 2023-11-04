@@ -100,7 +100,7 @@
     </Modal>
   </div>
   <Footer />
-  <div class="MySlidesStore">
+  <div class="MySlidesStore" v-if="startLoadAnimation">
     <div v-for="row in getSlides()">
       <img :src="row.path" @load="markAsLoaded(row)" />
     </div>
@@ -151,6 +151,7 @@ export default defineComponent({
   data() {
     return {
       loaded: false,
+      startLoadAnimation: false,
       screenHeight: 0,
       video2: {
         show: false,
@@ -272,6 +273,7 @@ export default defineComponent({
     window.addEventListener('scroll', this.onWheel);
     window.addEventListener('mousewheel', this.onWheel);
     window.addEventListener('load', this.loadedEvent);
+    setTimeout(() => { this.startLoadAnimation = true }, 1000)
     // this.fillTheaterFrames()
     // this.fillVideoTheaterFrames()
     // this.fillVideo2TheaterFrames()

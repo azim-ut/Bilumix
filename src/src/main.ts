@@ -39,6 +39,5 @@ library.add(faSquare, faSquareCheck)
 app
     .use(router)
     .use(createPinia())
-    .use(i18n)
     .component('font-awesome-icon', FontAwesomeIcon)
     .mount('#app')

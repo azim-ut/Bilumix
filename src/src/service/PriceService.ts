@@ -13,7 +13,6 @@ function getCurrencyPrice(val: number, currency: string, coverage: number = 0): 
             rates = JSON.parse(jsonString)
             if(!rates){
                 rates = lazy_rates
-                // location.reload()
             }
         }
         if(rates){
