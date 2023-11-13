@@ -50,9 +50,9 @@ export default defineComponent({
       let pos = progress/100 * max
       const next = Math.floor(pos)
 
-      if(progress<2 || this.slideStore?.isLoaded(next, this.$props.name)){
+      if(this.slideStore?.isLoaded(next, this.$props.name)){
         let slide = this.slideStore.getLoadedSlide(next, this.$props.name)
-        if(slide && slide.loaded){
+        if(slide && slide.loaded && (!this.lastSlide || this.lastSlide.loaded)){
           this.lastSlide = this.slide;
           this.slide = slide
         }

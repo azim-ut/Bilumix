@@ -207,6 +207,7 @@ export default defineComponent({
       }
     },
     fillDoctor1Frames(){
+      const group = "Doctor1"
       let cnt = 224;
       // let cnt = 1;
       while(cnt-->0){
@@ -216,15 +217,20 @@ export default defineComponent({
         }else if(cnt<10){
           path = "/images/min/video1/video1-sq-00" + cnt + "-min.webp"
         }
+        let exists = this.slideStore.getSlide(cnt, group);
+        if(exists && exists.loaded){
+          continue
+        }
         this.slideStore.addSlide({
           ind: cnt,
-          group: "Doctor1",
+          group: group,
           path: path,
-          loaded: false
+          loaded: cnt===0
         })
       }
     },
     fillDoctor2Frames(){
+      const group = "Doctor2"
       let cnt = 235;
       // let cnt = 1;
       while(cnt-->0){
@@ -234,15 +240,20 @@ export default defineComponent({
         }else if(cnt<10){
           path = "/images/min/video2/video2-sq-00" + cnt + "-min.webp"
         }
+        let exists = this.slideStore.getSlide(cnt, group);
+        if(exists && exists.loaded){
+          continue
+        }
         this.slideStore.addSlide({
           ind: cnt,
-          group: "Doctor2",
+          group: group,
           path: path,
-          loaded: false
+          loaded: cnt===0
         })
       }
     },
     fillIntroDeviceFrames(){
+      const group = "IntroDevice"
       let cnt = 279;
       while(cnt-->0){
         let path = "/images/min/device_image/bilumix-sequence" + cnt + "-min.webp"
@@ -251,11 +262,15 @@ export default defineComponent({
         }else if(cnt<10){
           path = "/images/min/device_image/bilumix-sequence00" + cnt + "-min.webp"
         }
+        let exists = this.slideStore.getSlide(cnt, group);
+        if(exists && exists.loaded){
+          continue
+        }
         this.slideStore.addSlide({
           ind: cnt,
-          group: "IntroDevice",
+          group: group,
           path: path,
-          loaded: false
+          loaded: cnt===0
         })
       }
     },
@@ -267,7 +282,6 @@ export default defineComponent({
       this.slideStore.notLoaded(slide)
     },
     markPageLoaded(event: any) {
-      console.log("loaded")
       this.startLoadAnimation = true
     }
   },
@@ -283,11 +297,9 @@ export default defineComponent({
     window.addEventListener('load', this.loadedEvent);
     setTimeout(this.markPageLoaded, 1000)
     setTimeout(() => {
-      console.log("lodaded")
       this.fillDoctor1Frames()
     }, 2000)
     setTimeout(() => {
-      console.log("lodaded")
       this.fillDoctor2Frames()
     }, 1500)
     // this.fillTheaterFrames()
