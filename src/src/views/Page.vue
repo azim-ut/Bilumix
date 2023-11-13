@@ -298,10 +298,10 @@ export default defineComponent({
     setTimeout(this.markPageLoaded, 1000)
     setTimeout(() => {
       this.fillDoctor1Frames()
-    }, 2000)
+    }, 4000)
     setTimeout(() => {
       this.fillDoctor2Frames()
-    }, 1500)
+    }, 2000)
     // this.fillTheaterFrames()
     // this.fillVideoTheaterFrames()
     // this.fillVideo2TheaterFrames()
