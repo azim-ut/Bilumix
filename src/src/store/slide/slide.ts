@@ -40,6 +40,17 @@ export const slideStore = defineStore('slide', {
                 this.$state.list.push(slide)
             }
         },
+        notLoaded(slide: Slide): void {
+            this?.$state.list
+                .filter((row: Slide) => row.group === slide.group && row.ind === slide.ind)
+                .forEach((row: Slide) => {
+                    row.loaded = false
+                })
+
+            const loaded = this?.$state.list
+                .filter((row: Slide) => row.group === slide.group && row.loaded).length
+            // console.log(slide.group, ": ", loaded)
+		},
         loaded(slide: Slide): void {
             this?.$state.list
                 .filter((row: Slide) => row.group === slide.group && row.ind === slide.ind)

@@ -16,7 +16,7 @@
       <img src="/images/static/bl-user-feature-02.webp" />
     </div>
     <div v-for="row in getFirstSlides()">
-      <img :src="row.path" @load="markAsLoaded(row)" />
+      <img :src="row.path" @load="markAsLoaded(row)" @error="errorImageLoad(row)" />
     </div>
   </div>
   <div class="content" style="margin-top: 80px; position: relative;">
@@ -208,6 +208,7 @@ export default defineComponent({
     },
     fillDoctor1Frames(){
       let cnt = 224;
+      // let cnt = 1;
       while(cnt-->0){
         let path = "/images/min/video1/video1-sq-" + cnt + "-min.webp"
         if(cnt>=10 && cnt<100){
@@ -225,6 +226,7 @@ export default defineComponent({
     },
     fillDoctor2Frames(){
       let cnt = 235;
+      // let cnt = 1;
       while(cnt-->0){
         let path = "/images/min/video2/video2-sq-" + cnt + "-min.webp"
         if(cnt>=10 && cnt<100){
@@ -260,7 +262,12 @@ export default defineComponent({
     markAsLoaded(slide: Slide) {
       this.slideStore.loaded(slide)
     },
+    errorImageLoad(slide: Slide){
+      console.log("Error: ", slide.path)
+      this.slideStore.notLoaded(slide)
+    },
     markPageLoaded(event: any) {
+      console.log("loaded")
       this.startLoadAnimation = true
     }
   },
@@ -271,11 +278,18 @@ export default defineComponent({
   },
   mounted(){
     this.fillIntroDeviceFrames()
-    this.fillDoctor1Frames()
-    this.fillDoctor2Frames()
     window.addEventListener('scroll', this.onWheel);
     window.addEventListener('mousewheel', this.onWheel);
     window.addEventListener('load', this.loadedEvent);
+    setTimeout(this.markPageLoaded, 1000)
+    setTimeout(() => {
+      console.log("lodaded")
+      this.fillDoctor1Frames()
+    }, 2000)
+    setTimeout(() => {
+      console.log("lodaded")
+      this.fillDoctor2Frames()
+    }, 1500)
     // this.fillTheaterFrames()
     // this.fillVideoTheaterFrames()
     // this.fillVideo2TheaterFrames()
