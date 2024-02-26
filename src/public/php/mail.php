@@ -2,13 +2,13 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 
-require 'PHPMailer-master/src/DSNConfigurator.php';
-require 'PHPMailer-master/src/OAuthTokenProvider.php';
-require 'PHPMailer-master/src/OAuth.php';
-require 'PHPMailer-master/src/Exception.php';
-require 'PHPMailer-master/src/PHPMailer.php';
-require 'PHPMailer-master/src/SMTP.php';
-require 'PHPMailer-master/src/POP3.php';
+require __DIR__.'/PHPMailer-master/src/DSNConfigurator.php';
+require __DIR__.'/PHPMailer-master/src/OAuthTokenProvider.php';
+require __DIR__.'/PHPMailer-master/src/OAuth.php';
+require __DIR__.'/PHPMailer-master/src/Exception.php';
+require __DIR__.'/PHPMailer-master/src/PHPMailer.php';
+require __DIR__.'/PHPMailer-master/src/SMTP.php';
+require __DIR__.'/PHPMailer-master/src/POP3.php';
 
 try{
     $to = "sales@bilumix.ru";
