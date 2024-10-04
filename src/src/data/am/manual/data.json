@@ -1,0 +1,100 @@
+[
+    {
+        "link": "adjusting-size",
+        "title": "Регулировка под размер",
+        "image": "/images/static/manual-adjusting-size.webp",
+        "video": "/video/ru/1-adjusting-size.mp4",
+        "text": "В этой видеоинструкции описано, как правильно отрегулировать BiLumix по размеру вашей головы."
+    },
+    {
+        "link": "power-on-off",
+        "title": "Включение-выключение питания",
+        "image": "/images/static/manual-power-on-off.webp",
+        "video": "/video/ru/2-power-on-off.mp4",
+        "text": "В этой видеоинструкции описано, как включать/выключать подсветку на вашем устройстве BiLumix, а также подробно описаны некоторые распространенные вопросы и советы по устранению неполадок, связанных со светодиодными лампами.<br/> <b>Не извлекайте аккумулятор во время использования. Перед извлечением аккумулятора обязательно выключите осветитель с помощью переключателя включения/выключения на задней панели.<br/>* Чтобы включить фонарь, удерживайте нажатой кнопку питания в течение 1 секунды</b>"
+    },
+    {
+        "link": "battery-connection",
+        "title": "Подключение аккумулятора",
+        "image": "/images/static/manual-battery-connection.webp",
+        "video": "/video/ru/3-battery-connection.mp4",
+        "text": "В этой видеоинструкции описано, как правильно вставлять и извлекать аккумулятор.<br/><b>Не извлекайте аккумулятор во время использования. Перед извлечением аккумулятора обязательно выключите фару с помощью переключателя включения/выключения на задней панели.</b>"
+    },
+    {
+        "link": "replacing-cushion",
+        "title": "Замена уплотнителя",
+        "image": "/images/static/manual-replacing-cushion.webp",
+        "video": "/video/ru/4-replacing-your-cushion.mp4",
+        "text": "В этой видеоинструкции описано, как правильно заменить уплотнитель для лба в вашем BiLumix."
+    },
+    {
+        "link": "replacing-handle",
+        "title": "Замена пальцевого держателя",
+        "image": "/images/static/manual-replacing-handle.webp",
+        "video": "/video/ru/5-replacing-handle.mp4",
+        "text": "В этой видеоинструкции описано, как заменить заменить пальцевой держатель используемую для наклона осветителя Bilumix вверх и вниз."
+    },
+    {
+        "link": "light-cap-replacement",
+        "title": "Замена светового колпачка",
+        "image": "/images/static/manual-light-cap-replacement.webp",
+        "video": "/video/ru/6-light-cap-replacement.mp4",
+        "text": "В этой видеоинструкции описано, как правильно заменить пластиковые колпачки на двух светодиодных лампах вашего BiLumix."
+    },
+    {
+        "link": "head-support-replacement",
+        "title": "Замена упора для затылка",
+        "image": "/images/static/manual-head-support-replacement.webp",
+        "video": "/video/ru/7-head-support-replacement.mp4",
+        "text": "В этой видеоинструкции описано, как правильно заменить подголовник на нижней стороне вашего BiLumix, расположенной сзади."
+    },
+    {
+        "link": "1_5xloupe-setup",
+        "title": "Установка линз 1,5x",
+        "image": "/images/static/manual-1_5xloupe-setup.webp",
+        "video": "/video/ru/8-15xloupe-setup.mp4",
+        "text": "В этой видеоинструкции описано, как правильно настроить и снять 1,5-кратную лупу BiLumix."
+    },
+    {
+        "link": "3_5xloupe-setup",
+        "title": "Установка бинокулярных луп 3,5-кратных",
+        "image": "/images/static/manual-3_5xloupe-setup.webp",
+        "video": "/video/ru/9-35xloupe-setup.mp4",
+        "text": "В этой видеоинструкции описано, как правильно установить и снять 3,5-кратные бинокулярных лупы на ваш BiLumix."
+    },
+    {
+        "link": "calibrating-your-loupe",
+        "title": "Калибровка луп",
+        "image": "/images/static/manual-calibrating-your-loupe.webp",
+        "video": "/video/ru/10-calibrating-your-loupe.mp4",
+        "text": "В этой видеоинструкции описано, как правильно откалибровать 3,5-кратные лупы в соответствии с вашим межзрачковым расстоянием и фокусным/рабочим расстоянием."
+    },
+    {
+        "link": "adjusting-forehead-band",
+        "title": "Регулировка налобного фиксатора",
+        "image": "/images/static/manual-adjusting-forehead-band.webp",
+        "video": "/video/ru/11-adjusting-forehead-band.mp4",
+        "text": "В этой видеоинструкции описано, как отрегулировать налобный фиксатор BiLumix на наиболее удобном расстоянии от головы для более индивидуальной посадки."
+    },
+    {
+        "link": "troubleshooting",
+        "title": "Диагностика",
+        "image": "/images/static/manual-troubleshooting.webp",
+        "video": "/video/ru/12-yroubleshooting.mp4",
+        "text": "В этом видео описаны советы по устранению неполадок, связанных с тем, что светодиодные индикаторы не включаются."
+    },
+    {
+        "link": "switching-lenses",
+        "title": "Переключение линз",
+        "image": "/images/static/manual-switching-lenses.webp",
+        "video": "/video/ru/13-switching-lenses.mp4",
+        "text": "В этой видеоинструкции описано, как легко переключить ваши лупы с базовых 1,5-кратных на 2,5-кратные или 3,5-кратные и наоборот."
+    },
+    {
+        "link": "camera",
+        "title": "Подключение камеры BiLumix Cam к компьютеру используя Wi-Fi",
+        "image": "/images/static/bilumix-cam.webp",
+        "video": "/video/ru/bilumix-cam.mp4",
+        "text": "В этой видеоинструкции показано, как подключить камеру к компьютеру используя Wi-Fi."
+    }
+]

@@ -1,0 +1,44 @@
+[
+    {
+        "link": "bilumix-headlamp-repair-light-source-issue",
+        "title": "BiLumix сервис по ремонту поколения 2",
+        "short": "Проблема с источником света",
+        "text": "<h4>Спецификация услуги</h4><ul><li>Замена передних и задних ремешков</li><li>Замена источника света</li><li>Прочие услуги (хирургические лупы)</li></ul><p>* Пожалуйста, свяжитесь с нами перед оформлением заказа.</p><ul></ul>",
+        "links": [
+                    ],
+        "images": [
+            { "url": "/images/static/bi-prod-repair-light-source.webp", "on": true}
+        ],
+        "price": 130,
+        "currency": "RUB",
+        "on": false
+    },
+    {
+        "link": "bilumix-headlamp-repair-front-body-issue",
+        "title": "BiLumix сервис по ремонту поколения 2",
+        "short": "Проблема с передней частью корпуса",
+        "text": "<h4>Спецификация услуги</h4><ul><li>Замена передних и задних ремешков</li><li>Замена источника света</li><li>Прочие услуги (хирургические лупы)</li></ul><p>* Пожалуйста, свяжитесь с нами перед оформлением заказа.</p><ul></ul>",
+        "links": [
+        ],
+        "images": [
+            { "url": "/images/static/bi-prod-repair-front-body.webp", "on": true}
+        ],
+        "price": 110,
+        "currency": "RUB",
+        "on": false
+    },
+    {
+        "link": "bilumix-headlamp-repair-rear-body-issue",
+        "title": "BiLumix сервис по ремонту поколения 2",
+        "short": "Проблема с задней частью корпуса",
+        "text": "<h4>Спецификация услуги</h4><ul><li>Замена передних и задних ремешков</li><li>Замена источника света</li><li>Прочие услуги (хирургические лупы)</li></ul><p>* Пожалуйста, свяжитесь с нами перед оформлением заказа.</p><ul></ul>",
+        "links": [
+        ],
+        "images": [
+            { "url": "/images/static/bi-prod-repair-rear-body.webp", "on": true}
+        ],
+        "price": 170,
+        "currency": "RUB",
+        "on": false
+    }
+]

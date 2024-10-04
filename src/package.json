@@ -8,6 +8,7 @@
     "preview": "vite preview",
     "build-only-ru": "vite build --mode production_ru",
     "build-only-en": "vite build --mode production_en",
+    "build-only-am": "vite build --mode production_am",
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false"
   },
   "dependencies": {

@@ -1,0 +1,81 @@
+[
+    {
+        "link": "headlamp-loupe",
+        "title": "Линзы с увеличением 1,5х для налобного осветителя BiLumix.",
+        "short": "1,5x линзы",
+        "text": "<p><strong>Характеристики бинокулярных луп для налобного осветителя</strong><br></p><ul><li>Увеличение:&nbsp;1,5x</li><li>Рабочее расстояние: 5~100 см&nbsp;</li><li>Размер рабочего поля: 45 см</li><li>Вес: 13 г</li></ul><h4>Совместимость</h4><ul><li>Поколение 1.0</li><li>Поколение 2.0</li></ul><p>",
+        "links": [
+            { "title": "Инструкция", "url": "/manual/1_5xloupe-setup/"}
+        ],
+        "need": [
+            { "title": "IPD", "name": "ipd", "val": 65, "min": 55, "max": 72, "html": "" },
+            {
+                "title": "Glass",
+                "name": "glass",
+                "units": "yr(s)",
+                "val": 5,
+                "min": 1,
+                "max": 25,
+                "check": {
+                    "html": "Используете ли прогрессивные очковые линзы?",
+                    "val": false
+                },
+                "html": "Как долго их используете?"
+            }
+        ],
+        "images": [
+            { "url": "/images/static/1.5_2.webp", "on": true},
+            { "url": "/images/static/1.5_1.webp", "on": false},
+            { "url": "/images/static/1.5_3.webp", "on": false},
+            { "url": "/images/static/1.5_4.webp", "on": false},
+            { "url": "/images/static/1.5_5.webp", "on": false}
+        ],
+        "price": 100,
+        "currency": "RUB",
+        "on": false
+    },
+    {
+        "link": "copy-of-headlamp-loupe",
+        "title": "Лупы с увеличением 2,5x",
+        "short": "2,5x лупы",
+        "text": "<h4>Характеристики бинокулярной лупы для налобного осветителя</h4><ul><li>Увеличение: 2,5x</li><li>Рабочее расстояние: 20 ~ 100 см (регулируется)&nbsp;</li><li>Вес: 19 г</li></ul><h4>Совместимость</h4><ul><li>Поколение 1.0</li><li>Поколение 2.0</li></ul>",
+        "links": [
+            { "title": "Видео инструкция", "url": "/manual/3_5xloupe-setup/"}
+        ],
+        "need": [
+            { "title": "IPD", "name": "ipd", "val": 65, "min": 55, "max": 72, "html": "Для заказа требуется значение вашего межзрачкового расстояния. Вы можете проверить значение межзрачкового расстояния самостоятельно или обратиться к нам." }
+        ],
+        "images": [
+            { "url": "/images/static/2_941f1d27-2ec9-4fde-84aa-930551e1d077.webp", "on": true},
+            { "url": "/images/static/1_8eaf8e04-10e8-4163-b215-23ba94f48c97.webp", "on": false},
+            { "url": "/images/static/3_d7879e98-bcdb-422f-b8bb-529f343868f7.webp", "on": false},
+            { "url": "/images/static/4_5998b5d8-8eeb-44b0-bdb4-de7db377b49d.webp", "on": false},
+            { "url": "/images/static/5_b13301d8-a335-4095-a8bb-25cdb4b35edb.webp", "on": false}
+        ],
+        "price": 650,
+        "currency": "RUB",
+        "on": false
+    },
+    {
+        "link": "bilumix-3-5x-loupe",
+        "title": "Лупы BiLumix с увеличением 3,5x",
+        "short": "3,5x лупы",
+        "text": "Бинокулярные лупы 3,5 x могут быть откалиброваны пользователем, производитель настраивает первоначальную калибровку в соответствии с вашим межзрачковым расстоянием. Вы можете проверить своё межзрачковое расстояниее самостоятельно.<br><h4>Характеристики луп</h4><ul><li>Увеличение: 3,5x</li><li>Рабочее расстояние: регулируемое (20 ~ 60 см)</li><li>Вес: 69 г</li></ul><h4>Особенности</h4><ul><li>Регулируемое рабочее расстояние</li><li>Регулируемое расстояние между зрачками (удобно для пользователя)</li></ul>",
+        "links": [
+            { "title": "Установка луп на осветитель", "url": "/manual/3_5xloupe-setup/"},
+            { "title": "Калибровка луп", "url": "/manual/calibrating-your-loupe/"}
+        ],
+        "need": [
+            { "title": "IPD", "name": "ipd", "val": 65, "min": 55, "max": 72, "html": "Для заказа требуется значение вашего межзрачкового расстояния. Вы можете проверить значение межзрачкового расстояния самостоятельно или обратиться к нам." }
+        ],
+        "images": [
+            { "url": "/images/static/bi-prod-loupe3-1.webp", "on": true},
+            { "url": "/images/static/bi-prod-loupe3-3.webp", "on": false},
+            { "url": "/images/static/3.5x_2_72d588f4-a360-493f-892a-94cad47fa3de.webp", "on": false},
+            { "url": "/images/static/3.5x_3_a603b7c1-35c4-4386-9efc-80946ddccf8f.webp", "on": false}
+        ],
+        "price": 1000,
+        "currency": "RUB",
+        "on": false
+    }
+]

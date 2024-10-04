@@ -1,0 +1,34 @@
+[
+    {
+        "link": "light-filter-clear",
+        "title": "Защитные колпачки (пара)",
+        "short": "Защитные колпачки",
+        "text": "<p>Светофильтры, которые устанавливаются на светодиодный источник света.</p><br>",
+        "links": [
+            { "title": "Инструкция", "url": "/manual/light-cap-replacement/"}
+        ],
+        "images": [
+            { "url": "/images/static/light-filter-clear.webp", "on": true}
+        ],
+        "price": 12,
+        "currency": "RUB",
+        "on": false
+    },
+    {
+        "link": "light-filter-amber",
+        "title": "Светофильтры/колпачки (пара) - Оранжевые (откидывающиеся)",
+        "short": "Оранжевые (откидывающиеся)",
+        "text": "<p>Светофильтры, которые устанавливаются на светодиодный источник света.</p><p>Желтые колпачки (для медленного отверждения и препятствующие отверждению) устанавливаются на светодиодный источник света, чтобы предотвратить полимеризацию светоотверждаемых материалов, снижая световую интенсивность.</p>",
+        "links": [
+            { "title": "Инструкция", "url": "/manual/light-cap-replacement/"}
+        ],
+        "images": [
+            { "url": "/images/static/amber0.webp", "on": true},
+            { "url": "/images/static/Amber1.webp", "on": false},
+            { "url": "/images/static/Amber2.webp", "on": false}
+        ],
+        "price": 14,
+        "currency": "RUB",
+        "on": false
+    }
+]

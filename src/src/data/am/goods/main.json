@@ -1,0 +1,24 @@
+[
+    {
+        "link": "headlamp",
+        "title": "Осветитель BiLumix",
+        "short": "Осветитель",
+        "text": "<div><h4>Новые особенности</h4><ul><li class=\"li1\">Улучшенный дизайн (накладки на лоб и задней части), благодаря которому прибор идеально подстраивается под форму и размер любой головы</li><li>Кнопка включения-выключения в одно касание</li><li>Удобный индикатор заряда батареи</li></ul><h4 data-mce-fragment=\"1\">Спецификация</h4><ul><li>Вес: 140 грамм</li><li> <span>Яркость: не более 100 000 люкс</span></li><li>Время автономной работы:</li><ul><li>В режиме максимальной интенсивности: около 3 часов (непрерывно)</li><li>В режиме средней и низкой интенсивности: от 5 до 8 часов (непрерывно)</li></ul></ul><h4 data-mce-fragment=\"1\">Входящие в комплект аксессуары</h4><blockquote>Налобный осветитель BiLumix поставляется с<br></blockquote><blockquote>2 Аккумуляторные батареи, 1 подставка для аккумулятора, 1 подключаемый источник света, Фильтры (прозрачные) и 1 транспортировочная сумка</blockquote><blockquote></blockquote><p data-mce-fragment=\"1\">Нажмите <a class=\"manual-link\" href=\"/manual/\" target=\"_blank\">здесь</a> для перехода к списку видео-инструкций.</p>",
+        "links": [
+            { "title": "Инструкция", "url": "/manual"}
+        ],
+        "products": [],
+        "free": ["light-filter-clear", "rechargeable-battery", "rechargeable-battery", "battery-dock"],
+        "ipd": 0,
+        "glassYear": 0,
+        "images": [
+            { "url": "/images/shop/bi-prod-headlamp-1.webp", "on": false},
+            { "url": "/images/shop/bi-prod-headlamp-2.webp", "on": false},
+            { "url": "/images/shop/bi-prod-headlamp-3.webp", "on": false},
+            { "url": "/images/shop/bi-prod-headlamp-4.webp", "on": false}
+        ],
+        "price": 1250,
+        "currency": "RUB",
+        "warranty": 1
+    }
+]
