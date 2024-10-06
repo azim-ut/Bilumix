@@ -15,7 +15,7 @@
               <div>{{ footerText.WORK_TIME_TITLE }}</div>
               <div>{{ footerText.WORK_TIME }}</div>
               <div>
-                <span>Email: <a href="mailto:sales@bilumix.ru" aria-label="Mail to sales@bilumix.ru">sales@bilumix.ru</a></span>
+                <span>Email: <a href="mailto:sales@bilumix.am" aria-label="Mail to sales@bilumix.am">sales@bilumix.am</a></span>
               </div>
               <div>{{ footerText.ADDRESS5 }}</div>
               </div>
@@ -74,21 +74,22 @@
           <div>
             <h6 style="font-weight: normal;">{{footerText.FOLLOW_US}}</h6>
             <div>
-              <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1yxmbwk" tabindex="0" type="button" style="color: white;">
+              <button class="FooterSocBtn MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1yxmbwk" tabindex="0" type="button" style="color: white;">
                 <a href="https://www.facebook.com/BiLumixheadlamp/" rel="noreferrer" target="_blank" aria-label="Connect with our facebook" style="margin-right: 15px; color: white;">
-                  <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="FacebookIcon">
-                    <path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m13 2h-2.5A3.5 3.5 0 0 0 12 8.5V11h-2v3h2v7h3v-7h3v-3h-3V9a1 1 0 0 1 1-1h2V5z"></path>
-                  </svg>
+                  <font-awesome-icon :icon="['fab', 'facebook']" />
                 </a>
                 <span class="MuiTouchRipple-root css-w0pj6f"></span>
               </button>
-              <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1yxmbwk" tabindex="0" type="button" style="color: white;">
+              <button class="FooterSocBtn MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1yxmbwk" tabindex="0" type="button" style="color: white;">
                 <a href="https://www.instagram.com/bilumix/?hl=en" rel="noreferrer" target="_blank" aria-label="Connect with our instagram" style="margin-right: 15px; color: white;">
-                  <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="InstagramIcon">
-                    <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path>
-                  </svg>
+                  <font-awesome-icon :icon="['fab', 'instagram']" />
                 </a>
                 <span class="MuiTouchRipple-root css-w0pj6f"></span>
+              </button>
+              <button class="FooterSocBtn MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1yxmbwk" tabindex="0" type="button" style="color: white;">
+                <a href="https://api.whatsapp.com/send?phone=37493924647" style="color: yellow;">
+                  <font-awesome-icon :icon="['fab', 'whatsapp']" />
+                </a>
               </button>
             </div>
           </div>
@@ -98,7 +99,7 @@
       </div>
 
       <div class="copyright">
-        Copyright © 2023 BiLumix.ru
+        Copyright © 2023 BiLumix.am
       </div>
     </div>
   </footer>
@@ -297,7 +298,12 @@ footer button{
   right: 0;
   width: 100%;
 }
-
+.FooterSocBtn{
+}
+.FooterSocBtn a{
+  font-size: 30px;
+  line-height: 30px;
+}
 .feedback {
   background: #ffffff;
   padding: 20px 20px;

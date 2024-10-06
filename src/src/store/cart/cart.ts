@@ -6,7 +6,7 @@ const CART_STORE_NAME = "CART_STORE"
 export const cartStore = defineStore('cart', {
     state: (): CartState => ({
         cart: {
-            subject: "Order from Bilumix.ru",
+            subject: "Order from Bilumix",
             email: "",
             phone: "",
             name: "",
@@ -21,7 +21,7 @@ export const cartStore = defineStore('cart', {
         getCartToCheckout: (state: CartState): any => {
             let cart = JSON.parse(JSON.stringify(state.cart))
             cart.list.map((row : any) => {
-                row.url = "https://bilumix.ru/shop/" + row.url
+                row.url = "https://bilumix.am/shop/" + row.url
             })
             return {
                 name: cart.name,
@@ -36,7 +36,7 @@ export const cartStore = defineStore('cart', {
             if(!out){
                 return {
                     target: undefined,
-                    url: link?("https://bilumix.ru/shop/" + link):"",
+                    url: link?("https://bilumix.am/shop/" + link):"",
                     need: [],
                     cnt: 0
                 }

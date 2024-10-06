@@ -10,7 +10,7 @@
             { "url": "/images/static/bi-prod-repair-light-source.webp", "on": true}
         ],
         "price": 130,
-        "currency": "RUB",
+        "currency": "AMD",
         "on": false
     },
     {
@@ -24,7 +24,7 @@
             { "url": "/images/static/bi-prod-repair-front-body.webp", "on": true}
         ],
         "price": 110,
-        "currency": "RUB",
+        "currency": "AMD",
         "on": false
     },
     {
@@ -38,7 +38,7 @@
             { "url": "/images/static/bi-prod-repair-rear-body.webp", "on": true}
         ],
         "price": 170,
-        "currency": "RUB",
+        "currency": "AMD",
         "on": false
     }
 ]

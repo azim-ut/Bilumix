@@ -16,10 +16,27 @@ function getCurrencyPrice(val: number, currency: string, coverage: number = 0): 
             }
         }
         if(rates){
+            let valRub = 0
+            if(!["USD", "RUB"].includes(currency)){
+                rates.filter((row: Rate) => row.currency === 'USD')
+                    .forEach((row: Rate) => {
+                        valRub = val * (row.rate/row.nominal)
+                    })
+                console.log("rate", val, valRub)
+                val = valRub
+            }
             rates.filter((row: Rate) => row.currency === currency)
                 .forEach((row: Rate) => {
-                    val = Math.round(val * row.rate)
-                    val += Math.round((val/row.rate) * coverage)
+                    if(row.currency === "AMD"){
+                        console.log("rate before: ", val)
+                    }
+                    let realRate = row.rate
+                    if(row.nominal>1){
+                        realRate = row.nominal/row.rate
+                    }
+                    val = Math.round((val) * (realRate))
+
+                    val += Math.round(((val) / (realRate)) * coverage)
                     val = Math.round((val/10)) * 10
                     const afterDot = val%100
                     let temp = (afterDot > 25 && afterDot < 50)?50:0
@@ -42,6 +59,9 @@ export function getRatedPrice(price: number, currency: string, cover: number): n
 export function convertTargetPrice(target: NamePrice): string {
     if(target.currency === "RUB"){
         return printRub(target.price)
+    }
+    if(target.currency === "AMD"){
+        return printAmd(target.price)
     }
     if(target.price === 0){
         return "-"
@@ -72,6 +92,15 @@ function printRub(price: number){
         style: 'currency',
         currency: "RUB",
     }).format(price).replace(/RUB\s/, "") + " " + "₽"
+}
+function printAmd(price: number){
+    if(price === 0){
+        return "-"
+    }
+    return Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: "AMD",
+    }).format(price).replace(/AMD\s/, "") + " " + "֏"
 }
 
 interface Rate{

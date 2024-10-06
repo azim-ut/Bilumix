@@ -43,7 +43,7 @@ export default defineComponent({
     return {
       bundles: feedbackBundles,
       form: {
-        subject: "Bilumix.ru - customer feedback",
+        subject: "Bilumix - customer feedback",
         email: null as string|null,
         name: null as string|null,
         summary: null as string|null,
@@ -54,7 +54,7 @@ export default defineComponent({
   methods: {
     reset(){
       this.form = {
-        subject: "Bilumix.ru - customer feedback",
+        subject: "Bilumix - customer feedback",
         email: null,
         name: null,
         summary: null,

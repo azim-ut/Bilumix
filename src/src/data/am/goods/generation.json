@@ -12,7 +12,7 @@
             { "url": "/images/static/Battery-3_f1a4b970-576e-4d8e-b039-4f67a745c458.webp", "on": false}
         ],
         "price": 90,
-        "currency": "RUB"
+        "currency": "AMD"
     },
     {
         "link": "rechargeable-battery-charger",
@@ -26,19 +26,19 @@
             { "url": "/images/static/Charger-2_0af909ff-0372-4a81-8a84-66bd427418ff.webp", "on": false}
         ],
         "price": 100,
-        "currency": "RUB"
+        "currency": "AMD"
     },
     {
         "link": "bilumix-headlamp-repair-service",
         "title": "Сервис по ремонту BiLumix Поколение 1",
         "short": "Сервис по ремонту первого поколения BiLumix",
-        "text": "<h4>Спецификация обслуживания</h4><ul><li>Замена переднего и заднего ремешков</li><li>Замена источника света</li><li>Другие услуги (Хирургические лупы)</li></ul><p>* Будет взиматься фиксированная плата за обслуживание.</p><p>* Пожалуйста, свяжитесь с нами (sales@bilumix.ru) после того, как вы разместите свой заказ.</p><ul></ul>",
+        "text": "<h4>Спецификация обслуживания</h4><ul><li>Замена переднего и заднего ремешков</li><li>Замена источника света</li><li>Другие услуги (Хирургические лупы)</li></ul><p>* Будет взиматься фиксированная плата за обслуживание.</p><p>* Пожалуйста, свяжитесь с нами (sales@bilumix.am) после того, как вы разместите свой заказ.</p><ul></ul>",
         "links": [
         ],
         "images": [
             { "url": "/images/static/Headlamp-ReapiarService_afdc31e3-15b4-4356-bc6d-0c58b8f35991.webp", "on": false}
         ],
         "price": 250,
-        "currency": "RUB"
+        "currency": "AMD"
     }
 ]

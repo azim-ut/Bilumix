@@ -16,6 +16,9 @@ function recalculate(list: Product[]): Product[]{
         if(product.currency === "RUB"){
             product.price = getRatedPrice(product.price, "USD", 10)
         }
+        if(product.currency === "AMD"){
+            product.price = getRatedPrice(product.price, "AMD", 0.1)
+        }
     })
     return list
 }

@@ -11,11 +11,11 @@ require __DIR__.'/PHPMailer-master/src/SMTP.php';
 require __DIR__.'/PHPMailer-master/src/POP3.php';
 
 try{
-    $to = "sales@bilumix.ru";
+    $to = "sales@bilumix.am";
     $json = file_get_contents('php://input');
     $data = json_decode($json);
-    $from = "sales@bilumix.ru";
-    $subject = $data->subject??"Email from Bilumix.ru";
+    $from = "sales@bilumix.am";
+    $subject = $data->subject??"Email from Bilumix";
     $content = jsonToDebug($json);
 
     $out = emailSend($from, $to, $subject, $content);
@@ -72,7 +72,7 @@ function emailSend(string $from, string $to, string $subject, string $content){
     $mail->Host = "ssl://smtp.yandex.com";
     $mail->Port = 465;
 
-    $mail->Username = "sales@bilumix.ru";
+    $mail->Username = "sales@bilumix.am";
     $mail->Password = "aigjzsxotmpsewsa";
 
 //    $mail->CharSet = 'windows-1251';

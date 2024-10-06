@@ -18,7 +18,16 @@
           </ul>
         </nav>
       </div>
-      <div class="phone"><a :href="getPhoneLink(footerBundles.PHONE_NUM)"><font-awesome-icon :icon="['fas', 'phone']" /><span>{{footerBundles.PHONE}}</span></a></div>
+      <div class="phone">
+        <a :href="getPhoneLink(footerBundles.PHONE_NUM)">
+          <font-awesome-icon :icon="['fas', 'phone']" /><span>{{footerBundles.PHONE}}</span>
+        </a>
+      </div>
+      <div class="whatsapp">
+        <a href="https://api.whatsapp.com/send?phone=37493924647" style="color: yellow;">
+          <font-awesome-icon :icon="['fab', 'whatsapp']" />
+        </a>
+      </div>
     </div>
     <div class="rightBlock">
       <div class="cartIcon">
@@ -238,6 +247,16 @@ header .phone a{
 }
 header .phone:hover{
   line-height: 60px;
+  cursor: pointer;
+  opacity: 1;
+}
+header .whatsapp a{
+  color: yellow;
+  line-height: 60px;
+  margin-left: 10px;
+  text-decoration: none;
+}
+header .whatsapp:hover{
   cursor: pointer;
   opacity: 1;
 }
