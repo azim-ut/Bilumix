@@ -73,7 +73,8 @@ function emailSend(string $from, string $to, string $subject, string $content){
     $mail->Port = 465;
 
     $mail->Username = "sales@bilumix.am";
-    $mail->Password = "aigjzsxotmpsewsa";
+    $mail->Password = "UqFTD3FzK";
+//    $mail->Password = "aigjzsxotmpsewsa"; //sales@bilumix.ru
 
 //    $mail->CharSet = 'windows-1251';
     $mail->CharSet = 'utf-8';
