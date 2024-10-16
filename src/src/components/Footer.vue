@@ -23,7 +23,7 @@
 
           </div>
           <div class="block address">
-            <h6>&nbsp;</h6>
+            <h6 style="margin-top: -12px;">&nbsp;</h6>
             <div>{{ footerText.CITY }}</div>
             <div>{{ footerText.ADDRESS_STREET }}</div>
             <div>{{ footerText.ADDRESS_BUILDING }}</div>
@@ -65,10 +65,16 @@
               <li v-if="lang==='en'"><a href="/files/new 2.5x_loupe email marketing.pdf">{{footerText.BROCHURE1}}</a></li>
               <li v-if="lang==='en'"><a href="/files/2022-Nov-bilumix-flyer-final-bleed-cmyk-2.pdf">{{footerText.BROCHURE2}}</a></li>
               <li v-if="lang==='en'"><a href="/files/bilumix-flyer.pdf">{{footerText.BROCHURE3}}</a></li>
+
               <li v-if="lang==='ru'"><a href="/files/buklet.pdf" target="_blank">{{footerText.BUKLET}}</a></li>
               <li v-if="lang==='ru'"><a href="/files/final_new 2.5x_loupe_email marketing.pdf" target="_blank">{{footerText.BROCHURE1}}</a></li>
               <li v-if="lang==='ru'"><a href="/files/final_2022-Nov-bilumix-flyer-final-bleed-cmyk-2.pdf" target="_blank">{{footerText.BROCHURE2}}</a></li>
               <li v-if="lang==='ru'"><a href="/files/final_bilumix-flyer.pdf" target="_blank">{{footerText.BROCHURE3}}</a></li>
+
+              <li v-if="lang==='am'"><a href="/files/buklet.pdf" target="_blank">{{footerText.BUKLET}}</a></li>
+              <li v-if="lang==='am'"><a href="/files/final_new 2.5x_loupe_email marketing.pdf" target="_blank">{{footerText.BROCHURE1}}</a></li>
+              <li v-if="lang==='am'"><a href="/files/final_2022-Nov-bilumix-flyer-final-bleed-cmyk-2.pdf" target="_blank">{{footerText.BROCHURE2}}</a></li>
+              <li v-if="lang==='am'"><a href="/files/final_bilumix-flyer.pdf" target="_blank">{{footerText.BROCHURE3}}</a></li>
             </ul>
           </div><div class="block">
           <div>

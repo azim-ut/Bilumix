@@ -9,6 +9,9 @@
     "build-only-ru": "vite build --mode production_ru",
     "build-only-en": "vite build --mode production_en",
     "build-only-am": "vite build --mode production_am",
+    "build & deploy RU bilumix.am": "vite build --mode production_ru | rsync -avl -avzP -e 'ssh' /Users/aleksandrkostyukov/Projects/Remote/Bilumix/app/bilumix/ru/ root@212.109.194.17:/var/www/www-root/data/www/bilumix.am/ru/ --delete",
+    "build & deploy EN bilumix.am": "vite build --mode production_en | rsync -avl -avzP -e 'ssh' /Users/aleksandrkostyukov/Projects/Remote/Bilumix/app/bilumix/en/ root@212.109.194.17:/var/www/www-root/data/www/bilumix.am/en/ --delete",
+    "build & deploy AM bilumix.am": "vite build --mode production_am | rsync -avl -avzP -e 'ssh' /Users/aleksandrkostyukov/Projects/Remote/Bilumix/app/bilumix/am/ root@212.109.194.17:/var/www/www-root/data/www/bilumix.am/am/ --delete",
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false"
   },
   "dependencies": {
